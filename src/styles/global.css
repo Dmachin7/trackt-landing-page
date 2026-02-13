@@ -6,9 +6,9 @@
   --color-bg-card: oklch(100% 0 0 / 0.05);
   --color-text-primary: #f0f0f5;
   --color-text-secondary: #9ca3af;
-  --color-brand-primary: #6366f1;
-  --color-brand-accent: #22d3ee;
-  --color-brand-glow: oklch(55% 0.25 270 / 0.2);
+  --color-brand-primary: #16b4d2;
+  --color-brand-accent: #5681d0;
+  --color-brand-glow: oklch(65% 0.15 220 / 0.25);
   --color-border-subtle: oklch(100% 0 0 / 0.1);
   --font-sans: 'Inter', system-ui, sans-serif;
 }
