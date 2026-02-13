@@ -1,4 +1,4 @@
-<header class="fixed top-0 left-0 right-0 z-50">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <nav class="mx-auto flex max-w-6xl items-center justify-center px-5 py-5">
     <a href="/">
       <img
@@ -9,3 +9,16 @@
     </a>
   </nav>
 </header>
+
+<script>
+  const header = document.getElementById("site-header");
+  const onScroll = () => {
+    if (window.scrollY > 50) {
+      header?.classList.add("bg-bg-dark/80", "backdrop-blur-xl");
+    } else {
+      header?.classList.remove("bg-bg-dark/80", "backdrop-blur-xl");
+    }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+</script>
