@@ -1,0 +1,45 @@
+---
+const surveyUrl = "https://form.typeform.com/to/YwYjuA7B";
+---
+
+<section class="relative flex min-h-screen items-center justify-center overflow-hidden px-5 pt-20">
+  <!-- Background gradient -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-brand-primary)_0%,_transparent_50%)] opacity-15"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--color-brand-accent)_0%,_transparent_40%)] opacity-10"></div>
+
+  <!-- Dot grid pattern -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+  <div class="relative z-10 mx-auto max-w-3xl text-center">
+    <div class="mb-6 inline-block rounded-full border border-border-subtle bg-bg-card px-4 py-1.5 text-sm text-text-secondary backdrop-blur-sm">
+      Currently in development — help us shape the product
+    </div>
+
+    <h1 class="text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
+      Track Every Unit.<br />
+      <span class="bg-gradient-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent">
+        Know Every Trend.
+      </span>
+    </h1>
+
+    <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-text-secondary md:text-xl">
+      Trackt gives small businesses real-time inventory tracking and sales
+      analytics — so you never miss a sale or overstock again.
+    </p>
+
+    <div class="mt-10 flex flex-col items-center gap-4">
+      <a
+        href={surveyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-4 text-lg font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_0_30px_var(--color-brand-glow)] md:w-auto"
+      >
+        Get Early Access
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <p class="text-sm text-text-secondary">
+        Help us build the perfect tool — take our 2-min survey.
+      </p>
+    </div>
+  </div>
+</section>
