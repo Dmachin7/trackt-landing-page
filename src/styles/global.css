@@ -13,6 +13,15 @@
   --font-sans: 'Inter', system-ui, sans-serif;
 }
 
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
 html {
   scroll-behavior: smooth;
 }

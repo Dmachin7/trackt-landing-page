@@ -1,0 +1,188 @@
+<section class="relative overflow-hidden px-5 py-20 md:py-28">
+
+  <!-- Ambient glow -->
+  <div class="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-primary/10 blur-[120px]"></div>
+
+  <div class="relative z-10 mx-auto max-w-5xl">
+
+    <!-- Section header -->
+    <div class="mb-12 text-center">
+      <p class="text-sm font-semibold uppercase tracking-widest text-brand-primary">Product Preview</p>
+      <h2 class="mt-3 text-3xl font-bold md:text-4xl">Your business, in one glance</h2>
+      <p class="mx-auto mt-4 max-w-xl text-text-secondary">
+        A clean dashboard that shows you what matters — no noise, no confusion.
+      </p>
+    </div>
+
+    <!-- Dashboard card -->
+    <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+      <div class="rounded-2xl border border-border-subtle bg-bg-card shadow-[0_0_80px_rgba(22,180,210,0.07)] backdrop-blur-sm">
+
+        <!-- Title bar -->
+        <div class="flex items-center justify-between border-b border-border-subtle px-5 py-3.5">
+          <div class="flex items-center gap-1.5">
+            <span class="h-3 w-3 rounded-full bg-white/10"></span>
+            <span class="h-3 w-3 rounded-full bg-white/10"></span>
+            <span class="h-3 w-3 rounded-full bg-white/10"></span>
+          </div>
+          <span class="text-xs font-medium tracking-wide text-text-secondary">Trackt Dashboard — Weekly Overview</span>
+          <span class="text-xs text-text-secondary">Feb 17, 2026</span>
+        </div>
+
+        <div class="p-5 md:p-7">
+
+          <!-- KPI tiles -->
+          <div class="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+
+            <div class="rounded-xl border border-border-subtle bg-white/[0.03] p-4">
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Revenue (7d)</p>
+              <p class="mt-1.5 text-2xl font-bold text-text-primary">$8,340</p>
+              <p class="mt-1 text-xs font-semibold text-brand-primary">↑ 24% vs last week</p>
+            </div>
+
+            <div class="rounded-xl border border-border-subtle bg-white/[0.03] p-4">
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Items Tracked</p>
+              <p class="mt-1.5 text-2xl font-bold text-text-primary">1,203</p>
+              <p class="mt-1 text-xs text-text-secondary">across 4 categories</p>
+            </div>
+
+            <div class="rounded-xl border border-border-subtle bg-white/[0.03] p-4">
+              <p class="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Low Stock Alerts</p>
+              <p class="animate-pulse-glow mt-1.5 text-2xl font-bold text-amber-400">3</p>
+              <p class="mt-1 text-xs text-text-secondary">action required</p>
+            </div>
+
+          </div>
+
+          <!-- Chart -->
+          <div class="mb-5 rounded-xl border border-border-subtle bg-white/[0.02] p-4">
+            <div class="mb-3 flex items-center justify-between">
+              <p class="text-sm font-semibold text-text-primary">Revenue — Last 7 Days</p>
+              <div class="flex items-center gap-1.5">
+                <span class="h-2 w-2 rounded-full bg-brand-primary"></span>
+                <span class="text-xs text-text-secondary">Revenue</span>
+              </div>
+            </div>
+
+            <svg id="sales-chart" viewBox="0 0 540 140" class="w-full overflow-visible" aria-hidden="true">
+              <defs>
+                <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#16b4d2" stop-opacity="0.25" />
+                  <stop offset="100%" stop-color="#16b4d2" stop-opacity="0" />
+                </linearGradient>
+              </defs>
+
+              <!-- Grid lines -->
+              <line x1="0" y1="10"  x2="540" y2="10"  stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+              <line x1="0" y1="45"  x2="540" y2="45"  stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+              <line x1="0" y1="80"  x2="540" y2="80"  stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+              <line x1="0" y1="115" x2="540" y2="115" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+
+              <!-- Fill area -->
+              <path
+                d="M14,100 C60,88 80,80 97,78 C140,78 157,85 180,85 C223,85 242,62 263,62 C306,62 325,38 346,38 C389,38 408,22 429,22 C472,22 492,46 512,46 L512,125 L14,125 Z"
+                fill="url(#chartFill)"
+              />
+
+              <!-- Animated line -->
+              <path
+                id="chart-line"
+                d="M14,100 C60,88 80,80 97,78 C140,78 157,85 180,85 C223,85 242,62 263,62 C306,62 325,38 346,38 C389,38 408,22 429,22 C472,22 492,46 512,46"
+                fill="none"
+                stroke="#16b4d2"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <!-- Data point dots -->
+              <circle cx="14"  cy="100" r="3.5" fill="#16b4d2" />
+              <circle cx="97"  cy="78"  r="3.5" fill="#16b4d2" />
+              <circle cx="180" cy="85"  r="3.5" fill="#16b4d2" />
+              <circle cx="263" cy="62"  r="3.5" fill="#16b4d2" />
+              <circle cx="346" cy="38"  r="3.5" fill="#16b4d2" />
+              <circle cx="429" cy="22"  r="3.5" fill="#16b4d2" />
+              <circle cx="512" cy="46"  r="3.5" fill="#16b4d2" />
+            </svg>
+
+            <div class="mt-2 flex justify-between px-0.5 text-[10px] text-text-secondary">
+              <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+          </div>
+
+          <!-- Inventory table -->
+          <div class="rounded-xl border border-border-subtle overflow-hidden">
+            <div class="flex items-center justify-between border-b border-border-subtle bg-white/[0.03] px-4 py-2.5">
+              <p class="text-sm font-semibold text-text-primary">Inventory Snapshot</p>
+              <span class="cursor-default text-xs text-brand-primary">View all →</span>
+            </div>
+
+            <!-- Header row -->
+            <div class="grid grid-cols-4 bg-white/[0.02] px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
+              <span>Product</span>
+              <span class="text-right">SKU</span>
+              <span class="text-right">In Stock</span>
+              <span class="text-right">Status</span>
+            </div>
+
+            <!-- Row 1 -->
+            <div class="grid grid-cols-4 items-center border-t border-border-subtle px-4 py-3 text-sm transition-colors hover:bg-white/[0.02]">
+              <span class="font-medium text-text-primary">Blue Widget Pro</span>
+              <span class="text-right font-mono text-xs text-text-secondary">BWP-001</span>
+              <span class="text-right text-text-primary">247</span>
+              <span class="text-right"><span class="inline-block rounded-full bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-400">In Stock</span></span>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="grid grid-cols-4 items-center border-t border-border-subtle px-4 py-3 text-sm transition-colors hover:bg-white/[0.02]">
+              <span class="font-medium text-text-primary">Canvas Tote Bag</span>
+              <span class="text-right font-mono text-xs text-text-secondary">CTB-014</span>
+              <span class="text-right text-amber-400 font-semibold">12</span>
+              <span class="text-right"><span class="inline-block rounded-full bg-amber-500/15 px-2 py-0.5 text-[11px] font-semibold text-amber-400">Low Stock</span></span>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="grid grid-cols-4 items-center border-t border-border-subtle px-4 py-3 text-sm transition-colors hover:bg-white/[0.02]">
+              <span class="font-medium text-text-primary">Ceramic Mug Set</span>
+              <span class="text-right font-mono text-xs text-text-secondary">CMS-007</span>
+              <span class="text-right text-text-primary">89</span>
+              <span class="text-right"><span class="inline-block rounded-full bg-emerald-500/15 px-2 py-0.5 text-[11px] font-semibold text-emerald-400">In Stock</span></span>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="grid grid-cols-4 items-center border-t border-border-subtle px-4 py-3 text-sm transition-colors hover:bg-white/[0.02]">
+              <span class="font-medium text-text-primary">Leather Wallet</span>
+              <span class="text-right font-mono text-xs text-text-secondary">LW-029</span>
+              <span class="text-right font-semibold text-red-400">4</span>
+              <span class="text-right"><span class="inline-block rounded-full bg-red-500/15 px-2 py-0.5 text-[11px] font-semibold text-red-400">Critical</span></span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const path = document.getElementById("chart-line") as SVGPathElement | null;
+  if (path) {
+    const len = path.getTotalLength();
+    path.style.strokeDasharray = String(len);
+    path.style.strokeDashoffset = String(len);
+    path.style.transition = "stroke-dashoffset 1.6s cubic-bezier(0.4, 0, 0.2, 1)";
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            path.style.strokeDashoffset = "0";
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    obs.observe(path);
+  }
+</script>

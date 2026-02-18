@@ -38,8 +38,11 @@ const features = [
     </div>
 
     <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
-      {features.map((feature) => (
-        <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+      {features.map((feature, index) => (
+        <div
+          class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out"
+          style={`transition-delay: ${index * 100}ms`}
+        >
           <FeatureCard {...feature} />
         </div>
       ))}
