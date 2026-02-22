@@ -2,14 +2,17 @@
 interface Props {
   title?: string;
   description?: string;
+  jsonLd?: string; // JSON-LD structured data as a serialized string
 }
 
 const {
-  title = "Trackt | Inventory Tracking & Sales Analytics for Small Business",
-  description = "Track every unit, know every trend. Trackt gives small businesses real-time inventory tracking and sales analytics.",
+  title = "Web Design & Tech Consulting in Tampa, FL | Trackt",
+  description = "Tampa web designer and tech consultant for small businesses. Custom websites from $300, Google Sheets systems, inventory tracking, and custom software. Also building Trackt — inventory & sales analytics for small businesses.",
+  jsonLd,
 } = Astro.props;
 
-const url = "https://trackt.tech";
+const siteUrl = "https://trackt.tech";
+const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
 
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/600.css";
@@ -23,13 +26,16 @@ import "@fontsource/inter/700.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={url} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Trackt" />
+    <!-- TODO: add og:image once a social preview image is created (1200×630px recommended) -->
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -38,6 +44,9 @@ import "@fontsource/inter/700.css";
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#0a0a0f" />
+
+    <!-- JSON-LD Structured Data (injected per-page) -->
+    {jsonLd && <script is:inline type="application/ld+json" set:html={jsonLd} />}
 
     <style is:global>
       @import "../styles/global.css";

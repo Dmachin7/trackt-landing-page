@@ -3,14 +3,84 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Features from "../components/Features.astro";
+import Consulting from "../components/Consulting.astro";
 import Waitlist from "../components/Waitlist.astro";
 import Footer from "../components/Footer.astro";
+
+const pageTitle = "Web Design & Tech Consulting Tampa FL | Custom Websites & Software | Trackt";
+const pageDescription = "Tampa-based web designer and tech consultant for small businesses. Custom websites from $300, Google Sheets systems, inventory tracking, and custom software. Free 20-min discovery call. Also building Trackt.";
+
+// JSON-LD structured data for local SEO
+const jsonLd = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Daniel",
+    "jobTitle": "Web Designer & Tech Consultant",
+    "url": "https://trackt.tech",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tampa",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    },
+    // TODO: add your Google Business Profile URL to sameAs once live:
+    // "sameAs": ["https://www.google.com/maps/place/YOUR_BUSINESS_ID"]
+    "sameAs": []
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Web Design & Tech Consulting — Tampa, FL",
+    "url": "https://trackt.tech",
+    "areaServed": ["Tampa, FL", "Remote"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tampa",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    },
+    "description": "Custom websites, tech consulting, and custom software for small businesses in Tampa, FL.",
+    "priceRange": "$–$$$",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Web Design & Development",
+            "description": "Custom websites for small businesses starting at $300. Flat-rate packages."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tech Consulting & Systems",
+            "description": "Google Sheets, Airtable, inventory systems, and workflow automation for small businesses."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Custom Software & Integrations",
+            "description": "Web apps, API integrations, and internal tools built for your specific workflow."
+          }
+        }
+      ]
+    }
+  }
+]);
 ---
 
-<BaseLayout>
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={jsonLd}>
   <Header />
   <main>
     <Hero />
+    <Consulting />
     <Features />
     <Waitlist />
   </main>
