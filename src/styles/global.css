@@ -36,6 +36,20 @@
   animation-play-state: paused;
 }
 
+#nav-menu {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height 0.25s ease-out, opacity 0.2s ease;
+}
+
+#nav-menu.is-open {
+  max-height: 200px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
 html {
   scroll-behavior: smooth;
 }

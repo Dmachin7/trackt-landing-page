@@ -26,32 +26,31 @@
       id="nav-toggle"
       aria-label="Toggle navigation"
       aria-expanded="false"
-      class="flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:text-text-primary md:hidden"
+      class="relative flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:text-text-primary md:hidden"
     >
-      <!-- Hamburger icon (shown when closed) -->
-      <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Hamburger icon -->
+      <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-opacity duration-150">
         <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
       </svg>
-      <!-- X icon (shown when open) -->
-      <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+      <!-- X icon (overlaid, fades in when open) -->
+      <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute opacity-0 transition-opacity duration-150">
         <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
       </svg>
     </button>
   </nav>
 
-  <!-- Mobile menu (hidden by default) -->
-  <div
-    id="nav-menu"
-    class="hidden border-t border-border-subtle bg-bg-dark/95 backdrop-blur-xl md:hidden"
-  >
-    <a
-      href="/#consulting"
-      class="nav-menu-link block border-b border-border-subtle px-5 py-4 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
-    >Consulting</a>
-    <a
-      href="/survey"
-      class="nav-menu-link block px-5 py-4 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
-    >Survey</a>
+  <!-- Mobile menu (CSS-animated slide + fade) -->
+  <div id="nav-menu" class="border-t border-border-subtle bg-bg-dark/95 backdrop-blur-xl md:hidden">
+    <div class="px-3 py-2">
+      <a
+        href="/#consulting"
+        class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-white/6 hover:text-text-primary"
+      >Consulting</a>
+      <a
+        href="/survey"
+        class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-white/6 hover:text-text-primary"
+      >Survey</a>
+    </div>
   </div>
 </header>
 
@@ -77,9 +76,9 @@
   let isOpen = false;
   navToggle?.addEventListener("click", () => {
     isOpen = !isOpen;
-    navMenu?.classList.toggle("hidden", !isOpen);
-    iconOpen?.classList.toggle("hidden", isOpen);
-    iconClose?.classList.toggle("hidden", !isOpen);
+    navMenu?.classList.toggle("is-open", isOpen);
+    iconOpen?.classList.toggle("opacity-0", isOpen);
+    iconClose?.classList.toggle("opacity-0", !isOpen);
     navToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
@@ -87,9 +86,9 @@
   document.querySelectorAll(".nav-menu-link").forEach((link) => {
     link.addEventListener("click", () => {
       isOpen = false;
-      navMenu?.classList.add("hidden");
-      iconOpen?.classList.remove("hidden");
-      iconClose?.classList.add("hidden");
+      navMenu?.classList.remove("is-open");
+      iconOpen?.classList.remove("opacity-0");
+      iconClose?.classList.add("opacity-0");
       navToggle?.setAttribute("aria-expanded", "false");
     });
   });
