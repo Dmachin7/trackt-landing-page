@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>NOVA — New Arrivals</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; color: #111; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    nav { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid #e5e5e5; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-size: 20px; font-weight: 800; letter-spacing: 2px; color: #111; }
+    .nav-links { display: flex; gap: 28px; font-size: 13px; color: #555; font-weight: 500; }
+    .nav-links a:hover { color: #111; }
+    .nav-right { display: flex; align-items: center; gap: 20px; font-size: 13px; color: #555; }
+    .cart-btn { background: #111; color: #fff; font-size: 13px; font-weight: 600; padding: 9px 20px; border-radius: 4px; }
+
+    /* Banner */
+    .banner { background: #111; color: #fff; text-align: center; padding: 10px; font-size: 13px; letter-spacing: 1px; }
+    .banner span { color: #aaa; }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 500px; }
+    .hero-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; }
+    .hero-tag { font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+    .hero p { font-size: 16px; color: #555; margin-bottom: 32px; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 12px; }
+    .btn-dark { background: #111; color: #fff; font-size: 14px; font-weight: 600; padding: 14px 32px; border-radius: 4px; }
+    .btn-dark:hover { background: #333; }
+    .btn-outline { border: 1.5px solid #111; color: #111; font-size: 14px; font-weight: 600; padding: 14px 32px; border-radius: 4px; }
+    .btn-outline:hover { background: #f5f5f5; }
+    .hero-visual { background: linear-gradient(135deg, #e8e8e8, #d0d0d0); display: flex; align-items: center; justify-content: center; font-size: 120px; }
+
+    /* Products */
+    .section { padding: 72px 40px; max-width: 1200px; margin: 0 auto; }
+    .section-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; }
+    .section h2 { font-size: 26px; font-weight: 800; }
+    .see-all { font-size: 13px; color: #888; font-weight: 500; }
+    .see-all:hover { color: #111; }
+    .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+    .product-card { cursor: pointer; }
+    .product-img { background: #f0f0f0; border-radius: 8px; height: 280px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; font-size: 64px; transition: background 0.2s; }
+    .product-card:hover .product-img { background: #e5e5e5; }
+    .product-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .product-sub { font-size: 13px; color: #888; margin-bottom: 8px; }
+    .product-price { font-size: 15px; font-weight: 700; }
+    .product-price .original { color: #aaa; text-decoration: line-through; margin-right: 6px; font-weight: 400; }
+    .product-price .sale { color: #e53e3e; }
+
+    /* Categories */
+    .categories { padding: 60px 40px; background: #f8f8f8; }
+    .cat-inner { max-width: 1200px; margin: 0 auto; }
+    .cat-inner h2 { font-size: 26px; font-weight: 800; margin-bottom: 32px; }
+    .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .cat-card { background: #fff; border-radius: 8px; padding: 28px 20px; text-align: center; border: 1px solid #e5e5e5; cursor: pointer; transition: box-shadow 0.2s; }
+    .cat-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    .cat-icon { font-size: 36px; margin-bottom: 10px; }
+    .cat-name { font-size: 14px; font-weight: 600; }
+    .cat-count { font-size: 12px; color: #888; margin-top: 4px; }
+
+    /* Trust bar */
+    .trust { padding: 48px 40px; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
+    .trust-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+    .trust-item .icon { font-size: 28px; margin-bottom: 8px; }
+    .trust-item .title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .trust-item .desc { font-size: 12px; color: #888; }
+
+    /* Footer */
+    footer { background: #111; color: #aaa; padding: 60px 40px 32px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto 40px; }
+    .footer-brand .logo { color: #fff; font-size: 18px; display: block; margin-bottom: 12px; }
+    .footer-brand p { font-size: 13px; line-height: 1.7; }
+    .footer-col h4 { color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; }
+    .footer-col a { display: block; font-size: 13px; margin-bottom: 10px; color: #888; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid #333; padding-top: 24px; font-size: 12px; color: #555; }
+
+    /* Credit */
+    .credit { background: #0a0a0a; padding: 12px 40px; text-align: center; font-size: 12px; color: #444; }
+    .credit a { color: #888; }
+    .credit a:hover { color: #aaa; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { height: 250px; }
+      .hero-content { padding: 48px 20px; }
+      .section { padding: 48px 20px; }
+      .categories { padding: 48px 20px; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .trust { padding: 32px 20px; }
+      .trust-inner { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner">Free shipping on orders over $50 · <span>Use code NOVA15 for 15% off</span></div>
+
+  <nav>
+    <span class="logo">NOVA</span>
+    <div class="nav-links">
+      <a href="#">New Arrivals</a>
+      <a href="#">Women</a>
+      <a href="#">Men</a>
+      <a href="#">Sale</a>
+      <a href="#">About</a>
+    </div>
+    <div class="nav-right">
+      <a href="#">Search</a>
+      <a href="#">Account</a>
+      <a href="#" class="cart-btn">Cart (0)</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-tag">New Arrivals — Spring 2025</p>
+      <h1>Style That Moves With You</h1>
+      <p>Discover our latest collection — effortlessly designed for everyday life. Sustainably sourced, thoughtfully made.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-dark">Shop Now</a>
+        <a href="#" class="btn-outline">View Lookbook</a>
+      </div>
+    </div>
+    <div class="hero-visual">👗</div>
+  </section>
+
+  <div class="trust">
+    <div class="trust-inner">
+      <div class="trust-item"><div class="icon">🚚</div><div class="title">Free Shipping</div><div class="desc">On orders over $50</div></div>
+      <div class="trust-item"><div class="icon">↩️</div><div class="title">Easy Returns</div><div class="desc">30-day hassle-free</div></div>
+      <div class="trust-item"><div class="icon">🌱</div><div class="title">Sustainable</div><div class="desc">Eco-friendly materials</div></div>
+      <div class="trust-item"><div class="icon">⭐</div><div class="title">4.8/5 Stars</div><div class="desc">12,000+ reviews</div></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-header">
+      <h2>New Arrivals</h2>
+      <a href="#" class="see-all">See all →</a>
+    </div>
+    <div class="products">
+      <div class="product-card">
+        <div class="product-img">👕</div>
+        <div class="product-name">Essential Linen Tee</div>
+        <div class="product-sub">4 colors available</div>
+        <div class="product-price">$38</div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">👖</div>
+        <div class="product-name">Tailored Chino</div>
+        <div class="product-sub">3 colors available</div>
+        <div class="product-price"><span class="original">$88</span><span class="sale">$62</span></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🧥</div>
+        <div class="product-name">Weekend Blazer</div>
+        <div class="product-sub">2 colors available</div>
+        <div class="product-price">$145</div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">👗</div>
+        <div class="product-name">Wrap Midi Dress</div>
+        <div class="product-sub">5 colors available</div>
+        <div class="product-price">$95</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="categories">
+    <div class="cat-inner">
+      <h2>Shop by Category</h2>
+      <div class="cat-grid">
+        <div class="cat-card"><div class="cat-icon">👚</div><div class="cat-name">Tops</div><div class="cat-count">142 items</div></div>
+        <div class="cat-card"><div class="cat-icon">👖</div><div class="cat-name">Bottoms</div><div class="cat-count">98 items</div></div>
+        <div class="cat-card"><div class="cat-icon">👗</div><div class="cat-name">Dresses</div><div class="cat-count">76 items</div></div>
+        <div class="cat-card"><div class="cat-icon">🎒</div><div class="cat-name">Accessories</div><div class="cat-count">54 items</div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo">NOVA</span>
+        <p>Fashion that feels good — for you and the planet. Sustainably made, thoughtfully designed.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="#">New Arrivals</a>
+        <a href="#">Women</a>
+        <a href="#">Men</a>
+        <a href="#">Sale</a>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <a href="#">Sizing Guide</a>
+        <a href="#">Returns</a>
+        <a href="#">Shipping</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Sustainability</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 NOVA. All rights reserved.</div>
+  </footer>
+
+  <div class="credit">
+    Design mockup by <a href="https://trackt.tech" target="_blank">trackt.tech</a> — Custom eCommerce & Shopify stores starting at $350
+  </div>
+
+</body>
+</html>

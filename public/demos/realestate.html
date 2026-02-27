@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Keller Realty — Tampa Bay Homes</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f4f8; color: #1e3a5f; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    nav { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid #dde8f0; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { font-size: 17px; font-weight: 800; letter-spacing: 1px; color: #1e3a5f; }
+    .logo-sub { font-size: 10px; color: #7a9ab8; letter-spacing: 1px; display: block; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; color: #5a7a9f; }
+    .nav-links a:hover { color: #1e3a5f; }
+    .nav-cta { background: #1e3a5f; color: #fff; font-size: 14px; font-weight: 600; padding: 10px 22px; border-radius: 6px; }
+    .nav-cta:hover { background: #16304f; }
+
+    /* Hero / Search */
+    .hero { background: linear-gradient(160deg, #1e3a5f 0%, #2d5a8e 100%); padding: 80px 40px; text-align: center; }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .hero p { font-size: 17px; color: #a8c4e0; margin-bottom: 40px; }
+    .search-bar { background: #fff; border-radius: 10px; padding: 8px; display: flex; gap: 8px; max-width: 700px; margin: 0 auto; flex-wrap: wrap; }
+    .search-bar input { flex: 2; min-width: 200px; border: none; outline: none; font-size: 15px; padding: 10px 14px; color: #1e3a5f; }
+    .search-bar select { flex: 1; min-width: 140px; border: 1px solid #dde8f0; border-radius: 6px; font-size: 14px; padding: 10px 12px; color: #1e3a5f; background: #f8fafc; }
+    .search-bar button { background: #1e3a5f; color: #fff; font-size: 14px; font-weight: 700; padding: 10px 24px; border-radius: 6px; border: none; cursor: pointer; white-space: nowrap; }
+    .hero-stats { display: flex; gap: 40px; justify-content: center; margin-top: 48px; flex-wrap: wrap; }
+    .hero-stat { text-align: center; }
+    .hero-stat-num { font-size: 28px; font-weight: 800; color: #fff; }
+    .hero-stat-label { font-size: 12px; color: #7aa4c8; margin-top: 4px; }
+
+    /* Listings */
+    .listings { padding: 72px 40px; max-width: 1200px; margin: 0 auto; }
+    .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 36px; }
+    .section-header h2 { font-size: 26px; font-weight: 800; color: #1e3a5f; }
+    .filter-btns { display: flex; gap: 8px; }
+    .filter-btn { font-size: 13px; font-weight: 600; padding: 7px 16px; border-radius: 20px; border: 1.5px solid #dde8f0; color: #5a7a9f; cursor: pointer; background: #fff; }
+    .filter-btn.active { background: #1e3a5f; color: #fff; border-color: #1e3a5f; }
+    .listings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .listing-card { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #dde8f0; transition: box-shadow 0.2s; cursor: pointer; }
+    .listing-card:hover { box-shadow: 0 8px 32px rgba(30,58,95,0.12); }
+    .listing-img { background: linear-gradient(135deg, #c5d8eb, #a8c4e0); height: 200px; display: flex; align-items: center; justify-content: center; font-size: 64px; position: relative; }
+    .listing-badge { position: absolute; top: 12px; left: 12px; background: #fff; color: #1e3a5f; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 4px; }
+    .listing-badge.new { background: #1e3a5f; color: #fff; }
+    .listing-info { padding: 20px; }
+    .listing-price { font-size: 22px; font-weight: 800; color: #1e3a5f; margin-bottom: 4px; }
+    .listing-address { font-size: 14px; color: #5a7a9f; margin-bottom: 12px; }
+    .listing-specs { display: flex; gap: 16px; font-size: 13px; color: #7a9ab8; padding-top: 12px; border-top: 1px solid #f0f4f8; }
+    .listing-spec { display: flex; align-items: center; gap: 4px; }
+
+    /* Agent */
+    .agent { padding: 72px 40px; background: #fff; }
+    .agent-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: center; }
+    .agent-photo { background: linear-gradient(135deg, #dde8f0, #c5d8eb); border-radius: 12px; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+    .agent-info .tag { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #7a9ab8; margin-bottom: 12px; }
+    .agent-info h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; color: #1e3a5f; margin-bottom: 6px; }
+    .agent-info .title { font-size: 15px; color: #7a9ab8; margin-bottom: 20px; }
+    .agent-info p { font-size: 15px; color: #5a7a9f; line-height: 1.8; margin-bottom: 16px; }
+    .agent-stats { display: flex; gap: 28px; margin: 24px 0; }
+    .a-stat-num { font-size: 28px; font-weight: 800; color: #1e3a5f; }
+    .a-stat-label { font-size: 12px; color: #7a9ab8; }
+    .contact-btns { display: flex; gap: 12px; }
+    .btn-navy { background: #1e3a5f; color: #fff; font-size: 14px; font-weight: 700; padding: 12px 24px; border-radius: 8px; }
+    .btn-light { border: 1.5px solid #1e3a5f; color: #1e3a5f; font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 8px; }
+
+    /* Footer */
+    footer { background: #1e3a5f; color: #a8c4e0; padding: 48px 40px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 32px; }
+    .footer-brand { color: #fff; font-size: 18px; font-weight: 800; margin-bottom: 12px; display: block; }
+    .footer-brand-text { font-size: 13px; color: #7aa4c8; line-height: 1.7; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
+    .footer-col a { display: block; font-size: 13px; color: #7aa4c8; margin-bottom: 10px; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; font-size: 12px; color: #5a7a9f; }
+
+    /* Credit */
+    .credit { background: #16304f; padding: 12px 40px; text-align: center; font-size: 12px; color: #3a5a7f; }
+    .credit a { color: #5a7a9f; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 48px 20px; }
+      .listings { padding: 48px 20px; }
+      .section-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .agent { padding: 48px 20px; }
+      .agent-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div>
+      <span class="logo">KELLER REALTY</span>
+      <span class="logo-sub">Tampa Bay's Trusted Home Advisor</span>
+    </div>
+    <div class="nav-links">
+      <a href="#listings">Buy</a>
+      <a href="#">Sell</a>
+      <a href="#">Rentals</a>
+      <a href="#agent">About Sarah</a>
+      <a href="#">Blog</a>
+    </div>
+    <a href="#" class="nav-cta">Contact Sarah</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Find Your Home in Tampa Bay</h1>
+    <p>Over 200 active listings — homes, condos, and investment properties across the Bay Area</p>
+    <div class="search-bar">
+      <input type="text" placeholder="Search by city, zip, or neighborhood..." />
+      <select><option>Any Price</option><option>Under $300k</option><option>$300–500k</option><option>$500k+</option></select>
+      <select><option>Any Beds</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option></select>
+      <button>Search Homes</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">214</div><div class="hero-stat-label">Active Listings</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">$420k</div><div class="hero-stat-label">Avg. Sale Price</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">18</div><div class="hero-stat-label">Avg. Days on Market</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4.9★</div><div class="hero-stat-label">Client Rating</div></div>
+    </div>
+  </section>
+
+  <section class="listings" id="listings">
+    <div class="section-header">
+      <h2>Featured Listings</h2>
+      <div class="filter-btns">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">For Sale</button>
+        <button class="filter-btn">For Rent</button>
+        <button class="filter-btn">New</button>
+      </div>
+    </div>
+    <div class="listings-grid">
+      <div class="listing-card">
+        <div class="listing-img">🏡<span class="listing-badge new">New</span></div>
+        <div class="listing-info">
+          <div class="listing-price">$425,000</div>
+          <div class="listing-address">1842 Bayshore Blvd, Tampa, FL 33606</div>
+          <div class="listing-specs">
+            <span class="listing-spec">🛏 3 bd</span>
+            <span class="listing-spec">🚿 2 ba</span>
+            <span class="listing-spec">📐 1,840 sqft</span>
+          </div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img">🏠</div>
+        <div class="listing-info">
+          <div class="listing-price">$310,000</div>
+          <div class="listing-address">703 Garden St, St. Pete, FL 33701</div>
+          <div class="listing-specs">
+            <span class="listing-spec">🛏 2 bd</span>
+            <span class="listing-spec">🚿 1 ba</span>
+            <span class="listing-spec">📐 1,200 sqft</span>
+          </div>
+        </div>
+      </div>
+      <div class="listing-card">
+        <div class="listing-img">🏘️<span class="listing-badge">Price Drop</span></div>
+        <div class="listing-info">
+          <div class="listing-price">$580,000</div>
+          <div class="listing-address">29 Harbor View Dr, Clearwater, FL 33755</div>
+          <div class="listing-specs">
+            <span class="listing-spec">🛏 4 bd</span>
+            <span class="listing-spec">🚿 3 ba</span>
+            <span class="listing-spec">📐 2,600 sqft</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="agent" id="agent">
+    <div class="agent-inner">
+      <div class="agent-photo">👩‍💼</div>
+      <div class="agent-info">
+        <p class="tag">Your Agent</p>
+        <h2>Sarah Keller</h2>
+        <p class="title">Licensed Realtor · Tampa Bay Specialist</p>
+        <p>I've spent 14 years helping families buy and sell homes across Hillsborough and Pinellas counties. I know these neighborhoods street by street — and I'll fight for every dollar of your investment.</p>
+        <p>Whether you're a first-time buyer or selling your fourth home, I'll walk you through every step with honesty and zero pressure.</p>
+        <div class="agent-stats">
+          <div><div class="a-stat-num">400+</div><div class="a-stat-label">Homes Sold</div></div>
+          <div><div class="a-stat-num">14 yrs</div><div class="a-stat-label">Experience</div></div>
+          <div><div class="a-stat-num">4.9★</div><div class="a-stat-label">Rating</div></div>
+        </div>
+        <div class="contact-btns">
+          <a href="#" class="btn-navy">Schedule a Call</a>
+          <a href="#" class="btn-light">View Listings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <span class="footer-brand">KELLER REALTY</span>
+        <p class="footer-brand-text">Serving Tampa Bay since 2010. Licensed in the State of Florida. MLS #KR42891.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Browse</h4>
+        <a href="#">Homes for Sale</a>
+        <a href="#">Rentals</a>
+        <a href="#">New Construction</a>
+        <a href="#">Neighborhoods</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Sarah</a>
+        <a href="#">Testimonials</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Keller Realty · sarahkeller.realty · (813) 555-0241</div>
+  </footer>
+
+  <div class="credit">
+    Design mockup by <a href="https://trackt.tech" target="_blank">trackt.tech</a> — Custom real estate websites starting at $350
+  </div>
+
+</body>
+</html>

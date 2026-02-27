@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Rialto — Authentic Italian Cuisine</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, 'Times New Roman', serif; background: #1a0f00; color: #e8d5b0; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    nav { position: sticky; top: 0; z-index: 50; background: rgba(26,15,0,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #3d2000; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { font-size: 22px; font-weight: 700; letter-spacing: 3px; color: #e8a04a; }
+    .nav-links { display: flex; gap: 32px; font-size: 14px; color: #c8934a; letter-spacing: 1px; }
+    .nav-links a:hover { color: #e8a04a; }
+    .nav-cta { background: #e8a04a; color: #1a0f00; font-size: 13px; font-weight: 700; padding: 10px 22px; border-radius: 4px; letter-spacing: 1px; }
+    .nav-cta:hover { background: #f0b860; }
+
+    /* Hero */
+    .hero { min-height: 85vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 40px; background: radial-gradient(ellipse at center, #3d1f00 0%, #1a0f00 70%); }
+    .hero-badge { font-size: 12px; letter-spacing: 3px; color: #c8934a; text-transform: uppercase; margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(42px, 7vw, 80px); font-weight: 700; color: #f5d08a; line-height: 1.1; margin-bottom: 20px; }
+    .hero p { font-size: 18px; color: #c8934a; margin-bottom: 12px; }
+    .hero-hours { font-size: 14px; color: #9a7040; margin-bottom: 40px; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary { background: #e8a04a; color: #1a0f00; font-size: 15px; font-weight: 700; padding: 14px 32px; border-radius: 4px; letter-spacing: 1px; }
+    .btn-primary:hover { background: #f0b860; }
+    .btn-secondary { border: 1px solid #c8934a; color: #c8934a; font-size: 15px; padding: 14px 32px; border-radius: 4px; letter-spacing: 1px; }
+    .btn-secondary:hover { background: rgba(200,147,74,0.1); }
+
+    /* Menu section */
+    .section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #9a7040; margin-bottom: 12px; }
+    .section h2 { font-size: clamp(28px, 4vw, 42px); color: #f5d08a; margin-bottom: 48px; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .menu-card { background: #2a1500; border: 1px solid #3d2000; border-radius: 8px; padding: 28px; }
+    .menu-card h3 { font-size: 16px; color: #e8a04a; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; border-bottom: 1px solid #3d2000; padding-bottom: 12px; }
+    .menu-item { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px dotted #3d2000; }
+    .menu-item:last-child { border-bottom: none; }
+    .item-name { font-size: 15px; color: #e8d5b0; }
+    .item-desc { font-size: 12px; color: #9a7040; margin-top: 2px; }
+    .item-price { font-size: 15px; color: #c8934a; white-space: nowrap; margin-left: 16px; }
+
+    /* About section */
+    .about { padding: 80px 40px; background: #150b00; }
+    .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .about-img { background: linear-gradient(135deg, #3d1f00, #5c3010); border-radius: 8px; height: 360px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+    .about-text .section-label { margin-bottom: 12px; }
+    .about-text h2 { font-size: clamp(26px, 3.5vw, 38px); color: #f5d08a; margin-bottom: 20px; }
+    .about-text p { font-size: 16px; color: #9a7040; line-height: 1.8; margin-bottom: 16px; }
+    .stats { display: flex; gap: 32px; margin-top: 32px; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 32px; font-weight: 700; color: #e8a04a; }
+    .stat-label { font-size: 12px; color: #9a7040; letter-spacing: 1px; }
+
+    /* Reserve section */
+    .reserve { padding: 80px 40px; text-align: center; background: radial-gradient(ellipse at center, #3d1f00 0%, #1a0f00 100%); }
+    .reserve h2 { font-size: clamp(28px, 4vw, 42px); color: #f5d08a; margin-bottom: 12px; }
+    .reserve p { font-size: 16px; color: #c8934a; margin-bottom: 40px; }
+    .reserve-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .reserve-form input, .reserve-form select { flex: 1; min-width: 140px; background: #2a1500; border: 1px solid #3d2000; color: #e8d5b0; padding: 12px 16px; border-radius: 4px; font-size: 14px; font-family: Georgia, serif; }
+    .reserve-form button { background: #e8a04a; color: #1a0f00; font-weight: 700; padding: 12px 28px; border-radius: 4px; border: none; font-size: 14px; cursor: pointer; letter-spacing: 1px; }
+
+    /* Footer */
+    footer { background: #0d0700; border-top: 1px solid #3d2000; padding: 40px; text-align: center; }
+    footer .logo { font-size: 18px; margin-bottom: 12px; display: block; }
+    footer p { font-size: 13px; color: #9a7040; margin-bottom: 8px; }
+
+    /* Credit */
+    .credit { background: #0d0700; border-top: 1px solid #3d2000; padding: 12px 40px; text-align: center; font-family: sans-serif; font-size: 12px; color: #5a4020; }
+    .credit a { color: #9a7040; }
+    .credit a:hover { color: #c8934a; }
+
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 60px 20px; }
+      .section { padding: 60px 20px; }
+      .about { padding: 60px 20px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-img { height: 200px; }
+      .reserve { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="logo">RIALTO</span>
+    <div class="nav-links">
+      <a href="#">Menu</a>
+      <a href="#">Wine List</a>
+      <a href="#">Events</a>
+      <a href="#">About</a>
+    </div>
+    <a href="#reserve" class="nav-cta">Reserve a Table</a>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-badge">Est. 1994 · Tampa, Florida</p>
+    <h1>Authentic Italian<br/>Cuisine</h1>
+    <p>Handmade pasta · Wood-fired dishes · Old World wines</p>
+    <p class="hero-hours">Open Tuesday – Sunday · 5pm to 10pm</p>
+    <div class="hero-btns">
+      <a href="#reserve" class="btn-primary">Reserve a Table</a>
+      <a href="#menu" class="btn-secondary">View Menu</a>
+    </div>
+  </section>
+
+  <section class="section" id="menu">
+    <p class="section-label">Our Menu</p>
+    <h2>Fresh. Simple. Italian.</h2>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <h3>Pasta</h3>
+        <div class="menu-item">
+          <div><div class="item-name">Cacio e Pepe</div><div class="item-desc">Tonnarelli, pecorino, black pepper</div></div>
+          <div class="item-price">$22</div>
+        </div>
+        <div class="menu-item">
+          <div><div class="item-name">Tagliatelle al Ragù</div><div class="item-desc">Slow-braised beef, san marzano, parmigiano</div></div>
+          <div class="item-price">$28</div>
+        </div>
+        <div class="menu-item">
+          <div><div class="item-name">Pappardelle ai Funghi</div><div class="item-desc">Wild mushroom, truffle oil, thyme</div></div>
+          <div class="item-price">$26</div>
+        </div>
+        <div class="menu-item">
+          <div><div class="item-name">Spaghetti alle Vongole</div><div class="item-desc">Manila clams, white wine, garlic, parsley</div></div>
+          <div class="item-price">$30</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <h3>Seafood</h3>
+        <div class="menu-item">
+          <div><div class="item-name">Branzino al Forno</div><div class="item-desc">Whole roasted sea bass, lemon, capers</div></div>
+          <div class="item-price">$42</div>
+        </div>
+        <div class="menu-item">
+          <div><div class="item-name">Gamberi alla Griglia</div><div class="item-desc">Grilled prawns, garlic butter, herbs</div></div>
+          <div class="item-price">$36</div>
+        </div>
+        <div class="menu-item">
+          <div><div class="item-name">Polpo e Patate</div><div class="item-desc">Charred octopus, fingerling potato, salsa verde</div></div>
+          <div class="item-price">$34</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <h3>Antipasti</h3>
+        <div class="menu-item">
+          <div><div class="item-name">Burrata con Prosciutto</div><div class="item-desc">Fresh burrata, San Daniele prosciutto, fig</div></div>
+          <div class="item-price">$18</div>
+        </div>
+        <div class="menu-item">
+          <div><div class="item-name">Carpaccio di Manzo</div><div class="item-desc">Thinly sliced beef, arugula, parmigiano, lemon</div></div>
+          <div class="item-price">$16</div>
+        </div>
+        <div class="menu-item">
+          <div><div class="item-name">Fritto Misto</div><div class="item-desc">Lightly fried calamari and shrimp, aioli</div></div>
+          <div class="item-price">$17</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="about">
+    <div class="about-inner">
+      <div class="about-img">🍷</div>
+      <div class="about-text">
+        <p class="section-label">Our Story</p>
+        <h2>Three decades of Italian tradition</h2>
+        <p>Rialto was founded in 1994 by Chef Marco Rossi, who trained in Bologna before bringing his family recipes to Tampa. Every dish is made from scratch using imported Italian ingredients and local Gulf seafood.</p>
+        <p>We believe in the Italian philosophy of dining — unhurried, convivial, and built around the table. Whether you're celebrating a milestone or simply enjoying Tuesday, you're always welcome here.</p>
+        <div class="stats">
+          <div class="stat"><div class="stat-num">30</div><div class="stat-label">Years Open</div></div>
+          <div class="stat"><div class="stat-num">12</div><div class="stat-label">Local Awards</div></div>
+          <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Google Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="reserve" id="reserve">
+    <h2>Reserve Your Table</h2>
+    <p>Reservations available Tuesday through Sunday · Large parties please call ahead</p>
+    <div class="reserve-form">
+      <input type="text" placeholder="Your name" />
+      <input type="text" placeholder="Party size" />
+      <input type="text" placeholder="Date" />
+      <select><option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option><option>8:30 PM</option></select>
+      <button>Reserve Now</button>
+    </div>
+  </section>
+
+  <footer>
+    <span class="logo">RIALTO</span>
+    <p>1242 Hyde Park Ave, Tampa, FL 33606</p>
+    <p>(813) 555-0194 · rialtorestaurant.com</p>
+    <p style="margin-top:16px;">Tue–Sun · 5pm–10pm · Reservations recommended</p>
+  </footer>
+
+  <div class="credit">
+    Design mockup by <a href="https://trackt.tech" target="_blank">trackt.tech</a> — Custom websites for small businesses starting at $350
+  </div>
+
+</body>
+</html>

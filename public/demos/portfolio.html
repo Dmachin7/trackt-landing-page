@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Alex Moss — Creative Director</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e0e0e0; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 14px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #fff; }
+    .nav-links { display: flex; gap: 32px; font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: #666; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 8px 18px; border-radius: 2px; }
+    .nav-cta:hover { background: rgba(255,255,255,0.05); }
+
+    /* Hero */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 80px 48px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #111 0%, #0a0a0a 100%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px); background-size: 60px 60px; }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-tag { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #555; margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(52px, 8vw, 100px); font-weight: 300; line-height: 1.0; letter-spacing: -2px; color: #fff; margin-bottom: 32px; }
+    .hero h1 em { font-style: italic; color: #888; }
+    .hero-sub { display: flex; align-items: center; gap: 48px; }
+    .hero-sub p { font-size: 15px; color: #666; max-width: 360px; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 16px; }
+    .btn-white { background: #fff; color: #0a0a0a; font-size: 13px; font-weight: 600; padding: 12px 28px; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; }
+    .btn-white:hover { background: #e0e0e0; }
+    .btn-outline-w { border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 13px; padding: 12px 28px; border-radius: 2px; letter-spacing: 1px; text-transform: uppercase; }
+    .btn-outline-w:hover { background: rgba(255,255,255,0.05); }
+    .scroll-hint { position: absolute; bottom: 32px; right: 48px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #333; writing-mode: vertical-rl; }
+
+    /* Work */
+    .work { padding: 120px 48px; }
+    .work-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 64px; }
+    .work-header h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 300; letter-spacing: -1px; }
+    .work-header a { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #555; }
+    .work-header a:hover { color: #fff; }
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .work-item { position: relative; overflow: hidden; cursor: pointer; }
+    .work-item-large { grid-column: span 2; }
+    .work-img { background: #1a1a1a; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 80px; transition: transform 0.4s ease; }
+    .work-item-large .work-img { aspect-ratio: 21/9; font-size: 120px; }
+    .work-item:hover .work-img { transform: scale(1.02); }
+    .work-info { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+    .work-title { font-size: 16px; font-weight: 400; }
+    .work-type { font-size: 12px; color: #555; letter-spacing: 2px; text-transform: uppercase; }
+
+    /* About */
+    .about { padding: 120px 48px; background: #0f0f0f; }
+    .about-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center; }
+    .about-portrait { background: #1a1a1a; border-radius: 4px; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+    .about-text .tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #555; margin-bottom: 16px; }
+    .about-text h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 300; letter-spacing: -1px; line-height: 1.3; margin-bottom: 24px; }
+    .about-text p { font-size: 15px; color: #777; line-height: 1.8; margin-bottom: 16px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .skill { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #555; border: 1px solid #222; padding: 6px 12px; }
+
+    /* Contact */
+    .contact { padding: 120px 48px; text-align: center; }
+    .contact .tag { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #555; margin-bottom: 16px; }
+    .contact h2 { font-size: clamp(36px, 6vw, 72px); font-weight: 300; letter-spacing: -2px; color: #fff; margin-bottom: 32px; }
+    .contact-email { font-size: 22px; color: #555; margin-bottom: 40px; }
+    .contact-email a { color: #fff; }
+    .contact-email a:hover { color: #888; }
+
+    /* Footer */
+    footer { border-top: 1px solid #1a1a1a; padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #333; letter-spacing: 1px; }
+
+    /* Credit */
+    .credit { background: #050505; border-top: 1px solid #111; padding: 12px 48px; text-align: center; font-size: 12px; color: #333; }
+    .credit a { color: #555; }
+
+    @media (max-width: 768px) {
+      nav { padding: 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 80px 20px 40px; }
+      .hero h1 { font-size: 48px; }
+      .hero-sub { flex-direction: column; }
+      .work { padding: 60px 20px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .work-item-large { grid-column: span 1; }
+      .about { padding: 60px 20px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .contact { padding: 60px 20px; }
+      footer { padding: 24px 20px; flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="logo">Alex Moss</span>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Hire Me</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Creative Director · Visual Designer · Brand Strategist</p>
+      <h1>Making brands<br/><em>people remember.</em></h1>
+      <div class="hero-sub">
+        <p>10 years of crafting visual identities, digital experiences, and campaigns for brands that want to stand out.</p>
+        <div class="hero-btns">
+          <a href="#work" class="btn-white">View Work</a>
+          <a href="#contact" class="btn-outline-w">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="work-header">
+      <h2>Selected Work</h2>
+      <a href="#">All Projects →</a>
+    </div>
+    <div class="work-grid">
+      <div class="work-item work-item-large">
+        <div class="work-img">🎨</div>
+        <div class="work-info">
+          <div><div class="work-title">Meridian Bank — Brand Refresh</div><div class="work-type">Brand Identity · 2024</div></div>
+          <span>→</span>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-img">📱</div>
+        <div class="work-info">
+          <div><div class="work-title">Bloom App — UI/UX Design</div><div class="work-type">Product Design · 2024</div></div>
+          <span>→</span>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-img">🖼️</div>
+        <div class="work-info">
+          <div><div class="work-title">FORMA Studio — Identity</div><div class="work-type">Brand Identity · 2023</div></div>
+          <span>→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-portrait">🧑‍💻</div>
+      <div class="about-text">
+        <p class="tag">About</p>
+        <h2>Design is how something works, not just how it looks.</h2>
+        <p>I'm a creative director based in New York with 10 years of experience building brands across fintech, wellness, consumer tech, and hospitality.</p>
+        <p>I believe great design earns trust before a single word is read. My work focuses on visual systems that scale — from a logo mark to a full campaign.</p>
+        <div class="skills">
+          <span class="skill">Brand Identity</span>
+          <span class="skill">Art Direction</span>
+          <span class="skill">UI/UX</span>
+          <span class="skill">Typography</span>
+          <span class="skill">Motion</span>
+          <span class="skill">Print</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <p class="tag">Get In Touch</p>
+    <h2>Let's make<br/>something great.</h2>
+    <div class="contact-email">New projects: <a href="#">hello@alexmoss.design</a></div>
+    <a href="#" class="btn-white">Send a Message</a>
+  </section>
+
+  <footer>
+    <span>© 2025 Alex Moss</span>
+    <span>New York · Available for freelance</span>
+    <span>alexmoss.design</span>
+  </footer>
+
+  <div class="credit">
+    Design mockup by <a href="https://trackt.tech" target="_blank">trackt.tech</a> — Custom portfolio sites starting at $350
+  </div>
+
+</body>
+</html>
