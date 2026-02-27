@@ -32,8 +32,20 @@
   will-change: transform;
 }
 
-.marquee-track:hover {
-  animation-play-state: paused;
+@media (hover: hover) {
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 180, 210, 0); }
+  50%       { box-shadow: 0 0 28px 8px rgba(22, 180, 210, 0.15); }
+}
+
+.marquee-glow {
+  animation: marquee-glow-pulse 2.8s ease-in-out infinite;
+  border-radius: 16px;
 }
 
 #nav-menu {

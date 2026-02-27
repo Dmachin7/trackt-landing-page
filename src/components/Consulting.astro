@@ -33,96 +33,114 @@
 
       <!-- Card 1: Tech Consulting & Systems -->
       <div class="group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm transition-all hover:border-brand-primary/30 hover:shadow-[0_0_30px_var(--color-brand-glow)] md:p-8">
-        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+        <button class="service-card-toggle flex w-full items-center gap-4 text-left md:flex-col md:items-start md:gap-0 md:cursor-default md:pointer-events-none">
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary md:mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+          </div>
+          <h3 class="flex-1 text-lg font-semibold text-text-primary md:mb-3 md:flex-none md:text-xl">Tech Consulting & Systems</h3>
+          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/50 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="accordion-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out md:max-h-none">
+          <ul class="mt-4 flex-1 space-y-2 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Audit your current tools and workflows
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Build or improve Google Sheets / Airtable / Notion systems
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Set up inventory tracking, sales tracking, or reporting dashboards
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Automate repetitive processes so your team saves hours each week
+            </li>
+          </ul>
+          <p class="mt-5 text-sm font-medium text-brand-primary">Starting at $75/hr or flat-rate project pricing</p>
         </div>
-        <h3 class="mb-3 text-lg font-semibold text-text-primary md:text-xl">Tech Consulting & Systems</h3>
-        <ul class="flex-1 space-y-2 text-sm leading-relaxed text-text-secondary md:text-base">
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Audit your current tools and workflows
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Build or improve Google Sheets / Airtable / Notion systems
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Set up inventory tracking, sales tracking, or reporting dashboards
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Automate repetitive processes so your team saves hours each week
-          </li>
-        </ul>
-        <p class="mt-5 text-sm font-medium text-brand-primary">Starting at $75/hr or flat-rate project pricing</p>
       </div>
 
       <!-- Card 2: Website Design & Development -->
       <div class="group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm transition-all hover:border-brand-primary/30 hover:shadow-[0_0_30px_var(--color-brand-glow)] md:p-8">
-        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3 class="mb-3 text-lg font-semibold text-text-primary md:text-xl">Website Design & Development</h3>
-        <ul class="flex-1 space-y-2 text-sm leading-relaxed text-text-secondary md:text-base">
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Custom websites built to convert — not just look good
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Landing pages, business sites, portfolio sites, and eCommerce stores
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Shopify store setup and optimization
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Ongoing monthly maintenance plans available — no technical headaches for you
-          </li>
-        </ul>
-        <div class="mt-5 flex flex-wrap items-center justify-between gap-3">
-          <p class="text-sm font-medium text-brand-primary">Starting at $350 · Flat-rate packages, no surprises</p>
-          <button
-            id="open-pricing-modal"
-            class="text-sm text-brand-primary underline-offset-2 hover:underline cursor-pointer transition-colors"
-          >View Full Pricing →</button>
+        <button class="service-card-toggle flex w-full items-center gap-4 text-left md:flex-col md:items-start md:gap-0 md:cursor-default md:pointer-events-none">
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary md:mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="flex-1 text-lg font-semibold text-text-primary md:mb-3 md:flex-none md:text-xl">Website Design & Development</h3>
+          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/50 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="accordion-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out md:max-h-none">
+          <ul class="mt-4 flex-1 space-y-2 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Custom websites built to convert — not just look good
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Landing pages, business sites, portfolio sites, and eCommerce stores
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Shopify store setup and optimization
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Ongoing monthly maintenance plans available — no technical headaches for you
+            </li>
+          </ul>
+          <div class="mt-5 flex flex-wrap items-center justify-between gap-3">
+            <p class="text-sm font-medium text-brand-primary">Starting at $350 · Flat-rate packages, no surprises</p>
+            <button
+              id="open-pricing-modal"
+              class="text-sm text-brand-primary underline-offset-2 hover:underline cursor-pointer transition-colors"
+            >View Full Pricing →</button>
+          </div>
         </div>
       </div>
 
       <!-- Card 3: Custom Software & Integrations -->
       <div class="group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm transition-all hover:border-brand-primary/30 hover:shadow-[0_0_30px_var(--color-brand-glow)] md:p-8">
-        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <button class="service-card-toggle flex w-full items-center gap-4 text-left md:flex-col md:items-start md:gap-0 md:cursor-default md:pointer-events-none">
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary md:mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3 class="flex-1 text-lg font-semibold text-text-primary md:mb-3 md:flex-none md:text-xl">Custom Software & Integrations</h3>
+          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/50 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="accordion-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out md:max-h-none">
+          <ul class="mt-4 flex-1 space-y-2 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Web apps and tools built for your specific workflow
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              API integrations between your existing platforms
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Internal tools your team will actually use
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              Ongoing development retainers available
+            </li>
+          </ul>
+          <p class="mt-5 text-sm font-medium text-brand-primary">Starting at $500 · Scoped per project</p>
         </div>
-        <h3 class="mb-3 text-lg font-semibold text-text-primary md:text-xl">Custom Software & Integrations</h3>
-        <ul class="flex-1 space-y-2 text-sm leading-relaxed text-text-secondary md:text-base">
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Web apps and tools built for your specific workflow
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            API integrations between your existing platforms
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Internal tools your team will actually use
-          </li>
-          <li class="flex items-start gap-2">
-            <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            Ongoing development retainers available
-          </li>
-        </ul>
-        <p class="mt-5 text-sm font-medium text-brand-primary">Starting at $500 · Scoped per project</p>
       </div>
     </div>
 
     <!-- ─── Website Showcase Marquee ─── -->
     <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out mt-16">
-      <p class="mb-6 text-center text-sm font-medium uppercase tracking-widest text-text-secondary/60">Sites I Can Build</p>
-      <div class="relative overflow-hidden py-2">
+      <div class="mb-6 flex items-center justify-center gap-3">
+        <p class="text-sm font-medium uppercase tracking-widest text-text-secondary/60">Sites I Can Build</p>
+        <span class="animate-pulse rounded-full border border-brand-primary/40 bg-brand-primary/5 px-2.5 py-0.5 text-[10px] font-semibold text-brand-primary">click to preview</span>
+      </div>
+      <div class="marquee-glow relative overflow-hidden py-2">
         <!-- Fade edges -->
         <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-linear-to-r from-bg-dark to-transparent"></div>
         <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-linear-to-l from-bg-dark to-transparent"></div>
@@ -982,6 +1000,26 @@
         errorEl.classList.remove("hidden");
       }
       if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Send Message"; }
+    }
+  });
+
+  // ── Mobile service card accordion ──
+  const isMobile = () => window.innerWidth < 768;
+  document.querySelectorAll('.service-card-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (!isMobile()) return;
+      const body = btn.nextElementSibling as HTMLElement;
+      const chevron = btn.querySelector('.chevron') as HTMLElement | null;
+      const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+      body.style.maxHeight = isOpen ? '0px' : body.scrollHeight + 'px';
+      chevron?.classList.toggle('rotate-180', !isOpen);
+    });
+  });
+  window.addEventListener('resize', () => {
+    if (!isMobile()) {
+      document.querySelectorAll<HTMLElement>('.service-card-toggle + .accordion-body').forEach(el => {
+        el.style.maxHeight = '';
+      });
     }
   });
 </script>

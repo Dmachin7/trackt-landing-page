@@ -53,3 +53,24 @@ const features = [
     </div>
   </div>
 </section>
+
+<script>
+  const isMobile = () => window.innerWidth < 768;
+  document.querySelectorAll('.feature-card-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (!isMobile()) return;
+      const body = btn.nextElementSibling as HTMLElement;
+      const chevron = btn.querySelector('.chevron') as HTMLElement | null;
+      const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+      body.style.maxHeight = isOpen ? '0px' : body.scrollHeight + 'px';
+      chevron?.classList.toggle('rotate-180', !isOpen);
+    });
+  });
+  window.addEventListener('resize', () => {
+    if (!isMobile()) {
+      document.querySelectorAll<HTMLElement>('.feature-card-toggle + .accordion-body').forEach(el => {
+        el.style.maxHeight = '';
+      });
+    }
+  });
+</script>
