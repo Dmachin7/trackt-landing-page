@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.trackt.tech" }],
+      "destination": "https://trackt.tech/:path*",
+      "permanent": true
+    }
+  ]
+}

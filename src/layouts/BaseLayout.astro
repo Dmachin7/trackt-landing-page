@@ -3,12 +3,14 @@ interface Props {
   title?: string;
   description?: string;
   jsonLd?: string; // JSON-LD structured data as a serialized string
+  noIndex?: boolean;
 }
 
 const {
   title = "Web Design & Tech Consulting in Tampa, FL | Trackt",
   description = "Tampa web designer and tech consultant for small businesses. Custom websites from $300, Google Sheets systems, inventory tracking, and custom software. Also building Trackt — inventory & sales analytics for small businesses.",
   jsonLd,
+  noIndex = false,
 } = Astro.props;
 
 const siteUrl = "https://trackt.tech";
@@ -26,7 +28,7 @@ import "@fontsource/inter/700.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noIndex ? "noindex, follow" : "index, follow"} />
     <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
@@ -43,7 +45,10 @@ import "@fontsource/inter/700.css";
     <meta name="twitter:description" content={description} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#0a0a0f" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#16b4d2" />
 
     <!-- JSON-LD Structured Data (injected per-page) -->
     {jsonLd && <script is:inline type="application/ld+json" set:html={jsonLd} />}

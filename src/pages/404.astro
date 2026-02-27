@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page Not Found | Trackt"
+  description="Sorry, this page doesn't exist."
+  noIndex={true}
+>
+  <main class="flex min-h-screen flex-col items-center justify-center px-5 text-center">
+    <h1 class="text-5xl font-bold mb-4">404</h1>
+    <p class="text-xl mb-8 text-gray-400">That page doesn't exist.</p>
+    <a href="/" class="text-[#16b4d2] underline hover:no-underline">
+      Back to home
+    </a>
+  </main>
+</BaseLayout>
