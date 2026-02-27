@@ -42,7 +42,7 @@
     .listings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
     .listing-card { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #dde8f0; transition: box-shadow 0.2s; cursor: pointer; }
     .listing-card:hover { box-shadow: 0 8px 32px rgba(30,58,95,0.12); }
-    .listing-img { background: linear-gradient(135deg, #c5d8eb, #a8c4e0); height: 200px; display: flex; align-items: center; justify-content: center; font-size: 64px; position: relative; }
+    .listing-img { background: linear-gradient(135deg, #c5d8eb, #a8c4e0); height: 200px; position: relative; overflow: hidden; }
     .listing-badge { position: absolute; top: 12px; left: 12px; background: #fff; color: #1e3a5f; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 4px; }
     .listing-badge.new { background: #1e3a5f; color: #fff; }
     .listing-info { padding: 20px; }
@@ -54,7 +54,7 @@
     /* Agent */
     .agent { padding: 72px 40px; background: #fff; }
     .agent-inner { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 60px; align-items: center; }
-    .agent-photo { background: linear-gradient(135deg, #dde8f0, #c5d8eb); border-radius: 12px; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+    .agent-photo { background: linear-gradient(135deg, #dde8f0, #c5d8eb); border-radius: 12px; aspect-ratio: 3/4; overflow: hidden; position: relative; }
     .agent-info .tag { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #7a9ab8; margin-bottom: 12px; }
     .agent-info h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; color: #1e3a5f; margin-bottom: 6px; }
     .agent-info .title { font-size: 15px; color: #7a9ab8; margin-bottom: 20px; }
@@ -138,7 +138,7 @@
     </div>
     <div class="listings-grid">
       <div class="listing-card">
-        <div class="listing-img">🏡<span class="listing-badge new">New</span></div>
+        <div class="listing-img"><img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&h=200&fit=crop&auto=format&q=80" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" /><span class="listing-badge new">New</span></div>
         <div class="listing-info">
           <div class="listing-price">$425,000</div>
           <div class="listing-address">1842 Bayshore Blvd, Tampa, FL 33606</div>
@@ -150,7 +150,7 @@
         </div>
       </div>
       <div class="listing-card">
-        <div class="listing-img">🏠</div>
+        <div class="listing-img"><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400&h=200&fit=crop&auto=format&q=80" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
         <div class="listing-info">
           <div class="listing-price">$310,000</div>
           <div class="listing-address">703 Garden St, St. Pete, FL 33701</div>
@@ -162,7 +162,7 @@
         </div>
       </div>
       <div class="listing-card">
-        <div class="listing-img">🏘️<span class="listing-badge">Price Drop</span></div>
+        <div class="listing-img"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=200&fit=crop&auto=format&q=80" alt="" style="width:100%;height:100%;object-fit:cover;display:block;" /><span class="listing-badge">Price Drop</span></div>
         <div class="listing-info">
           <div class="listing-price">$580,000</div>
           <div class="listing-address">29 Harbor View Dr, Clearwater, FL 33755</div>
@@ -178,7 +178,7 @@
 
   <div class="agent" id="agent">
     <div class="agent-inner">
-      <div class="agent-photo">👩‍💼</div>
+      <div class="agent-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=533&fit=crop&auto=format&q=80" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" /></div>
       <div class="agent-info">
         <p class="tag">Your Agent</p>
         <h2>Sarah Keller</h2>
