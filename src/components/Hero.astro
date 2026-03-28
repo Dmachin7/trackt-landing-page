@@ -83,11 +83,11 @@
       }, 55);
     }
 
-    window.addEventListener('boot-complete', startTyping, { once: true });
-
-    // Fallback: if boot screen was already removed (e.g., cached page), start after 200ms
-    setTimeout(function () {
-      if (i === 0) startTyping();
-    }, 200);
+    // Start immediately if there's no boot screen (e.g. navigated page, cached load)
+    if (!document.getElementById('boot-screen')) {
+      startTyping();
+    } else {
+      window.addEventListener('boot-complete', startTyping, { once: true });
+    }
   })();
 </script>
