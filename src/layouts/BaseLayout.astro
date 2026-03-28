@@ -58,6 +58,58 @@ import "@fontsource/inter/700.css";
     </style>
   </head>
   <body class="min-h-screen overflow-x-hidden">
+
+    <!-- ── Boot Screen ── -->
+    <div id="boot-screen" aria-hidden="true" style="position:fixed;inset:0;z-index:9999;background:#0a0a0f;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;pointer-events:none;">
+      <div style="text-align:center;padding:0 24px;">
+        <p style="font-family:'Inter',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#16b4d2;margin:0 0 18px;opacity:0.6;">TRACKT SYSTEMS</p>
+        <div style="font-family:'Inter',system-ui,sans-serif;font-size:clamp(28px,5vw,50px);font-weight:800;color:#f0f0f5;margin:0 0 8px;line-height:1.15;">
+          Welcome to Your<br>
+          <span style="background:linear-gradient(90deg,#16b4d2,#5681d0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">New Digital HQ</span>
+        </div>
+        <p id="boot-sub" style="font-family:'Inter',system-ui,sans-serif;font-size:13px;color:#4b5563;margin:0 0 36px;min-height:20px;">initializing...</p>
+        <div style="width:260px;height:2px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden;margin:0 auto;">
+          <div id="boot-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#16b4d2,#5681d0);border-radius:2px;will-change:width;"></div>
+        </div>
+        <p id="boot-pct" style="font-family:'Courier New',monospace;font-size:11px;color:#16b4d2;margin:10px 0 0;opacity:0.7;">0%</p>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function () {
+        var screen = document.getElementById('boot-screen');
+        var bar    = document.getElementById('boot-bar');
+        var pct    = document.getElementById('boot-pct');
+        var sub    = document.getElementById('boot-sub');
+        var msgs   = ['initializing...', 'loading assets...', 'almost ready...'];
+        var p = 0, msgIdx = 0, last = 0;
+        sub.textContent = msgs[0];
+
+        function frame(ts) {
+          if (!last) last = ts;
+          var d = ts - last; last = ts;
+          var speed = p < 65 ? 0.09 : p < 88 ? 0.032 : 0.014;
+          p = Math.min(100, p + speed * d);
+          bar.style.width = p.toFixed(1) + '%';
+          pct.textContent = Math.floor(p) + '%';
+          if (p > 33 && msgIdx === 0) { sub.textContent = msgs[1]; msgIdx = 1; }
+          if (p > 68 && msgIdx === 1) { sub.textContent = msgs[2]; msgIdx = 2; }
+          if (p < 100) {
+            requestAnimationFrame(frame);
+          } else {
+            pct.textContent = '100%';
+            setTimeout(function () {
+              window.dispatchEvent(new Event('boot-complete'));
+              screen.style.transition = 'opacity 0.65s ease';
+              screen.style.opacity = '0';
+              setTimeout(function () { screen.remove(); }, 680);
+            }, 380);
+          }
+        }
+        requestAnimationFrame(frame);
+      })();
+    </script>
+
     <slot />
   </body>
 </html>

@@ -17,8 +17,8 @@
     </div>
 
     <h1 class="text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
-      We Build Technology<br />
-      <span class="bg-gradient-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent">
+      <span id="hero-typed" aria-label="We Build Technology"></span><span id="hero-cursor" style="display:inline-block;width:2.5px;height:0.9em;background:#f0f0f5;vertical-align:middle;margin-left:3px;border-radius:1px;opacity:0;animation:hero-blink 0.7s step-end infinite;"></span><br />
+      <span id="hero-sub-line" class="bg-linear-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent" style="opacity:0;transition:opacity 1s ease 0.2s;">
         for Small Businesses.
       </span>
     </h1>
@@ -50,3 +50,44 @@
     </div>
   </div>
 </section>
+
+<style>
+  @keyframes hero-blink {
+    0%, 100% { opacity: 0.8; }
+    50%       { opacity: 0; }
+  }
+</style>
+
+<script>
+  (function () {
+    var typed   = document.getElementById('hero-typed') as HTMLElement | null;
+    var cursor  = document.getElementById('hero-cursor') as HTMLElement | null;
+    var subLine = document.getElementById('hero-sub-line') as HTMLElement | null;
+    if (!typed || !cursor || !subLine) return;
+
+    var text = 'We Build Technology';
+    var i = 0;
+
+    function startTyping() {
+      cursor!.style.opacity = '1';
+      var timer = setInterval(function () {
+        if (i < text.length) {
+          typed!.textContent += text[i++];
+        } else {
+          clearInterval(timer);
+          setTimeout(function () {
+            cursor!.style.display = 'none';
+            subLine!.style.opacity = '1';
+          }, 180);
+        }
+      }, 55);
+    }
+
+    window.addEventListener('boot-complete', startTyping, { once: true });
+
+    // Fallback: if boot screen was already removed (e.g., cached page), start after 200ms
+    setTimeout(function () {
+      if (i === 0) startTyping();
+    }, 200);
+  })();
+</script>
