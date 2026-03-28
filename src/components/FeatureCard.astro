@@ -8,10 +8,10 @@ interface Props {
 const { title, description, icon } = Astro.props;
 ---
 
-<div class="group rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm transition-all hover:border-brand-primary/30 hover:shadow-[0_0_30px_var(--color-brand-glow)] md:p-8">
+<div class="group rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm transition-all duration-300 hover:border-brand-primary/40 hover:shadow-[0_0_40px_var(--color-brand-glow)] hover:-translate-y-0.5 md:p-8">
   <button class="feature-card-toggle w-full text-left md:pointer-events-none md:cursor-default">
     <div class="flex items-center justify-between gap-3 md:block">
-      <div class="mb-0 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-accent md:mb-4">
+      <div class="mb-0 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-accent transition-all duration-300 group-hover:bg-brand-primary/20 group-hover:shadow-[0_0_16px_rgba(22,180,210,0.3)] md:mb-4">
         <Fragment set:html={icon} />
       </div>
       <h3 class="flex-1 text-lg font-semibold text-text-primary md:mb-2 md:flex-none md:text-xl">{title}</h3>
