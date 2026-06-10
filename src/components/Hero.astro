@@ -16,6 +16,11 @@
   <div class="pointer-events-none absolute" style="right:9%;top:35%;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(86,129,208,0.16),transparent 70%);filter:blur(55px);animation:float-orb 14s ease-in-out infinite 3.5s;will-change:transform;"></div>
   <div class="pointer-events-none absolute hidden md:block" style="left:42%;bottom:16%;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(22,180,210,0.09),transparent 70%);filter:blur(45px);animation:float-orb 9s ease-in-out infinite 1.8s;will-change:transform;"></div>
 
+  <!-- Spotlight pulse — centered atmospheric glow behind headline -->
+  <div class="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
+    <div class="hero-spotlight" style="width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(22,180,210,0.13) 0%,rgba(86,129,208,0.08) 38%,transparent 70%);filter:blur(32px);will-change:transform,opacity;"></div>
+  </div>
+
   <div id="hero-content" class="relative z-10 mx-auto max-w-3xl text-center">
 
     <!-- Badge -->
@@ -33,7 +38,7 @@
 
     <!-- Body -->
     <p class="hero-el mx-auto mt-6 max-w-xl text-lg leading-relaxed text-text-secondary md:text-xl" style="--i:2">
-      Available now for tech consulting, web design, and custom software —
+      Available now for web development, custom software, workflow automation, and tech audits —
       serving small businesses in Tampa, FL and remotely.
       Also building <strong class="font-semibold text-text-primary">Trackt</strong> — real-time inventory
       tracking and sales analytics for small business owners, launching soon.
@@ -74,16 +79,21 @@
       fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i, 0) * 0.18s) both,
       glow-settle 2.2s ease-out calc(var(--i, 0) * 0.18s) both;
   }
+
+  .hero-spotlight {
+    animation: hero-spotlight 6s ease-in-out infinite;
+  }
+  @keyframes hero-spotlight {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50%       { opacity: 1;   transform: scale(1.13); }
+  }
 </style>
 
 <script>
   const content = document.getElementById('hero-content');
   if (content) {
     const show = () => content.classList.add('is-visible');
-    if (!document.getElementById('boot-screen')) {
-      show();
-    } else {
-      window.addEventListener('boot-complete', show, { once: true });
-    }
+    if (document.readyState !== 'loading') { show(); }
+    else { document.addEventListener('DOMContentLoaded', show, { once: true }); }
   }
 </script>

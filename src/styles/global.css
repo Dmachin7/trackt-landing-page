@@ -38,6 +38,10 @@
   }
 }
 
+@media (max-width: 767px) {
+  .marquee-track { animation-duration: 20s; }
+}
+
 @keyframes marquee-glow-pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(22, 180, 210, 0); }
   50%       { box-shadow: 0 0 28px 8px rgba(22, 180, 210, 0.15); }

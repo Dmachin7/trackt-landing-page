@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Bloom Studio — Bookings Demo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0c0a14; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; min-height: 100vh; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Nav */
+    nav { position: sticky; top: 0; z-index: 50; background: rgba(12,10,20,0.92); border-bottom: 1px solid rgba(167,139,250,0.15); backdrop-filter: blur(12px); padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-size: 15px; font-weight: 800; color: #a78bfa; letter-spacing: 1px; }
+    .nav-tagline { font-size: 11px; color: #6b7280; margin-top: 1px; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .nav-btn { background: #a78bfa; color: #0c0a14; font-size: 12px; font-weight: 800; padding: 7px 16px; border-radius: 6px; cursor: pointer; border: none; }
+    .nav-link { font-size: 12px; color: #6b7280; cursor: pointer; }
+    .nav-link:hover { color: #94a3b8; }
+
+    /* Layout */
+    .page { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+    .layout { display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
+    @media (max-width: 800px) { .layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+    /* Page header */
+    .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+    .page-title { font-size: 20px; font-weight: 700; color: #f0f4f8; }
+    .page-subtitle { font-size: 13px; color: #6b7280; margin-top: 2px; }
+    .view-toggle { display: flex; gap: 2px; background: #13111f; border-radius: 7px; padding: 3px; }
+    .vt-btn { font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 5px; cursor: pointer; color: #6b7280; border: none; background: transparent; }
+    .vt-btn.active { background: #1f1b35; color: #a78bfa; }
+
+    /* Stats row */
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+    @media (max-width: 600px) { .stats-row { grid-template-columns: repeat(2, 1fr); } }
+    .stat { background: #13111f; border: 1px solid #1f1b35; border-radius: 10px; padding: 14px 16px; }
+    .stat-label { font-size: 10px; color: #6b7280; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 6px; }
+    .stat-value { font-size: 22px; font-weight: 800; color: #f0f4f8; }
+    .stat-value.violet { color: #a78bfa; }
+    .stat-delta { font-size: 10px; color: #a78bfa; margin-top: 3px; }
+
+    /* Week nav */
+    .week-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .week-label { font-size: 14px; font-weight: 700; color: #f0f4f8; }
+    .week-arrows { display: flex; gap: 6px; }
+    .arrow-btn { background: #13111f; border: 1px solid #1f1b35; color: #6b7280; width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; }
+
+    /* Calendar */
+    .calendar { background: #0e0c1a; border: 1px solid #1f1b35; border-radius: 12px; overflow: hidden; }
+    .cal-header { display: grid; grid-template-columns: 60px repeat(7, 1fr); border-bottom: 1px solid #1f1b35; }
+    .cal-th { padding: 10px 6px; text-align: center; }
+    .cal-th .day-name { font-size: 9px; font-weight: 700; color: #4b5563; letter-spacing: 1px; text-transform: uppercase; }
+    .cal-th .day-num { font-size: 16px; font-weight: 800; color: #94a3b8; margin-top: 2px; }
+    .cal-th.today .day-name { color: #a78bfa; }
+    .cal-th.today .day-num { color: #a78bfa; background: rgba(167,139,250,0.12); border-radius: 50%; width: 28px; height: 28px; line-height: 28px; margin: 2px auto 0; display: flex; align-items: center; justify-content: center; }
+    .time-label { font-size: 9px; color: #374151; font-weight: 600; padding: 0 8px; text-align: right; }
+    .cal-body { }
+    .cal-row { display: grid; grid-template-columns: 60px repeat(7, 1fr); border-bottom: 1px solid rgba(255,255,255,0.03); min-height: 50px; }
+    .cal-row:last-child { border-bottom: none; }
+    .cal-cell { border-left: 1px solid rgba(255,255,255,0.03); padding: 4px 4px; position: relative; }
+    .cal-cell:first-child { border-left: none; display: flex; align-items: flex-start; justify-content: flex-end; padding-top: 6px; }
+
+    /* Appointment blocks */
+    .appt { border-radius: 5px; padding: 5px 7px; margin: 2px; cursor: pointer; transition: opacity 0.15s; }
+    .appt:hover { opacity: 0.85; }
+    .appt-title { font-size: 10px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .appt-time { font-size: 9px; margin-top: 1px; opacity: 0.75; }
+    .appt.cut { background: rgba(167,139,250,0.18); border-left: 3px solid #a78bfa; color: #c4b5fd; }
+    .appt.color { background: rgba(244,63,94,0.15); border-left: 3px solid #f43f5e; color: #fda4af; }
+    .appt.blowout { background: rgba(251,191,36,0.15); border-left: 3px solid #fbbf24; color: #fde68a; }
+    .appt.treatment { background: rgba(16,185,129,0.15); border-left: 3px solid #10b981; color: #6ee7b7; }
+
+    /* Sidebar */
+    .sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .card { background: #13111f; border: 1px solid #1f1b35; border-radius: 10px; padding: 16px; }
+    .card-title { font-size: 13px; font-weight: 700; color: #f0f4f8; margin-bottom: 12px; }
+    .upcoming-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .upcoming-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .up-avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+    .up-name { font-size: 12px; font-weight: 600; color: #e2e8f0; }
+    .up-meta { font-size: 10px; color: #6b7280; margin-top: 1px; }
+    .up-time { font-size: 10px; font-weight: 700; color: #a78bfa; margin-left: auto; }
+    .book-btn { width: 100%; background: #a78bfa; color: #0c0a14; font-size: 13px; font-weight: 800; padding: 12px; border-radius: 8px; border: none; cursor: pointer; margin-top: 4px; }
+
+    /* Services */
+    .service-card { background: #0e0c1a; border: 1px solid #1f1b35; border-radius: 7px; padding: 11px 12px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: border-color 0.15s; }
+    .service-card:hover { border-color: rgba(167,139,250,0.4); }
+    .service-card:last-child { margin-bottom: 0; }
+    .svc-name { font-size: 12px; font-weight: 600; color: #e2e8f0; }
+    .svc-dur { font-size: 10px; color: #6b7280; margin-top: 2px; }
+    .svc-price { font-size: 14px; font-weight: 800; color: #a78bfa; }
+
+    /* Footer */
+    footer { text-align: center; padding: 24px; font-size: 11px; color: #374151; border-top: 1px solid #1f1b35; }
+    footer a { color: #a78bfa; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div>
+    <div class="nav-brand">BLOOM STUDIO</div>
+    <div class="nav-tagline">Appointment Management</div>
+  </div>
+  <div class="nav-actions">
+    <span class="nav-link">Calendar</span>
+    <span class="nav-link">Clients</span>
+    <span class="nav-link">Reports</span>
+    <button class="nav-btn">Book Now</button>
+  </div>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <div>
+      <div class="page-title">Appointments</div>
+      <div class="page-subtitle">Week of June 9, 2025</div>
+    </div>
+    <div class="view-toggle">
+      <button class="vt-btn">Day</button>
+      <button class="vt-btn active">Week</button>
+      <button class="vt-btn">Month</button>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-label">This Week</div>
+      <div class="stat-value violet">18</div>
+      <div class="stat-delta">+4 vs last week</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Revenue</div>
+      <div class="stat-value">$1,840</div>
+      <div class="stat-delta">↑ 12%</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Booked Today</div>
+      <div class="stat-value violet">4</div>
+      <div class="stat-delta">2 remaining</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">No-shows</div>
+      <div class="stat-value">1</div>
+      <div class="stat-delta" style="color:#6b7280;">This month</div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div>
+      <!-- Week nav -->
+      <div class="week-nav">
+        <span class="week-label">Jun 9 – Jun 15, 2025</span>
+        <div class="week-arrows">
+          <button class="arrow-btn">&#8249;</button>
+          <button class="arrow-btn">&#8250;</button>
+        </div>
+      </div>
+
+      <!-- Calendar grid -->
+      <div class="calendar">
+        <div class="cal-header">
+          <div></div>
+          <div class="cal-th"><div class="day-name">Mon</div><div class="day-num">9</div></div>
+          <div class="cal-th today"><div class="day-name">Tue</div><div class="day-num">10</div></div>
+          <div class="cal-th"><div class="day-name">Wed</div><div class="day-num">11</div></div>
+          <div class="cal-th"><div class="day-name">Thu</div><div class="day-num">12</div></div>
+          <div class="cal-th"><div class="day-name">Fri</div><div class="day-num">13</div></div>
+          <div class="cal-th"><div class="day-name">Sat</div><div class="day-num">14</div></div>
+          <div class="cal-th"><div class="day-name">Sun</div><div class="day-num">15</div></div>
+        </div>
+        <div class="cal-body">
+          <div class="cal-row">
+            <div class="cal-cell"><div class="time-label">9 AM</div></div>
+            <div class="cal-cell">
+              <div class="appt cut"><div class="appt-title">Priya N. — Haircut</div><div class="appt-time">9:00–9:45</div></div>
+            </div>
+            <div class="cal-cell">
+              <div class="appt color"><div class="appt-title">Sofia M. — Cut &amp; Color</div><div class="appt-time">9:00–10:30</div></div>
+            </div>
+            <div class="cal-cell"></div>
+            <div class="cal-cell">
+              <div class="appt treatment"><div class="appt-title">Maya L. — Deep Treatment</div><div class="appt-time">9:00–9:45</div></div>
+            </div>
+            <div class="cal-cell"></div>
+            <div class="cal-cell">
+              <div class="appt blowout"><div class="appt-title">Ava K. — Blowout</div><div class="appt-time">9:30–10:15</div></div>
+            </div>
+            <div class="cal-cell"></div>
+          </div>
+          <div class="cal-row">
+            <div class="cal-cell"><div class="time-label">11 AM</div></div>
+            <div class="cal-cell">
+              <div class="appt color"><div class="appt-title">Diane R. — Highlights</div><div class="appt-time">11:00–1:00</div></div>
+            </div>
+            <div class="cal-cell"></div>
+            <div class="cal-cell">
+              <div class="appt cut"><div class="appt-title">Janelle T. — Trim</div><div class="appt-time">11:00–11:45</div></div>
+            </div>
+            <div class="cal-cell"></div>
+            <div class="cal-cell">
+              <div class="appt cut"><div class="appt-title">Carmen F. — Haircut</div><div class="appt-time">11:00–11:45</div></div>
+            </div>
+            <div class="cal-cell">
+              <div class="appt color"><div class="appt-title">Nina W. — Full Color</div><div class="appt-time">10:30–12:00</div></div>
+            </div>
+            <div class="cal-cell"></div>
+          </div>
+          <div class="cal-row">
+            <div class="cal-cell"><div class="time-label">1 PM</div></div>
+            <div class="cal-cell"></div>
+            <div class="cal-cell">
+              <div class="appt treatment"><div class="appt-title">Rosa C. — Treatment</div><div class="appt-time">1:00–2:00</div></div>
+            </div>
+            <div class="cal-cell">
+              <div class="appt blowout"><div class="appt-title">Tina B. — Blowout</div><div class="appt-time">1:30–2:15</div></div>
+            </div>
+            <div class="cal-cell">
+              <div class="appt cut"><div class="appt-title">Laura M. — Trim</div><div class="appt-time">1:00–1:45</div></div>
+            </div>
+            <div class="cal-cell">
+              <div class="appt color"><div class="appt-title">Kate S. — Balayage</div><div class="appt-time">1:00–3:00</div></div>
+            </div>
+            <div class="cal-cell">
+              <div class="appt cut"><div class="appt-title">Anna P. — Haircut</div><div class="appt-time">1:00–1:45</div></div>
+            </div>
+            <div class="cal-cell"></div>
+          </div>
+          <div class="cal-row">
+            <div class="cal-cell"><div class="time-label">3 PM</div></div>
+            <div class="cal-cell">
+              <div class="appt treatment"><div class="appt-title">Beth H. — Conditioning</div><div class="appt-time">3:00–3:45</div></div>
+            </div>
+            <div class="cal-cell">
+              <div class="appt cut"><div class="appt-title">Lisa K. — Trim</div><div class="appt-time">3:00–3:45</div></div>
+            </div>
+            <div class="cal-cell"></div>
+            <div class="cal-cell">
+              <div class="appt blowout"><div class="appt-title">Fiona L. — Blowout</div><div class="appt-time">3:30–4:15</div></div>
+            </div>
+            <div class="cal-cell">
+              <div class="appt cut"><div class="appt-title">Mia R. — Haircut</div><div class="appt-time">3:00–3:45</div></div>
+            </div>
+            <div class="cal-cell">
+              <div class="appt color"><div class="appt-title">Jade T. — Color Touch-up</div><div class="appt-time">3:00–4:00</div></div>
+            </div>
+            <div class="cal-cell"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="card">
+        <div class="card-title">Upcoming Today</div>
+        <div class="upcoming-item">
+          <div class="up-avatar" style="background:rgba(167,139,250,0.2);color:#a78bfa;">SM</div>
+          <div>
+            <div class="up-name">Sofia M.</div>
+            <div class="up-meta">Cut &amp; Color · 90 min</div>
+          </div>
+          <div class="up-time">2:30 PM</div>
+        </div>
+        <div class="upcoming-item">
+          <div class="up-avatar" style="background:rgba(16,185,129,0.2);color:#10b981;">LK</div>
+          <div>
+            <div class="up-name">Lisa K.</div>
+            <div class="up-meta">Trim · 45 min</div>
+          </div>
+          <div class="up-time">3:00 PM</div>
+        </div>
+        <div class="upcoming-item">
+          <div class="up-avatar" style="background:rgba(251,191,36,0.2);color:#fbbf24;">FL</div>
+          <div>
+            <div class="up-name">Fiona L.</div>
+            <div class="up-meta">Blowout · 45 min</div>
+          </div>
+          <div class="up-time">4:00 PM</div>
+        </div>
+        <button class="book-btn" style="margin-top:14px;">+ New Appointment</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Services</div>
+        <div class="service-card">
+          <div><div class="svc-name">Haircut</div><div class="svc-dur">45 min</div></div>
+          <div class="svc-price">$45</div>
+        </div>
+        <div class="service-card">
+          <div><div class="svc-name">Cut &amp; Color</div><div class="svc-dur">90 min</div></div>
+          <div class="svc-price">$120</div>
+        </div>
+        <div class="service-card">
+          <div><div class="svc-name">Blowout</div><div class="svc-dur">45 min</div></div>
+          <div class="svc-price">$55</div>
+        </div>
+        <div class="service-card">
+          <div><div class="svc-name">Deep Treatment</div><div class="svc-dur">60 min</div></div>
+          <div class="svc-price">$75</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Demo only — not a real business. &nbsp;|&nbsp; Built by <a href="https://trackt.tech">Trackt</a> — trackt.tech
+</footer>
+
+</body>
+</html>
