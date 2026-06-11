@@ -2,19 +2,6 @@
 // Footer — dark bg, performance statement, nav links
 ---
 
-<!-- Performance statement -->
-<div class="border-t border-border-subtle bg-bg-elevated px-5 py-5 text-center">
-  <p class="text-sm text-text-secondary">
-    Hand-coded for speed. No bloated templates.
-    <a
-      href="https://pagespeed.web.dev"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="font-medium text-brand-primary underline-offset-2 hover:underline"
-    >Run this site through Google PageSpeed yourself.</a>
-  </p>
-</div>
-
 <!-- Main footer -->
 <footer class="bg-[#101418] px-5 py-10 md:py-12">
   <div class="mx-auto max-w-6xl">
@@ -39,7 +26,11 @@
 
     <div class="mt-8 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/40 md:flex-row">
       <p>&copy; {new Date().getFullYear()} Trackt Tech LLC. All rights reserved.</p>
-      <p>Tampa, FL · Available remotely</p>
+      <div class="flex items-center gap-4">
+        <a href="/privacy" class="transition-colors duration-150 hover:text-white/70">Privacy Policy</a>
+        <span aria-hidden="true">·</span>
+        <p>Tampa, FL · Available remotely</p>
+      </div>
     </div>
 
   </div>

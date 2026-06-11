@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
 import Consulting from "../components/Consulting.astro";
 import TracktTeaser from "../components/TracktTeaser.astro";
 import Footer from "../components/Footer.astro";
@@ -55,9 +54,8 @@ const jsonLd = JSON.stringify([
 
 <BaseLayout title={pageTitle} description={pageDescription} jsonLd={jsonLd}>
   <Header />
-  <main>
+  <main id="main-content">
     <Hero />
-    <About />
     <Consulting />
     <TracktTeaser />
   </main>
