@@ -1,21 +1,46 @@
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-    <!-- Logo -->
+    <!-- Logo (dual: light/dark variants) -->
     <a href="/" aria-label="Trackt home">
       <img
         src="/logo/trackt-logo.svg"
         alt="Trackt"
-        class="h-9 w-auto md:h-11"
+        class="logo-light h-9 w-auto md:h-11"
+        width="198"
+        height="54"
+      />
+      <img
+        src="/logo/trackt-logo-dark.svg"
+        alt="Trackt"
+        class="logo-dark h-9 w-auto md:h-11"
         width="198"
         height="54"
       />
     </a>
 
-    <!-- Desktop nav links -->
-    <div class="hidden items-center gap-8 md:flex">
+    <!-- Desktop nav links + theme toggle + CTA -->
+    <div class="hidden items-center gap-6 md:flex">
       <a href="/#services" class="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary">Services</a>
       <a href="/#contact" class="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary">Get a Quote</a>
       <a href="/trackt" class="text-sm font-semibold text-brand-primary transition-colors duration-150 hover:opacity-80">Trackt</a>
+
+      <!-- Theme toggle -->
+      <button
+        id="theme-toggle"
+        aria-label="Switch to dark mode"
+        class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors duration-150 hover:border-brand-primary/40 hover:text-brand-primary"
+      >
+        <!-- Moon — shown in light mode -->
+        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+        <!-- Sun — shown in dark mode -->
+        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hidden">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+      </button>
+
       <a
         href="https://calendly.com/daniel-trackt/30min"
         target="_blank"
@@ -26,24 +51,40 @@
       </a>
     </div>
 
-    <!-- Hamburger (mobile only) -->
-    <button
-      id="nav-toggle"
-      aria-label="Toggle navigation"
-      aria-expanded="false"
-      class="relative flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:text-text-primary md:hidden"
-    >
-      <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-opacity duration-150">
-        <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
-      </svg>
-      <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute opacity-0 transition-opacity duration-150">
-        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
-    </button>
+    <!-- Mobile right: theme toggle + hamburger -->
+    <div class="flex items-center gap-2 md:hidden">
+      <button
+        id="theme-toggle-mobile"
+        aria-label="Switch to dark mode"
+        class="flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:text-text-primary"
+      >
+        <svg id="icon-moon-mobile" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+        </svg>
+        <svg id="icon-sun-mobile" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hidden">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+      </button>
+
+      <button
+        id="nav-toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        class="relative flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:text-text-primary"
+      >
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-opacity duration-150">
+          <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute opacity-0 transition-opacity duration-150">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
   </nav>
 
-  <!-- Mobile menu -->
-  <div id="nav-menu" class="border-t border-border-subtle bg-white/95 backdrop-blur-xl md:hidden">
+  <!-- Mobile menu (background handled in global.css) -->
+  <div id="nav-menu" class="border-t border-border-subtle md:hidden">
     <div class="px-3 py-2">
       <a href="/#services" class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-bg-elevated hover:text-text-primary">Services</a>
       <a href="/#contact" class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-bg-elevated hover:text-text-primary">Get a Quote</a>
@@ -59,21 +100,19 @@
 </header>
 
 <script>
+  // ── Scroll state ──────────────────────────────────────────────
   const header = document.getElementById("site-header");
-  const navToggle = document.getElementById("nav-toggle");
-  const navMenu = document.getElementById("nav-menu");
-  const iconOpen = document.getElementById("icon-open");
-  const iconClose = document.getElementById("icon-close");
-
   const onScroll = () => {
-    if (window.scrollY > 40) {
-      header?.classList.add("bg-white/95", "backdrop-blur-xl", "shadow-sm");
-    } else {
-      header?.classList.remove("bg-white/95", "backdrop-blur-xl", "shadow-sm");
-    }
+    header?.classList.toggle("scrolled", window.scrollY > 40);
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+
+  // ── Mobile nav ────────────────────────────────────────────────
+  const navToggle = document.getElementById("nav-toggle");
+  const navMenu   = document.getElementById("nav-menu");
+  const iconOpen  = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
 
   let isOpen = false;
   navToggle?.addEventListener("click", () => {
@@ -83,7 +122,6 @@
     iconClose?.classList.toggle("opacity-0", !isOpen);
     navToggle.setAttribute("aria-expanded", String(isOpen));
   });
-
   document.querySelectorAll(".nav-menu-link").forEach((link) => {
     link.addEventListener("click", () => {
       isOpen = false;
@@ -93,4 +131,36 @@
       navToggle?.setAttribute("aria-expanded", "false");
     });
   });
+
+  // ── Theme toggle ──────────────────────────────────────────────
+  const html       = document.documentElement;
+  const moonD      = document.getElementById("icon-moon");
+  const sunD       = document.getElementById("icon-sun");
+  const moonM      = document.getElementById("icon-moon-mobile");
+  const sunM       = document.getElementById("icon-sun-mobile");
+  const toggleD    = document.getElementById("theme-toggle");
+  const toggleM    = document.getElementById("theme-toggle-mobile");
+
+  function applyIcons(dark: boolean) {
+    moonD?.classList.toggle("hidden", dark);
+    sunD?.classList.toggle("hidden", !dark);
+    moonM?.classList.toggle("hidden", dark);
+    sunM?.classList.toggle("hidden", !dark);
+    toggleD?.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    toggleM?.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  }
+
+  // Sync icons with current state (set by the inline script in <head>)
+  applyIcons(html.classList.contains("dark"));
+
+  function toggle() {
+    html.classList.add("theme-transition");
+    const nowDark = html.classList.toggle("dark");
+    localStorage.setItem("trackt-theme", nowDark ? "dark" : "light");
+    applyIcons(nowDark);
+    window.setTimeout(() => html.classList.remove("theme-transition"), 320);
+  }
+
+  toggleD?.addEventListener("click", toggle);
+  toggleM?.addEventListener("click", toggle);
 </script>

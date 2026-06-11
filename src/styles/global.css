@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Trackt Clean — light palette */
+  /* Trackt Clean — light palette (overridden by html.dark below) */
   --color-bg-dark: #FFFFFF;
   --color-bg-elevated: #F4F6F8;
   --color-bg-card: #FFFFFF;
@@ -11,6 +11,87 @@
   --color-border-subtle: #E2E8F0;
   --color-brand-glow: rgba(22, 180, 210, 0.20);
   --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Dark mode overrides ── */
+html.dark {
+  --color-bg-dark: #0B0F14;
+  --color-bg-elevated: #111820;
+  --color-bg-card: #151C26;
+  --color-text-primary: #F0F0F5;
+  --color-text-secondary: #8892A4;
+  --color-border-subtle: #1E2A38;
+  --color-brand-glow: rgba(22, 180, 210, 0.12);
+}
+
+/* ── Dot-grid color (adapts to theme) ── */
+:root { --dot-color: rgba(16, 20, 24, 1); }
+html.dark { --dot-color: rgba(240, 240, 245, 0.10); }
+
+/* ── Logo show/hide per theme ── */
+.logo-dark { display: none; }
+html.dark .logo-light { display: none; }
+html.dark .logo-dark { display: block; }
+
+/* ── Theme transition (temporarily applied during toggle) ── */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 280ms ease,
+    border-color 280ms ease,
+    color 280ms ease,
+    box-shadow 280ms ease !important;
+}
+
+/* ── Header scroll state ── */
+#site-header.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: 0 1px 0 rgba(16, 20, 24, 0.08), 0 2px 8px rgba(16, 20, 24, 0.04);
+}
+html.dark #site-header.scrolled {
+  background: rgba(11, 15, 20, 0.92);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Mobile nav menu ── */
+#nav-menu {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+html.dark #nav-menu {
+  background: rgba(17, 24, 32, 0.97);
+}
+
+/* ── Dark mode shadows (visible against dark bg) ── */
+html.dark .shadow-sm {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+html.dark .shadow-2xl {
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+html.dark .card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* ── Browser mockup — chrome adapts to dark mode, content stays light ── */
+html.dark .browser-window {
+  border-color: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+html.dark .browser-chrome {
+  background: #1a1f2a;
+  border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+html.dark .browser-url {
+  background: #0f1420;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: rgba(240, 240, 245, 0.4);
 }
 
 /* ── Marquee ── */

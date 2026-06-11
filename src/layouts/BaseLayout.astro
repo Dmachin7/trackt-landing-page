@@ -50,6 +50,17 @@ import "@fontsource/inter/700.css";
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#16b4d2" />
 
+    <!-- Prevent FOUC: apply dark class before first paint -->
+    <script is:inline>
+      (function () {
+        var stored = localStorage.getItem('trackt-theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
     <!-- JSON-LD Structured Data (injected per-page) -->
     {jsonLd && <script is:inline type="application/ld+json" set:html={jsonLd} />}
 
