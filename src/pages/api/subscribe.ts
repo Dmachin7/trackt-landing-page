@@ -4,10 +4,18 @@ import type { APIRoute } from "astro";
 
 export const POST: APIRoute = async ({ request }) => {
   let email: string;
+  let name: string | undefined;
+  let business: string | undefined;
+  let inventoryMethod: string | undefined;
+  let founding: boolean | undefined;
 
   try {
     const body = await request.json();
     email = body.email?.toString().trim();
+    name = body.name?.toString().trim() || undefined;
+    business = body.business?.toString().trim() || undefined;
+    inventoryMethod = body.inventory_method?.toString().trim() || undefined;
+    founding = body.founding === true;
   } catch {
     return new Response(JSON.stringify({ error: "Invalid request body." }), {
       status: 400,
@@ -33,6 +41,12 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 
+  const fields: Record<string, string> = {};
+  if (name) fields.name = name;
+  if (business) fields.company = business;
+  if (inventoryMethod) fields.inventory_method = inventoryMethod;
+  if (founding) fields.founding_interest = "true";
+
   const mlRes = await fetch("https://connect.mailerlite.com/api/subscribers", {
     method: "POST",
     headers: {
@@ -40,7 +54,11 @@ export const POST: APIRoute = async ({ request }) => {
       "Accept": "application/json",
       "Authorization": `Bearer ${apiKey}`,
     },
-    body: JSON.stringify({ email, groups: [groupId] }),
+    body: JSON.stringify({
+      email,
+      groups: [groupId],
+      ...(Object.keys(fields).length > 0 && { fields }),
+    }),
   });
 
   if (!mlRes.ok) {

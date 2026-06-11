@@ -1,0 +1,570 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "Trackt — Inventory & Sales Intelligence for Parts Distributors";
+const pageDescription = "One dashboard for your inventory, sales, and customer reorders. Reorder alerts, dead-stock reports, and customer win-backs for parts distributors. Join early access.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header />
+  <main>
+
+    <!-- ── HERO ── -->
+    <section class="relative overflow-hidden px-5 pb-20 pt-36 md:pb-28 md:pt-44">
+      <!-- Background orbs -->
+      <div class="pointer-events-none absolute left-1/4 top-1/4 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-primary/10 blur-[120px]" style="animation: float-orb 18s ease-in-out infinite;"></div>
+      <div class="pointer-events-none absolute right-1/4 top-1/2 h-[400px] w-[400px] -translate-y-1/2 rounded-full bg-brand-accent/8 blur-[100px]" style="animation: float-orb 24s ease-in-out infinite reverse;"></div>
+
+      <div class="relative z-10 mx-auto max-w-3xl text-center">
+        <!-- Status badge -->
+        <div class="mb-6 inline-flex items-center gap-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 px-3.5 py-1.5 text-sm font-medium text-brand-primary">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-primary animate-pulse"></span>
+          Early access — launching 2026
+        </div>
+
+        <h1 class="text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+          Your inventory. Your sales.<br class="hidden sm:block" />
+          Your customers.
+          <span class="bg-gradient-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent"> One picture.</span>
+        </h1>
+
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary md:text-xl">
+          Trackt pulls your Shopify orders, QuickBooks invoices, and inventory spreadsheet into a single dashboard that tells you what to reorder, what's not selling, and which customers are overdue to buy again. Built for parts and accessory distributors.
+        </p>
+
+        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href="#early-access"
+            class="btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-4 text-lg font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_0_30px_var(--color-brand-glow)] sm:w-auto"
+          >
+            Join early access
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a
+            href="https://calendly.com/daniel-trackt/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-brand-primary/50 px-8 py-4 text-lg font-semibold text-brand-primary transition-all hover:bg-brand-primary/10 sm:w-auto"
+          >
+            Book a 15-min call
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROBLEM ── -->
+    <section class="px-5 py-20 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out text-center mb-12">
+          <h2 class="text-3xl font-bold md:text-4xl">Sound familiar?</h2>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-3">
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm" style="transition-delay: 0.05s;">
+            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary/10">
+              <svg class="h-5 w-5 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <p class="text-text-secondary leading-relaxed">
+              Your online sales live in Shopify. Your fleet accounts live in QuickBooks. Your stock counts live in a spreadsheet. Nothing talks to anything.
+            </p>
+          </div>
+
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm" style="transition-delay: 0.1s;">
+            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary/10">
+              <svg class="h-5 w-5 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </div>
+            <p class="text-text-secondary leading-relaxed">
+              You find out you're out of your best-selling strap when a customer asks for it.
+            </p>
+          </div>
+
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm" style="transition-delay: 0.15s;">
+            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary/10">
+              <svg class="h-5 w-5 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <p class="text-text-secondary leading-relaxed">
+              A good account quietly stops ordering — and you notice three months too late.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ── -->
+    <section class="px-5 py-20 md:py-24">
+      <div class="mx-auto max-w-4xl">
+        <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out text-center mb-12">
+          <h2 class="text-3xl font-bold md:text-4xl">How it works</h2>
+        </div>
+
+        <div class="relative grid gap-8 md:grid-cols-3">
+          <!-- Connecting line (desktop only) -->
+          <div class="pointer-events-none absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-brand-primary/30 to-transparent md:block"></div>
+
+          {[
+            {
+              step: "01",
+              title: "Connect your data.",
+              body: "Upload a CSV or connect Shopify, QuickBooks, and Google Sheets. No migration, no new system to run your business on.",
+            },
+            {
+              step: "02",
+              title: "Trackt does the math.",
+              body: "Sales velocity, supplier lead times, reorder timing, customer buying rhythms — calculated automatically, explained in plain English.",
+            },
+            {
+              step: "03",
+              title: "Act before it costs you.",
+              body: "Reorder alerts before stockouts. Dead-stock reports before inventory becomes dust. A nudge when a customer is overdue.",
+            },
+          ].map(({ step, title, body }, i) => (
+            <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out flex flex-col items-center text-center" style={`transition-delay: ${i * 0.08}s;`}>
+              <div class="relative mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-brand-primary/40 bg-brand-primary/10 text-xl font-bold text-brand-primary">
+                {step}
+              </div>
+              <h3 class="mb-2 text-lg font-semibold text-text-primary">{title}</h3>
+              <p class="text-text-secondary leading-relaxed">{body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FEATURE BLOCKS ── -->
+    <section class="px-5 py-20 md:py-24">
+      <div class="mx-auto max-w-5xl">
+        <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out text-center mb-14">
+          <h2 class="text-3xl font-bold md:text-4xl">Everything in one place</h2>
+        </div>
+
+        <div class="space-y-16">
+
+          <!-- Reorder alerts -->
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-8 md:grid-cols-2 md:items-center">
+            <div>
+              <div class="mb-3 inline-flex items-center gap-2 text-sm font-medium text-brand-primary">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                Reorder alerts
+              </div>
+              <h3 class="mb-3 text-2xl font-bold">Not "low stock." Know when to order today.</h3>
+              <p class="text-text-secondary leading-relaxed">Not "low stock." Trackt knows you sell 4.2 a day and your supplier takes 14 days — so it tells you to order today, and how many.</p>
+            </div>
+            <div class="rounded-2xl border border-border-subtle bg-bg-card overflow-hidden">
+              <img
+                src="/images/trackt/reorder.png"
+                alt="Product preview — demo data"
+                class="w-full"
+                loading="lazy"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+              />
+              <div class="hidden h-48 flex-col items-center justify-center gap-2 p-6 text-center">
+                <svg class="h-8 w-8 text-brand-primary/40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                <p class="text-sm text-text-secondary">Product preview — demo data</p>
+                <p class="text-xs text-text-secondary/50">Drop in: /images/trackt/reorder.png</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dead stock -->
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-8 md:grid-cols-2 md:items-center">
+            <div class="order-2 md:order-1 rounded-2xl border border-border-subtle bg-bg-card overflow-hidden">
+              <img
+                src="/images/trackt/dead-stock.png"
+                alt="Product preview — demo data"
+                class="w-full"
+                loading="lazy"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+              />
+              <div class="hidden h-48 flex-col items-center justify-center gap-2 p-6 text-center">
+                <svg class="h-8 w-8 text-brand-primary/40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                <p class="text-sm text-text-secondary">Product preview — demo data</p>
+                <p class="text-xs text-text-secondary/50">Drop in: /images/trackt/dead-stock.png</p>
+              </div>
+            </div>
+            <div class="order-1 md:order-2">
+              <div class="mb-3 inline-flex items-center gap-2 text-sm font-medium text-brand-primary">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Dead stock
+              </div>
+              <h3 class="mb-3 text-2xl font-bold">See the cash sitting on your shelves.</h3>
+              <p class="text-text-secondary leading-relaxed">See exactly how much cash is sitting on shelves that haven't sold in 90 days, and free it up.</p>
+            </div>
+          </div>
+
+          <!-- Trends -->
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-8 md:grid-cols-2 md:items-center">
+            <div>
+              <div class="mb-3 inline-flex items-center gap-2 text-sm font-medium text-brand-primary">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                Trends
+              </div>
+              <h3 class="mb-3 text-2xl font-bold">Spot seasonal demand before it spikes.</h3>
+              <p class="text-text-secondary leading-relaxed">What's heating up, what's cooling off — spot seasonal demand before it spikes, not after.</p>
+            </div>
+            <div class="rounded-2xl border border-border-subtle bg-bg-card overflow-hidden">
+              <img
+                src="/images/trackt/trends.png"
+                alt="Product preview — demo data"
+                class="w-full"
+                loading="lazy"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+              />
+              <div class="hidden h-48 flex-col items-center justify-center gap-2 p-6 text-center">
+                <svg class="h-8 w-8 text-brand-primary/40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                <p class="text-sm text-text-secondary">Product preview — demo data</p>
+                <p class="text-xs text-text-secondary/50">Drop in: /images/trackt/trends.png</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer reorder radar -->
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-8 md:grid-cols-2 md:items-center">
+            <div class="order-2 md:order-1 rounded-2xl border border-border-subtle bg-bg-card overflow-hidden">
+              <img
+                src="/images/trackt/customer-radar.png"
+                alt="Product preview — demo data"
+                class="w-full"
+                loading="lazy"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+              />
+              <div class="hidden h-48 flex-col items-center justify-center gap-2 p-6 text-center">
+                <svg class="h-8 w-8 text-brand-primary/40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                <p class="text-sm text-text-secondary">Product preview — demo data</p>
+                <p class="text-xs text-text-secondary/50">Drop in: /images/trackt/customer-radar.png</p>
+              </div>
+            </div>
+            <div class="order-1 md:order-2">
+              <div class="mb-3 inline-flex items-center gap-2 text-sm font-medium text-brand-primary">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Customer reorder radar
+              </div>
+              <h3 class="mb-3 text-2xl font-bold">Know when a good account goes quiet.</h3>
+              <p class="text-text-secondary leading-relaxed">Every account has a rhythm. When a customer goes quiet past theirs, Trackt flags it and drafts the win-back email.</p>
+            </div>
+          </div>
+
+          <!-- Monday digest -->
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-8 md:grid-cols-2 md:items-center">
+            <div>
+              <div class="mb-3 inline-flex items-center gap-2 text-sm font-medium text-brand-primary">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Monday digest
+              </div>
+              <h3 class="mb-3 text-2xl font-bold">Your week's priorities in one email.</h3>
+              <p class="text-text-secondary leading-relaxed">Your week's priorities in one email: what to order, who to call, what to clear.</p>
+            </div>
+            <div class="rounded-2xl border border-border-subtle bg-bg-card overflow-hidden">
+              <img
+                src="/images/trackt/monday-digest.png"
+                alt="Product preview — demo data"
+                class="w-full"
+                loading="lazy"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+              />
+              <div class="hidden h-48 flex-col items-center justify-center gap-2 p-6 text-center">
+                <svg class="h-8 w-8 text-brand-primary/40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                <p class="text-sm text-text-secondary">Product preview — demo data</p>
+                <p class="text-xs text-text-secondary/50">Drop in: /images/trackt/monday-digest.png</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FOUNDING CUSTOMER OFFER ── -->
+    <section class="px-5 py-20 md:py-24">
+      <div class="mx-auto max-w-3xl">
+        <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+          <div class="relative overflow-hidden rounded-2xl border border-brand-primary/40 bg-brand-primary/5 p-8 shadow-[0_0_60px_rgba(22,180,210,0.12)] backdrop-blur-sm md:p-12">
+            <!-- Teal glow accent -->
+            <div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-primary/15 blur-[80px]"></div>
+
+            <div class="relative z-10">
+              <div class="mb-4 inline-flex items-center gap-1.5 rounded-full border border-brand-primary/40 bg-brand-primary/15 px-3.5 py-1.5 text-sm font-medium text-brand-primary">
+                <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>
+                Founding customer offer
+              </div>
+
+              <h2 class="mb-4 text-3xl font-bold md:text-4xl">Be one of the first five.</h2>
+              <p class="mb-8 text-lg text-text-secondary leading-relaxed">
+                The first 5 distributors get Trackt for <span class="font-semibold text-text-primary">$99/month locked in for life</span> (regular $149), hands-on onboarding done with you personally, and a direct line to shape what gets built.
+              </p>
+
+              <a
+                href="#early-access"
+                data-founding="true"
+                class="btn-shimmer inline-flex items-center gap-2 rounded-xl bg-brand-primary px-8 py-4 text-lg font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_0_30px_var(--color-brand-glow)]"
+              >
+                Claim a founding spot
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── EARLY ACCESS FORM ── -->
+    <section id="early-access" class="relative overflow-hidden px-5 py-20 md:py-28">
+      <div class="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-primary/10 blur-[100px]"></div>
+
+      <div class="relative z-10 mx-auto max-w-xl">
+        <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
+          <div class="rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-[0_0_60px_rgba(22,180,210,0.06)] backdrop-blur-sm md:p-10">
+
+            <div class="mb-5 inline-flex items-center gap-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 px-3.5 py-1.5 text-sm font-medium text-brand-primary">
+              <span class="h-1.5 w-1.5 rounded-full bg-brand-primary animate-pulse"></span>
+              Early access
+            </div>
+
+            <h2 class="text-2xl font-bold md:text-3xl">Join early access</h2>
+            <p class="mt-3 text-text-secondary">
+              I'll personally reach out as early access opens.
+            </p>
+
+            <!-- Form -->
+            <form id="trackt-form" novalidate class="mt-8 space-y-4">
+              <!-- Hidden founding flag, toggled by JS when arriving from founding CTA -->
+              <input type="hidden" id="trackt-founding" name="founding" value="false" />
+
+              <div>
+                <label for="trackt-name" class="mb-1.5 block text-sm font-medium text-text-secondary">
+                  Name <span class="text-brand-primary">*</span>
+                </label>
+                <input
+                  id="trackt-name"
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  autocomplete="name"
+                  class="w-full rounded-xl border border-border-subtle bg-white/[0.04] px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20"
+                />
+              </div>
+
+              <div>
+                <label for="trackt-business" class="mb-1.5 block text-sm font-medium text-text-secondary">
+                  Business name <span class="text-brand-primary">*</span>
+                </label>
+                <input
+                  id="trackt-business"
+                  type="text"
+                  name="business"
+                  placeholder="Your company"
+                  required
+                  autocomplete="organization"
+                  class="w-full rounded-xl border border-border-subtle bg-white/[0.04] px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20"
+                />
+              </div>
+
+              <div>
+                <label for="trackt-email" class="mb-1.5 block text-sm font-medium text-text-secondary">
+                  Email <span class="text-brand-primary">*</span>
+                </label>
+                <input
+                  id="trackt-email"
+                  type="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  required
+                  autocomplete="email"
+                  inputmode="email"
+                  class="w-full rounded-xl border border-border-subtle bg-white/[0.04] px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20"
+                />
+              </div>
+
+              <div>
+                <label for="trackt-inventory" class="mb-1.5 block text-sm font-medium text-text-secondary">
+                  How do you track inventory today?
+                </label>
+                <select
+                  id="trackt-inventory"
+                  name="inventory_method"
+                  class="w-full rounded-xl border border-border-subtle bg-bg-elevated px-4 py-3.5 text-base text-text-primary outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20 appearance-none"
+                >
+                  <option value="" disabled selected>Select one…</option>
+                  <option value="Spreadsheet">Spreadsheet</option>
+                  <option value="QuickBooks">QuickBooks</option>
+                  <option value="Shopify">Shopify</option>
+                  <option value="Other">Other</option>
+                  <option value="In my head">In my head</option>
+                </select>
+              </div>
+
+              <p id="trackt-error" class="hidden text-sm font-medium text-red-400"></p>
+
+              <button
+                type="submit"
+                id="trackt-btn"
+                class="btn-shimmer flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-6 py-3.5 text-base font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_0_30px_var(--color-brand-glow)] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                <span id="trackt-btn-text">Join early access</span>
+                <svg id="trackt-btn-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </button>
+            </form>
+
+            <!-- Success state -->
+            <div id="trackt-success" class="mt-8 hidden">
+              <div class="flex flex-col items-center gap-3 text-center">
+                <div class="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/15">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-400"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
+                <p class="text-lg font-semibold text-text-primary">You're on the list!</p>
+                <p class="text-sm text-text-secondary">I'll personally reach out as early access opens.</p>
+              </div>
+            </div>
+
+            <p class="mt-5 text-xs text-text-secondary">No credit card required &middot; Unsubscribe anytime</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="px-5 py-20 md:py-24">
+      <div class="mx-auto max-w-2xl">
+        <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out text-center mb-12">
+          <h2 class="text-3xl font-bold md:text-4xl">Questions</h2>
+        </div>
+
+        <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out space-y-3">
+
+          {[
+            {
+              q: "What do I need to use it?",
+              a: "Any of: a CSV export from your current system, Shopify, QuickBooks Online, or a Google Sheet. If your system can export a spreadsheet, Trackt can read it.",
+            },
+            {
+              q: "Is my data safe?",
+              a: "Your data is isolated to your company account, encrypted in transit and at rest, and never shared or sold. You can export or delete it anytime.",
+            },
+            {
+              q: "What does it cost?",
+              a: "$149/month per company — unlimited team members. Founding customers: $99/month locked for life.",
+            },
+            {
+              q: "When does it launch?",
+              a: "Early access begins in 2026. Joining the list gets you first in line and a say in what ships first.",
+            },
+            {
+              q: "Who's building this?",
+              a: "Trackt Tech — I build software for small businesses and run operations at a parts distributor, which is exactly where this product was born.",
+            },
+          ].map(({ q, a }) => (
+            <details class="group rounded-2xl border border-border-subtle bg-bg-card backdrop-blur-sm transition-all hover:border-brand-primary/30">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 p-5 font-semibold text-text-primary list-none">
+                {q}
+                <svg class="h-4 w-4 shrink-0 text-brand-primary transition-transform duration-200 group-open:rotate-45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              </summary>
+              <p class="px-5 pb-5 text-text-secondary leading-relaxed">{a}</p>
+            </details>
+          ))}
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove("opacity-0", "translate-y-8");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll(".scroll-reveal").forEach((el) => observer.observe(el));
+
+  // If arriving from "Claim a founding spot" CTA, pre-set the founding flag
+  const foundingInput = document.getElementById("trackt-founding") as HTMLInputElement | null;
+  if (window.location.hash === "#early-access") {
+    // Check if the referring click was the founding CTA
+    document.querySelectorAll("[data-founding='true']").forEach((el) => {
+      el.addEventListener("click", () => {
+        if (foundingInput) foundingInput.value = "true";
+      });
+    });
+  }
+  // Always wire up founding CTAs regardless of hash
+  document.querySelectorAll("[data-founding='true']").forEach((el) => {
+    el.addEventListener("click", () => {
+      if (foundingInput) foundingInput.value = "true";
+    });
+  });
+
+  // Form submission
+  const form = document.getElementById("trackt-form") as HTMLFormElement | null;
+  const nameInput = document.getElementById("trackt-name") as HTMLInputElement | null;
+  const businessInput = document.getElementById("trackt-business") as HTMLInputElement | null;
+  const emailInput = document.getElementById("trackt-email") as HTMLInputElement | null;
+  const inventorySelect = document.getElementById("trackt-inventory") as HTMLSelectElement | null;
+  const btn = document.getElementById("trackt-btn") as HTMLButtonElement | null;
+  const btnText = document.getElementById("trackt-btn-text");
+  const btnIcon = document.getElementById("trackt-btn-icon");
+  const errorMsg = document.getElementById("trackt-error");
+  const successDiv = document.getElementById("trackt-success");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = nameInput?.value?.trim() ?? "";
+    const business = businessInput?.value?.trim() ?? "";
+    const email = emailInput?.value?.trim() ?? "";
+    const inventoryMethod = inventorySelect?.value ?? "";
+    const founding = foundingInput?.value === "true";
+
+    if (!name) {
+      if (errorMsg) { errorMsg.textContent = "Please enter your name."; errorMsg.classList.remove("hidden"); }
+      return;
+    }
+    if (!business) {
+      if (errorMsg) { errorMsg.textContent = "Please enter your business name."; errorMsg.classList.remove("hidden"); }
+      return;
+    }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (errorMsg) { errorMsg.textContent = "Please enter a valid email address."; errorMsg.classList.remove("hidden"); }
+      return;
+    }
+
+    errorMsg?.classList.add("hidden");
+    if (btn) btn.disabled = true;
+    if (btnText) btnText.textContent = "Submitting...";
+    if (btnIcon) btnIcon.classList.add("hidden");
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, business, email, inventory_method: inventoryMethod || undefined, founding }),
+      });
+      const data = await res.json();
+
+      if (res.ok && data.ok) {
+        form.classList.add("hidden");
+        successDiv?.classList.remove("hidden");
+      } else {
+        throw new Error(data.error ?? "Something went wrong.");
+      }
+    } catch (err) {
+      if (errorMsg) {
+        errorMsg.textContent = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+        errorMsg.classList.remove("hidden");
+      }
+      if (btn) btn.disabled = false;
+      if (btnText) btnText.textContent = "Join early access";
+      if (btnIcon) btnIcon.classList.remove("hidden");
+    }
+  });
+</script>
