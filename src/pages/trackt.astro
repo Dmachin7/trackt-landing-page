@@ -12,22 +12,24 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
   <main>
 
     <!-- ── HERO ── -->
-    <section class="relative overflow-hidden px-5 pb-20 pt-36 md:pb-28 md:pt-44">
-      <!-- Background orbs -->
-      <div class="pointer-events-none absolute left-1/4 top-1/4 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-primary/10 blur-[120px]" style="animation: float-orb 18s ease-in-out infinite;"></div>
-      <div class="pointer-events-none absolute right-1/4 top-1/2 h-[400px] w-[400px] -translate-y-1/2 rounded-full bg-brand-accent/8 blur-[100px]" style="animation: float-orb 24s ease-in-out infinite reverse;"></div>
+    <section class="relative overflow-hidden bg-white px-5 pb-20 pt-36 md:pb-28 md:pt-44">
+      <!-- Subtle teal wash -->
+      <div class="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-brand-primary/6 blur-[100px]" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-32 bottom-0 h-[300px] w-[300px] rounded-full bg-brand-primary/4 blur-[80px]" aria-hidden="true"></div>
+      <!-- Dot grid -->
+      <div class="pointer-events-none absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #101418 1px, transparent 1px); background-size: 28px 28px;" aria-hidden="true"></div>
 
       <div class="relative z-10 mx-auto max-w-3xl text-center">
         <!-- Status badge -->
-        <div class="mb-6 inline-flex items-center gap-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 px-3.5 py-1.5 text-sm font-medium text-brand-primary">
-          <span class="h-1.5 w-1.5 rounded-full bg-brand-primary animate-pulse"></span>
+        <div class="mb-6 inline-flex items-center gap-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/8 px-3.5 py-1.5 text-sm font-semibold text-brand-primary">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
           Early access — launching 2026
         </div>
 
-        <h1 class="text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+        <h1 class="text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-6xl">
           Your inventory. Your sales.<br class="hidden sm:block" />
           Your customers.
-          <span class="bg-gradient-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent"> One picture.</span>
+          <span class="text-brand-primary"> One picture.</span>
         </h1>
 
         <p class="mx-auto mt-6 max-w-2xl text-lg text-text-secondary md:text-xl">
@@ -37,16 +39,16 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
         <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href="#early-access"
-            class="btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-4 text-lg font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_0_30px_var(--color-brand-glow)] sm:w-auto"
+            class="btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-4 text-lg font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md sm:w-auto"
           >
             Join early access
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
           <a
             href="https://calendly.com/daniel-trackt/30min"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-brand-primary/50 px-8 py-4 text-lg font-semibold text-brand-primary transition-all hover:bg-brand-primary/10 sm:w-auto"
+            class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-white px-8 py-4 text-lg font-semibold text-text-primary transition-all duration-200 hover:border-brand-primary/40 hover:shadow-sm sm:w-auto"
           >
             Book a 15-min call
           </a>
@@ -55,34 +57,34 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
     </section>
 
     <!-- ── PROBLEM ── -->
-    <section class="px-5 py-20 md:py-24">
+    <section class="bg-bg-elevated px-5 py-20 md:py-24">
       <div class="mx-auto max-w-5xl">
         <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out text-center mb-12">
-          <h2 class="text-3xl font-bold md:text-4xl">Sound familiar?</h2>
+          <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Sound familiar?</h2>
         </div>
 
         <div class="grid gap-5 md:grid-cols-3">
-          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm" style="transition-delay: 0.05s;">
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out card-lift rounded-2xl border border-border-subtle bg-white p-6 shadow-sm" style="transition-delay: 0.05s;">
             <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary/10">
-              <svg class="h-5 w-5 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              <svg class="h-5 w-5 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
             </div>
             <p class="text-text-secondary leading-relaxed">
               Your online sales live in Shopify. Your fleet accounts live in QuickBooks. Your stock counts live in a spreadsheet. Nothing talks to anything.
             </p>
           </div>
 
-          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm" style="transition-delay: 0.1s;">
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out card-lift rounded-2xl border border-border-subtle bg-white p-6 shadow-sm" style="transition-delay: 0.1s;">
             <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary/10">
-              <svg class="h-5 w-5 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <svg class="h-5 w-5 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             </div>
             <p class="text-text-secondary leading-relaxed">
               You find out you're out of your best-selling strap when a customer asks for it.
             </p>
           </div>
 
-          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm" style="transition-delay: 0.15s;">
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out card-lift rounded-2xl border border-border-subtle bg-white p-6 shadow-sm" style="transition-delay: 0.15s;">
             <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary/10">
-              <svg class="h-5 w-5 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <svg class="h-5 w-5 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <p class="text-text-secondary leading-relaxed">
               A good account quietly stops ordering — and you notice three months too late.
@@ -96,32 +98,20 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
     <section class="px-5 py-20 md:py-24">
       <div class="mx-auto max-w-4xl">
         <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out text-center mb-12">
-          <h2 class="text-3xl font-bold md:text-4xl">How it works</h2>
+          <h2 class="text-3xl font-bold tracking-tight md:text-4xl">How it works</h2>
         </div>
 
         <div class="relative grid gap-8 md:grid-cols-3">
           <!-- Connecting line (desktop only) -->
-          <div class="pointer-events-none absolute left-0 right-0 top-8 hidden h-px bg-gradient-to-r from-transparent via-brand-primary/30 to-transparent md:block"></div>
+          <div class="pointer-events-none absolute left-0 right-0 top-8 hidden h-px bg-brand-primary/20 md:block" aria-hidden="true"></div>
 
           {[
-            {
-              step: "01",
-              title: "Connect your data.",
-              body: "Upload a CSV or connect Shopify, QuickBooks, and Google Sheets. No migration, no new system to run your business on.",
-            },
-            {
-              step: "02",
-              title: "Trackt does the math.",
-              body: "Sales velocity, supplier lead times, reorder timing, customer buying rhythms — calculated automatically, explained in plain English.",
-            },
-            {
-              step: "03",
-              title: "Act before it costs you.",
-              body: "Reorder alerts before stockouts. Dead-stock reports before inventory becomes dust. A nudge when a customer is overdue.",
-            },
+            { step: "01", title: "Connect your data.", body: "Upload a CSV or connect Shopify, QuickBooks, and Google Sheets. No migration, no new system to run your business on." },
+            { step: "02", title: "Trackt does the math.", body: "Sales velocity, supplier lead times, reorder timing, customer buying rhythms — calculated automatically, explained in plain English." },
+            { step: "03", title: "Act before it costs you.", body: "Reorder alerts before stockouts. Dead-stock reports before inventory becomes dust. A nudge when a customer is overdue." },
           ].map(({ step, title, body }, i) => (
             <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out flex flex-col items-center text-center" style={`transition-delay: ${i * 0.08}s;`}>
-              <div class="relative mb-5 flex h-16 w-16 items-center justify-center rounded-full border border-brand-primary/40 bg-brand-primary/10 text-xl font-bold text-brand-primary">
+              <div class="relative mb-5 flex h-16 w-16 items-center justify-center rounded-full border-2 border-brand-primary/30 bg-white text-xl font-bold text-brand-primary shadow-sm">
                 {step}
               </div>
               <h3 class="mb-2 text-lg font-semibold text-text-primary">{title}</h3>
@@ -133,25 +123,29 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
     </section>
 
     <!-- ── FEATURE BLOCKS ── -->
-    <section class="px-5 py-20 md:py-24">
+    <section class="bg-bg-elevated px-5 py-20 md:py-24">
       <div class="mx-auto max-w-5xl">
         <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out text-center mb-14">
-          <h2 class="text-3xl font-bold md:text-4xl">Everything in one place</h2>
+          <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Everything in one place</h2>
         </div>
 
-        <div class="space-y-16">
+        <div class="space-y-20">
 
           <!-- Reorder alerts -->
-          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-8 md:grid-cols-2 md:items-center">
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-10 md:grid-cols-2 md:items-center">
             <div>
-              <div class="mb-3 inline-flex items-center gap-2 text-sm font-medium text-brand-primary">
-                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              <div class="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-brand-primary">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
                 Reorder alerts
               </div>
-              <h3 class="mb-3 text-2xl font-bold">Not "low stock." Know when to order today.</h3>
+              <h3 class="mb-3 text-2xl font-bold tracking-tight">Not "low stock." Know when to order today.</h3>
               <p class="text-text-secondary leading-relaxed">Not "low stock." Trackt knows you sell 4.2 a day and your supplier takes 14 days — so it tells you to order today, and how many.</p>
             </div>
-            <div class="rounded-2xl border border-border-subtle bg-bg-card overflow-hidden">
+            <div class="tw-browser-panel">
+              <div class="tw-browser-chrome-bar">
+                <div class="tw-mac-dots"><span class="tw-mac-dot" style="background:#FC5F5A"></span><span class="tw-mac-dot" style="background:#FDBC2F"></span><span class="tw-mac-dot" style="background:#33C748"></span></div>
+                <span class="tw-browser-tab-label">Trackt — Reorder Alerts</span>
+              </div>
               <div class="tw-widget">
                 <div class="tw-widget-header">
                   <span class="tw-widget-title">Reorder Alerts</span>
@@ -204,8 +198,12 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
           </div>
 
           <!-- Dead stock -->
-          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-8 md:grid-cols-2 md:items-center">
-            <div class="order-2 md:order-1 rounded-2xl border border-border-subtle bg-bg-card overflow-hidden">
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-10 md:grid-cols-2 md:items-center">
+            <div class="order-2 md:order-1 tw-browser-panel">
+              <div class="tw-browser-chrome-bar">
+                <div class="tw-mac-dots"><span class="tw-mac-dot" style="background:#FC5F5A"></span><span class="tw-mac-dot" style="background:#FDBC2F"></span><span class="tw-mac-dot" style="background:#33C748"></span></div>
+                <span class="tw-browser-tab-label">Trackt — Dead Stock Report</span>
+              </div>
               <div class="tw-widget">
                 <div class="tw-widget-header">
                   <span class="tw-widget-title">Dead Stock Report</span>
@@ -218,79 +216,53 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
                 </div>
                 <div class="tw-ds-list">
                   <div class="tw-ds-row">
-                    <div class="tw-ds-row-top">
-                      <span class="tw-ds-name">PCV Valve Kit PCV-44</span>
-                      <span class="tw-ds-tag tw-ds-tag-clearance">Clearance</span>
-                    </div>
-                    <div class="tw-ds-row-bottom">
-                      <div class="tw-ds-bar-container"><div class="tw-ds-bar tw-ds-bar-red" style="width:100%"></div></div>
-                      <div class="tw-ds-stats"><span class="tw-ds-days">201 days</span><span class="tw-ds-cash">$420</span></div>
-                    </div>
+                    <div class="tw-ds-row-top"><span class="tw-ds-name">PCV Valve Kit PCV-44</span><span class="tw-ds-tag tw-ds-tag-clearance">Clearance</span></div>
+                    <div class="tw-ds-row-bottom"><div class="tw-ds-bar-container"><div class="tw-ds-bar tw-ds-bar-red" style="width:100%"></div></div><div class="tw-ds-stats"><span class="tw-ds-days">201 days</span><span class="tw-ds-cash">$420</span></div></div>
                   </div>
                   <div class="tw-ds-row">
-                    <div class="tw-ds-row-top">
-                      <span class="tw-ds-name">Economy Air Filter AF-220</span>
-                      <span class="tw-ds-tag tw-ds-tag-discount">Discount</span>
-                    </div>
-                    <div class="tw-ds-row-bottom">
-                      <div class="tw-ds-bar-container"><div class="tw-ds-bar tw-ds-bar-red" style="width:91.5%"></div></div>
-                      <div class="tw-ds-stats"><span class="tw-ds-days">183 days</span><span class="tw-ds-cash">$890</span></div>
-                    </div>
+                    <div class="tw-ds-row-top"><span class="tw-ds-name">Economy Air Filter AF-220</span><span class="tw-ds-tag tw-ds-tag-discount">Discount</span></div>
+                    <div class="tw-ds-row-bottom"><div class="tw-ds-bar-container"><div class="tw-ds-bar tw-ds-bar-red" style="width:91.5%"></div></div><div class="tw-ds-stats"><span class="tw-ds-days">183 days</span><span class="tw-ds-cash">$890</span></div></div>
                   </div>
                   <div class="tw-ds-row">
-                    <div class="tw-ds-row-top">
-                      <span class="tw-ds-name">OBD Connector Harness H-80</span>
-                      <span class="tw-ds-tag tw-ds-tag-clearance">Clearance</span>
-                    </div>
-                    <div class="tw-ds-row-bottom">
-                      <div class="tw-ds-bar-container"><div class="tw-ds-bar tw-ds-bar-red" style="width:83.5%"></div></div>
-                      <div class="tw-ds-stats"><span class="tw-ds-days">167 days</span><span class="tw-ds-cash">$680</span></div>
-                    </div>
+                    <div class="tw-ds-row-top"><span class="tw-ds-name">OBD Connector Harness H-80</span><span class="tw-ds-tag tw-ds-tag-clearance">Clearance</span></div>
+                    <div class="tw-ds-row-bottom"><div class="tw-ds-bar-container"><div class="tw-ds-bar tw-ds-bar-red" style="width:83.5%"></div></div><div class="tw-ds-stats"><span class="tw-ds-days">167 days</span><span class="tw-ds-cash">$680</span></div></div>
                   </div>
                   <div class="tw-ds-row">
-                    <div class="tw-ds-row-top">
-                      <span class="tw-ds-name">Moog Tie Rod End ES3571</span>
-                      <span class="tw-ds-tag tw-ds-tag-clearance">Clearance</span>
-                    </div>
-                    <div class="tw-ds-row-bottom">
-                      <div class="tw-ds-bar-container"><div class="tw-ds-bar tw-ds-bar-red" style="width:73.5%"></div></div>
-                      <div class="tw-ds-stats"><span class="tw-ds-days">147 days</span><span class="tw-ds-cash">$1,240</span></div>
-                    </div>
+                    <div class="tw-ds-row-top"><span class="tw-ds-name">Moog Tie Rod End ES3571</span><span class="tw-ds-tag tw-ds-tag-clearance">Clearance</span></div>
+                    <div class="tw-ds-row-bottom"><div class="tw-ds-bar-container"><div class="tw-ds-bar tw-ds-bar-red" style="width:73.5%"></div></div><div class="tw-ds-stats"><span class="tw-ds-days">147 days</span><span class="tw-ds-cash">$1,240</span></div></div>
                   </div>
                   <div class="tw-ds-row">
-                    <div class="tw-ds-row-top">
-                      <span class="tw-ds-name">Spark Plug Set NGK-R</span>
-                      <span class="tw-ds-tag tw-ds-tag-discount">Discount</span>
-                    </div>
-                    <div class="tw-ds-row-bottom">
-                      <div class="tw-ds-bar-container"><div class="tw-ds-bar tw-ds-bar-amber" style="width:47%"></div></div>
-                      <div class="tw-ds-stats"><span class="tw-ds-days">94 days</span><span class="tw-ds-cash">$3,100</span></div>
-                    </div>
+                    <div class="tw-ds-row-top"><span class="tw-ds-name">Spark Plug Set NGK-R</span><span class="tw-ds-tag tw-ds-tag-discount">Discount</span></div>
+                    <div class="tw-ds-row-bottom"><div class="tw-ds-bar-container"><div class="tw-ds-bar tw-ds-bar-amber" style="width:47%"></div></div><div class="tw-ds-stats"><span class="tw-ds-days">94 days</span><span class="tw-ds-cash">$3,100</span></div></div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="order-1 md:order-2">
-              <div class="mb-3 inline-flex items-center gap-2 text-sm font-medium text-brand-primary">
-                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <div class="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-brand-primary">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 Dead stock
               </div>
-              <h3 class="mb-3 text-2xl font-bold">See the cash sitting on your shelves.</h3>
+              <h3 class="mb-3 text-2xl font-bold tracking-tight">See the cash sitting on your shelves.</h3>
               <p class="text-text-secondary leading-relaxed">See exactly how much cash is sitting on shelves that haven't sold in 90 days, and free it up.</p>
             </div>
           </div>
 
           <!-- Trends -->
-          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-8 md:grid-cols-2 md:items-center">
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-10 md:grid-cols-2 md:items-center">
             <div>
-              <div class="mb-3 inline-flex items-center gap-2 text-sm font-medium text-brand-primary">
-                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              <div class="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-brand-primary">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
                 Trends
               </div>
-              <h3 class="mb-3 text-2xl font-bold">Spot seasonal demand before it spikes.</h3>
+              <h3 class="mb-3 text-2xl font-bold tracking-tight">Spot seasonal demand before it spikes.</h3>
               <p class="text-text-secondary leading-relaxed">What's heating up, what's cooling off — spot seasonal demand before it spikes, not after.</p>
             </div>
-            <div class="rounded-2xl border border-border-subtle bg-bg-card overflow-hidden">
+            <div class="tw-browser-panel">
+              <div class="tw-browser-chrome-bar">
+                <div class="tw-mac-dots"><span class="tw-mac-dot" style="background:#FC5F5A"></span><span class="tw-mac-dot" style="background:#FDBC2F"></span><span class="tw-mac-dot" style="background:#33C748"></span></div>
+                <span class="tw-browser-tab-label">Trackt — Sales Trends</span>
+              </div>
               <div class="tw-widget">
                 <div class="tw-widget-header">
                   <span class="tw-widget-title">Sales Trends — 12 weeks</span>
@@ -309,8 +281,12 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
           </div>
 
           <!-- Customer reorder radar -->
-          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-8 md:grid-cols-2 md:items-center">
-            <div class="order-2 md:order-1 rounded-2xl border border-border-subtle bg-bg-card overflow-hidden">
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-10 md:grid-cols-2 md:items-center">
+            <div class="order-2 md:order-1 tw-browser-panel">
+              <div class="tw-browser-chrome-bar">
+                <div class="tw-mac-dots"><span class="tw-mac-dot" style="background:#FC5F5A"></span><span class="tw-mac-dot" style="background:#FDBC2F"></span><span class="tw-mac-dot" style="background:#33C748"></span></div>
+                <span class="tw-browser-tab-label">Trackt — Customer Radar</span>
+              </div>
               <div class="tw-widget">
                 <div class="tw-widget-header">
                   <span class="tw-widget-title">Customer Reorder Radar</span>
@@ -324,79 +300,55 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
                 <div class="tw-cust-list">
                   <div class="tw-cust-row tw-cust-row-red">
                     <div class="tw-cust-avatar tw-cust-avatar-red">RF</div>
-                    <div class="tw-cust-info">
-                      <div class="tw-cust-name">Rivera Fleet Services</div>
-                      <div class="tw-cust-meta">Every 21 days · last order 28d ago</div>
-                    </div>
-                    <div class="tw-cust-right">
-                      <div class="tw-cust-overdue-red">7d overdue</div>
-                      <div class="tw-cust-gmv">$4,200/mo</div>
-                    </div>
+                    <div class="tw-cust-info"><div class="tw-cust-name">Rivera Fleet Services</div><div class="tw-cust-meta">Every 21 days · last order 28d ago</div></div>
+                    <div class="tw-cust-right"><div class="tw-cust-overdue-red">7d overdue</div><div class="tw-cust-gmv">$4,200/mo</div></div>
                   </div>
                   <div class="tw-cust-row tw-cust-row-amber">
                     <div class="tw-cust-avatar tw-cust-avatar-amber">LT</div>
-                    <div class="tw-cust-info">
-                      <div class="tw-cust-name">Lakeside Tire &amp; Auto</div>
-                      <div class="tw-cust-meta">Every 14 days · last order 19d ago</div>
-                    </div>
-                    <div class="tw-cust-right">
-                      <div class="tw-cust-overdue-amber">5d overdue</div>
-                      <div class="tw-cust-gmv">$2,800/mo</div>
-                    </div>
+                    <div class="tw-cust-info"><div class="tw-cust-name">Lakeside Tire &amp; Auto</div><div class="tw-cust-meta">Every 14 days · last order 19d ago</div></div>
+                    <div class="tw-cust-right"><div class="tw-cust-overdue-amber">5d overdue</div><div class="tw-cust-gmv">$2,800/mo</div></div>
                   </div>
                   <div class="tw-cust-row tw-cust-row-amber">
                     <div class="tw-cust-avatar tw-cust-avatar-amber">MA</div>
-                    <div class="tw-cust-info">
-                      <div class="tw-cust-name">Metro Auto Group</div>
-                      <div class="tw-cust-meta">Every 7 days · last order 11d ago</div>
-                    </div>
-                    <div class="tw-cust-right">
-                      <div class="tw-cust-overdue-amber">4d overdue</div>
-                      <div class="tw-cust-gmv">$1,900/mo</div>
-                    </div>
+                    <div class="tw-cust-info"><div class="tw-cust-name">Metro Auto Group</div><div class="tw-cust-meta">Every 7 days · last order 11d ago</div></div>
+                    <div class="tw-cust-right"><div class="tw-cust-overdue-amber">4d overdue</div><div class="tw-cust-gmv">$1,900/mo</div></div>
                   </div>
                   <div class="tw-cust-row tw-cust-row-green">
                     <div class="tw-cust-avatar tw-cust-avatar-green">SP</div>
-                    <div class="tw-cust-info">
-                      <div class="tw-cust-name">Summit Parts Depot</div>
-                      <div class="tw-cust-meta">Every 30 days · last order 27d ago</div>
-                    </div>
-                    <div class="tw-cust-right">
-                      <div class="tw-cust-ontrack">On track</div>
-                      <div class="tw-cust-gmv">$6,500/mo</div>
-                    </div>
+                    <div class="tw-cust-info"><div class="tw-cust-name">Summit Parts Depot</div><div class="tw-cust-meta">Every 30 days · last order 27d ago</div></div>
+                    <div class="tw-cust-right"><div class="tw-cust-ontrack">On track</div><div class="tw-cust-gmv">$6,500/mo</div></div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="order-1 md:order-2">
-              <div class="mb-3 inline-flex items-center gap-2 text-sm font-medium text-brand-primary">
-                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <div class="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-brand-primary">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                 Customer reorder radar
               </div>
-              <h3 class="mb-3 text-2xl font-bold">Know when a good account goes quiet.</h3>
+              <h3 class="mb-3 text-2xl font-bold tracking-tight">Know when a good account goes quiet.</h3>
               <p class="text-text-secondary leading-relaxed">Every account has a rhythm. When a customer goes quiet past theirs, Trackt flags it and drafts the win-back email.</p>
             </div>
           </div>
 
           <!-- Monday digest -->
-          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-8 md:grid-cols-2 md:items-center">
+          <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out grid gap-10 md:grid-cols-2 md:items-center">
             <div>
-              <div class="mb-3 inline-flex items-center gap-2 text-sm font-medium text-brand-primary">
-                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <div class="mb-3 inline-flex items-center gap-2 text-sm font-semibold text-brand-primary">
+                <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 Monday digest
               </div>
-              <h3 class="mb-3 text-2xl font-bold">Your week's priorities in one email.</h3>
+              <h3 class="mb-3 text-2xl font-bold tracking-tight">Your week's priorities in one email.</h3>
               <p class="text-text-secondary leading-relaxed">Your week's priorities in one email: what to order, who to call, what to clear.</p>
             </div>
-            <div class="rounded-2xl border border-border-subtle bg-bg-card overflow-hidden">
+            <div class="tw-browser-panel">
+              <div class="tw-browser-chrome-bar">
+                <div class="tw-mac-dots"><span class="tw-mac-dot" style="background:#FC5F5A"></span><span class="tw-mac-dot" style="background:#FDBC2F"></span><span class="tw-mac-dot" style="background:#33C748"></span></div>
+                <span class="tw-browser-tab-label">Monday Digest — Jun 9, 2026</span>
+              </div>
               <div class="tw-email">
                 <div class="tw-email-chrome">
-                  <div class="tw-email-dots">
-                    <span class="tw-dot-mac tw-dot-mac-red"></span>
-                    <span class="tw-dot-mac tw-dot-mac-amber"></span>
-                    <span class="tw-dot-mac tw-dot-mac-green"></span>
-                  </div>
+                  <div class="tw-email-dots"><span class="tw-dot-mac tw-dot-mac-red"></span><span class="tw-dot-mac tw-dot-mac-amber"></span><span class="tw-dot-mac tw-dot-mac-green"></span></div>
                   <span class="tw-email-chrome-label">Monday Digest</span>
                   <span class="tw-demo-pill">Demo data</span>
                 </div>
@@ -441,116 +393,76 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
     </section>
 
     <!-- ── FOUNDING CUSTOMER OFFER ── -->
-    <section class="px-5 py-20 md:py-24">
+    <section class="bg-brand-primary px-5 py-20 md:py-24">
       <div class="mx-auto max-w-3xl">
         <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
-          <div class="relative overflow-hidden rounded-2xl border border-brand-primary/40 bg-brand-primary/5 p-8 shadow-[0_0_60px_rgba(22,180,210,0.12)] backdrop-blur-sm md:p-12">
-            <!-- Teal glow accent -->
-            <div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand-primary/15 blur-[80px]"></div>
+          <div class="rounded-2xl bg-white p-8 shadow-2xl md:p-12">
 
-            <div class="relative z-10">
-              <div class="mb-4 inline-flex items-center gap-1.5 rounded-full border border-brand-primary/40 bg-brand-primary/15 px-3.5 py-1.5 text-sm font-medium text-brand-primary">
-                <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>
-                Founding customer offer
-              </div>
-
-              <h2 class="mb-4 text-3xl font-bold md:text-4xl">Be one of the first five.</h2>
-              <p class="mb-8 text-lg text-text-secondary leading-relaxed">
-                The first 5 distributors get Trackt for <span class="font-semibold text-text-primary">$99/month locked in for life</span> (regular $149), hands-on onboarding done with you personally, and a direct line to shape what gets built.
-              </p>
-
-              <a
-                href="#early-access"
-                data-founding="true"
-                class="btn-shimmer inline-flex items-center gap-2 rounded-xl bg-brand-primary px-8 py-4 text-lg font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_0_30px_var(--color-brand-glow)]"
-              >
-                Claim a founding spot
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </a>
+            <div class="mb-5 inline-flex items-center gap-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/8 px-3.5 py-1.5 text-sm font-semibold text-brand-primary">
+              <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></svg>
+              Founding customer offer
             </div>
+
+            <h2 class="mb-4 text-3xl font-bold tracking-tight md:text-4xl">Be one of the first five.</h2>
+            <p class="mb-8 max-w-xl text-lg text-text-secondary leading-relaxed">
+              The first 5 distributors get Trackt for <span class="font-semibold text-text-primary">$99/month locked in for life</span> (regular $149), hands-on onboarding done with you personally, and a direct line to shape what gets built.
+            </p>
+
+            <a
+              href="#early-access"
+              data-founding="true"
+              class="btn-shimmer inline-flex items-center gap-2 rounded-xl bg-brand-primary px-8 py-4 text-lg font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md"
+            >
+              Claim a founding spot
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+
           </div>
         </div>
       </div>
     </section>
 
     <!-- ── EARLY ACCESS FORM ── -->
-    <section id="early-access" class="relative overflow-hidden px-5 py-20 md:py-28">
-      <div class="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-primary/10 blur-[100px]"></div>
-
-      <div class="relative z-10 mx-auto max-w-xl">
+    <section id="early-access" class="bg-bg-elevated px-5 py-20 md:py-28">
+      <div class="mx-auto max-w-xl">
         <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out">
-          <div class="rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-[0_0_60px_rgba(22,180,210,0.06)] backdrop-blur-sm md:p-10">
+          <div class="rounded-2xl border border-border-subtle bg-white p-6 shadow-sm md:p-10">
 
-            <div class="mb-5 inline-flex items-center gap-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 px-3.5 py-1.5 text-sm font-medium text-brand-primary">
-              <span class="h-1.5 w-1.5 rounded-full bg-brand-primary animate-pulse"></span>
+            <div class="mb-5 inline-flex items-center gap-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/8 px-3.5 py-1.5 text-sm font-semibold text-brand-primary">
+              <span class="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
               Early access
             </div>
 
-            <h2 class="text-2xl font-bold md:text-3xl">Join early access</h2>
+            <h2 class="text-2xl font-bold tracking-tight md:text-3xl">Join early access</h2>
             <p class="mt-3 text-text-secondary">
               I'll personally reach out as early access opens.
             </p>
 
-            <!-- Form -->
             <form id="trackt-form" novalidate class="mt-8 space-y-4">
-              <!-- Hidden founding flag, toggled by JS when arriving from founding CTA -->
               <input type="hidden" id="trackt-founding" name="founding" value="false" />
 
               <div>
-                <label for="trackt-name" class="mb-1.5 block text-sm font-medium text-text-secondary">
-                  Name <span class="text-brand-primary">*</span>
-                </label>
-                <input
-                  id="trackt-name"
-                  type="text"
-                  name="name"
-                  placeholder="Your name"
-                  required
-                  autocomplete="name"
-                  class="w-full rounded-xl border border-border-subtle bg-white/[0.04] px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20"
-                />
+                <label for="trackt-name" class="mb-1.5 block text-sm font-medium text-text-secondary">Name <span class="text-brand-primary">*</span></label>
+                <input id="trackt-name" type="text" name="name" placeholder="Your name" required autocomplete="name"
+                  class="w-full rounded-xl border border-border-subtle bg-white px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/15" />
               </div>
 
               <div>
-                <label for="trackt-business" class="mb-1.5 block text-sm font-medium text-text-secondary">
-                  Business name <span class="text-brand-primary">*</span>
-                </label>
-                <input
-                  id="trackt-business"
-                  type="text"
-                  name="business"
-                  placeholder="Your company"
-                  required
-                  autocomplete="organization"
-                  class="w-full rounded-xl border border-border-subtle bg-white/[0.04] px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20"
-                />
+                <label for="trackt-business" class="mb-1.5 block text-sm font-medium text-text-secondary">Business name <span class="text-brand-primary">*</span></label>
+                <input id="trackt-business" type="text" name="business" placeholder="Your company" required autocomplete="organization"
+                  class="w-full rounded-xl border border-border-subtle bg-white px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/15" />
               </div>
 
               <div>
-                <label for="trackt-email" class="mb-1.5 block text-sm font-medium text-text-secondary">
-                  Email <span class="text-brand-primary">*</span>
-                </label>
-                <input
-                  id="trackt-email"
-                  type="email"
-                  name="email"
-                  placeholder="your@email.com"
-                  required
-                  autocomplete="email"
-                  inputmode="email"
-                  class="w-full rounded-xl border border-border-subtle bg-white/[0.04] px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20"
-                />
+                <label for="trackt-email" class="mb-1.5 block text-sm font-medium text-text-secondary">Email <span class="text-brand-primary">*</span></label>
+                <input id="trackt-email" type="email" name="email" placeholder="your@email.com" required autocomplete="email" inputmode="email"
+                  class="w-full rounded-xl border border-border-subtle bg-white px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/15" />
               </div>
 
               <div>
-                <label for="trackt-inventory" class="mb-1.5 block text-sm font-medium text-text-secondary">
-                  How do you track inventory today?
-                </label>
-                <select
-                  id="trackt-inventory"
-                  name="inventory_method"
-                  class="w-full rounded-xl border border-border-subtle bg-bg-elevated px-4 py-3.5 text-base text-text-primary outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20 appearance-none"
-                >
+                <label for="trackt-inventory" class="mb-1.5 block text-sm font-medium text-text-secondary">How do you track inventory today?</label>
+                <select id="trackt-inventory" name="inventory_method"
+                  class="w-full rounded-xl border border-border-subtle bg-white px-4 py-3.5 text-base text-text-primary outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/15 appearance-none cursor-pointer">
                   <option value="" disabled selected>Select one…</option>
                   <option value="Spreadsheet">Spreadsheet</option>
                   <option value="QuickBooks">QuickBooks</option>
@@ -560,23 +472,19 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
                 </select>
               </div>
 
-              <p id="trackt-error" class="hidden text-sm font-medium text-red-400"></p>
+              <p id="trackt-error" class="hidden text-sm font-medium text-red-500"></p>
 
-              <button
-                type="submit"
-                id="trackt-btn"
-                class="btn-shimmer flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-6 py-3.5 text-base font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_0_30px_var(--color-brand-glow)] disabled:cursor-not-allowed disabled:opacity-60"
-              >
+              <button type="submit" id="trackt-btn"
+                class="btn-shimmer flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-6 py-3.5 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60">
                 <span id="trackt-btn-text">Join early access</span>
-                <svg id="trackt-btn-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <svg id="trackt-btn-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </button>
             </form>
 
-            <!-- Success state -->
             <div id="trackt-success" class="mt-8 hidden">
               <div class="flex flex-col items-center gap-3 text-center">
-                <div class="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/15">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-400"><path d="M20 6 9 17l-5-5"/></svg>
+                <div class="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/12">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-500"><path d="M20 6 9 17l-5-5"/></svg>
                 </div>
                 <p class="text-lg font-semibold text-text-primary">You're on the list!</p>
                 <p class="text-sm text-text-secondary">I'll personally reach out as early access opens.</p>
@@ -593,42 +501,25 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
     <section class="px-5 py-20 md:py-24">
       <div class="mx-auto max-w-2xl">
         <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out text-center mb-12">
-          <h2 class="text-3xl font-bold md:text-4xl">Questions</h2>
+          <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Questions</h2>
         </div>
 
-        <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out space-y-3">
-
+        <div class="scroll-reveal opacity-0 translate-y-8 transition-all duration-700 ease-out space-y-2">
           {[
-            {
-              q: "What do I need to use it?",
-              a: "Any of: a CSV export from your current system, Shopify, QuickBooks Online, or a Google Sheet. If your system can export a spreadsheet, Trackt can read it.",
-            },
-            {
-              q: "Is my data safe?",
-              a: "Your data is isolated to your company account, encrypted in transit and at rest, and never shared or sold. You can export or delete it anytime.",
-            },
-            {
-              q: "What does it cost?",
-              a: "$149/month per company — unlimited team members. Founding customers: $99/month locked for life.",
-            },
-            {
-              q: "When does it launch?",
-              a: "Early access begins in 2026. Joining the list gets you first in line and a say in what ships first.",
-            },
-            {
-              q: "Who's building this?",
-              a: "Trackt Tech — I build software for small businesses and run operations at a parts distributor, which is exactly where this product was born.",
-            },
+            { q: "What do I need to use it?", a: "Any of: a CSV export from your current system, Shopify, QuickBooks Online, or a Google Sheet. If your system can export a spreadsheet, Trackt can read it." },
+            { q: "Is my data safe?", a: "Your data is isolated to your company account, encrypted in transit and at rest, and never shared or sold. You can export or delete it anytime." },
+            { q: "What does it cost?", a: "$149/month per company — unlimited team members. Founding customers: $99/month locked for life." },
+            { q: "When does it launch?", a: "Early access begins in 2026. Joining the list gets you first in line and a say in what ships first." },
+            { q: "Who's building this?", a: "Trackt Tech — I build software for small businesses and run operations at a parts distributor, which is exactly where this product was born." },
           ].map(({ q, a }) => (
-            <details class="group rounded-2xl border border-border-subtle bg-bg-card backdrop-blur-sm transition-all hover:border-brand-primary/30">
-              <summary class="flex cursor-pointer items-center justify-between gap-4 p-5 font-semibold text-text-primary list-none">
+            <details class="group rounded-xl border border-border-subtle bg-white shadow-sm transition-all duration-200 hover:border-brand-primary/30 hover:shadow-md">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold text-text-primary">
                 {q}
-                <svg class="h-4 w-4 shrink-0 text-brand-primary transition-transform duration-200 group-open:rotate-45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                <svg class="h-4 w-4 shrink-0 text-brand-primary transition-transform duration-200 group-open:rotate-45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               </summary>
-              <p class="px-5 pb-5 text-text-secondary leading-relaxed">{a}</p>
+              <p class="px-5 pb-5 pt-0 text-text-secondary leading-relaxed">{a}</p>
             </details>
           ))}
-
         </div>
       </div>
     </section>
@@ -637,7 +528,27 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
   <Footer />
 
 <style is:global>
-/* ── Trackt Demo Widgets ── */
+/* ── Browser panel frame for demo widgets ── */
+.tw-browser-panel {
+  background: #111820;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 16px 48px rgba(16,20,24,0.18), 0 4px 16px rgba(16,20,24,0.10);
+}
+.tw-browser-chrome-bar {
+  background: #1a1f2a;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 9px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tw-mac-dots { display: flex; gap: 5px; flex-shrink: 0; }
+.tw-mac-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.tw-browser-tab-label { flex: 1; font-size: 10px; color: rgba(255,255,255,0.35); text-align: center; font-family: system-ui, sans-serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── Trackt Demo Widget internals ── */
 .tw-widget { padding: 1.25rem; }
 .tw-widget-header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.875rem; }
 .tw-widget-title { font-size: 0.875rem; font-weight: 600; color: #f0f0f5; letter-spacing: -0.01em; }
@@ -648,7 +559,6 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
 .tw-chip-amber { background: rgba(245,158,11,0.12); color: #fbbf24; border-color: rgba(245,158,11,0.25); }
 .tw-chip-green { background: rgba(16,185,129,0.12); color: #34d399; border-color: rgba(16,185,129,0.25); }
 .tw-chip-neutral { background: rgba(255,255,255,0.05); color: #9ca3af; border-color: rgba(255,255,255,0.1); }
-/* shared dots */
 .tw-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; display: inline-block; }
 .tw-dot-red { background: #ef4444; }
 .tw-dot-amber { background: #f59e0b; }
@@ -674,6 +584,7 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
 .tw-order-chip-green { color: #10b981; background: rgba(16,185,129,0.15); }
 /* widget 2 — dead stock */
 .tw-ds-list { display: flex; flex-direction: column; gap: 0.625rem; }
+.tw-ds-row { }
 .tw-ds-row-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.3rem; }
 .tw-ds-name { font-size: 0.8125rem; font-weight: 500; color: #f0f0f5; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .tw-ds-tag { font-size: 0.625rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; padding: 0.15rem 0.5rem; flex-shrink: 0; border: 1px solid; }
@@ -747,39 +658,9 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
         data: {
           labels: ['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12'],
           datasets: [
-            {
-              label: 'Belt K6',
-              data: [42,38,45,50,48,55,58,62,68,71,74,79],
-              borderColor: '#16b4d2',
-              backgroundColor: 'rgba(22,180,210,0.08)',
-              borderWidth: 2,
-              pointRadius: 2.5,
-              pointHoverRadius: 4,
-              tension: 0.4,
-              fill: true,
-            },
-            {
-              label: 'Tie Rod ES3571',
-              data: [28,30,25,22,20,18,21,16,14,12,10,8],
-              borderColor: '#ef4444',
-              backgroundColor: 'rgba(239,68,68,0.07)',
-              borderWidth: 2,
-              pointRadius: 2.5,
-              pointHoverRadius: 4,
-              tension: 0.4,
-              fill: true,
-            },
-            {
-              label: 'Oil Filter O-476',
-              data: [22,24,20,23,25,22,21,24,23,22,25,23],
-              borderColor: '#10b981',
-              backgroundColor: 'rgba(16,185,129,0.07)',
-              borderWidth: 2,
-              pointRadius: 2.5,
-              pointHoverRadius: 4,
-              tension: 0.4,
-              fill: true,
-            }
+            { label: 'Belt K6', data: [42,38,45,50,48,55,58,62,68,71,74,79], borderColor: '#16b4d2', backgroundColor: 'rgba(22,180,210,0.08)', borderWidth: 2, pointRadius: 2.5, pointHoverRadius: 4, tension: 0.4, fill: true },
+            { label: 'Tie Rod ES3571', data: [28,30,25,22,20,18,21,16,14,12,10,8], borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.07)', borderWidth: 2, pointRadius: 2.5, pointHoverRadius: 4, tension: 0.4, fill: true },
+            { label: 'Oil Filter O-476', data: [22,24,20,23,25,22,21,24,23,22,25,23], borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,0.07)', borderWidth: 2, pointRadius: 2.5, pointHoverRadius: 4, tension: 0.4, fill: true }
           ]
         },
         options: {
@@ -787,34 +668,12 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
           maintainAspectRatio: false,
           interaction: { mode: 'index', intersect: false },
           plugins: {
-            legend: {
-              labels: {
-                color: '#9ca3af',
-                font: { size: 11, family: "'Inter', system-ui, sans-serif" },
-                boxWidth: 12,
-                padding: 12,
-              }
-            },
-            tooltip: {
-              backgroundColor: 'rgba(18,18,26,0.96)',
-              titleColor: '#f0f0f5',
-              bodyColor: '#9ca3af',
-              borderColor: 'rgba(255,255,255,0.12)',
-              borderWidth: 1,
-              padding: 10,
-            }
+            legend: { labels: { color: '#9ca3af', font: { size: 11, family: "'Inter', system-ui, sans-serif" }, boxWidth: 12, padding: 12 } },
+            tooltip: { backgroundColor: 'rgba(18,18,26,0.96)', titleColor: '#f0f0f5', bodyColor: '#9ca3af', borderColor: 'rgba(255,255,255,0.12)', borderWidth: 1, padding: 10 }
           },
           scales: {
-            x: {
-              grid: { color: 'rgba(255,255,255,0.04)' },
-              ticks: { color: '#6b7280', font: { size: 10 } },
-              border: { color: 'rgba(255,255,255,0.08)' },
-            },
-            y: {
-              grid: { color: 'rgba(255,255,255,0.04)' },
-              ticks: { color: '#6b7280', font: { size: 10 } },
-              border: { color: 'rgba(255,255,255,0.08)' },
-            }
+            x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 10 } }, border: { color: 'rgba(255,255,255,0.08)' } },
+            y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#6b7280', font: { size: 10 } }, border: { color: 'rgba(255,255,255,0.08)' } }
           }
         }
       });
@@ -825,7 +684,6 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
 </BaseLayout>
 
 <script>
-  // Scroll reveal
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -835,28 +693,17 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.08 }
   );
   document.querySelectorAll(".scroll-reveal").forEach((el) => observer.observe(el));
 
-  // If arriving from "Claim a founding spot" CTA, pre-set the founding flag
   const foundingInput = document.getElementById("trackt-founding") as HTMLInputElement | null;
-  if (window.location.hash === "#early-access") {
-    // Check if the referring click was the founding CTA
-    document.querySelectorAll("[data-founding='true']").forEach((el) => {
-      el.addEventListener("click", () => {
-        if (foundingInput) foundingInput.value = "true";
-      });
-    });
-  }
-  // Always wire up founding CTAs regardless of hash
   document.querySelectorAll("[data-founding='true']").forEach((el) => {
     el.addEventListener("click", () => {
       if (foundingInput) foundingInput.value = "true";
     });
   });
 
-  // Form submission
   const form = document.getElementById("trackt-form") as HTMLFormElement | null;
   const nameInput = document.getElementById("trackt-name") as HTMLInputElement | null;
   const businessInput = document.getElementById("trackt-business") as HTMLInputElement | null;
@@ -870,25 +717,15 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
 
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
-
     const name = nameInput?.value?.trim() ?? "";
     const business = businessInput?.value?.trim() ?? "";
     const email = emailInput?.value?.trim() ?? "";
     const inventoryMethod = inventorySelect?.value ?? "";
     const founding = foundingInput?.value === "true";
 
-    if (!name) {
-      if (errorMsg) { errorMsg.textContent = "Please enter your name."; errorMsg.classList.remove("hidden"); }
-      return;
-    }
-    if (!business) {
-      if (errorMsg) { errorMsg.textContent = "Please enter your business name."; errorMsg.classList.remove("hidden"); }
-      return;
-    }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      if (errorMsg) { errorMsg.textContent = "Please enter a valid email address."; errorMsg.classList.remove("hidden"); }
-      return;
-    }
+    if (!name) { if (errorMsg) { errorMsg.textContent = "Please enter your name."; errorMsg.classList.remove("hidden"); } return; }
+    if (!business) { if (errorMsg) { errorMsg.textContent = "Please enter your business name."; errorMsg.classList.remove("hidden"); } return; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { if (errorMsg) { errorMsg.textContent = "Please enter a valid email address."; errorMsg.classList.remove("hidden"); } return; }
 
     errorMsg?.classList.add("hidden");
     if (btn) btn.disabled = true;
@@ -902,7 +739,6 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
         body: JSON.stringify({ name, business, email, inventory_method: inventoryMethod || undefined, founding }),
       });
       const data = await res.json();
-
       if (res.ok && data.ok) {
         form.classList.add("hidden");
         successDiv?.classList.remove("hidden");
@@ -910,10 +746,7 @@ const pageDescription = "One dashboard for your inventory, sales, and customer r
         throw new Error(data.error ?? "Something went wrong.");
       }
     } catch (err) {
-      if (errorMsg) {
-        errorMsg.textContent = err instanceof Error ? err.message : "Something went wrong. Please try again.";
-        errorMsg.classList.remove("hidden");
-      }
+      if (errorMsg) { errorMsg.textContent = err instanceof Error ? err.message : "Something went wrong. Please try again."; errorMsg.classList.remove("hidden"); }
       if (btn) btn.disabled = false;
       if (btnText) btnText.textContent = "Join early access";
       if (btnIcon) btnIcon.classList.remove("hidden");

@@ -1,646 +1,420 @@
-<!-- Checkmark SVG used in bullet lists -->
-{/* prettier-ignore */}
+---
+// Services section + demo case-study cards + contact form + pricing modal
+---
 
-<section id="consulting" class="relative overflow-hidden px-5 py-20 md:py-28">
+<!-- ─── SERVICES ─── -->
+<section id="services" class="px-5 py-20 md:py-28">
+  <div class="mx-auto max-w-6xl">
 
-  <!-- Ambient glow -->
-  <div class="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-accent/10 blur-[120px]"></div>
-
-  <div class="relative z-10 mx-auto max-w-6xl">
-
-    <!-- ─── Section heading ─── -->
-    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out text-center mb-16">
-      <div class="mb-5 inline-flex items-center gap-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/10 px-3.5 py-1.5 text-sm font-medium text-brand-primary">
-        <span class="h-1.5 w-1.5 rounded-full bg-brand-primary animate-pulse"></span>
+    <!-- Section heading -->
+    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out mb-14 text-center">
+      <div class="mb-4 inline-flex items-center gap-1.5 rounded-full border border-brand-primary/30 bg-brand-primary/8 px-3.5 py-1.5 text-sm font-semibold text-brand-primary">
+        <span class="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
         Available Now
       </div>
-      <h2 class="text-3xl font-bold leading-tight md:text-4xl">
-        Need Help Now?<br />
-        <span class="bg-linear-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent">
-          Let's Work Together.
-        </span>
+      <h2 class="text-3xl font-bold leading-tight tracking-tight md:text-4xl">
+        What I Can Build for You
       </h2>
       <p class="mx-auto mt-4 max-w-2xl text-lg text-text-secondary">
-        Tech consulting, systems building, and web design for small businesses — available today.
-      </p>
-      <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
-        Before building Trackt, I spent years solving real operational problems for small businesses — including designing and building a full inventory management system that tracked over $80,000 in warehouse and truck inventory. I know what it's like to run a small operation where nothing quite works the way it should. I can help you fix that.
+        I've spent years solving real operational problems for small businesses — including building a full inventory management system that tracked over $80,000 in warehouse and truck inventory. I know what it looks like when nothing quite works the way it should.
       </p>
     </div>
 
-    <!-- ─── Service cards ─── -->
-    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out grid grid-cols-1 gap-6 md:grid-cols-3">
+    <!-- Service cards -->
+    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out grid grid-cols-1 gap-5 md:grid-cols-3">
 
       <!-- Card 1: Tech Consulting & Systems -->
-      <div class="group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm transition-all hover:border-brand-primary/30 hover:shadow-[0_0_30px_var(--color-brand-glow)] md:p-8">
+      <div class="card-lift group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-sm md:p-8">
         <button class="service-card-toggle flex w-full items-center gap-4 text-left md:flex-col md:items-start md:gap-0 md:cursor-default md:pointer-events-none">
           <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary md:mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
           </div>
           <h3 class="flex-1 text-lg font-semibold text-text-primary md:mb-3 md:flex-none md:text-xl">Tech Consulting & Systems</h3>
-          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/50 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/40 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="accordion-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out md:max-h-none">
-          <ul class="mt-4 flex-1 space-y-2 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
+          <ul class="mt-4 flex-1 space-y-2.5 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
               Audit your current tools and workflows
             </li>
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
               Build or improve Google Sheets / Airtable / Notion systems
             </li>
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              Set up inventory tracking, sales tracking, or reporting dashboards
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Set up inventory tracking, sales tracking, or reporting
             </li>
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              Automate repetitive processes so your team saves hours each week
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Automate repetitive processes — save hours every week
             </li>
           </ul>
-          <p class="mt-5 text-sm font-medium text-brand-primary">Starting at $75/hr or flat-rate project pricing</p>
+          <p class="mt-5 text-sm font-semibold text-brand-primary">Starting at $75/hr or flat-rate</p>
         </div>
       </div>
 
       <!-- Card 2: Website Design & Development -->
-      <div class="group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm transition-all hover:border-brand-primary/30 hover:shadow-[0_0_30px_var(--color-brand-glow)] md:p-8">
+      <div class="card-lift group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-sm md:p-8">
         <button class="service-card-toggle flex w-full items-center gap-4 text-left md:flex-col md:items-start md:gap-0 md:cursor-default md:pointer-events-none">
           <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary md:mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           </div>
           <h3 class="flex-1 text-lg font-semibold text-text-primary md:mb-3 md:flex-none md:text-xl">Website Design & Development</h3>
-          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/50 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/40 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="accordion-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out md:max-h-none">
-          <ul class="mt-4 flex-1 space-y-2 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
+          <ul class="mt-4 flex-1 space-y-2.5 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
               Custom websites built to convert — not just look good
             </li>
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              Landing pages, business sites, portfolio sites, and eCommerce stores
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Landing pages, business sites, portfolios, and eCommerce
             </li>
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
               Shopify store setup and optimization
             </li>
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              Ongoing monthly maintenance plans available — no technical headaches for you
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Monthly maintenance plans — no tech headaches for you
             </li>
           </ul>
           <div class="mt-5 flex flex-wrap items-center justify-between gap-3">
-            <p class="text-sm font-medium text-brand-primary">Starting at $350 · Flat-rate packages, no surprises</p>
+            <p class="text-sm font-semibold text-brand-primary">Starting at $350 · Flat-rate packages</p>
             <button
               id="open-pricing-modal"
-              class="text-sm text-brand-primary underline-offset-2 hover:underline cursor-pointer transition-colors"
+              class="text-sm font-medium text-brand-primary underline-offset-2 hover:underline cursor-pointer transition-colors"
             >View Full Pricing →</button>
           </div>
         </div>
       </div>
 
       <!-- Card 3: Custom Software & Integrations -->
-      <div class="group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm transition-all hover:border-brand-primary/30 hover:shadow-[0_0_30px_var(--color-brand-glow)] md:p-8">
+      <div class="card-lift group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-sm md:p-8">
         <button class="service-card-toggle flex w-full items-center gap-4 text-left md:flex-col md:items-start md:gap-0 md:cursor-default md:pointer-events-none">
           <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary md:mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           </div>
           <h3 class="flex-1 text-lg font-semibold text-text-primary md:mb-3 md:flex-none md:text-xl">Custom Software & Integrations</h3>
-          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/50 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/40 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="accordion-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out md:max-h-none">
-          <ul class="mt-4 flex-1 space-y-2 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
+          <ul class="mt-4 flex-1 space-y-2.5 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
               Web apps and tools built for your specific workflow
             </li>
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
               API integrations between your existing platforms
             </li>
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
               Internal tools your team will actually use
             </li>
             <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
               Ongoing development retainers available
             </li>
           </ul>
-          <p class="mt-5 text-sm font-medium text-brand-primary">Starting at $500 · Scoped per project</p>
+          <p class="mt-5 text-sm font-semibold text-brand-primary">Starting at $500 · Scoped per project</p>
         </div>
       </div>
     </div>
 
-    <!-- ─── Website Showcase Marquee ─── -->
-    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out mt-16">
-      <div class="mb-6 flex items-center justify-center gap-3">
-        <p class="text-sm font-medium uppercase tracking-widest text-text-secondary/60">Work I've Built</p>
-        <span class="animate-pulse rounded-full border border-brand-primary/40 bg-brand-primary/5 px-2.5 py-0.5 text-[10px] font-semibold text-brand-primary">click to preview</span>
-      </div>
-      <div class="marquee-glow relative overflow-hidden py-2">
-        <!-- Fade edges -->
-        <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-linear-to-r from-bg-dark to-transparent"></div>
-        <div class="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-linear-to-l from-bg-dark to-transparent"></div>
-
-        <!-- Scrolling track — 5 cards × 2 copies = 10 total for seamless loop -->
-        <div class="marquee-track flex w-max gap-4">
-
-          <!-- ── Ridgeline Towing ── -->
-          <div class="relative shrink-0" style="width:300px;height:190px">
-            <span style="position:absolute;top:8px;right:8px;z-index:20;background:#d97706;color:#fff;font-family:sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:2px 7px;border-radius:20px;text-transform:uppercase;pointer-events:none;">DEMO</span>
-            <a href="https://demo.trackt.tech/towing/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl border border-border-subtle transition-transform hover:scale-[1.02] cursor-pointer" style="width:300px;height:190px">
-            <div class="flex items-center gap-1.5 bg-bg-elevated px-3 py-2">
-              <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-green-400/70"></span>
-              <div class="ml-2 flex-1 rounded-sm bg-white/[0.06] px-2 py-0.5 text-[10px] text-text-secondary/40">demo.trackt.tech/towing</div>
-            </div>
-            <div style="height:calc(100% - 34px);background:#0f1117;padding:10px 12px;font-family:sans-serif;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                <span style="color:#f97316;font-size:12px;font-weight:800;letter-spacing:0.5px;">RIDGELINE</span>
-                <div style="background:#f97316;color:#fff;font-size:8px;font-weight:700;padding:3px 7px;border-radius:3px;">Call Now</div>
-              </div>
-              <div style="margin-bottom:8px;">
-                <div style="color:#f5f5f5;font-size:12px;font-weight:700;line-height:1.2;margin-bottom:3px;">Fast. Reliable.<br/>24/7.</div>
-                <div style="color:#9ca3af;font-size:8px;margin-bottom:6px;">Towing &amp; Recovery Services</div>
-              </div>
-              <div style="display:flex;gap:5px;margin-bottom:7px;">
-                <div style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);border-radius:3px;padding:3px 6px;color:#f97316;font-size:7px;">🚛 Towing</div>
-                <div style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);border-radius:3px;padding:3px 6px;color:#f97316;font-size:7px;">🔧 Recovery</div>
-                <div style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);border-radius:3px;padding:3px 6px;color:#f97316;font-size:7px;">📍 GPS Dispatch</div>
-              </div>
-              <div style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.25);border-radius:4px;padding:5px 8px;display:flex;align-items:center;justify-content:space-between;">
-                <span style="color:#f5f5f5;font-size:8px;font-weight:600;">📞 (555) 247-8669</span>
-                <span style="color:#f97316;font-size:7px;font-weight:600;">Available 24/7 →</span>
-              </div>
-            </div>
-            </a>
-          </div>
-
-          <!-- ── Rialto Restaurant (DEMO) ── -->
-          <div class="relative shrink-0" style="width:300px;height:190px">
-            <span style="position:absolute;top:8px;right:8px;z-index:20;background:#d97706;color:#fff;font-family:sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:2px 7px;border-radius:20px;text-transform:uppercase;pointer-events:none;">DEMO</span>
-            <a href="https://demo.trackt.tech/restaurant/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl border border-border-subtle transition-transform hover:scale-[1.02] cursor-pointer" style="width:300px;height:190px">
-              <div class="flex items-center gap-1.5 bg-bg-elevated px-3 py-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-green-400/70"></span>
-                <div class="ml-2 flex-1 rounded-sm bg-white/[0.06] px-2 py-0.5 text-[10px] text-text-secondary/40">demo.trackt.tech/restaurant</div>
-              </div>
-              <div style="height:calc(100% - 34px);background:#1a1209;padding:10px 12px;font-family:serif;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;border-bottom:1px solid rgba(212,130,10,0.25);padding-bottom:6px;">
-                  <div>
-                    <div style="color:#d4820a;font-size:11px;font-weight:800;letter-spacing:2px;">RIALTO</div>
-                    <div style="color:#7a6040;font-size:7px;letter-spacing:1px;">NORTHERN ITALIAN KITCHEN</div>
-                  </div>
-                  <div style="background:#d4820a;color:#fff;font-size:8px;font-weight:700;padding:3px 7px;border-radius:3px;">Reserve</div>
-                </div>
-                <div style="margin-bottom:7px;">
-                  <div style="color:#f0e8d8;font-size:10px;font-style:italic;margin-bottom:5px;">Tonight's Features</div>
-                  <div style="display:flex;justify-content:space-between;padding-bottom:3px;border-bottom:1px solid rgba(255,255,255,0.05);">
-                    <span style="color:#c8b89a;font-size:8px;">Risotto al Tartufo</span>
-                    <span style="color:#d4820a;font-size:8px;">$28</span>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
-                    <span style="color:#c8b89a;font-size:8px;">Branzino al Limone</span>
-                    <span style="color:#d4820a;font-size:8px;">$34</span>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;padding-top:3px;">
-                    <span style="color:#c8b89a;font-size:8px;">Agnolotti del Plin</span>
-                    <span style="color:#d4820a;font-size:8px;">$26</span>
-                  </div>
-                </div>
-                <div style="color:#7a6040;font-size:7px;text-align:center;">★★★★★ · Tampa Magazine's Best Italian 2024</div>
-              </div>
-            </a>
-          </div>
-
-          <!-- ── Keller Realty (DEMO) ── -->
-          <div class="relative shrink-0" style="width:300px;height:190px">
-            <span style="position:absolute;top:8px;right:8px;z-index:20;background:#d97706;color:#fff;font-family:sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:2px 7px;border-radius:20px;text-transform:uppercase;pointer-events:none;">DEMO</span>
-            <a href="https://demo.trackt.tech/realestate/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl border border-border-subtle transition-transform hover:scale-[1.02] cursor-pointer" style="width:300px;height:190px">
-              <div class="flex items-center gap-1.5 bg-bg-elevated px-3 py-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-green-400/70"></span>
-                <div class="ml-2 flex-1 rounded-sm bg-white/[0.06] px-2 py-0.5 text-[10px] text-text-secondary/40">demo.trackt.tech/realestate</div>
-              </div>
-              <div style="height:calc(100% - 34px);background:#0f1623;padding:10px 12px;font-family:sans-serif;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                  <div>
-                    <div style="color:#60a5fa;font-size:10px;font-weight:800;letter-spacing:1px;">KELLER REALTY</div>
-                    <div style="color:#475569;font-size:7px;">Tampa Bay Real Estate</div>
-                  </div>
-                  <div style="background:#60a5fa;color:#000;font-size:8px;font-weight:700;padding:3px 7px;border-radius:3px;">Find Homes</div>
-                </div>
-                <div style="background:rgba(96,165,250,0.08);border:1px solid rgba(96,165,250,0.2);border-radius:6px;padding:8px;margin-bottom:8px;">
-                  <div style="color:#e2e8f0;font-size:11px;font-weight:700;margin-bottom:2px;">4BR / 3BA — Palma Ceia</div>
-                  <div style="color:#60a5fa;font-size:13px;font-weight:800;">$675,000</div>
-                  <div style="color:#475569;font-size:7px;">2,840 sqft · Pool · 2-Car Garage</div>
-                </div>
-                <div style="display:flex;gap:6px;">
-                  <div style="flex:1;text-align:center;background:#1e2d45;border-radius:3px;padding:4px 2px;">
-                    <div style="color:#60a5fa;font-size:9px;font-weight:800;">500+</div>
-                    <div style="color:#475569;font-size:7px;">Sold</div>
-                  </div>
-                  <div style="flex:1;text-align:center;background:#1e2d45;border-radius:3px;padding:4px 2px;">
-                    <div style="color:#60a5fa;font-size:9px;font-weight:800;">4.9★</div>
-                    <div style="color:#475569;font-size:7px;">Rating</div>
-                  </div>
-                  <div style="flex:1;text-align:center;background:#1e2d45;border-radius:3px;padding:4px 2px;">
-                    <div style="color:#60a5fa;font-size:9px;font-weight:800;">10+</div>
-                    <div style="color:#475569;font-size:7px;">Yrs Exp</div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- ── Pipeline CRM (DEMO) ── -->
-          <div class="relative shrink-0" style="width:300px;height:190px">
-            <span style="position:absolute;top:8px;right:8px;z-index:20;background:#d97706;color:#fff;font-family:sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:2px 7px;border-radius:20px;text-transform:uppercase;pointer-events:none;">DEMO</span>
-            <a href="https://demo.trackt.tech/crm/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl border border-border-subtle transition-transform hover:scale-[1.02] cursor-pointer" style="width:300px;height:190px">
-              <div class="flex items-center gap-1.5 bg-bg-elevated px-3 py-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-green-400/70"></span>
-                <div class="ml-2 flex-1 rounded-sm bg-white/[0.06] px-2 py-0.5 text-[10px] text-text-secondary/40">demo.trackt.tech/crm</div>
-              </div>
-              <div style="height:calc(100% - 34px);background:#0a0f1a;padding:10px 12px;font-family:sans-serif;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
-                  <div style="color:#16b4d2;font-size:10px;font-weight:800;letter-spacing:1px;">PIPELINE CRM</div>
-                  <div style="background:rgba(22,180,210,0.15);border:1px solid rgba(22,180,210,0.3);border-radius:3px;padding:2px 5px;color:#16b4d2;font-size:7px;font-weight:700;">12 Active</div>
-                </div>
-                <div style="display:flex;gap:4px;margin-bottom:7px;">
-                  <div style="flex:1;background:#111827;border:1px solid #1f2937;border-radius:4px;padding:5px;text-align:center;">
-                    <div style="color:#9ca3af;font-size:6px;margin-bottom:2px;letter-spacing:1px;">PROSPECT</div>
-                    <div style="color:#f0f0f5;font-size:11px;font-weight:800;">5</div>
-                  </div>
-                  <div style="flex:1;background:#111827;border:1px solid #1f2937;border-radius:4px;padding:5px;text-align:center;">
-                    <div style="color:#9ca3af;font-size:6px;margin-bottom:2px;letter-spacing:1px;">QUALIFIED</div>
-                    <div style="color:#16b4d2;font-size:11px;font-weight:800;">3</div>
-                  </div>
-                  <div style="flex:1;background:#111827;border:1px solid #1f2937;border-radius:4px;padding:5px;text-align:center;">
-                    <div style="color:#9ca3af;font-size:6px;margin-bottom:2px;letter-spacing:1px;">PROPOSAL</div>
-                    <div style="color:#f0f0f5;font-size:11px;font-weight:800;">2</div>
-                  </div>
-                  <div style="flex:1;background:#111827;border:1px solid rgba(16,185,129,0.4);border-radius:4px;padding:5px;text-align:center;">
-                    <div style="color:#9ca3af;font-size:6px;margin-bottom:2px;letter-spacing:1px;">CLOSED</div>
-                    <div style="color:#10b981;font-size:11px;font-weight:800;">2</div>
-                  </div>
-                </div>
-                <div style="background:#111827;border:1px solid #1f2937;border-radius:4px;padding:6px 8px;display:flex;justify-content:space-between;align-items:center;">
-                  <div>
-                    <div style="color:#f0f0f5;font-size:8px;font-weight:600;">Rivera Landscaping</div>
-                    <div style="color:#9ca3af;font-size:7px;">Proposal sent · $4,200</div>
-                  </div>
-                  <div style="background:rgba(22,180,210,0.15);border-radius:3px;padding:2px 5px;color:#16b4d2;font-size:7px;font-weight:700;">→ Close</div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- ── Bloom Studio Booking (DEMO) ── -->
-          <div class="relative shrink-0" style="width:300px;height:190px">
-            <span style="position:absolute;top:8px;right:8px;z-index:20;background:#d97706;color:#fff;font-family:sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:2px 7px;border-radius:20px;text-transform:uppercase;pointer-events:none;">DEMO</span>
-            <a href="https://demo.trackt.tech/booking/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl border border-border-subtle transition-transform hover:scale-[1.02] cursor-pointer" style="width:300px;height:190px">
-              <div class="flex items-center gap-1.5 bg-bg-elevated px-3 py-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-green-400/70"></span>
-                <div class="ml-2 flex-1 rounded-sm bg-white/[0.06] px-2 py-0.5 text-[10px] text-text-secondary/40">demo.trackt.tech/booking</div>
-              </div>
-              <div style="height:calc(100% - 34px);background:#0c0a14;padding:10px 12px;font-family:sans-serif;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
-                  <div style="color:#a78bfa;font-size:10px;font-weight:800;letter-spacing:1px;">APPOINTMENTS</div>
-                  <div style="background:#a78bfa;color:#0c0a14;font-size:7px;font-weight:800;padding:2px 6px;border-radius:3px;">Book Now</div>
-                </div>
-                <div style="margin-bottom:7px;">
-                  <div style="color:#6b7280;font-size:6px;letter-spacing:1px;margin-bottom:4px;">THIS WEEK — JUNE</div>
-                  <div style="display:flex;gap:3px;">
-                    <div style="flex:1;background:#13111f;border:1px solid #1f1b35;border-radius:3px;padding:4px 2px;text-align:center;">
-                      <div style="color:#6b7280;font-size:6px;">MON</div>
-                      <div style="color:#f0f0f5;font-size:8px;font-weight:700;margin:2px 0;">2</div>
-                      <div style="width:100%;height:3px;background:#a78bfa;border-radius:2px;"></div>
-                    </div>
-                    <div style="flex:1;background:#13111f;border:1px solid #1f1b35;border-radius:3px;padding:4px 2px;text-align:center;">
-                      <div style="color:#6b7280;font-size:6px;">TUE</div>
-                      <div style="color:#f0f0f5;font-size:8px;font-weight:700;margin:2px 0;">4</div>
-                      <div style="width:100%;height:3px;background:#a78bfa;border-radius:2px;"></div>
-                    </div>
-                    <div style="flex:1;background:#13111f;border:1px solid rgba(167,139,250,0.4);border-radius:3px;padding:4px 2px;text-align:center;">
-                      <div style="color:#a78bfa;font-size:6px;font-weight:700;">TODAY</div>
-                      <div style="color:#a78bfa;font-size:8px;font-weight:700;margin:2px 0;">3</div>
-                      <div style="width:100%;height:3px;background:#a78bfa;border-radius:2px;opacity:0.5;"></div>
-                    </div>
-                    <div style="flex:1;background:#13111f;border:1px solid #1f1b35;border-radius:3px;padding:4px 2px;text-align:center;">
-                      <div style="color:#6b7280;font-size:6px;">THU</div>
-                      <div style="color:#f0f0f5;font-size:8px;font-weight:700;margin:2px 0;">1</div>
-                      <div style="width:50%;height:3px;background:#a78bfa;border-radius:2px;"></div>
-                    </div>
-                    <div style="flex:1;background:#13111f;border:1px solid #1f1b35;border-radius:3px;padding:4px 2px;text-align:center;">
-                      <div style="color:#6b7280;font-size:6px;">FRI</div>
-                      <div style="color:#f0f0f5;font-size:8px;font-weight:700;margin:2px 0;">5</div>
-                      <div style="width:100%;height:3px;background:#a78bfa;border-radius:2px;"></div>
-                    </div>
-                  </div>
-                </div>
-                <div style="background:#13111f;border:1px solid #1f1b35;border-radius:4px;padding:5px 8px;display:flex;justify-content:space-between;align-items:center;">
-                  <div>
-                    <div style="color:#f0f0f5;font-size:8px;font-weight:600;">Sofia M. — Cut &amp; Color</div>
-                    <div style="color:#9ca3af;font-size:7px;">Today 2:30 PM · 90 min</div>
-                  </div>
-                  <div style="color:#a78bfa;font-size:8px;font-weight:700;">✓ Confirmed</div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- ── COPY 2 — seamless loop ── -->
-
-          <!-- ── Ridgeline Towing ── -->
-          <div class="relative shrink-0" style="width:300px;height:190px">
-            <span style="position:absolute;top:8px;right:8px;z-index:20;background:#d97706;color:#fff;font-family:sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:2px 7px;border-radius:20px;text-transform:uppercase;pointer-events:none;">DEMO</span>
-            <a href="https://demo.trackt.tech/towing/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl border border-border-subtle transition-transform hover:scale-[1.02] cursor-pointer" style="width:300px;height:190px">
-            <div class="flex items-center gap-1.5 bg-bg-elevated px-3 py-2">
-              <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-green-400/70"></span>
-              <div class="ml-2 flex-1 rounded-sm bg-white/[0.06] px-2 py-0.5 text-[10px] text-text-secondary/40">demo.trackt.tech/towing</div>
-            </div>
-            <div style="height:calc(100% - 34px);background:#0f1117;padding:10px 12px;font-family:sans-serif;">
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                <span style="color:#f97316;font-size:12px;font-weight:800;letter-spacing:0.5px;">RIDGELINE</span>
-                <div style="background:#f97316;color:#fff;font-size:8px;font-weight:700;padding:3px 7px;border-radius:3px;">Call Now</div>
-              </div>
-              <div style="margin-bottom:8px;">
-                <div style="color:#f5f5f5;font-size:12px;font-weight:700;line-height:1.2;margin-bottom:3px;">Fast. Reliable.<br/>24/7.</div>
-                <div style="color:#9ca3af;font-size:8px;margin-bottom:6px;">Towing &amp; Recovery Services</div>
-              </div>
-              <div style="display:flex;gap:5px;margin-bottom:7px;">
-                <div style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);border-radius:3px;padding:3px 6px;color:#f97316;font-size:7px;">🚛 Towing</div>
-                <div style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);border-radius:3px;padding:3px 6px;color:#f97316;font-size:7px;">🔧 Recovery</div>
-                <div style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.3);border-radius:3px;padding:3px 6px;color:#f97316;font-size:7px;">📍 GPS Dispatch</div>
-              </div>
-              <div style="background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.25);border-radius:4px;padding:5px 8px;display:flex;align-items:center;justify-content:space-between;">
-                <span style="color:#f5f5f5;font-size:8px;font-weight:600;">📞 (555) 247-8669</span>
-                <span style="color:#f97316;font-size:7px;font-weight:600;">Available 24/7 →</span>
-              </div>
-            </div>
-            </a>
-          </div>
-
-          <!-- ── Rialto Restaurant (DEMO) ── -->
-          <div class="relative shrink-0" style="width:300px;height:190px">
-            <span style="position:absolute;top:8px;right:8px;z-index:20;background:#d97706;color:#fff;font-family:sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:2px 7px;border-radius:20px;text-transform:uppercase;pointer-events:none;">DEMO</span>
-            <a href="https://demo.trackt.tech/restaurant/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl border border-border-subtle transition-transform hover:scale-[1.02] cursor-pointer" style="width:300px;height:190px">
-              <div class="flex items-center gap-1.5 bg-bg-elevated px-3 py-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-green-400/70"></span>
-                <div class="ml-2 flex-1 rounded-sm bg-white/[0.06] px-2 py-0.5 text-[10px] text-text-secondary/40">demo.trackt.tech/restaurant</div>
-              </div>
-              <div style="height:calc(100% - 34px);background:#1a1209;padding:10px 12px;font-family:serif;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;border-bottom:1px solid rgba(212,130,10,0.25);padding-bottom:6px;">
-                  <div>
-                    <div style="color:#d4820a;font-size:11px;font-weight:800;letter-spacing:2px;">RIALTO</div>
-                    <div style="color:#7a6040;font-size:7px;letter-spacing:1px;">NORTHERN ITALIAN KITCHEN</div>
-                  </div>
-                  <div style="background:#d4820a;color:#fff;font-size:8px;font-weight:700;padding:3px 7px;border-radius:3px;">Reserve</div>
-                </div>
-                <div style="margin-bottom:7px;">
-                  <div style="color:#f0e8d8;font-size:10px;font-style:italic;margin-bottom:5px;">Tonight's Features</div>
-                  <div style="display:flex;justify-content:space-between;padding-bottom:3px;border-bottom:1px solid rgba(255,255,255,0.05);">
-                    <span style="color:#c8b89a;font-size:8px;">Risotto al Tartufo</span>
-                    <span style="color:#d4820a;font-size:8px;">$28</span>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
-                    <span style="color:#c8b89a;font-size:8px;">Branzino al Limone</span>
-                    <span style="color:#d4820a;font-size:8px;">$34</span>
-                  </div>
-                  <div style="display:flex;justify-content:space-between;padding-top:3px;">
-                    <span style="color:#c8b89a;font-size:8px;">Agnolotti del Plin</span>
-                    <span style="color:#d4820a;font-size:8px;">$26</span>
-                  </div>
-                </div>
-                <div style="color:#7a6040;font-size:7px;text-align:center;">★★★★★ · Tampa Magazine's Best Italian 2024</div>
-              </div>
-            </a>
-          </div>
-
-          <!-- ── Keller Realty (DEMO) ── -->
-          <div class="relative shrink-0" style="width:300px;height:190px">
-            <span style="position:absolute;top:8px;right:8px;z-index:20;background:#d97706;color:#fff;font-family:sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:2px 7px;border-radius:20px;text-transform:uppercase;pointer-events:none;">DEMO</span>
-            <a href="https://demo.trackt.tech/realestate/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl border border-border-subtle transition-transform hover:scale-[1.02] cursor-pointer" style="width:300px;height:190px">
-              <div class="flex items-center gap-1.5 bg-bg-elevated px-3 py-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-green-400/70"></span>
-                <div class="ml-2 flex-1 rounded-sm bg-white/[0.06] px-2 py-0.5 text-[10px] text-text-secondary/40">demo.trackt.tech/realestate</div>
-              </div>
-              <div style="height:calc(100% - 34px);background:#0f1623;padding:10px 12px;font-family:sans-serif;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                  <div>
-                    <div style="color:#60a5fa;font-size:10px;font-weight:800;letter-spacing:1px;">KELLER REALTY</div>
-                    <div style="color:#475569;font-size:7px;">Tampa Bay Real Estate</div>
-                  </div>
-                  <div style="background:#60a5fa;color:#000;font-size:8px;font-weight:700;padding:3px 7px;border-radius:3px;">Find Homes</div>
-                </div>
-                <div style="background:rgba(96,165,250,0.08);border:1px solid rgba(96,165,250,0.2);border-radius:6px;padding:8px;margin-bottom:8px;">
-                  <div style="color:#e2e8f0;font-size:11px;font-weight:700;margin-bottom:2px;">4BR / 3BA — Palma Ceia</div>
-                  <div style="color:#60a5fa;font-size:13px;font-weight:800;">$675,000</div>
-                  <div style="color:#475569;font-size:7px;">2,840 sqft · Pool · 2-Car Garage</div>
-                </div>
-                <div style="display:flex;gap:6px;">
-                  <div style="flex:1;text-align:center;background:#1e2d45;border-radius:3px;padding:4px 2px;">
-                    <div style="color:#60a5fa;font-size:9px;font-weight:800;">500+</div>
-                    <div style="color:#475569;font-size:7px;">Sold</div>
-                  </div>
-                  <div style="flex:1;text-align:center;background:#1e2d45;border-radius:3px;padding:4px 2px;">
-                    <div style="color:#60a5fa;font-size:9px;font-weight:800;">4.9★</div>
-                    <div style="color:#475569;font-size:7px;">Rating</div>
-                  </div>
-                  <div style="flex:1;text-align:center;background:#1e2d45;border-radius:3px;padding:4px 2px;">
-                    <div style="color:#60a5fa;font-size:9px;font-weight:800;">10+</div>
-                    <div style="color:#475569;font-size:7px;">Yrs Exp</div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- ── Pipeline CRM (DEMO) ── -->
-          <div class="relative shrink-0" style="width:300px;height:190px">
-            <span style="position:absolute;top:8px;right:8px;z-index:20;background:#d97706;color:#fff;font-family:sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:2px 7px;border-radius:20px;text-transform:uppercase;pointer-events:none;">DEMO</span>
-            <a href="https://demo.trackt.tech/crm/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl border border-border-subtle transition-transform hover:scale-[1.02] cursor-pointer" style="width:300px;height:190px">
-              <div class="flex items-center gap-1.5 bg-bg-elevated px-3 py-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-green-400/70"></span>
-                <div class="ml-2 flex-1 rounded-sm bg-white/[0.06] px-2 py-0.5 text-[10px] text-text-secondary/40">demo.trackt.tech/crm</div>
-              </div>
-              <div style="height:calc(100% - 34px);background:#0a0f1a;padding:10px 12px;font-family:sans-serif;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
-                  <div style="color:#16b4d2;font-size:10px;font-weight:800;letter-spacing:1px;">PIPELINE CRM</div>
-                  <div style="background:rgba(22,180,210,0.15);border:1px solid rgba(22,180,210,0.3);border-radius:3px;padding:2px 5px;color:#16b4d2;font-size:7px;font-weight:700;">12 Active</div>
-                </div>
-                <div style="display:flex;gap:4px;margin-bottom:7px;">
-                  <div style="flex:1;background:#111827;border:1px solid #1f2937;border-radius:4px;padding:5px;text-align:center;">
-                    <div style="color:#9ca3af;font-size:6px;margin-bottom:2px;letter-spacing:1px;">PROSPECT</div>
-                    <div style="color:#f0f0f5;font-size:11px;font-weight:800;">5</div>
-                  </div>
-                  <div style="flex:1;background:#111827;border:1px solid #1f2937;border-radius:4px;padding:5px;text-align:center;">
-                    <div style="color:#9ca3af;font-size:6px;margin-bottom:2px;letter-spacing:1px;">QUALIFIED</div>
-                    <div style="color:#16b4d2;font-size:11px;font-weight:800;">3</div>
-                  </div>
-                  <div style="flex:1;background:#111827;border:1px solid #1f2937;border-radius:4px;padding:5px;text-align:center;">
-                    <div style="color:#9ca3af;font-size:6px;margin-bottom:2px;letter-spacing:1px;">PROPOSAL</div>
-                    <div style="color:#f0f0f5;font-size:11px;font-weight:800;">2</div>
-                  </div>
-                  <div style="flex:1;background:#111827;border:1px solid rgba(16,185,129,0.4);border-radius:4px;padding:5px;text-align:center;">
-                    <div style="color:#9ca3af;font-size:6px;margin-bottom:2px;letter-spacing:1px;">CLOSED</div>
-                    <div style="color:#10b981;font-size:11px;font-weight:800;">2</div>
-                  </div>
-                </div>
-                <div style="background:#111827;border:1px solid #1f2937;border-radius:4px;padding:6px 8px;display:flex;justify-content:space-between;align-items:center;">
-                  <div>
-                    <div style="color:#f0f0f5;font-size:8px;font-weight:600;">Rivera Landscaping</div>
-                    <div style="color:#9ca3af;font-size:7px;">Proposal sent · $4,200</div>
-                  </div>
-                  <div style="background:rgba(22,180,210,0.15);border-radius:3px;padding:2px 5px;color:#16b4d2;font-size:7px;font-weight:700;">→ Close</div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- ── Bloom Studio Booking (DEMO) ── -->
-          <div class="relative shrink-0" style="width:300px;height:190px">
-            <span style="position:absolute;top:8px;right:8px;z-index:20;background:#d97706;color:#fff;font-family:sans-serif;font-size:9px;font-weight:800;letter-spacing:1.5px;padding:2px 7px;border-radius:20px;text-transform:uppercase;pointer-events:none;">DEMO</span>
-            <a href="https://demo.trackt.tech/booking/" target="_blank" rel="noopener noreferrer" class="block overflow-hidden rounded-xl border border-border-subtle transition-transform hover:scale-[1.02] cursor-pointer" style="width:300px;height:190px">
-              <div class="flex items-center gap-1.5 bg-bg-elevated px-3 py-2">
-                <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-yellow-400/70"></span>
-                <span class="h-2.5 w-2.5 rounded-full bg-green-400/70"></span>
-                <div class="ml-2 flex-1 rounded-sm bg-white/[0.06] px-2 py-0.5 text-[10px] text-text-secondary/40">demo.trackt.tech/booking</div>
-              </div>
-              <div style="height:calc(100% - 34px);background:#0c0a14;padding:10px 12px;font-family:sans-serif;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
-                  <div style="color:#a78bfa;font-size:10px;font-weight:800;letter-spacing:1px;">APPOINTMENTS</div>
-                  <div style="background:#a78bfa;color:#0c0a14;font-size:7px;font-weight:800;padding:2px 6px;border-radius:3px;">Book Now</div>
-                </div>
-                <div style="margin-bottom:7px;">
-                  <div style="color:#6b7280;font-size:6px;letter-spacing:1px;margin-bottom:4px;">THIS WEEK — JUNE</div>
-                  <div style="display:flex;gap:3px;">
-                    <div style="flex:1;background:#13111f;border:1px solid #1f1b35;border-radius:3px;padding:4px 2px;text-align:center;">
-                      <div style="color:#6b7280;font-size:6px;">MON</div>
-                      <div style="color:#f0f0f5;font-size:8px;font-weight:700;margin:2px 0;">2</div>
-                      <div style="width:100%;height:3px;background:#a78bfa;border-radius:2px;"></div>
-                    </div>
-                    <div style="flex:1;background:#13111f;border:1px solid #1f1b35;border-radius:3px;padding:4px 2px;text-align:center;">
-                      <div style="color:#6b7280;font-size:6px;">TUE</div>
-                      <div style="color:#f0f0f5;font-size:8px;font-weight:700;margin:2px 0;">4</div>
-                      <div style="width:100%;height:3px;background:#a78bfa;border-radius:2px;"></div>
-                    </div>
-                    <div style="flex:1;background:#13111f;border:1px solid rgba(167,139,250,0.4);border-radius:3px;padding:4px 2px;text-align:center;">
-                      <div style="color:#a78bfa;font-size:6px;font-weight:700;">TODAY</div>
-                      <div style="color:#a78bfa;font-size:8px;font-weight:700;margin:2px 0;">3</div>
-                      <div style="width:100%;height:3px;background:#a78bfa;border-radius:2px;opacity:0.5;"></div>
-                    </div>
-                    <div style="flex:1;background:#13111f;border:1px solid #1f1b35;border-radius:3px;padding:4px 2px;text-align:center;">
-                      <div style="color:#6b7280;font-size:6px;">THU</div>
-                      <div style="color:#f0f0f5;font-size:8px;font-weight:700;margin:2px 0;">1</div>
-                      <div style="width:50%;height:3px;background:#a78bfa;border-radius:2px;"></div>
-                    </div>
-                    <div style="flex:1;background:#13111f;border:1px solid #1f1b35;border-radius:3px;padding:4px 2px;text-align:center;">
-                      <div style="color:#6b7280;font-size:6px;">FRI</div>
-                      <div style="color:#f0f0f5;font-size:8px;font-weight:700;margin:2px 0;">5</div>
-                      <div style="width:100%;height:3px;background:#a78bfa;border-radius:2px;"></div>
-                    </div>
-                  </div>
-                </div>
-                <div style="background:#13111f;border:1px solid #1f1b35;border-radius:4px;padding:5px 8px;display:flex;justify-content:space-between;align-items:center;">
-                  <div>
-                    <div style="color:#f0f0f5;font-size:8px;font-weight:600;">Sofia M. — Cut &amp; Color</div>
-                    <div style="color:#9ca3af;font-size:7px;">Today 2:30 PM · 90 min</div>
-                  </div>
-                  <div style="color:#a78bfa;font-size:8px;font-weight:700;">✓ Confirmed</div>
-                </div>
-              </div>
-            </a>
-          </div>
-
-        </div><!-- end marquee-track -->
-
-      </div>
+    <!-- Pricing hint -->
+    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out mt-8 rounded-xl border border-brand-primary/20 bg-brand-primary/5 px-5 py-4 text-center text-sm text-text-secondary">
+      Not sure what you need?
+      <a href="https://calendly.com/daniel-trackt/30min" target="_blank" rel="noopener noreferrer" class="font-medium text-brand-primary underline underline-offset-2 hover:no-underline">Book a free 20-minute discovery call</a>
+      — no pressure, no commitment.
     </div>
 
-    <!-- ─── Pricing hint bar ─── -->
-    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out mt-10 rounded-xl border border-brand-primary/20 bg-brand-primary/5 px-5 py-4 text-center text-sm text-text-secondary">
-      💡 Not sure what you need? <a href="https://calendly.com/daniel-trackt/30min" target="_blank" rel="noopener noreferrer" class="text-brand-primary underline hover:no-underline">Book a free 20-minute discovery call</a> to figure out the right fit — no pressure, no commitment.
+  </div>
+</section>
+
+<!-- ─── DEMO CASE-STUDY CARDS ─── -->
+<section id="demos" class="bg-bg-elevated px-5 py-20 md:py-24">
+  <div class="mx-auto max-w-6xl">
+
+    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out mb-12 text-center">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-text-secondary/60">Work I've Built</p>
+      <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Live demos — see it in action</h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-text-secondary">
+        Every demo is a real working site I built to represent a common small-business challenge. Click through — they're live.
+      </p>
     </div>
 
-    <!-- ─── Contact form ─── -->
-    <div id="contact" class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out mt-16">
-      <h3 class="mb-8 text-center text-2xl font-bold text-text-primary md:text-3xl">Get In Touch</h3>
-      <div class="mx-auto max-w-2xl rounded-2xl border border-border-subtle bg-bg-card p-6 backdrop-blur-sm md:p-8">
+    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Ridgeline Towing -->
+      <article class="card-lift flex flex-col rounded-2xl border border-border-subtle bg-white overflow-hidden shadow-sm">
+        <div class="h-1 w-full" style="background:#F97316;" aria-hidden="true"></div>
+        <div class="flex flex-1 flex-col p-6">
+          <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl" style="background:rgba(249,115,22,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-text-primary">Ridgeline Towing</h3>
+              <span class="text-xs font-medium" style="color:#F97316;">Towing & Recovery</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary/60">The Problem</p>
+            <p class="text-sm leading-relaxed text-text-secondary">No web presence to capture emergency service calls at 2am — losing business to whoever showed up first in a Google search.</p>
+          </div>
+          <div class="mb-5">
+            <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary/60">What I Built</p>
+            <p class="text-sm leading-relaxed text-text-secondary">Mobile-first site with one-tap click-to-call, service area map, and 24/7 trust signals above the fold.</p>
+          </div>
+          <a
+            href="https://demo.trackt.tech/towing/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
+            style="color:#F97316;"
+          >
+            View live demo
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Rialto Restaurant -->
+      <article class="card-lift flex flex-col rounded-2xl border border-border-subtle bg-white overflow-hidden shadow-sm">
+        <div class="h-1 w-full" style="background:#D4820A;" aria-hidden="true"></div>
+        <div class="flex flex-1 flex-col p-6">
+          <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl" style="background:rgba(212,130,10,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4820A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-text-primary">Rialto Restaurant</h3>
+              <span class="text-xs font-medium" style="color:#D4820A;">Fine Dining</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary/60">The Problem</p>
+            <p class="text-sm leading-relaxed text-text-secondary">A polished restaurant with no online home — guests couldn't find hours, menus, or make reservations without calling.</p>
+          </div>
+          <div class="mb-5">
+            <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary/60">What I Built</p>
+            <p class="text-sm leading-relaxed text-text-secondary">Elegant menu showcase with nightly specials, reservation integration, and a visual identity that matches the dining room.</p>
+          </div>
+          <a
+            href="https://demo.trackt.tech/restaurant/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
+            style="color:#D4820A;"
+          >
+            View live demo
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Keller Realty -->
+      <article class="card-lift flex flex-col rounded-2xl border border-border-subtle bg-white overflow-hidden shadow-sm">
+        <div class="h-1 w-full" style="background:#60A5FA;" aria-hidden="true"></div>
+        <div class="flex flex-1 flex-col p-6">
+          <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl" style="background:rgba(96,165,250,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-text-primary">Keller Realty</h3>
+              <span class="text-xs font-medium" style="color:#60A5FA;">Real Estate</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary/60">The Problem</p>
+            <p class="text-sm leading-relaxed text-text-secondary">Agent with 500+ deals and a 4.9-star reputation — but buyers couldn't find listings or a way to start the conversation.</p>
+          </div>
+          <div class="mb-5">
+            <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary/60">What I Built</p>
+            <p class="text-sm leading-relaxed text-text-secondary">Property showcase site with featured listings, social proof stats, and a lead-capture contact flow that converts.</p>
+          </div>
+          <a
+            href="https://demo.trackt.tech/realestate/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
+            style="color:#60A5FA;"
+          >
+            View live demo
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Pipeline CRM -->
+      <article class="card-lift flex flex-col rounded-2xl border border-border-subtle bg-white overflow-hidden shadow-sm">
+        <div class="h-1 w-full" style="background:#16B4D2;" aria-hidden="true"></div>
+        <div class="flex flex-1 flex-col p-6">
+          <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl" style="background:rgba(22,180,210,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16B4D2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="18" rx="1" opacity="0.5"/><rect x="17" y="3" width="5" height="18" rx="1" opacity="0.3"/></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-text-primary">Pipeline CRM</h3>
+              <span class="text-xs font-medium" style="color:#16B4D2;">Sales Tool</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary/60">The Problem</p>
+            <p class="text-sm leading-relaxed text-text-secondary">Deals tracked in a spreadsheet no one trusted — leads falling through the cracks with no visibility into the pipeline.</p>
+          </div>
+          <div class="mb-5">
+            <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary/60">What I Built</p>
+            <p class="text-sm leading-relaxed text-text-secondary">Visual deal pipeline with stage tracking, per-deal notes, and a weekly summary view so nothing gets missed.</p>
+          </div>
+          <a
+            href="https://demo.trackt.tech/crm/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
+            style="color:#16B4D2;"
+          >
+            View live demo
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Bloom Studio Booking -->
+      <article class="card-lift flex flex-col rounded-2xl border border-border-subtle bg-white overflow-hidden shadow-sm sm:col-span-2 lg:col-span-1">
+        <div class="h-1 w-full" style="background:#A78BFA;" aria-hidden="true"></div>
+        <div class="flex flex-1 flex-col p-6">
+          <div class="mb-4 flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl" style="background:rgba(167,139,250,0.1);">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-text-primary">Bloom Studio</h3>
+              <span class="text-xs font-medium" style="color:#A78BFA;">Appointments</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary/60">The Problem</p>
+            <p class="text-sm leading-relaxed text-text-secondary">A busy salon managing bookings over text messages — double-bookings, no-shows, and hours lost to scheduling back-and-forth.</p>
+          </div>
+          <div class="mb-5">
+            <p class="mb-1 text-xs font-semibold uppercase tracking-wide text-text-secondary/60">What I Built</p>
+            <p class="text-sm leading-relaxed text-text-secondary">Online booking system with service catalog, staff calendars, and automated confirmation so the owner can focus on clients.</p>
+          </div>
+          <a
+            href="https://demo.trackt.tech/booking/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
+            style="color:#A78BFA;"
+          >
+            View live demo
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ─────────────────────────────────────────────────────────
+     Uncomment this section when you have real client quotes.
+     Never publish invented testimonials.
+─────────────────────────────────────────────────────────────────────────────
+
+<section class="px-5 py-20 md:py-24">
+  <div class="mx-auto max-w-5xl">
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl font-bold tracking-tight md:text-4xl">What clients say</h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+
+      <blockquote class="card-lift flex flex-col rounded-2xl border border-border-subtle bg-white p-6 shadow-sm">
+        <p class="flex-1 text-text-secondary leading-relaxed mb-5">"Paste real quote here."</p>
+        <footer class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-full bg-bg-elevated flex-shrink-0"></div>
+          <div>
+            <div class="text-sm font-semibold text-text-primary">Client Name</div>
+            <div class="text-xs text-text-secondary">Business Name, City</div>
+          </div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="card-lift flex flex-col rounded-2xl border border-border-subtle bg-white p-6 shadow-sm">
+        <p class="flex-1 text-text-secondary leading-relaxed mb-5">"Paste real quote here."</p>
+        <footer class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-full bg-bg-elevated flex-shrink-0"></div>
+          <div>
+            <div class="text-sm font-semibold text-text-primary">Client Name</div>
+            <div class="text-xs text-text-secondary">Business Name, City</div>
+          </div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="card-lift flex flex-col rounded-2xl border border-border-subtle bg-white p-6 shadow-sm">
+        <p class="flex-1 text-text-secondary leading-relaxed mb-5">"Paste real quote here."</p>
+        <footer class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-full bg-bg-elevated flex-shrink-0"></div>
+          <div>
+            <div class="text-sm font-semibold text-text-primary">Client Name</div>
+            <div class="text-xs text-text-secondary">Business Name, City</div>
+          </div>
+        </footer>
+      </blockquote>
+
+    </div>
+  </div>
+</section>
+
+─────────────────────────────────────────────────────────────────────────────
+     END TESTIMONIALS BLOCK
+─────────────────────────────────────────────────────────────────────────────
+-->
+
+<!-- ─── CONTACT FORM ─── -->
+<section id="contact" class="px-5 py-20 md:py-28">
+  <div class="mx-auto max-w-6xl">
+
+    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out">
+      <h2 class="mb-8 text-center text-2xl font-bold tracking-tight text-text-primary md:text-3xl">Get In Touch</h2>
+      <div class="mx-auto max-w-2xl rounded-2xl border border-border-subtle bg-white p-6 shadow-sm md:p-8">
 
         <form id="consulting-form" novalidate>
-          <!-- TODO: wire up real form backend (Formspree, API route, etc.) before going live -->
           <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <!-- Name -->
             <div>
               <label for="c-name" class="mb-1.5 block text-sm font-medium text-text-secondary">Name <span class="text-brand-primary">*</span></label>
-              <input
-                id="c-name"
-                name="name"
-                type="text"
-                required
-                autocomplete="name"
-                placeholder="Jane Smith"
-                class="w-full rounded-xl border border-border-subtle bg-white/[0.04] px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20"
-              />
+              <input id="c-name" name="name" type="text" required autocomplete="name" placeholder="Jane Smith"
+                class="w-full rounded-xl border border-border-subtle bg-white px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/15" />
             </div>
             <!-- Email -->
             <div>
               <label for="c-email" class="mb-1.5 block text-sm font-medium text-text-secondary">Email <span class="text-brand-primary">*</span></label>
-              <input
-                id="c-email"
-                name="email"
-                type="email"
-                required
-                autocomplete="email"
-                inputmode="email"
-                placeholder="jane@example.com"
-                class="w-full rounded-xl border border-border-subtle bg-white/[0.04] px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20"
-              />
+              <input id="c-email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="jane@example.com"
+                class="w-full rounded-xl border border-border-subtle bg-white px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/15" />
             </div>
           </div>
 
           <!-- Business Name -->
           <div class="mt-5">
             <label for="c-business" class="mb-1.5 block text-sm font-medium text-text-secondary">Business Name <span class="text-text-secondary/40">(optional)</span></label>
-            <input
-              id="c-business"
-              name="business"
-              type="text"
-              autocomplete="organization"
-              placeholder="Acme Co."
-              class="w-full rounded-xl border border-border-subtle bg-white/[0.04] px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20"
-            />
+            <input id="c-business" name="business" type="text" autocomplete="organization" placeholder="Acme Co."
+              class="w-full rounded-xl border border-border-subtle bg-white px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/15" />
           </div>
 
           <!-- Service dropdown -->
           <div class="mt-5">
             <label for="c-service" class="mb-1.5 block text-sm font-medium text-text-secondary">What do you need help with? <span class="text-brand-primary">*</span></label>
-            <select
-              id="c-service"
-              name="service"
-              required
-              class="w-full rounded-xl border border-border-subtle bg-bg-elevated px-4 py-3.5 text-base text-text-primary outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20 appearance-none cursor-pointer"
-            >
+            <select id="c-service" name="service" required
+              class="w-full rounded-xl border border-border-subtle bg-white px-4 py-3.5 text-base text-text-primary outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/15 appearance-none cursor-pointer">
               <option value="" disabled selected>Select a service...</option>
               <option value="tech-consulting">Tech Consulting</option>
               <option value="website-design">Website Design</option>
@@ -652,49 +426,35 @@
           <!-- Message -->
           <div class="mt-5">
             <label for="c-message" class="mb-1.5 block text-sm font-medium text-text-secondary">Tell me more <span class="text-text-secondary/40">(optional)</span></label>
-            <textarea
-              id="c-message"
-              name="message"
-              rows="4"
+            <textarea id="c-message" name="message" rows="4"
               placeholder="Describe your situation, project, or goals. No pressure to have it all figured out."
-              class="w-full resize-none rounded-xl border border-border-subtle bg-white/[0.04] px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/20"
-            ></textarea>
+              class="w-full resize-none rounded-xl border border-border-subtle bg-white px-4 py-3.5 text-base text-text-primary placeholder-text-secondary/50 outline-none transition-all focus:border-brand-primary/60 focus:ring-2 focus:ring-brand-primary/15"></textarea>
           </div>
 
-          <!-- Error message -->
-          <p id="consulting-error" class="mt-3 hidden text-sm font-medium text-red-400"></p>
+          <p id="consulting-error" class="mt-3 hidden text-sm font-medium text-red-500"></p>
 
-          <!-- Submit -->
-          <button
-            type="submit"
-            id="consulting-submit"
-            class="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-6 py-3.5 text-base font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_0_30px_var(--color-brand-glow)] disabled:cursor-not-allowed disabled:opacity-60"
-          >
+          <button type="submit" id="consulting-submit"
+            class="btn-shimmer mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-6 py-3.5 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60">
             Send Message
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </button>
 
-          <!-- Calendly alternative -->
           <div class="mt-4 flex items-center gap-3 text-text-secondary/40">
             <div class="h-px flex-1 bg-border-subtle"></div>
             <span class="text-xs">or</span>
             <div class="h-px flex-1 bg-border-subtle"></div>
           </div>
-          <a
-            href="https://calendly.com/daniel-trackt/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-white/[0.04] px-6 py-3.5 text-base font-semibold text-text-primary transition-all hover:border-brand-primary/40 hover:bg-brand-primary/5"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          <a href="https://calendly.com/daniel-trackt/30min" target="_blank" rel="noopener noreferrer"
+            class="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-white px-6 py-3.5 text-base font-semibold text-text-primary transition-all duration-200 hover:border-brand-primary/40 hover:shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
             Book a free 30-min call
           </a>
         </form>
 
-        <!-- Success state (hidden by default) -->
+        <!-- Success state -->
         <div id="consulting-success" class="hidden py-8 text-center">
-          <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/15">
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-400"><path d="M20 6 9 17l-5-5"/></svg>
+          <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/12">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-500"><path d="M20 6 9 17l-5-5"/></svg>
           </div>
           <p class="text-lg font-semibold text-text-primary">Message sent!</p>
           <p class="mt-1 text-sm text-text-secondary">I'll get back to you within 1 business day.</p>
@@ -702,39 +462,31 @@
 
       </div>
     </div>
-
-  </div><!-- end max-w-6xl -->
+  </div>
 </section>
 
-<!-- ─── Pricing Modal ─── -->
+<!-- ─── PRICING MODAL ─── -->
 <div id="pricing-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <!-- Backdrop -->
-  <div id="modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  <div id="modal-backdrop" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
 
-  <!-- Panel -->
-  <div class="relative z-10 mx-auto w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border border-border-subtle bg-bg-elevated p-6 md:p-8">
+  <div class="relative z-10 mx-auto w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl border border-border-subtle bg-white p-6 shadow-2xl md:p-8">
 
-    <!-- Close button -->
-    <button
-      id="close-pricing-modal"
-      aria-label="Close modal"
-      class="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:text-text-primary"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <button id="close-pricing-modal" aria-label="Close pricing guide"
+      class="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:text-text-primary">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
 
-    <!-- Title -->
     <div class="mb-6 pr-8">
       <h2 id="modal-title" class="text-2xl font-bold text-text-primary">Web Design Pricing Guide</h2>
       <p class="mt-1 text-sm text-text-secondary">Flat-rate pricing · No surprises · Professional websites tailored to your business</p>
     </div>
 
-    <!-- Packages table -->
+    <!-- Packages -->
     <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-primary">Packages</h3>
     <div class="mb-6 overflow-x-auto rounded-xl border border-border-subtle">
       <table class="w-full text-sm">
         <thead>
-          <tr class="bg-brand-primary/10 text-left text-brand-primary">
+          <tr class="bg-brand-primary/8 text-left text-brand-primary">
             <th class="px-4 py-3 font-semibold">Package</th>
             <th class="px-4 py-3 font-semibold">Price</th>
             <th class="px-4 py-3 font-semibold hidden sm:table-cell">Pages / Scope</th>
@@ -742,26 +494,26 @@
           </tr>
         </thead>
         <tbody class="text-text-secondary">
-          <tr class="border-t border-border-subtle hover:bg-white/[0.02]">
-            <td class="px-4 py-3 font-medium text-text-primary"><span class="mr-1">🟢</span> Starter — Simple Info / Portfolio</td>
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated">
+            <td class="px-4 py-3 font-medium text-text-primary">Starter — Simple Info / Portfolio</td>
             <td class="px-4 py-3">Starting at $350</td>
             <td class="px-4 py-3 hidden sm:table-cell">1–3 pages</td>
             <td class="px-4 py-3 hidden sm:table-cell">3–5 days</td>
           </tr>
-          <tr class="border-t border-border-subtle bg-white/[0.02] hover:bg-white/[0.04]">
-            <td class="px-4 py-3 font-medium text-text-primary"><span class="mr-1">🔵</span> Standard — Small Business Site</td>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated">
+            <td class="px-4 py-3 font-medium text-text-primary">Standard — Small Business Site</td>
             <td class="px-4 py-3">Starting at $700</td>
             <td class="px-4 py-3 hidden sm:table-cell">4–7 pages</td>
             <td class="px-4 py-3 hidden sm:table-cell">1–2 weeks</td>
           </tr>
-          <tr class="border-t border-border-subtle hover:bg-white/[0.02]">
-            <td class="px-4 py-3 font-medium text-text-primary"><span class="mr-1">🟣</span> Professional — Full Business Site</td>
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated">
+            <td class="px-4 py-3 font-medium text-text-primary">Professional — Full Business Site</td>
             <td class="px-4 py-3">Starting at $1,400</td>
             <td class="px-4 py-3 hidden sm:table-cell">8–12 pages</td>
             <td class="px-4 py-3 hidden sm:table-cell">2–3 weeks</td>
           </tr>
-          <tr class="border-t border-border-subtle bg-white/[0.02] hover:bg-white/[0.04]">
-            <td class="px-4 py-3 font-medium text-text-primary"><span class="mr-1">🛒</span> eCommerce — Online Store</td>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated">
+            <td class="px-4 py-3 font-medium text-text-primary">eCommerce — Online Store</td>
             <td class="px-4 py-3">Starting at $2,200</td>
             <td class="px-4 py-3 hidden sm:table-cell">Product catalog + checkout</td>
             <td class="px-4 py-3 hidden sm:table-cell">3–4 weeks</td>
@@ -770,59 +522,58 @@
       </table>
     </div>
 
-    <!-- Fine print -->
-    <ul class="mb-6 space-y-1.5 rounded-xl border border-border-subtle bg-white/[0.02] p-4 text-xs text-text-secondary">
-      <li class="flex items-start gap-2"><span class="mt-0.5 text-brand-primary">•</span> All packages include responsive (mobile-friendly) design, basic contact info, and up to 2 rounds of revisions.</li>
+    <ul class="mb-6 space-y-1.5 rounded-xl border border-border-subtle bg-bg-elevated/60 p-4 text-xs text-text-secondary">
+      <li class="flex items-start gap-2"><span class="mt-0.5 text-brand-primary">•</span> All packages include responsive design, basic contact info, and up to 2 rounds of revisions.</li>
       <li class="flex items-start gap-2"><span class="mt-0.5 text-brand-primary">•</span> Domain &amp; hosting setup not included in base price unless added as an add-on.</li>
-      <li class="flex items-start gap-2"><span class="mt-0.5 text-brand-primary">•</span> A 50% deposit is required to begin work. Remaining balance due upon delivery.</li>
+      <li class="flex items-start gap-2"><span class="mt-0.5 text-brand-primary">•</span> A 50% deposit is required to begin. Remaining balance due upon delivery.</li>
     </ul>
 
-    <!-- Add-Ons table -->
+    <!-- Add-Ons -->
     <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-primary">Add-Ons</h3>
     <div class="mb-6 overflow-x-auto rounded-xl border border-border-subtle">
       <table class="w-full text-sm">
         <thead>
-          <tr class="bg-brand-primary/10 text-left text-brand-primary">
+          <tr class="bg-brand-primary/8 text-left text-brand-primary">
             <th class="px-4 py-3 font-semibold">Add-On</th>
             <th class="px-4 py-3 font-semibold">Price</th>
           </tr>
         </thead>
         <tbody class="text-text-secondary">
-          <tr class="border-t border-border-subtle hover:bg-white/[0.02]"><td class="px-4 py-3">Contact / Inquiry Form</td><td class="px-4 py-3">$85</td></tr>
-          <tr class="border-t border-border-subtle bg-white/[0.02] hover:bg-white/[0.04]"><td class="px-4 py-3">Blog Setup</td><td class="px-4 py-3">$125</td></tr>
-          <tr class="border-t border-border-subtle hover:bg-white/[0.02]"><td class="px-4 py-3">Appointment / Booking Integration</td><td class="px-4 py-3">$175</td></tr>
-          <tr class="border-t border-border-subtle bg-white/[0.02] hover:bg-white/[0.04]"><td class="px-4 py-3">Basic SEO Setup (meta tags, sitemap)</td><td class="px-4 py-3">$100</td></tr>
-          <tr class="border-t border-border-subtle hover:bg-white/[0.02]"><td class="px-4 py-3">Logo / Branding (simple)</td><td class="px-4 py-3">$150</td></tr>
-          <tr class="border-t border-border-subtle bg-white/[0.02] hover:bg-white/[0.04]"><td class="px-4 py-3">Content Writing (per page)</td><td class="px-4 py-3">$75</td></tr>
-          <tr class="border-t border-border-subtle hover:bg-white/[0.02]"><td class="px-4 py-3">Additional pages (beyond package)</td><td class="px-4 py-3">$100/page</td></tr>
-          <tr class="border-t border-border-subtle bg-white/[0.02] hover:bg-white/[0.04]"><td class="px-4 py-3">Rush Delivery (&lt; 3 business days)</td><td class="px-4 py-3">+25% of project total</td></tr>
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Contact / Inquiry Form</td><td class="px-4 py-3">$85</td></tr>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Blog Setup</td><td class="px-4 py-3">$125</td></tr>
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Appointment / Booking Integration</td><td class="px-4 py-3">$175</td></tr>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Basic SEO Setup (meta tags, sitemap)</td><td class="px-4 py-3">$100</td></tr>
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Logo / Branding (simple)</td><td class="px-4 py-3">$150</td></tr>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Content Writing (per page)</td><td class="px-4 py-3">$75</td></tr>
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Additional pages (beyond package)</td><td class="px-4 py-3">$100/page</td></tr>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Rush Delivery (&lt; 3 business days)</td><td class="px-4 py-3">+25% of total</td></tr>
         </tbody>
       </table>
     </div>
 
-    <!-- Monthly Maintenance table -->
+    <!-- Monthly Plans -->
     <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-primary">Monthly Hosting & Maintenance</h3>
     <div class="mb-6 overflow-x-auto rounded-xl border border-border-subtle">
       <table class="w-full text-sm">
         <thead>
-          <tr class="bg-brand-primary/10 text-left text-brand-primary">
+          <tr class="bg-brand-primary/8 text-left text-brand-primary">
             <th class="px-4 py-3 font-semibold">Plan</th>
             <th class="px-4 py-3 font-semibold">Monthly Fee</th>
             <th class="px-4 py-3 font-semibold hidden sm:table-cell">Includes</th>
           </tr>
         </thead>
         <tbody class="text-text-secondary">
-          <tr class="border-t border-border-subtle hover:bg-white/[0.02]">
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated">
             <td class="px-4 py-3 font-medium text-text-primary">Basic Hosting & Maintenance</td>
             <td class="px-4 py-3">$35/mo</td>
             <td class="px-4 py-3 hidden sm:table-cell">Hosting + uptime monitoring</td>
           </tr>
-          <tr class="border-t border-border-subtle bg-white/[0.02] hover:bg-white/[0.04]">
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated">
             <td class="px-4 py-3 font-medium text-text-primary">Standard Care Plan</td>
             <td class="px-4 py-3">$65/mo</td>
             <td class="px-4 py-3 hidden sm:table-cell">Hosting + updates + 1 hr changes/mo</td>
           </tr>
-          <tr class="border-t border-border-subtle hover:bg-white/[0.02]">
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated">
             <td class="px-4 py-3 font-medium text-text-primary">Premium Care Plan</td>
             <td class="px-4 py-3">$125/mo</td>
             <td class="px-4 py-3 hidden sm:table-cell">Hosting + priority support + 3 hrs changes/mo</td>
@@ -834,49 +585,26 @@
     <!-- How It Works -->
     <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-primary">How It Works</h3>
     <ol class="mb-6 space-y-3 text-sm text-text-secondary">
-      <li class="flex gap-3">
-        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/15 text-xs font-bold text-brand-primary">1</span>
-        <span><span class="font-semibold text-text-primary">Discovery Call</span> — We chat about your goals, pages needed, and style preferences.</span>
-      </li>
-      <li class="flex gap-3">
-        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/15 text-xs font-bold text-brand-primary">2</span>
-        <span><span class="font-semibold text-text-primary">Quote & Deposit</span> — You receive a flat-rate quote. 50% due to kick things off.</span>
-      </li>
-      <li class="flex gap-3">
-        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/15 text-xs font-bold text-brand-primary">3</span>
-        <span><span class="font-semibold text-text-primary">Design & Build</span> — I build your site and share previews along the way.</span>
-      </li>
-      <li class="flex gap-3">
-        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/15 text-xs font-bold text-brand-primary">4</span>
-        <span><span class="font-semibold text-text-primary">Revisions</span> — Up to 2 rounds of feedback included in every package.</span>
-      </li>
-      <li class="flex gap-3">
-        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/15 text-xs font-bold text-brand-primary">5</span>
-        <span><span class="font-semibold text-text-primary">Launch</span> — Site goes live! Final payment due before handoff.</span>
-      </li>
-      <li class="flex gap-3">
-        <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/15 text-xs font-bold text-brand-primary">6</span>
-        <span><span class="font-semibold text-text-primary">Optional Care Plan</span> — Keep your site maintained month-to-month.</span>
-      </li>
+      <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/12 text-xs font-bold text-brand-primary">1</span><span><span class="font-semibold text-text-primary">Discovery Call</span> — We chat about your goals, pages needed, and style preferences.</span></li>
+      <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/12 text-xs font-bold text-brand-primary">2</span><span><span class="font-semibold text-text-primary">Quote & Deposit</span> — You receive a flat-rate quote. 50% due to kick things off.</span></li>
+      <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/12 text-xs font-bold text-brand-primary">3</span><span><span class="font-semibold text-text-primary">Design & Build</span> — I build your site and share previews along the way.</span></li>
+      <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/12 text-xs font-bold text-brand-primary">4</span><span><span class="font-semibold text-text-primary">Revisions</span> — Up to 2 rounds of feedback included in every package.</span></li>
+      <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/12 text-xs font-bold text-brand-primary">5</span><span><span class="font-semibold text-text-primary">Launch</span> — Site goes live. Final payment due before handoff.</span></li>
+      <li class="flex gap-3"><span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary/12 text-xs font-bold text-brand-primary">6</span><span><span class="font-semibold text-text-primary">Optional Care Plan</span> — Keep your site maintained month-to-month.</span></li>
     </ol>
 
-    <!-- Footer note -->
-    <p class="mb-6 rounded-xl border border-border-subtle bg-white/[0.02] p-4 text-xs text-text-secondary">
+    <p class="mb-6 rounded-xl border border-border-subtle bg-bg-elevated/60 p-4 text-xs text-text-secondary">
       Prices are estimates. Final quote provided after project discovery. All projects are custom — reach out and let's talk!
     </p>
 
-    <!-- CTA -->
-    <a
-      href="#contact"
-      id="modal-get-quote"
-      class="flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-6 py-3.5 text-base font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_0_30px_var(--color-brand-glow)]"
-    >
+    <a href="#contact" id="modal-get-quote"
+      class="btn-shimmer flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-6 py-3.5 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md">
       Get a Quote
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </a>
 
-  </div><!-- end panel -->
-</div><!-- end modal -->
+  </div>
+</div>
 
 <script>
   // ── Pricing modal ──
@@ -886,61 +614,33 @@
   const backdrop = document.getElementById("modal-backdrop");
   const getQuoteBtn = document.getElementById("modal-get-quote");
 
-  function openModal() {
-    pricingModal?.classList.remove("hidden");
-    pricingModal?.classList.add("flex");
-    document.body.style.overflow = "hidden";
-  }
-  function closeModal() {
-    pricingModal?.classList.add("hidden");
-    pricingModal?.classList.remove("flex");
-    document.body.style.overflow = "";
-  }
+  function openModal() { pricingModal?.classList.remove("hidden"); pricingModal?.classList.add("flex"); document.body.style.overflow = "hidden"; }
+  function closeModal() { pricingModal?.classList.add("hidden"); pricingModal?.classList.remove("flex"); document.body.style.overflow = ""; }
 
   openBtn?.addEventListener("click", openModal);
   closeBtn?.addEventListener("click", closeModal);
   backdrop?.addEventListener("click", closeModal);
   getQuoteBtn?.addEventListener("click", closeModal);
-
-  // Close on Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !pricingModal?.classList.contains("hidden")) {
-      closeModal();
-    }
-  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !pricingModal?.classList.contains("hidden")) closeModal(); });
 
   // ── Contact form ──
   const form = document.getElementById("consulting-form") as HTMLFormElement | null;
   const errorEl = document.getElementById("consulting-error");
   const successEl = document.getElementById("consulting-success");
   const submitBtn = document.getElementById("consulting-submit") as HTMLButtonElement | null;
-
-  // TODO: Replace REPLACE_WITH_FORMSPREE_ID with your Formspree form ID.
-  // Get one free in 2 min: go to https://formspree.io → Sign up → New Form → copy the ID
-  // e.g. if your endpoint is https://formspree.io/f/xabcd123, put "xabcd123" below.
   const FORMSPREE_ENDPOINT = "https://formspree.io/f/xbdapjlq";
 
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
-
     const name = (document.getElementById("c-name") as HTMLInputElement)?.value.trim();
     const email = (document.getElementById("c-email") as HTMLInputElement)?.value.trim();
     const business = (document.getElementById("c-business") as HTMLInputElement)?.value.trim();
     const service = (document.getElementById("c-service") as HTMLSelectElement)?.value;
     const message = (document.getElementById("c-message") as HTMLTextAreaElement)?.value.trim();
 
-    if (!name) {
-      if (errorEl) { errorEl.textContent = "Please enter your name."; errorEl.classList.remove("hidden"); }
-      return;
-    }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      if (errorEl) { errorEl.textContent = "Please enter a valid email address."; errorEl.classList.remove("hidden"); }
-      return;
-    }
-    if (!service) {
-      if (errorEl) { errorEl.textContent = "Please select a service."; errorEl.classList.remove("hidden"); }
-      return;
-    }
+    if (!name) { if (errorEl) { errorEl.textContent = "Please enter your name."; errorEl.classList.remove("hidden"); } return; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { if (errorEl) { errorEl.textContent = "Please enter a valid email address."; errorEl.classList.remove("hidden"); } return; }
+    if (!service) { if (errorEl) { errorEl.textContent = "Please select a service."; errorEl.classList.remove("hidden"); } return; }
 
     errorEl?.classList.add("hidden");
     if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Sending..."; }
@@ -951,7 +651,6 @@
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({ name, email, business, service, message }),
       });
-
       if (res.ok) {
         form.classList.add("hidden");
         successEl?.classList.remove("hidden");
@@ -960,10 +659,7 @@
         throw new Error(data?.errors?.[0]?.message ?? "Something went wrong. Please try again.");
       }
     } catch (err) {
-      if (errorEl) {
-        errorEl.textContent = err instanceof Error ? err.message : "Failed to send. Please try again.";
-        errorEl.classList.remove("hidden");
-      }
+      if (errorEl) { errorEl.textContent = err instanceof Error ? err.message : "Failed to send. Please try again."; errorEl.classList.remove("hidden"); }
       if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Send Message"; }
     }
   });
@@ -982,9 +678,7 @@
   });
   window.addEventListener('resize', () => {
     if (!isMobile()) {
-      document.querySelectorAll<HTMLElement>('.service-card-toggle + .accordion-body').forEach(el => {
-        el.style.maxHeight = '';
-      });
+      document.querySelectorAll<HTMLElement>('.service-card-toggle + .accordion-body').forEach(el => { el.style.maxHeight = ''; });
     }
   });
 </script>

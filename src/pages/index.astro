@@ -2,20 +2,20 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
 import Consulting from "../components/Consulting.astro";
 import TracktTeaser from "../components/TracktTeaser.astro";
 import Footer from "../components/Footer.astro";
 
 const pageTitle = "Trackt | Web Development, Custom Software & Workflow Automation — Tampa, FL";
-const pageDescription = "Tampa-based web developer and tech consultant for small businesses. Custom software development, workflow automation, tech audits, CRM implementation, and web development. Free 20-min discovery call.";
+const pageDescription = "Tampa-based web developer and tech consultant for small businesses. Custom websites, software development, workflow automation, and tech audits. Free discovery call.";
 
-// JSON-LD structured data for local SEO
 const jsonLd = JSON.stringify([
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Daniel",
-    "jobTitle": "Web Designer & Tech Consultant",
+    "jobTitle": "Web Developer & Tech Consultant",
     "url": "https://trackt.tech",
     "address": {
       "@type": "PostalAddress",
@@ -23,14 +23,12 @@ const jsonLd = JSON.stringify([
       "addressRegion": "FL",
       "addressCountry": "US"
     },
-    // TODO: add your Google Business Profile URL to sameAs once live:
-    // "sameAs": ["https://www.google.com/maps/place/YOUR_BUSINESS_ID"]
     "sameAs": []
   },
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Web Design & Tech Consulting — Tampa, FL",
+    "name": "Trackt Tech — Web Development & Tech Consulting, Tampa FL",
     "url": "https://trackt.tech",
     "areaServed": ["Tampa, FL", "Remote"],
     "address": {
@@ -45,62 +43,10 @@ const jsonLd = JSON.stringify([
       "@type": "OfferCatalog",
       "name": "Services",
       "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Web Development",
-            "description": "Custom websites and web applications for small businesses. Starting at $350."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Custom Software Development",
-            "description": "Bespoke web apps and internal tools built for your specific workflow."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Workflow Automation",
-            "description": "Automate repetitive business processes using Zapier, Make, Google Apps Script, and custom integrations."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Technology Audit",
-            "description": "Comprehensive audit of your current tools, workflows, and systems with an actionable improvement plan."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "CRM Implementation",
-            "description": "Custom CRM setup and configuration tailored to your sales pipeline and team workflow."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "E-commerce Development",
-            "description": "Online stores with product catalog, checkout, and payment processing."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "API Integration",
-            "description": "Connect your existing platforms and automate data flow between tools."
-          }
-        }
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development", "description": "Custom websites starting at $350." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Software Development", "description": "Bespoke web apps and internal tools." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Workflow Automation", "description": "Automate repetitive business processes." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technology Audit", "description": "Comprehensive audit with actionable improvement plan." } }
       ]
     }
   }
@@ -111,6 +57,7 @@ const jsonLd = JSON.stringify([
   <Header />
   <main>
     <Hero />
+    <About />
     <Consulting />
     <TracktTeaser />
   </main>
@@ -127,7 +74,7 @@ const jsonLd = JSON.stringify([
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.08 }
   );
 
   document.querySelectorAll(".scroll-reveal").forEach((el) => {

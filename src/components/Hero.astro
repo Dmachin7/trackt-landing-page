@@ -1,91 +1,294 @@
 ---
-// Hero
+// Hero — two-column: text left, CSS browser mockup right
 ---
 
-<section class="relative flex min-h-screen items-center justify-center overflow-hidden px-5 pt-20">
+<section class="relative overflow-hidden bg-white px-5 pb-16 pt-28 md:pb-24 md:pt-36">
 
-  <!-- Background gradients -->
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-brand-primary)_0%,_transparent_50%)] opacity-15"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--color-brand-accent)_0%,_transparent_40%)] opacity-10"></div>
+  <!-- Subtle grid texture -->
+  <div class="pointer-events-none absolute inset-0 opacity-[0.035]" style="background-image: radial-gradient(circle, #101418 1px, transparent 1px); background-size: 28px 28px;" aria-hidden="true"></div>
 
-  <!-- Dot grid -->
-  <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 32px 32px;"></div>
+  <!-- Very light teal wash top-right -->
+  <div class="pointer-events-none absolute -right-40 -top-40 h-[500px] w-[500px] rounded-full bg-brand-primary/6 blur-[100px]" aria-hidden="true"></div>
 
-  <!-- Floating orbs -->
-  <div class="pointer-events-none absolute" style="left:11%;top:20%;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(22,180,210,0.13),transparent 70%);filter:blur(55px);animation:float-orb 11s ease-in-out infinite;will-change:transform;"></div>
-  <div class="pointer-events-none absolute" style="right:9%;top:35%;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(86,129,208,0.16),transparent 70%);filter:blur(55px);animation:float-orb 14s ease-in-out infinite 3.5s;will-change:transform;"></div>
-  <div class="pointer-events-none absolute hidden md:block" style="left:42%;bottom:16%;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(22,180,210,0.09),transparent 70%);filter:blur(45px);animation:float-orb 9s ease-in-out infinite 1.8s;will-change:transform;"></div>
+  <div class="relative z-10 mx-auto max-w-6xl">
+    <div class="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">
 
-  <!-- Spotlight pulse — centered atmospheric glow behind headline -->
-  <div class="pointer-events-none absolute inset-0 flex items-center justify-center" aria-hidden="true">
-    <div class="hero-spotlight" style="width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(22,180,210,0.13) 0%,rgba(86,129,208,0.08) 38%,transparent 70%);filter:blur(32px);will-change:transform,opacity;"></div>
-  </div>
+      <!-- Left: text content -->
+      <div id="hero-content" class="flex-1 text-center lg:text-left">
 
-  <div id="hero-content" class="relative z-10 mx-auto max-w-3xl text-center">
+        <!-- Badge -->
+        <div class="hero-el mb-5 inline-flex items-center gap-2 rounded-full border border-brand-primary/25 bg-brand-primary/8 px-4 py-1.5 text-sm font-medium text-brand-primary" style="--i:0">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+          Tampa, FL &middot; Available Now
+        </div>
 
-    <!-- Badge -->
-    <div class="hero-el mb-6 inline-block rounded-full border border-border-subtle bg-bg-card px-4 py-1.5 text-sm text-text-secondary backdrop-blur-sm" style="--i:0">
-      Developer &middot; Consultant &middot; Builder
+        <!-- Headline -->
+        <h1 class="hero-el text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-[3.25rem]" style="--i:1">
+          I Build Technology<br />
+          for <span class="text-brand-primary">Small Businesses.</span>
+        </h1>
+
+        <!-- Body -->
+        <p class="hero-el mx-auto mt-5 max-w-xl text-lg leading-relaxed text-text-secondary lg:mx-0 md:text-xl" style="--i:2">
+          Websites, custom software, and workflow automations — built to actually fit how your business runs.
+          Based in Tampa. Available remotely.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero-el mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start" style="--i:3">
+          <a
+            href="https://calendly.com/daniel-trackt/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-7 py-4 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md sm:w-auto"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            Book a Free Call
+          </a>
+          <a
+            href="https://demo.trackt.tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-white px-7 py-4 text-base font-semibold text-text-primary transition-all duration-200 hover:border-brand-primary/40 hover:shadow-sm sm:w-auto"
+          >
+            See Live Demos
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </div>
+
+        <!-- Social proof strip -->
+        <div class="hero-el mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-text-secondary lg:justify-start" style="--i:4">
+          <span class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Custom-coded, not template
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Flat-rate pricing
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="h-4 w-4 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Fast turnaround
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Right: CSS browser-window mockup -->
+      <div class="hero-el w-full max-w-sm flex-shrink-0 lg:max-w-[440px]" style="--i:2">
+        <div class="browser-window">
+
+          <!-- Chrome bar -->
+          <div class="browser-chrome">
+            <div class="flex items-center gap-1.5" aria-hidden="true">
+              <span class="browser-dot" style="background:#FC5F5A;"></span>
+              <span class="browser-dot" style="background:#FDBC2F;"></span>
+              <span class="browser-dot" style="background:#33C748;"></span>
+            </div>
+            <div class="browser-url">
+              <span>yourbusiness.com</span>
+              <span class="cursor-blink" aria-hidden="true" style="border-right:2px solid #64748B;margin-left:1px;height:10px;display:inline-block;vertical-align:middle;"></span>
+            </div>
+            <div class="w-6 flex-shrink-0" aria-hidden="true"></div>
+          </div>
+
+          <!-- Mini website content -->
+          <div class="browser-content" aria-hidden="true">
+
+            <!-- Mini nav -->
+            <div class="browser-mini-nav">
+              <div class="browser-mini-logo">YourBiz</div>
+              <div class="browser-mini-links">
+                <span>Services</span>
+                <span>About</span>
+                <span>Contact</span>
+              </div>
+              <div class="browser-mini-nav-cta">Call Us</div>
+            </div>
+
+            <!-- Mini hero -->
+            <div class="browser-mini-hero">
+              <div class="browser-headline-bar" style="width:78%"></div>
+              <div class="browser-headline-bar" style="width:55%;height:18px;opacity:0.7;margin-top:4px;"></div>
+              <div class="browser-subtext-bar" style="width:90%;margin-top:10px;"></div>
+              <div class="browser-subtext-bar" style="width:70%;margin-top:4px;"></div>
+              <div class="browser-mini-btns">
+                <div class="browser-mini-btn-primary browser-cta-pulse">Book Now</div>
+                <div class="browser-mini-btn-secondary">Learn More</div>
+              </div>
+            </div>
+
+            <!-- Mini cards row -->
+            <div class="browser-mini-cards">
+              <div class="browser-mini-card">
+                <div class="browser-card-icon" style="background:#16B4D2;"></div>
+                <div class="browser-card-line" style="width:70%;"></div>
+                <div class="browser-card-line" style="width:50%;height:6px;opacity:0.5;margin-top:4px;"></div>
+              </div>
+              <div class="browser-mini-card">
+                <div class="browser-card-icon" style="background:#16B4D2;opacity:0.6;"></div>
+                <div class="browser-card-line" style="width:65%;"></div>
+                <div class="browser-card-line" style="width:45%;height:6px;opacity:0.5;margin-top:4px;"></div>
+              </div>
+              <div class="browser-mini-card">
+                <div class="browser-card-icon" style="background:#16B4D2;opacity:0.4;"></div>
+                <div class="browser-card-line" style="width:60%;"></div>
+                <div class="browser-card-line" style="width:40%;height:6px;opacity:0.5;margin-top:4px;"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Caption -->
+        <p class="mt-3 text-center text-xs text-text-secondary lg:text-left">This site, built the same way — hand-coded, fast, and yours.</p>
+      </div>
+
     </div>
-
-    <!-- Headline -->
-    <h1 class="hero-el hero-glow text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl" style="--i:1">
-      We Build Technology<br />
-      <span class="bg-linear-to-r from-brand-primary to-brand-accent bg-clip-text text-transparent">
-        for Small Businesses.
-      </span>
-    </h1>
-
-    <!-- Body -->
-    <p class="hero-el mx-auto mt-6 max-w-xl text-lg leading-relaxed text-text-secondary md:text-xl" style="--i:2">
-      Available now for web development, custom software, workflow automation, and tech audits —
-      serving small businesses in Tampa, FL and remotely.
-      Also building <strong class="font-semibold text-text-primary">Trackt</strong> — inventory intelligence
-      for parts and accessory distributors. Launching 2026.
-    </p>
-
-    <!-- CTAs -->
-    <div class="hero-el mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center" style="--i:3">
-      <a
-        href="/#consulting"
-        class="btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-8 py-4 text-lg font-semibold text-white transition-all hover:brightness-110 hover:shadow-[0_0_30px_var(--color-brand-glow)] sm:w-auto"
-      >
-        Let's Work Together
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </a>
-      <a
-        href="/trackt"
-        class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-brand-primary/50 px-8 py-4 text-lg font-semibold text-brand-primary transition-all hover:bg-brand-primary/10 sm:w-auto"
-      >
-        Explore Trackt
-      </a>
-    </div>
-
   </div>
 </section>
 
 <style>
-  .hero-el {
-    opacity: 0;
-  }
-
+  /* ── Hero entrance ── */
+  .hero-el { opacity: 0; }
   #hero-content.is-visible .hero-el {
-    animation: fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i, 0) * 0.18s) both;
+    animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i, 0) * 0.12s) both;
   }
 
-  /* Headline gets glow layered on top of fade-up */
-  #hero-content.is-visible .hero-glow {
-    animation:
-      fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i, 0) * 0.18s) both,
-      glow-settle 2.2s ease-out calc(var(--i, 0) * 0.18s) both;
+  /* ── Browser window shell ── */
+  .browser-window {
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 20px 60px rgba(16, 20, 24, 0.10), 0 4px 16px rgba(16, 20, 24, 0.06);
+    overflow: hidden;
+    background: #FFFFFF;
   }
 
-  .hero-spotlight {
-    animation: hero-spotlight 6s ease-in-out infinite;
+  .browser-chrome {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #F4F6F8;
+    border-bottom: 1px solid #E2E8F0;
   }
-  @keyframes hero-spotlight {
-    0%, 100% { opacity: 0.7; transform: scale(1); }
-    50%       { opacity: 1;   transform: scale(1.13); }
+  .browser-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .browser-url {
+    flex: 1;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 5px;
+    padding: 4px 10px;
+    font-size: 10px;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    font-family: monospace;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* ── Mini website inside browser ── */
+  .browser-content { padding: 0; }
+
+  .browser-mini-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-bottom: 1px solid #F4F6F8;
+    background: #FFFFFF;
+  }
+  .browser-mini-logo {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #101418;
+    flex-shrink: 0;
+  }
+  .browser-mini-links {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+    font-size: 7px;
+    color: #64748B;
+  }
+  .browser-mini-nav-cta {
+    font-size: 7px;
+    font-weight: 700;
+    background: #16B4D2;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .browser-mini-hero {
+    padding: 16px 14px 12px;
+    background: linear-gradient(160deg, #FAFBFC 0%, #FFFFFF 100%);
+  }
+  .browser-headline-bar {
+    height: 22px;
+    background: #101418;
+    border-radius: 4px;
+    opacity: 0.85;
+  }
+  .browser-subtext-bar {
+    height: 8px;
+    background: #E2E8F0;
+    border-radius: 3px;
+  }
+  .browser-mini-btns {
+    display: flex;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .browser-mini-btn-primary {
+    font-size: 7px;
+    font-weight: 700;
+    background: #16B4D2;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 5px;
+  }
+  .browser-mini-btn-secondary {
+    font-size: 7px;
+    font-weight: 600;
+    border: 1px solid #E2E8F0;
+    color: #64748B;
+    padding: 5px 12px;
+    border-radius: 5px;
+  }
+
+  .browser-mini-cards {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px 14px;
+    background: #F4F6F8;
+  }
+  .browser-mini-card {
+    flex: 1;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 7px;
+    padding: 8px;
+  }
+  .browser-card-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+  .browser-card-line {
+    height: 7px;
+    background: #E2E8F0;
+    border-radius: 3px;
   }
 </style>
 

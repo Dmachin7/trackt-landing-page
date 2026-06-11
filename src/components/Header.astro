@@ -1,63 +1,59 @@
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
     <!-- Logo -->
-    <a href="/">
+    <a href="/" aria-label="Trackt home">
       <img
         src="/logo/trackt-logo.svg"
         alt="Trackt"
-        class="h-10 w-auto md:h-12"
+        class="h-9 w-auto md:h-11"
+        width="198"
+        height="54"
       />
     </a>
 
     <!-- Desktop nav links -->
     <div class="hidden items-center gap-8 md:flex">
+      <a href="/#services" class="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary">Services</a>
+      <a href="/#contact" class="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary">Get a Quote</a>
+      <a href="/trackt" class="text-sm font-semibold text-brand-primary transition-colors duration-150 hover:opacity-80">Trackt</a>
       <a
-        href="/#consulting"
-        class="text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
-      >Services</a>
-      <a
-        href="/#contact"
-        class="text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
-      >Get a Quote</a>
-      <a
-        href="/trackt"
-        class="text-sm font-medium text-brand-primary transition-colors hover:brightness-110"
-      >Trackt</a>
+        href="https://calendly.com/daniel-trackt/30min"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 rounded-lg bg-brand-primary px-4 py-2 text-sm font-semibold text-white transition-all duration-150 hover:opacity-90 hover:shadow-sm"
+      >
+        Book a Call
+      </a>
     </div>
 
-    <!-- Hamburger button (mobile only) -->
+    <!-- Hamburger (mobile only) -->
     <button
       id="nav-toggle"
       aria-label="Toggle navigation"
       aria-expanded="false"
       class="relative flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:text-text-primary md:hidden"
     >
-      <!-- Hamburger icon -->
       <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-opacity duration-150">
         <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
       </svg>
-      <!-- X icon (overlaid, fades in when open) -->
       <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute opacity-0 transition-opacity duration-150">
         <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
       </svg>
     </button>
   </nav>
 
-  <!-- Mobile menu (CSS-animated slide + fade) -->
-  <div id="nav-menu" class="border-t border-border-subtle bg-bg-dark/95 backdrop-blur-xl md:hidden">
+  <!-- Mobile menu -->
+  <div id="nav-menu" class="border-t border-border-subtle bg-white/95 backdrop-blur-xl md:hidden">
     <div class="px-3 py-2">
+      <a href="/#services" class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-bg-elevated hover:text-text-primary">Services</a>
+      <a href="/#contact" class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-bg-elevated hover:text-text-primary">Get a Quote</a>
+      <a href="/trackt" class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-semibold text-brand-primary transition-colors duration-150 hover:bg-brand-primary/5">Trackt</a>
       <a
-        href="/#consulting"
-        class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-white/6 hover:text-text-primary"
-      >Services</a>
-      <a
-        href="/#contact"
-        class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-white/6 hover:text-text-primary"
-      >Get a Quote</a>
-      <a
-        href="/trackt"
-        class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-brand-primary transition-colors duration-150 hover:bg-brand-primary/10"
-      >Trackt</a>
+        href="https://calendly.com/daniel-trackt/30min"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-menu-link mt-2 block rounded-lg bg-brand-primary px-4 py-3.5 text-center text-base font-semibold text-white transition-opacity duration-150 hover:opacity-90"
+      >Book a Call</a>
     </div>
   </div>
 </header>
@@ -69,18 +65,16 @@
   const iconOpen = document.getElementById("icon-open");
   const iconClose = document.getElementById("icon-close");
 
-  // Scroll effect
   const onScroll = () => {
-    if (window.scrollY > 50) {
-      header?.classList.add("bg-bg-dark/80", "backdrop-blur-xl");
+    if (window.scrollY > 40) {
+      header?.classList.add("bg-white/95", "backdrop-blur-xl", "shadow-sm");
     } else {
-      header?.classList.remove("bg-bg-dark/80", "backdrop-blur-xl");
+      header?.classList.remove("bg-white/95", "backdrop-blur-xl", "shadow-sm");
     }
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  // Hamburger toggle
   let isOpen = false;
   navToggle?.addEventListener("click", () => {
     isOpen = !isOpen;
@@ -90,7 +84,6 @@
     navToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  // Close menu when a link is clicked
   document.querySelectorAll(".nav-menu-link").forEach((link) => {
     link.addEventListener("click", () => {
       isOpen = false;
