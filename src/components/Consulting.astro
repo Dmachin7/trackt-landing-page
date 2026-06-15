@@ -414,7 +414,7 @@
 
           <button type="submit" id="consulting-submit"
             class="btn-shimmer mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-6 py-3.5 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60">
-            Send Message
+            <span>Send Message</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </button>
 
@@ -634,7 +634,13 @@
   const errorEl = document.getElementById("consulting-error");
   const successEl = document.getElementById("consulting-success");
   const submitBtn = document.getElementById("consulting-submit") as HTMLButtonElement | null;
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xbdapjlq";
+  const submitBtnText = submitBtn?.querySelector("span");
+
+  function setSubmitting(loading: boolean) {
+    if (!submitBtn) return;
+    submitBtn.disabled = loading;
+    if (submitBtnText) submitBtnText.textContent = loading ? "Sending…" : "Send Message";
+  }
 
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -649,24 +655,24 @@
     if (!service) { if (errorEl) { errorEl.textContent = "Please select a service."; errorEl.classList.remove("hidden"); } return; }
 
     errorEl?.classList.add("hidden");
-    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Sending..."; }
+    setSubmitting(true);
 
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ name, email, business, service, message }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contact_name: name, email, business_name: business, service, message }),
       });
+      const data = await res.json();
       if (res.ok) {
         form.classList.add("hidden");
         successEl?.classList.remove("hidden");
       } else {
-        const data = await res.json();
-        throw new Error(data?.errors?.[0]?.message ?? "Something went wrong. Please try again.");
+        throw new Error(data?.error ?? "Something went wrong. Please try again.");
       }
     } catch (err) {
       if (errorEl) { errorEl.textContent = err instanceof Error ? err.message : "Failed to send. Please try again."; errorEl.classList.remove("hidden"); }
-      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Send Message"; }
+      setSubmitting(false);
     }
   });
 
