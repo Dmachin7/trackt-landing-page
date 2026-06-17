@@ -68,7 +68,7 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
                 data-meeting="discovery_call"
                 class="meeting-card card-lift group flex flex-col rounded-2xl border-2 border-border-subtle bg-bg-card p-6 text-left transition-all duration-200 hover:border-brand-primary/50"
               >
-                <span class="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-primary/10 px-3 py-1 text-xs font-semibold text-brand-primary">Discovery Call · 60 min</span>
+                <span class="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-primary/10 px-3 py-1 text-xs font-semibold text-brand-primary">Discovery Call · 30 min</span>
                 <span class="mb-1.5 text-lg font-bold text-text-primary">Tell me what you need built</span>
                 <span class="text-sm leading-relaxed text-text-secondary">Tell me what you need built. No pitch — just an honest conversation about your business.</span>
               </button>
@@ -226,12 +226,12 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
   type Slot = { time: string; available: boolean };
 
   const MEETING_LABELS: Record<string, string> = {
-    saas_demo: "SaaS Demo",
+    website_audit: "Website Audit",
     discovery_call: "Discovery Call",
   };
   const MEETING_DURATION: Record<string, number> = {
-    saas_demo: 30,
-    discovery_call: 60,
+    website_audit: 30,
+    discovery_call: 30,
   };
 
   // ── State ──────────────────────────────────────────────────────────────────
