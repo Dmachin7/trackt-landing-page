@@ -28,6 +28,22 @@ html.dark {
 :root { --dot-color: rgba(16, 20, 24, 1); }
 html.dark { --dot-color: rgba(240, 240, 245, 0.10); }
 
+/* ── Hero background effects (dot grid + floating orbs) — theme-aware ── */
+:root {
+  --hero-dot-color: rgba(16, 20, 24, 1);
+  --hero-dot-opacity: 0.15;
+  --hero-orb-teal-2: #5FD3E8;   /* lighter teal */
+  --hero-orb-neutral: #94A3B8;  /* near-white neutral */
+  --hero-orb-opacity: 0.12;
+}
+html.dark {
+  --hero-dot-color: rgba(240, 240, 245, 1);
+  --hero-dot-opacity: 0.08;
+  --hero-orb-teal-2: #5FD3E8;
+  --hero-orb-neutral: #475569;  /* near-dark neutral */
+  --hero-orb-opacity: 0.18;
+}
+
 /* ── Logo show/hide per theme ── */
 .logo-dark { display: none; }
 html.dark .logo-light { display: none; }
