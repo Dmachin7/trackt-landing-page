@@ -1,0 +1,663 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "Book a Call — Trackt";
+const pageDescription =
+  "Book a SaaS demo or a discovery call with Trackt. Pick a time that works for you — confirmation and calendar invite sent instantly.";
+
+// PUBLIC_ vars are safe to inline into the client bundle. The booking API secret
+// is NOT here — it stays server-side in the /api/booking-* proxy routes.
+const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Header />
+  <main id="main-content">
+    <section class="relative overflow-hidden bg-bg-dark px-5 pb-24 pt-32 md:pt-40">
+      <!-- Subtle teal wash, matches /trackt hero -->
+      <div class="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-brand-primary/6 blur-[100px]" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px); background-size: 28px 28px;" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-2xl">
+        <div class="mb-8 text-center">
+          <h1 class="text-3xl font-bold tracking-tight md:text-4xl">Book a call</h1>
+          <p class="mx-auto mt-3 max-w-md text-base text-text-secondary">
+            Pick a meeting type, choose a time, and you're set. A calendar invite and meeting link arrive instantly.
+          </p>
+        </div>
+
+        <!-- Booking widget -->
+        <div
+          id="booking-widget"
+          class="rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-sm md:p-8"
+          data-owner-email={ownerEmail}
+        >
+          <!-- Progress indicator -->
+          <div id="progress" class="mb-7">
+            <div class="mb-2 flex items-center justify-between">
+              <span id="progress-label" class="text-sm font-semibold text-text-primary">Step 1 of 3</span>
+              <span id="progress-title" class="text-sm text-text-secondary">Choose a meeting type</span>
+            </div>
+            <div class="flex gap-1.5">
+              <div data-bar="1" class="h-1.5 flex-1 rounded-full bg-brand-primary transition-colors duration-300"></div>
+              <div data-bar="2" class="h-1.5 flex-1 rounded-full bg-border-subtle transition-colors duration-300"></div>
+              <div data-bar="3" class="h-1.5 flex-1 rounded-full bg-border-subtle transition-colors duration-300"></div>
+            </div>
+          </div>
+
+          <!-- Error banner -->
+          <div id="error-banner" class="mb-5 hidden rounded-xl border border-red-300/60 bg-red-50 px-4 py-3 text-sm text-red-700"></div>
+
+          <!-- ── STEP 1: Meeting type ── -->
+          <div data-step="1">
+            <div class="grid gap-4 md:grid-cols-2">
+              <button
+                type="button"
+                data-meeting="saas_demo"
+                class="meeting-card card-lift group flex flex-col rounded-2xl border-2 border-border-subtle bg-bg-card p-6 text-left transition-all duration-200 hover:border-brand-primary/50"
+              >
+                <span class="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-primary/10 px-3 py-1 text-xs font-semibold text-brand-primary">SaaS Demo · 30 min</span>
+                <span class="mb-1.5 text-lg font-bold text-text-primary">See Trackt live</span>
+                <span class="text-sm leading-relaxed text-text-secondary">See Trackt's inventory intelligence live, tailored to your distribution business.</span>
+              </button>
+
+              <button
+                type="button"
+                data-meeting="discovery_call"
+                class="meeting-card card-lift group flex flex-col rounded-2xl border-2 border-border-subtle bg-bg-card p-6 text-left transition-all duration-200 hover:border-brand-primary/50"
+              >
+                <span class="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-primary/10 px-3 py-1 text-xs font-semibold text-brand-primary">Discovery Call · 60 min</span>
+                <span class="mb-1.5 text-lg font-bold text-text-primary">Tell me what you need built</span>
+                <span class="text-sm leading-relaxed text-text-secondary">Tell me what you need built. No pitch — just an honest conversation about your business.</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ── STEP 2: Date & time ── -->
+          <div data-step="2" class="hidden">
+            <div class="grid gap-6 md:grid-cols-2">
+              <!-- Calendar -->
+              <div>
+                <div class="mb-3 flex items-center justify-between">
+                  <button type="button" id="cal-prev" aria-label="Previous month" class="flex h-8 w-8 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:border-brand-primary/40 hover:text-brand-primary disabled:cursor-not-allowed disabled:opacity-30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                  </button>
+                  <span id="cal-title" class="text-sm font-semibold text-text-primary"></span>
+                  <button type="button" id="cal-next" aria-label="Next month" class="flex h-8 w-8 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:border-brand-primary/40 hover:text-brand-primary disabled:cursor-not-allowed disabled:opacity-30">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                  </button>
+                </div>
+                <div class="mb-1 grid grid-cols-7 gap-1 text-center">
+                  <span class="text-xs font-medium text-text-secondary">Su</span>
+                  <span class="text-xs font-medium text-text-secondary">Mo</span>
+                  <span class="text-xs font-medium text-text-secondary">Tu</span>
+                  <span class="text-xs font-medium text-text-secondary">We</span>
+                  <span class="text-xs font-medium text-text-secondary">Th</span>
+                  <span class="text-xs font-medium text-text-secondary">Fr</span>
+                  <span class="text-xs font-medium text-text-secondary">Sa</span>
+                </div>
+                <div id="cal-grid" class="grid grid-cols-7 gap-1"></div>
+              </div>
+
+              <!-- Slots -->
+              <div>
+                <p id="slot-heading" class="mb-3 text-sm font-semibold text-text-primary">Select a date</p>
+                <div id="slot-list" class="grid max-h-[280px] grid-cols-2 gap-2 overflow-y-auto pr-1">
+                  <p class="col-span-2 py-8 text-center text-sm text-text-secondary">Pick a date to see available times.</p>
+                </div>
+              </div>
+            </div>
+
+            <p id="tz-label" class="mt-5 text-center text-xs text-text-secondary"></p>
+
+            <div class="mt-6 flex items-center justify-between">
+              <button type="button" data-back="1" class="text-sm font-medium text-text-secondary transition-colors hover:text-text-primary">← Back</button>
+              <button type="button" id="to-step-3" class="hidden inline-flex items-center gap-1.5 rounded-xl bg-brand-primary px-6 py-2.5 text-sm font-semibold text-white transition-all duration-150 hover:opacity-90 hover:shadow-sm">
+                Continue
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- ── STEP 3: Details ── -->
+          <div data-step="3" class="hidden">
+            <div id="summary" class="mb-6 rounded-xl bg-bg-elevated px-4 py-3 text-sm text-text-secondary"></div>
+
+            <form id="booking-form" class="space-y-4" novalidate>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label for="first-name" class="mb-1.5 block text-sm font-medium text-text-primary">First name</label>
+                  <input id="first-name" name="first-name" type="text" autocomplete="given-name" class="w-full rounded-xl border border-border-subtle bg-bg-card px-4 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-brand-primary" />
+                  <p data-err="first-name" class="mt-1 hidden text-xs text-red-600"></p>
+                </div>
+                <div>
+                  <label for="last-name" class="mb-1.5 block text-sm font-medium text-text-primary">Last name</label>
+                  <input id="last-name" name="last-name" type="text" autocomplete="family-name" class="w-full rounded-xl border border-border-subtle bg-bg-card px-4 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-brand-primary" />
+                  <p data-err="last-name" class="mt-1 hidden text-xs text-red-600"></p>
+                </div>
+              </div>
+
+              <div>
+                <label for="email" class="mb-1.5 block text-sm font-medium text-text-primary">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" class="w-full rounded-xl border border-border-subtle bg-bg-card px-4 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-brand-primary" />
+                <p data-err="email" class="mt-1 hidden text-xs text-red-600"></p>
+              </div>
+
+              <div>
+                <label for="business" class="mb-1.5 block text-sm font-medium text-text-primary">Business name <span class="font-normal text-text-secondary">(optional)</span></label>
+                <input id="business" name="business" type="text" autocomplete="organization" class="w-full rounded-xl border border-border-subtle bg-bg-card px-4 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-brand-primary" />
+              </div>
+
+              <div>
+                <label for="notes" class="mb-1.5 block text-sm font-medium text-text-primary">Anything specific you'd like to cover? <span class="font-normal text-text-secondary">(optional)</span></label>
+                <textarea id="notes" name="notes" rows="3" maxlength="500" class="w-full resize-y rounded-xl border border-border-subtle bg-bg-card px-4 py-2.5 text-sm text-text-primary outline-none transition-colors focus:border-brand-primary"></textarea>
+                <p class="mt-1 text-right text-xs text-text-secondary"><span id="char-count">0</span>/500</p>
+              </div>
+
+              <div class="flex items-center justify-between pt-1">
+                <button type="button" data-back="2" class="text-sm font-medium text-text-secondary transition-colors hover:text-text-primary">← Back</button>
+                <button type="submit" id="submit-btn" disabled class="inline-flex items-center gap-2 rounded-xl bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-all duration-150 hover:opacity-90 hover:shadow-sm disabled:cursor-not-allowed disabled:opacity-40">
+                  <svg id="submit-spinner" class="hidden h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0 1 8-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+                  <span id="submit-text">Confirm my booking</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- ── CONFIRMATION ── -->
+          <div data-step="done" class="hidden py-4 text-center">
+            <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center">
+              <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="80" height="80" aria-hidden="true">
+                <circle class="checkmark-circle" cx="26" cy="26" r="24" fill="none" />
+                <path class="checkmark-check" fill="none" d="M14 27l8 8 16-16" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold tracking-tight text-text-primary">You're booked.</h2>
+            <div id="done-details" class="mx-auto mt-4 max-w-sm space-y-1 text-sm text-text-secondary"></div>
+            <p id="done-email" class="mx-auto mt-5 max-w-sm text-sm text-text-secondary"></p>
+            <p class="mx-auto mt-3 max-w-sm text-xs text-text-secondary/80">
+              Can't make it? Reply to the confirmation email to let me know and we'll find another time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* CSS-only animated checkmark — draws in on render */
+  .checkmark-circle {
+    stroke: var(--color-brand-primary);
+    stroke-width: 2.5;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    animation: checkmark-stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  }
+  .checkmark-check {
+    stroke: var(--color-brand-primary);
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: checkmark-stroke 0.35s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;
+  }
+  @keyframes checkmark-stroke {
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .checkmark-circle, .checkmark-check { animation: none; stroke-dashoffset: 0; }
+  }
+</style>
+
+<script>
+  // ── Types ──────────────────────────────────────────────────────────────────
+  type Settings = {
+    timezone: string;
+    available_days: number[];
+    slot_duration_minutes: number;
+    advance_notice_hours: number;
+    max_days_ahead: number;
+  };
+  type Slot = { time: string; available: boolean };
+
+  const MEETING_LABELS: Record<string, string> = {
+    saas_demo: "SaaS Demo",
+    discovery_call: "Discovery Call",
+  };
+  const MEETING_DURATION: Record<string, number> = {
+    saas_demo: 30,
+    discovery_call: 60,
+  };
+
+  // ── State ──────────────────────────────────────────────────────────────────
+  const widget = document.getElementById("booking-widget")!;
+  const OWNER_EMAIL = widget.dataset.ownerEmail || "daniel@trackt.tech";
+  const visitorTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  let settings: Settings | null = null;
+  let meetingType: string | null = null;
+  let selectedDate: string | null = null; // business-tz YYYY-MM-DD
+  let selectedTime: string | null = null; // business-tz HH:MM
+  const slotCache: Record<string, Slot[]> = {};
+  let viewYear = 0;
+  let viewMonth = 0; // 0-indexed
+
+  const PROGRESS_TITLES = ["Choose a meeting type", "Pick a date & time", "Your details"];
+
+  // ── Date helpers (business tz = settings.timezone) ───────────────────────────
+  function pad(n: number) { return String(n).padStart(2, "0"); }
+  function dateStr(y: number, m: number, d: number) { return `${y}-${pad(m + 1)}-${pad(d)}`; }
+
+  // "Now" as a YYYY-MM-DD string in the business timezone.
+  function todayInTz(tz: string): string {
+    return new Intl.DateTimeFormat("en-CA", {
+      timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit",
+    }).format(new Date());
+  }
+
+  // Wall-clock date+time in a timezone → UTC Date (matches the HQ server logic).
+  function localToUTC(ds: string, ts: string, tz: string): Date {
+    const asIfUTC = new Date(`${ds}T${ts}:00Z`);
+    const tzDisplay = new Date(asIfUTC.toLocaleString("en-US", { timeZone: tz }));
+    const offsetMs = asIfUTC.getTime() - tzDisplay.getTime();
+    return new Date(asIfUTC.getTime() + offsetMs);
+  }
+
+  function parseYMD(s: string): [number, number, number] {
+    const [y, m, d] = s.split("-").map(Number);
+    return [y, m - 1, d];
+  }
+
+  // Compare two YMD strings: -1 / 0 / 1
+  function cmpDate(a: string, b: string): number {
+    return a < b ? -1 : a > b ? 1 : 0;
+  }
+
+  function addDays(s: string, days: number): string {
+    const [y, m, d] = parseYMD(s);
+    const dt = new Date(Date.UTC(y, m, d));
+    dt.setUTCDate(dt.getUTCDate() + days);
+    return dateStr(dt.getUTCFullYear(), dt.getUTCMonth(), dt.getUTCDate());
+  }
+
+  // ── UI helpers ───────────────────────────────────────────────────────────────
+  function showStep(step: "1" | "2" | "3" | "done") {
+    widget.querySelectorAll("[data-step]").forEach((el) => {
+      (el as HTMLElement).classList.toggle("hidden", (el as HTMLElement).dataset.step !== step);
+    });
+    const progress = document.getElementById("progress")!;
+    if (step === "done") {
+      progress.classList.add("hidden");
+    } else {
+      progress.classList.remove("hidden");
+      const n = Number(step);
+      document.getElementById("progress-label")!.textContent = `Step ${n} of 3`;
+      document.getElementById("progress-title")!.textContent = PROGRESS_TITLES[n - 1];
+      widget.querySelectorAll("[data-bar]").forEach((bar) => {
+        const idx = Number((bar as HTMLElement).dataset.bar);
+        bar.classList.toggle("bg-brand-primary", idx <= n);
+        bar.classList.toggle("bg-border-subtle", idx > n);
+      });
+    }
+    clearError();
+  }
+
+  function showError(msg: string) {
+    const el = document.getElementById("error-banner")!;
+    el.textContent = msg;
+    el.classList.remove("hidden");
+  }
+  function clearError() {
+    document.getElementById("error-banner")!.classList.add("hidden");
+  }
+
+  // ── Init ───────────────────────────────────────────────────────────────────
+  async function init() {
+    try {
+      const res = await fetch("/api/booking-settings");
+      if (!res.ok) throw new Error("settings");
+      settings = await res.json();
+    } catch {
+      showError(`Something went wrong on our end. Please try again, or email me directly at ${OWNER_EMAIL}.`);
+      return;
+    }
+    document.getElementById("tz-label")!.textContent = `Times shown in ${visitorTz.replace(/_/g, " ")}`;
+
+    // Start the calendar on the month of "today" in business tz.
+    const [ty, tm] = parseYMD(todayInTz(settings!.timezone));
+    viewYear = ty; viewMonth = tm;
+
+    wireMeetingCards();
+    wireNav();
+    wireForm();
+  }
+
+  // ── Step 1: meeting type ─────────────────────────────────────────────────────
+  function wireMeetingCards() {
+    widget.querySelectorAll<HTMLButtonElement>(".meeting-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        meetingType = card.dataset.meeting!;
+        widget.querySelectorAll(".meeting-card").forEach((c) =>
+          c.classList.remove("border-brand-primary"));
+        card.classList.add("border-brand-primary");
+        showStep("2");
+        renderCalendar();
+      });
+    });
+  }
+
+  // ── Step 2: calendar ─────────────────────────────────────────────────────────
+  function isSelectable(ds: string): boolean {
+    if (!settings) return false;
+    const today = todayInTz(settings.timezone);
+    const maxDate = addDays(today, settings.max_days_ahead);
+    if (cmpDate(ds, today) < 0) return false;
+    if (cmpDate(ds, maxDate) > 0) return false;
+
+    // Day-of-week (0=Sun..6=Sat), computed in a tz-stable way.
+    const [y, m, d] = parseYMD(ds);
+    const dow = new Date(Date.UTC(y, m, d)).getUTCDay();
+    if (!settings.available_days.includes(dow)) return false;
+
+    // Advance notice: if the whole day is already inside the notice window, gray it.
+    const endOfDay = localToUTC(ds, "23:59", settings.timezone);
+    const earliest = new Date(Date.now() + settings.advance_notice_hours * 3_600_000);
+    if (endOfDay <= earliest) return false;
+
+    return true;
+  }
+
+  function renderCalendar() {
+    if (!settings) return;
+    const monthName = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric" })
+      .format(new Date(Date.UTC(viewYear, viewMonth, 1)));
+    document.getElementById("cal-title")!.textContent = monthName;
+
+    const grid = document.getElementById("cal-grid")!;
+    grid.innerHTML = "";
+
+    const firstDow = new Date(Date.UTC(viewYear, viewMonth, 1)).getUTCDay();
+    const daysInMonth = new Date(Date.UTC(viewYear, viewMonth + 1, 0)).getUTCDate();
+
+    for (let i = 0; i < firstDow; i++) {
+      grid.appendChild(document.createElement("div"));
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const ds = dateStr(viewYear, viewMonth, day);
+      const selectable = isSelectable(ds);
+      const cell = document.createElement(selectable ? "button" : "div");
+      cell.textContent = String(day);
+      if (selectable) {
+        (cell as HTMLButtonElement).type = "button";
+        cell.className =
+          "flex h-9 items-center justify-center rounded-lg text-sm font-medium text-text-primary transition-colors hover:bg-brand-primary/10 hover:text-brand-primary";
+        if (ds === selectedDate) cell.classList.add("bg-brand-primary", "text-white", "hover:bg-brand-primary", "hover:text-white");
+        cell.addEventListener("click", () => onDateClick(ds));
+      } else {
+        cell.className = "flex h-9 items-center justify-center rounded-lg text-sm text-text-secondary/30";
+      }
+      grid.appendChild(cell);
+    }
+
+    // Disable prev arrow for months before the current month.
+    const today = todayInTz(settings.timezone);
+    const [ty, tm] = parseYMD(today);
+    const prevBtn = document.getElementById("cal-prev") as HTMLButtonElement;
+    prevBtn.disabled = viewYear < ty || (viewYear === ty && viewMonth <= tm);
+  }
+
+  async function onDateClick(ds: string) {
+    selectedDate = ds;
+    selectedTime = null;
+    document.getElementById("to-step-3")!.classList.add("hidden");
+    renderCalendar();
+
+    const heading = document.getElementById("slot-heading")!;
+    const list = document.getElementById("slot-list")!;
+    const labelDate = new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric" })
+      .format(new Date(Date.UTC(...parseYMD(ds))));
+    heading.textContent = labelDate;
+    list.innerHTML = `<p class="col-span-2 py-8 text-center text-sm text-text-secondary">Loading times…</p>`;
+
+    let slots: Slot[];
+    if (slotCache[ds]) {
+      slots = slotCache[ds];
+    } else {
+      try {
+        const res = await fetch(`/api/booking-availability?date=${ds}`);
+        if (!res.ok) throw new Error("availability");
+        const data = await res.json();
+        slots = data.slots ?? [];
+        slotCache[ds] = slots;
+      } catch {
+        list.innerHTML = `<p class="col-span-2 py-8 text-center text-sm text-red-600">Couldn't load times. Try another date.</p>`;
+        return;
+      }
+    }
+    renderSlots(ds, slots);
+  }
+
+  function renderSlots(ds: string, slots: Slot[]) {
+    const list = document.getElementById("slot-list")!;
+    list.innerHTML = "";
+    const available = slots.filter((s) => s.available);
+    if (available.length === 0) {
+      list.innerHTML = `<p class="col-span-2 py-8 text-center text-sm text-text-secondary">No times available for this day.</p>`;
+      return;
+    }
+    for (const slot of slots) {
+      const instant = localToUTC(ds, slot.time, settings!.timezone);
+      const label = new Intl.DateTimeFormat("en-US", {
+        hour: "numeric", minute: "2-digit", hour12: true, timeZone: visitorTz,
+      }).format(instant);
+
+      if (!slot.available) {
+        const span = document.createElement("div");
+        span.textContent = label;
+        span.className = "flex items-center justify-center rounded-lg border border-border-subtle px-3 py-2.5 text-sm text-text-secondary/30 line-through";
+        list.appendChild(span);
+        continue;
+      }
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = label;
+      btn.dataset.time = slot.time;
+      btn.className = "slot-btn flex items-center justify-center rounded-lg border border-border-subtle px-3 py-2.5 text-sm font-medium text-text-primary transition-colors hover:border-brand-primary hover:text-brand-primary";
+      if (slot.time === selectedTime) selectSlotStyle(btn);
+      btn.addEventListener("click", () => {
+        selectedTime = slot.time;
+        list.querySelectorAll(".slot-btn").forEach((b) => deselectSlotStyle(b as HTMLElement));
+        selectSlotStyle(btn);
+        document.getElementById("to-step-3")!.classList.remove("hidden");
+      });
+      list.appendChild(btn);
+    }
+  }
+
+  function selectSlotStyle(btn: HTMLElement) {
+    btn.classList.add("border-brand-primary", "bg-brand-primary", "text-white");
+    btn.classList.remove("text-text-primary");
+  }
+  function deselectSlotStyle(btn: HTMLElement) {
+    btn.classList.remove("border-brand-primary", "bg-brand-primary", "text-white");
+    btn.classList.add("text-text-primary");
+  }
+
+  // ── Navigation wiring ────────────────────────────────────────────────────────
+  function wireNav() {
+    document.getElementById("cal-prev")!.addEventListener("click", () => {
+      if (viewMonth === 0) { viewMonth = 11; viewYear--; } else { viewMonth--; }
+      renderCalendar();
+    });
+    document.getElementById("cal-next")!.addEventListener("click", () => {
+      if (viewMonth === 11) { viewMonth = 0; viewYear++; } else { viewMonth++; }
+      renderCalendar();
+    });
+    document.getElementById("to-step-3")!.addEventListener("click", () => {
+      if (!selectedDate || !selectedTime) return;
+      renderSummary();
+      showStep("3");
+    });
+    widget.querySelectorAll<HTMLButtonElement>("[data-back]").forEach((btn) => {
+      btn.addEventListener("click", () => showStep(btn.dataset.back as "1" | "2"));
+    });
+  }
+
+  function renderSummary() {
+    if (!selectedDate || !selectedTime || !meetingType) return;
+    const instant = localToUTC(selectedDate, selectedTime, settings!.timezone);
+    const dateLabel = new Intl.DateTimeFormat("en-US", {
+      weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: visitorTz,
+    }).format(instant);
+    const timeLabel = new Intl.DateTimeFormat("en-US", {
+      hour: "numeric", minute: "2-digit", hour12: true, timeZone: visitorTz,
+    }).format(instant);
+    document.getElementById("summary")!.innerHTML =
+      `<span class="font-semibold text-text-primary">${MEETING_LABELS[meetingType]} · ${MEETING_DURATION[meetingType]} min</span><br>${dateLabel} at ${timeLabel}`;
+  }
+
+  // ── Step 3: form ─────────────────────────────────────────────────────────────
+  function wireForm() {
+    const form = document.getElementById("booking-form") as HTMLFormElement;
+    const notes = document.getElementById("notes") as HTMLTextAreaElement;
+    const charCount = document.getElementById("char-count")!;
+
+    notes.addEventListener("input", () => { charCount.textContent = String(notes.value.length); });
+
+    ["first-name", "last-name", "email"].forEach((id) => {
+      document.getElementById(id)!.addEventListener("input", validateForm);
+    });
+
+    form.addEventListener("submit", onSubmit);
+  }
+
+  function fieldVal(id: string): string {
+    return (document.getElementById(id) as HTMLInputElement).value.trim();
+  }
+  function validEmail(v: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  function validateForm(): boolean {
+    const first = fieldVal("first-name");
+    const last = fieldVal("last-name");
+    const email = fieldVal("email");
+    const ok = first.length > 0 && last.length > 0 && validEmail(email);
+    (document.getElementById("submit-btn") as HTMLButtonElement).disabled = !ok;
+    return ok;
+  }
+
+  function setFieldError(id: string, msg: string | null) {
+    const el = document.querySelector(`[data-err="${id}"]`) as HTMLElement;
+    if (!el) return;
+    if (msg) { el.textContent = msg; el.classList.remove("hidden"); }
+    else { el.classList.add("hidden"); }
+  }
+
+  async function onSubmit(e: Event) {
+    e.preventDefault();
+    clearError();
+
+    const first = fieldVal("first-name");
+    const last = fieldVal("last-name");
+    const email = fieldVal("email");
+    setFieldError("first-name", first ? null : "Please enter your first name.");
+    setFieldError("last-name", last ? null : "Please enter your last name.");
+    setFieldError("email", validEmail(email) ? null : "Please enter a valid email address.");
+    if (!first || !last || !validEmail(email)) return;
+    if (!selectedDate || !selectedTime || !meetingType) return;
+
+    setLoading(true);
+
+    const payload = {
+      client_name: `${first} ${last}`,
+      client_email: email,
+      client_business: fieldVal("business") || undefined,
+      meeting_type: meetingType,
+      date: selectedDate,
+      time: selectedTime,
+      timezone: visitorTz,
+      notes: fieldVal("notes") || undefined,
+    };
+
+    let res: Response;
+    try {
+      res = await fetch("/api/booking-create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    } catch {
+      setLoading(false);
+      showError(`Something went wrong on our end. Please try again, or email me directly at ${OWNER_EMAIL}.`);
+      return;
+    }
+
+    if (res.status === 201) {
+      const data = await res.json().catch(() => ({}));
+      showConfirmation(email);
+      void data;
+      return;
+    }
+
+    setLoading(false);
+
+    if (res.status === 409) {
+      // Slot taken between step 2 and submit — mark it gone and return to step 2.
+      if (selectedDate && slotCache[selectedDate]) {
+        const s = slotCache[selectedDate].find((x) => x.time === selectedTime);
+        if (s) s.available = false;
+      }
+      const taken = selectedTime;
+      selectedTime = null;
+      showStep("2");
+      if (selectedDate) renderSlots(selectedDate, slotCache[selectedDate] ?? []);
+      document.getElementById("to-step-3")!.classList.add("hidden");
+      showError("That slot was just taken — pick another time.");
+      void taken;
+      return;
+    }
+
+    showError(`Something went wrong on our end. Please try again, or email me directly at ${OWNER_EMAIL}.`);
+  }
+
+  function setLoading(loading: boolean) {
+    const btn = document.getElementById("submit-btn") as HTMLButtonElement;
+    const spinner = document.getElementById("submit-spinner")!;
+    const text = document.getElementById("submit-text")!;
+    btn.disabled = loading;
+    spinner.classList.toggle("hidden", !loading);
+    text.textContent = loading ? "Booking…" : "Confirm my booking";
+    document.getElementById("booking-form")!
+      .querySelectorAll("input, textarea")
+      .forEach((el) => ((el as HTMLInputElement).disabled = loading));
+  }
+
+  // ── Confirmation ─────────────────────────────────────────────────────────────
+  function showConfirmation(email: string) {
+    const instant = localToUTC(selectedDate!, selectedTime!, settings!.timezone);
+    const dateLabel = new Intl.DateTimeFormat("en-US", {
+      weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: visitorTz,
+    }).format(instant);
+    const timeLabel = new Intl.DateTimeFormat("en-US", {
+      hour: "numeric", minute: "2-digit", hour12: true, timeZone: visitorTz, timeZoneName: "short",
+    }).format(instant);
+
+    document.getElementById("done-details")!.innerHTML = [
+      `<p class="font-semibold text-text-primary">${MEETING_LABELS[meetingType!]} · ${MEETING_DURATION[meetingType!]} min</p>`,
+      `<p>${dateLabel}</p>`,
+      `<p>${timeLabel}</p>`,
+    ].join("");
+    document.getElementById("done-email")!.textContent =
+      `A calendar invite and meeting link are on their way to ${email}.`;
+    showStep("done");
+  }
+
+  init();
+</script>
