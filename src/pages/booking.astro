@@ -55,12 +55,12 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
             <div class="grid gap-4 md:grid-cols-2">
               <button
                 type="button"
-                data-meeting="saas_demo"
+                data-meeting="website_audit"
                 class="meeting-card card-lift group flex flex-col rounded-2xl border-2 border-border-subtle bg-bg-card p-6 text-left transition-all duration-200 hover:border-brand-primary/50"
               >
-                <span class="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-primary/10 px-3 py-1 text-xs font-semibold text-brand-primary">SaaS Demo · 30 min</span>
-                <span class="mb-1.5 text-lg font-bold text-text-primary">See Trackt live</span>
-                <span class="text-sm leading-relaxed text-text-secondary">See Trackt's inventory intelligence live, tailored to your distribution business.</span>
+                <span class="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-primary/10 px-3 py-1 text-xs font-semibold text-brand-primary">Website Audit · 30 min</span>
+                <span class="mb-1.5 text-lg font-bold text-text-primary">Get a free website audit</span>
+                <span class="text-sm leading-relaxed text-text-secondary">I'll review your current site and share quick wins — speed, SEO, design, and what's quietly costing you conversions.</span>
               </button>
 
               <button
@@ -114,7 +114,7 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
 
             <div class="mt-6 flex items-center justify-between">
               <button type="button" data-back="1" class="text-sm font-medium text-text-secondary transition-colors hover:text-text-primary">← Back</button>
-              <button type="button" id="to-step-3" class="hidden inline-flex items-center gap-1.5 rounded-xl bg-brand-primary px-6 py-2.5 text-sm font-semibold text-white transition-all duration-150 hover:opacity-90 hover:shadow-sm">
+              <button type="button" id="to-step-3" class="hidden items-center gap-1.5 rounded-xl bg-brand-primary px-6 py-2.5 text-sm font-semibold text-white transition-all duration-150 hover:opacity-90 hover:shadow-sm">
                 Continue
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </button>
@@ -307,6 +307,14 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
     clearError();
   }
 
+  // Continue button toggles between hidden and inline-flex (both set `display`,
+  // so we swap them explicitly rather than relying on class order).
+  function setContinueVisible(visible: boolean) {
+    const el = document.getElementById("to-step-3")!;
+    el.classList.toggle("hidden", !visible);
+    el.classList.toggle("inline-flex", visible);
+  }
+
   function showError(msg: string) {
     const el = document.getElementById("error-banner")!;
     el.textContent = msg;
@@ -415,7 +423,7 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
   async function onDateClick(ds: string) {
     selectedDate = ds;
     selectedTime = null;
-    document.getElementById("to-step-3")!.classList.add("hidden");
+    setContinueVisible(false);
     renderCalendar();
 
     const heading = document.getElementById("slot-heading")!;
@@ -474,7 +482,7 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
         selectedTime = slot.time;
         list.querySelectorAll(".slot-btn").forEach((b) => deselectSlotStyle(b as HTMLElement));
         selectSlotStyle(btn);
-        document.getElementById("to-step-3")!.classList.remove("hidden");
+        setContinueVisible(true);
       });
       list.appendChild(btn);
     }
@@ -618,7 +626,7 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
       selectedTime = null;
       showStep("2");
       if (selectedDate) renderSlots(selectedDate, slotCache[selectedDate] ?? []);
-      document.getElementById("to-step-3")!.classList.add("hidden");
+      setContinueVisible(false);
       showError("That slot was just taken — pick another time.");
       void taken;
       return;
