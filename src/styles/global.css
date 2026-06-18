@@ -74,13 +74,20 @@ html.dark #site-header.scrolled {
 }
 
 /* ── Mobile nav menu ── */
+/* Solid (opaque) so the hero dot-grid/orbs never show through the open menu. */
 #nav-menu {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #ffffff;
 }
 html.dark #nav-menu {
-  background: rgba(17, 24, 32, 0.97);
+  background: #0b0f14;
+}
+/* When the mobile menu is open, give the top header bar a solid bg too —
+   otherwise the transparent (unscrolled) header lets the grid show behind it. */
+#site-header:has(#nav-menu.is-open) {
+  background: #ffffff;
+}
+html.dark #site-header:has(#nav-menu.is-open) {
+  background: #0b0f14;
 }
 
 /* ── Dark mode shadows (visible against dark bg) ── */
