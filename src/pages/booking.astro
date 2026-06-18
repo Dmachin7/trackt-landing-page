@@ -237,7 +237,20 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
   // ── State ──────────────────────────────────────────────────────────────────
   const widget = document.getElementById("booking-widget")!;
   const OWNER_EMAIL = widget.dataset.ownerEmail || "daniel@trackt.tech";
-  const visitorTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  // All booking times are Eastern wall-clock (matches HQ availability). We display
+  // them directly with no timezone conversion so they always read in ET.
+  function fmt12h(hhmm: string): string {
+    const [h, m] = hhmm.split(":").map(Number);
+    const period = h >= 12 ? "PM" : "AM";
+    const hr = h % 12 === 0 ? 12 : h % 12;
+    return `${hr}:${String(m).padStart(2, "0")} ${period}`;
+  }
+  function fmtDateLong(ds: string): string {
+    const [y, mo, d] = ds.split("-").map(Number);
+    return new Intl.DateTimeFormat("en-US", {
+      weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "UTC",
+    }).format(new Date(Date.UTC(y, mo - 1, d, 12)));
+  }
 
   let settings: Settings | null = null;
   let meetingType: string | null = null;
@@ -334,7 +347,7 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
       showError(`Something went wrong on our end. Please try again, or email me directly at ${OWNER_EMAIL}.`);
       return;
     }
-    document.getElementById("tz-label")!.textContent = `Times shown in ${visitorTz.replace(/_/g, " ")}`;
+    document.getElementById("tz-label")!.textContent = "Times shown in Eastern time (ET)";
 
     // Start the calendar on the month of "today" in business tz.
     const [ty, tm] = parseYMD(todayInTz(settings!.timezone));
@@ -460,10 +473,7 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
       return;
     }
     for (const slot of slots) {
-      const instant = localToUTC(ds, slot.time, settings!.timezone);
-      const label = new Intl.DateTimeFormat("en-US", {
-        hour: "numeric", minute: "2-digit", hour12: true, timeZone: visitorTz,
-      }).format(instant);
+      const label = fmt12h(slot.time);
 
       if (!slot.available) {
         const span = document.createElement("div");
@@ -519,13 +529,8 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
 
   function renderSummary() {
     if (!selectedDate || !selectedTime || !meetingType) return;
-    const instant = localToUTC(selectedDate, selectedTime, settings!.timezone);
-    const dateLabel = new Intl.DateTimeFormat("en-US", {
-      weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: visitorTz,
-    }).format(instant);
-    const timeLabel = new Intl.DateTimeFormat("en-US", {
-      hour: "numeric", minute: "2-digit", hour12: true, timeZone: visitorTz,
-    }).format(instant);
+    const dateLabel = fmtDateLong(selectedDate);
+    const timeLabel = fmt12h(selectedTime) + " ET";
     document.getElementById("summary")!.innerHTML =
       `<span class="font-semibold text-text-primary">${MEETING_LABELS[meetingType]} · ${MEETING_DURATION[meetingType]} min</span><br>${dateLabel} at ${timeLabel}`;
   }
@@ -590,7 +595,7 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
       meeting_type: meetingType,
       date: selectedDate,
       time: selectedTime,
-      timezone: visitorTz,
+      timezone: "America/New_York",
       notes: fieldVal("notes") || undefined,
     };
 
@@ -649,13 +654,8 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
 
   // ── Confirmation ─────────────────────────────────────────────────────────────
   function showConfirmation(email: string) {
-    const instant = localToUTC(selectedDate!, selectedTime!, settings!.timezone);
-    const dateLabel = new Intl.DateTimeFormat("en-US", {
-      weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: visitorTz,
-    }).format(instant);
-    const timeLabel = new Intl.DateTimeFormat("en-US", {
-      hour: "numeric", minute: "2-digit", hour12: true, timeZone: visitorTz, timeZoneName: "short",
-    }).format(instant);
+    const dateLabel = fmtDateLong(selectedDate!);
+    const timeLabel = fmt12h(selectedTime!) + " ET";
 
     document.getElementById("done-details")!.innerHTML = [
       `<p class="font-semibold text-text-primary">${MEETING_LABELS[meetingType!]} · ${MEETING_DURATION[meetingType!]} min</p>`,
