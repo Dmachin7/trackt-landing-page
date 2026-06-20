@@ -441,7 +441,7 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
 
     const heading = document.getElementById("slot-heading")!;
     const list = document.getElementById("slot-list")!;
-    const labelDate = new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric" })
+    const labelDate = new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" })
       .format(new Date(Date.UTC(...parseYMD(ds))));
     heading.textContent = labelDate;
     list.innerHTML = `<p class="col-span-2 py-8 text-center text-sm text-text-secondary">Loading times…</p>`;
