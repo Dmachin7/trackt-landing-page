@@ -356,11 +356,3 @@
   }
 </style>
 
-<script>
-  const content = document.getElementById('hero-content');
-  if (content) {
-    const show = () => content.classList.add('is-visible');
-    if (document.readyState !== 'loading') { show(); }
-    else { document.addEventListener('DOMContentLoaded', show, { once: true }); }
-  }
-</script>
