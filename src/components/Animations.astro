@@ -139,9 +139,21 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   // Processed via the .scroll-reveal class; Tailwind transition classes are
   // stripped to prevent CSS transitions fighting GSAP.
   // ─────────────────────────────────────────────────────────────────────────
+  // ── Services heading — animate on load with the hero, not on scroll ─────────
+  // The heading sits just below the fold; triggering it on load (delayed after
+  // the hero sequence) means it floats in without the user needing to scroll.
+  const servicesHeading = document.getElementById('services-heading');
+  if (servicesHeading) {
+    servicesHeading.classList.remove('transition-all', 'duration-700', 'ease-out', 'translate-y-8', 'opacity-0');
+    gsap.set(servicesHeading, { opacity: 0, y: y(32) });
+    gsap.to(servicesHeading, {
+      opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', delay: 1.1,
+    });
+  }
+
   document.querySelectorAll<HTMLElement>('.scroll-reveal').forEach(el => {
-    // TracktTeaser section handled separately below
-    if (el.id === 'trackt-teaser-wrapper') return;
+    // These are handled separately — skip in generic loop
+    if (el.id === 'trackt-teaser-wrapper' || el.id === 'services-heading') return;
 
     el.classList.remove('transition-all', 'duration-700', 'ease-out', 'translate-y-8', 'opacity-0');
 
