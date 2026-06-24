@@ -19,6 +19,17 @@ lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time: number) => { lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
 
+// ── Pause Lenis while the pricing modal is open ─────────────────────────────
+// Lenis intercepts all wheel events globally, which prevents the modal's
+// overflow-y-auto div from scrolling on its own. Stopping Lenis hands control
+// back to native browser scroll for the duration the modal is open.
+const pricingModal = document.getElementById('pricing-modal');
+if (pricingModal) {
+  new MutationObserver(() => {
+    pricingModal.classList.contains('hidden') ? lenis.start() : lenis.stop();
+  }).observe(pricingModal, { attributes: true, attributeFilter: ['class'] });
+}
+
 // ── Intercept in-page anchor clicks so Lenis drives the scroll ─────────────
 // Native <a href="#section"> bypasses Lenis entirely and teleports the page.
 document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(anchor => {
@@ -59,7 +70,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       tl.fromTo(badge,
         { opacity: 0, y: y(16) },
         { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
-          onComplete: () => { badge.style.willChange = 'auto'; } },
+          onComplete: () => gsap.set(badge, { clearProps: 'all' }) },
         0.1
       );
     }
@@ -69,7 +80,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       tl.fromTo(h1,
         { opacity: 0, y: y(40) },
         { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          onComplete: () => { h1.style.willChange = 'auto'; } },
+          onComplete: () => gsap.set(h1, { clearProps: 'all' }) },
         0.3
       );
     }
@@ -79,18 +90,20 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       tl.fromTo(subtext,
         { opacity: 0, y: y(20) },
         { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
-          onComplete: () => { subtext.style.willChange = 'auto'; } },
+          onComplete: () => gsap.set(subtext, { clearProps: 'all' }) },
         0.65
       );
     }
 
     // 4 — CTA buttons: animate the wrapper as a single unit (two tightly grouped
-    //     buttons staggering separately looks jerky; one smooth entrance is cleaner)
+    //     buttons staggering separately looks jerky; one smooth entrance is cleaner).
+    //     clearProps removes GSAP's inline opacity/transform so CSS hover states
+    //     (hover:opacity-90, btn-shimmer ::after) take full control after entry.
     if (ctaDiv) {
       tl.fromTo(ctaDiv,
         { opacity: 0, y: y(16) },
         { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
-          onComplete: () => { ctaDiv.style.willChange = 'auto'; } },
+          onComplete: () => gsap.set(ctaDiv, { clearProps: 'all' }) },
         0.8
       );
     }
@@ -103,14 +116,14 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         gsap.set(spans, { opacity: 0, y: y(12) });
         tl.to(spans,
           { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', stagger: 0.06,
-            onComplete: () => { trustStrip.style.willChange = 'auto'; } },
+            onComplete: () => gsap.set(spans, { clearProps: 'all' }) },
           0.95
         );
       } else {
         tl.fromTo(trustStrip,
           { opacity: 0, y: y(12) },
           { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out',
-            onComplete: () => { trustStrip.style.willChange = 'auto'; } },
+            onComplete: () => gsap.set(trustStrip, { clearProps: 'all' }) },
           0.95
         );
       }
@@ -121,7 +134,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       tl.fromTo(heroMockup,
         { opacity: 0, x: mobile ? 0 : 40, scale: 0.97 },
         { opacity: 1, x: 0, scale: 1, duration: 0.9, ease: 'power3.out',
-          onComplete: () => { heroMockup.style.willChange = 'auto'; } },
+          onComplete: () => gsap.set(heroMockup, { clearProps: 'all' }) },
         0.4
       );
     }
