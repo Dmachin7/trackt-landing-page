@@ -70,25 +70,15 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       );
     }
 
-    // 4 — CTA buttons: reveal parent wrapper first, then stagger the two <a> elements
+    // 4 — CTA buttons: animate the wrapper as a single unit (two tightly grouped
+    //     buttons staggering separately looks jerky; one smooth entrance is cleaner)
     if (ctaDiv) {
-      gsap.set(ctaDiv, { opacity: 1 });
-      const btns = Array.from(ctaDiv.querySelectorAll<HTMLElement>('a'));
-      if (btns.length > 1) {
-        gsap.set(btns, { opacity: 0, y: y(16) });
-        tl.to(btns,
-          { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.08,
-            onComplete: () => { ctaDiv.style.willChange = 'auto'; } },
-          0.8
-        );
-      } else {
-        tl.fromTo(ctaDiv,
-          { opacity: 0, y: y(16) },
-          { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
-            onComplete: () => { ctaDiv.style.willChange = 'auto'; } },
-          0.8
-        );
-      }
+      tl.fromTo(ctaDiv,
+        { opacity: 0, y: y(16) },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
+          onComplete: () => { ctaDiv.style.willChange = 'auto'; } },
+        0.8
+      );
     }
 
     // 5 — Trust badges: stagger the three span.flex items
