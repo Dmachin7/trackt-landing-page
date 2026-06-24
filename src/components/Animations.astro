@@ -1,0 +1,226 @@
+---
+// Global entrance + scroll animations — GSAP 3 + Lenis smooth scroll
+---
+
+<script>
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
+
+// ── Lenis smooth scroll ─────────────────────────────────────────────────────
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  smoothWheel: true,
+});
+
+gsap.registerPlugin(ScrollTrigger);
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time: number) => { lenis.raf(time * 1000); });
+gsap.ticker.lagSmoothing(0);
+
+// ── All GSAP animations wrapped in reduced-motion check ────────────────────
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const mobile = window.innerWidth < 768;
+  const y = (n: number) => mobile ? n * 0.5 : n;
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // ANIMATION 1 — Hero entrance (plays on load, no scroll trigger)
+  // ─────────────────────────────────────────────────────────────────────────
+  const heroContentEls = Array.from(
+    document.querySelectorAll<HTMLElement>('#hero-content .hero-el')
+  );
+  const heroMockup = document.querySelector<HTMLElement>('#hero-content ~ .hero-el');
+
+  if (heroContentEls.length) {
+    const [badge, h1, subtext, ctaDiv, trustStrip] = heroContentEls;
+    const allHeroEls: HTMLElement[] = [...heroContentEls, ...(heroMockup ? [heroMockup] : [])];
+
+    allHeroEls.forEach(el => { el.style.willChange = 'transform, opacity'; });
+
+    const tl = gsap.timeline();
+
+    // 1 — Badge
+    if (badge) {
+      tl.fromTo(badge,
+        { opacity: 0, y: y(16) },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
+          onComplete: () => { badge.style.willChange = 'auto'; } },
+        0.1
+      );
+    }
+
+    // 2 — h1
+    if (h1) {
+      tl.fromTo(h1,
+        { opacity: 0, y: y(40) },
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+          onComplete: () => { h1.style.willChange = 'auto'; } },
+        0.3
+      );
+    }
+
+    // 3 — Subtext
+    if (subtext) {
+      tl.fromTo(subtext,
+        { opacity: 0, y: y(20) },
+        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
+          onComplete: () => { subtext.style.willChange = 'auto'; } },
+        0.65
+      );
+    }
+
+    // 4 — CTA buttons: reveal parent wrapper first, then stagger the two <a> elements
+    if (ctaDiv) {
+      gsap.set(ctaDiv, { opacity: 1 });
+      const btns = Array.from(ctaDiv.querySelectorAll<HTMLElement>('a'));
+      if (btns.length > 1) {
+        gsap.set(btns, { opacity: 0, y: y(16) });
+        tl.to(btns,
+          { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.08,
+            onComplete: () => { ctaDiv.style.willChange = 'auto'; } },
+          0.8
+        );
+      } else {
+        tl.fromTo(ctaDiv,
+          { opacity: 0, y: y(16) },
+          { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
+            onComplete: () => { ctaDiv.style.willChange = 'auto'; } },
+          0.8
+        );
+      }
+    }
+
+    // 5 — Trust badges: stagger the three span.flex items
+    if (trustStrip) {
+      gsap.set(trustStrip, { opacity: 1 });
+      const spans = Array.from(trustStrip.querySelectorAll<HTMLElement>('span.flex'));
+      if (spans.length > 1) {
+        gsap.set(spans, { opacity: 0, y: y(12) });
+        tl.to(spans,
+          { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', stagger: 0.06,
+            onComplete: () => { trustStrip.style.willChange = 'auto'; } },
+          0.95
+        );
+      } else {
+        tl.fromTo(trustStrip,
+          { opacity: 0, y: y(12) },
+          { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out',
+            onComplete: () => { trustStrip.style.willChange = 'auto'; } },
+          0.95
+        );
+      }
+    }
+
+    // 6 — Browser/code mockup
+    if (heroMockup) {
+      tl.fromTo(heroMockup,
+        { opacity: 0, x: mobile ? 0 : 40, scale: 0.97 },
+        { opacity: 1, x: 0, scale: 1, duration: 0.9, ease: 'power3.out',
+          onComplete: () => { heroMockup.style.willChange = 'auto'; } },
+        0.4
+      );
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // ANIMATIONS 3–5 — Section headings + service cards + demo cards
+  // Processed via the .scroll-reveal class; Tailwind transition classes are
+  // stripped to prevent CSS transitions fighting GSAP.
+  // ─────────────────────────────────────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>('.scroll-reveal').forEach(el => {
+    // TracktTeaser section handled separately below
+    if (el.id === 'trackt-teaser-wrapper') return;
+
+    el.classList.remove('transition-all', 'duration-700', 'ease-out', 'translate-y-8', 'opacity-0');
+
+    const cardEls = Array.from(el.querySelectorAll<HTMLElement>('.card-lift'));
+
+    if (cardEls.length > 0) {
+      // Cards container: make wrapper immediately visible, stagger children
+      gsap.set(cardEls, { opacity: 0, y: y(48), willChange: 'transform, opacity' });
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 80%',
+        once: true,
+        onEnter: () => gsap.to(cardEls, {
+          opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', stagger: 0.1,
+          onComplete: () => cardEls.forEach(c => { c.style.willChange = 'auto'; }),
+        }),
+      });
+    } else {
+      // Section heading / text block — animate the whole wrapper
+      gsap.set(el, { opacity: 0, y: y(32) });
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => gsap.to(el, {
+          opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+        }),
+      });
+    }
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // ANIMATION 6 — Trackt feature cards (dedicated section handler)
+  // ─────────────────────────────────────────────────────────────────────────
+  const tracktWrapper = document.getElementById('trackt-teaser-wrapper');
+  const tracktGrid    = document.getElementById('trackt-feature-grid');
+
+  if (tracktWrapper) {
+    tracktWrapper.classList.remove('transition-all', 'duration-700', 'ease-out', 'translate-y-8', 'opacity-0');
+
+    const outerCard   = tracktWrapper.querySelector<HTMLElement>('.rounded-2xl');
+    const featureCards = tracktGrid
+      ? Array.from(tracktGrid.querySelectorAll<HTMLElement>(':scope > div'))
+      : [];
+
+    if (outerCard) {
+      gsap.set(outerCard, { opacity: 0, y: y(32), willChange: 'transform, opacity' });
+      if (featureCards.length) {
+        gsap.set(featureCards, { opacity: 0, y: y(32), willChange: 'transform, opacity' });
+      }
+
+      ScrollTrigger.create({
+        trigger: tracktWrapper,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          const seq = gsap.timeline();
+
+          // Outer card fades up first
+          seq.to(outerCard, {
+            opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
+            onComplete: () => { outerCard.style.willChange = 'auto'; },
+          });
+
+          // Feature cards stagger in with slight overlap
+          if (featureCards.length) {
+            seq.to(featureCards, {
+              opacity: 1, y: 0, duration: 0.55, ease: 'power2.out', stagger: 0.07,
+              onComplete: () => featureCards.forEach(c => { c.style.willChange = 'auto'; }),
+            }, '-=0.3');
+          }
+        },
+      });
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // ANIMATION 7 — Horizontal dividers
+  // ─────────────────────────────────────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>('hr').forEach(hr => {
+    gsap.set(hr, { scaleX: 0, transformOrigin: 'left center' });
+    ScrollTrigger.create({
+      trigger: hr,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => gsap.to(hr, { scaleX: 1, duration: 0.8, ease: 'power3.inOut' }),
+    });
+  });
+
+  // Batch-refresh after all triggers are registered
+  ScrollTrigger.refresh();
+}
+</script>

@@ -209,8 +209,6 @@ html.dark .browser-url {
   html { scroll-behavior: auto; }
 }
 
-html { scroll-behavior: smooth; }
-
 body {
   font-family: var(--font-sans);
   background-color: var(--color-bg-dark);
