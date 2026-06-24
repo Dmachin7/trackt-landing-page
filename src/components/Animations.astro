@@ -8,27 +8,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 
 // ── Lenis smooth scroll ─────────────────────────────────────────────────────
+// prevent() tells Lenis to skip elements inside the pricing modal entirely so
+// its overflow-y-auto content scrolls natively. lenis.stop() alone is not
+// enough — Lenis still calls preventDefault() on wheel events when stopped.
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   smoothWheel: true,
+  prevent: (node: Element) =>
+    node.id === 'pricing-modal' || !!node.closest?.('#pricing-modal'),
 });
 
 gsap.registerPlugin(ScrollTrigger);
 lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time: number) => { lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
-
-// ── Pause Lenis while the pricing modal is open ─────────────────────────────
-// Lenis intercepts all wheel events globally, which prevents the modal's
-// overflow-y-auto div from scrolling on its own. Stopping Lenis hands control
-// back to native browser scroll for the duration the modal is open.
-const pricingModal = document.getElementById('pricing-modal');
-if (pricingModal) {
-  new MutationObserver(() => {
-    pricingModal.classList.contains('hidden') ? lenis.start() : lenis.stop();
-  }).observe(pricingModal, { attributes: true, attributeFilter: ['class'] });
-}
 
 // ── Intercept in-page anchor clicks so Lenis drives the scroll ─────────────
 // Native <a href="#section"> bypasses Lenis entirely and teleports the page.
@@ -70,7 +64,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       tl.fromTo(badge,
         { opacity: 0, y: y(16) },
         { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
-          onComplete: () => gsap.set(badge, { clearProps: 'all' }) },
+          onComplete: () => gsap.set(badge, { clearProps: 'transform,willChange' }) },
         0.1
       );
     }
@@ -80,7 +74,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       tl.fromTo(h1,
         { opacity: 0, y: y(40) },
         { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out',
-          onComplete: () => gsap.set(h1, { clearProps: 'all' }) },
+          onComplete: () => gsap.set(h1, { clearProps: 'transform,willChange' }) },
         0.3
       );
     }
@@ -90,7 +84,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       tl.fromTo(subtext,
         { opacity: 0, y: y(20) },
         { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
-          onComplete: () => gsap.set(subtext, { clearProps: 'all' }) },
+          onComplete: () => gsap.set(subtext, { clearProps: 'transform,willChange' }) },
         0.65
       );
     }
@@ -103,7 +97,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       tl.fromTo(ctaDiv,
         { opacity: 0, y: y(16) },
         { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
-          onComplete: () => gsap.set(ctaDiv, { clearProps: 'all' }) },
+          onComplete: () => gsap.set(ctaDiv, { clearProps: 'transform,willChange' }) },
         0.8
       );
     }
@@ -116,14 +110,14 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         gsap.set(spans, { opacity: 0, y: y(12) });
         tl.to(spans,
           { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', stagger: 0.06,
-            onComplete: () => gsap.set(spans, { clearProps: 'all' }) },
+            onComplete: () => gsap.set(spans, { clearProps: 'transform,willChange' }) },
           0.95
         );
       } else {
         tl.fromTo(trustStrip,
           { opacity: 0, y: y(12) },
           { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out',
-            onComplete: () => gsap.set(trustStrip, { clearProps: 'all' }) },
+            onComplete: () => gsap.set(trustStrip, { clearProps: 'transform,willChange' }) },
           0.95
         );
       }
@@ -134,7 +128,7 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       tl.fromTo(heroMockup,
         { opacity: 0, x: mobile ? 0 : 40, scale: 0.97 },
         { opacity: 1, x: 0, scale: 1, duration: 0.9, ease: 'power3.out',
-          onComplete: () => gsap.set(heroMockup, { clearProps: 'all' }) },
+          onComplete: () => gsap.set(heroMockup, { clearProps: 'transform,willChange' }) },
         0.4
       );
     }
