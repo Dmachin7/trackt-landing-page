@@ -19,6 +19,17 @@ lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time: number) => { lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
 
+// ── Pause Lenis while the pricing modal is open ─────────────────────────────
+// Lenis intercepts all wheel events globally, which prevents the modal's
+// overflow-y-auto div from scrolling on its own. Stopping Lenis hands control
+// back to native browser scroll for the duration the modal is open.
+const pricingModal = document.getElementById('pricing-modal');
+if (pricingModal) {
+  new MutationObserver(() => {
+    pricingModal.classList.contains('hidden') ? lenis.start() : lenis.stop();
+  }).observe(pricingModal, { attributes: true, attributeFilter: ['class'] });
+}
+
 // ── Intercept in-page anchor clicks so Lenis drives the scroll ─────────────
 // Native <a href="#section"> bypasses Lenis entirely and teleports the page.
 document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(anchor => {
