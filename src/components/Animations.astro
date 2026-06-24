@@ -19,6 +19,20 @@ lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time: number) => { lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
 
+// ── Intercept in-page anchor clicks so Lenis drives the scroll ─────────────
+// Native <a href="#section"> bypasses Lenis entirely and teleports the page.
+document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      lenis.scrollTo(target as HTMLElement, { duration: 1.2 });
+    }
+  });
+});
+
 // ── All GSAP animations wrapped in reduced-motion check ────────────────────
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const mobile = window.innerWidth < 768;
@@ -70,25 +84,15 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       );
     }
 
-    // 4 — CTA buttons: reveal parent wrapper first, then stagger the two <a> elements
+    // 4 — CTA buttons: animate the wrapper as a single unit (two tightly grouped
+    //     buttons staggering separately looks jerky; one smooth entrance is cleaner)
     if (ctaDiv) {
-      gsap.set(ctaDiv, { opacity: 1 });
-      const btns = Array.from(ctaDiv.querySelectorAll<HTMLElement>('a'));
-      if (btns.length > 1) {
-        gsap.set(btns, { opacity: 0, y: y(16) });
-        tl.to(btns,
-          { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.08,
-            onComplete: () => { ctaDiv.style.willChange = 'auto'; } },
-          0.8
-        );
-      } else {
-        tl.fromTo(ctaDiv,
-          { opacity: 0, y: y(16) },
-          { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
-            onComplete: () => { ctaDiv.style.willChange = 'auto'; } },
-          0.8
-        );
-      }
+      tl.fromTo(ctaDiv,
+        { opacity: 0, y: y(16) },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
+          onComplete: () => { ctaDiv.style.willChange = 'auto'; } },
+        0.8
+      );
     }
 
     // 5 — Trust badges: stagger the three span.flex items
