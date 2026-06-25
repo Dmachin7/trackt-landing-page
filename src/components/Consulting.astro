@@ -87,12 +87,12 @@
               Monthly Growth Plans available — maintenance, SEO, and updates handled
             </li>
           </ul>
-          <div class="mt-5 flex flex-wrap items-center justify-between gap-3">
-            <p class="text-sm font-semibold text-brand-primary">Starting at $350 · Flat-rate packages</p>
-            <a
-              href="#pricing"
-              class="inline-flex items-center gap-1.5 rounded-lg border border-brand-primary px-4 py-2 text-sm font-semibold text-brand-primary transition-all duration-200 hover:bg-brand-primary hover:text-white"
-            >View Full Pricing ↓</a>
+          <p class="mt-5 text-sm font-semibold text-brand-primary">Starting at $350 · Flat-rate packages</p>
+          <div class="mt-4 flex justify-center sm:justify-start">
+            <button
+              id="open-pricing-modal"
+              class="w-full sm:w-auto rounded-xl border border-brand-primary bg-transparent px-6 py-2.5 text-sm font-semibold text-brand-primary transition-all duration-200 hover:bg-brand-primary hover:text-[#101418]"
+            >View Full Pricing →</button>
           </div>
         </div>
       </div>
@@ -363,120 +363,123 @@
 ─────────────────────────────────────────────────────────────────────────────
 -->
 
-<!-- ─── PRICING ─── -->
-<section id="pricing" class="bg-bg-elevated px-5 py-20 md:py-24">
-  <div class="mx-auto max-w-3xl">
+<!-- ─── PRICING MODAL ─── -->
+<div id="pricing-modal" class="pricing-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pricing-modal-title">
+  <div id="pricing-modal-backdrop" class="pricing-modal-backdrop"></div>
+  <div class="pricing-modal-panel">
 
-    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out mb-8">
-      <h2 class="text-2xl font-bold text-text-primary">Web Design Pricing Guide</h2>
+    <button id="close-pricing-modal" aria-label="Close pricing guide" class="pricing-modal-close">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="mb-6 pr-8">
+      <h2 id="pricing-modal-title" class="text-2xl font-bold text-text-primary">Web Design Pricing Guide</h2>
       <p class="mt-1 text-sm text-text-secondary">Flat-rate pricing · No surprises · Professional websites tailored to your business</p>
     </div>
 
-    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out">
+    <!-- Packages -->
+    <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-primary">Packages</h3>
+    <div class="mb-4 overflow-x-auto rounded-xl border border-border-subtle">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-brand-primary/8 text-left text-brand-primary">
+            <th class="px-4 py-3 font-semibold">Package</th>
+            <th class="px-4 py-3 font-semibold">Price</th>
+            <th class="px-4 py-3 font-semibold hidden sm:table-cell">Pages / Scope</th>
+            <th class="px-4 py-3 font-semibold hidden sm:table-cell">Turnaround</th>
+          </tr>
+        </thead>
+        <tbody class="text-text-secondary">
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated">
+            <td class="px-4 py-3 font-medium text-text-primary">Starter — Simple Info / Portfolio</td>
+            <td class="px-4 py-3">Starting at $350</td>
+            <td class="px-4 py-3 hidden sm:table-cell">1–3 pages</td>
+            <td class="px-4 py-3 hidden sm:table-cell">3–5 days</td>
+          </tr>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated">
+            <td class="px-4 py-3 font-medium text-text-primary">Standard — Small Business Site</td>
+            <td class="px-4 py-3">Starting at $700</td>
+            <td class="px-4 py-3 hidden sm:table-cell">4–7 pages</td>
+            <td class="px-4 py-3 hidden sm:table-cell">1–2 weeks</td>
+          </tr>
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated">
+            <td class="px-4 py-3 font-medium text-text-primary">Professional — Full Business Site</td>
+            <td class="px-4 py-3">Starting at $1,400</td>
+            <td class="px-4 py-3 hidden sm:table-cell">8–12 pages</td>
+            <td class="px-4 py-3 hidden sm:table-cell">2–3 weeks</td>
+          </tr>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated">
+            <td class="px-4 py-3 font-medium text-text-primary">eCommerce — Online Store</td>
+            <td class="px-4 py-3">Starting at $2,200</td>
+            <td class="px-4 py-3 hidden sm:table-cell">Product catalog + checkout</td>
+            <td class="px-4 py-3 hidden sm:table-cell">3–4 weeks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-      <!-- Packages -->
-      <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-primary">Packages</h3>
-      <div class="overflow-x-auto rounded-xl border border-border-subtle">
-        <table class="w-full text-sm">
-          <thead>
-            <tr class="bg-brand-primary/8 text-left text-brand-primary">
-              <th class="px-4 py-3 font-semibold">Package</th>
-              <th class="px-4 py-3 font-semibold">Price</th>
-              <th class="px-4 py-3 font-semibold hidden sm:table-cell">Pages / Scope</th>
-              <th class="px-4 py-3 font-semibold hidden sm:table-cell">Turnaround</th>
-            </tr>
-          </thead>
-          <tbody class="text-text-secondary">
-            <tr class="border-t border-border-subtle hover:bg-bg-elevated">
-              <td class="px-4 py-3 font-medium text-text-primary">Starter — Simple Info / Portfolio</td>
-              <td class="px-4 py-3">Starting at $350</td>
-              <td class="px-4 py-3 hidden sm:table-cell">1–3 pages</td>
-              <td class="px-4 py-3 hidden sm:table-cell">3–5 days</td>
-            </tr>
-            <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated">
-              <td class="px-4 py-3 font-medium text-text-primary">Standard — Small Business Site</td>
-              <td class="px-4 py-3">Starting at $700</td>
-              <td class="px-4 py-3 hidden sm:table-cell">4–7 pages</td>
-              <td class="px-4 py-3 hidden sm:table-cell">1–2 weeks</td>
-            </tr>
-            <tr class="border-t border-border-subtle hover:bg-bg-elevated">
-              <td class="px-4 py-3 font-medium text-text-primary">Professional — Full Business Site</td>
-              <td class="px-4 py-3">Starting at $1,400</td>
-              <td class="px-4 py-3 hidden sm:table-cell">8–12 pages</td>
-              <td class="px-4 py-3 hidden sm:table-cell">2–3 weeks</td>
-            </tr>
-            <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated">
-              <td class="px-4 py-3 font-medium text-text-primary">eCommerce — Online Store</td>
-              <td class="px-4 py-3">Starting at $2,200</td>
-              <td class="px-4 py-3 hidden sm:table-cell">Product catalog + checkout</td>
-              <td class="px-4 py-3 hidden sm:table-cell">3–4 weeks</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <ul class="mb-6 space-y-1.5 rounded-xl border border-border-subtle bg-bg-elevated/60 p-4 text-xs text-text-secondary">
+      <li class="flex items-start gap-2"><span class="mt-0.5 text-brand-primary">•</span> All packages include responsive design, basic contact info, and up to 2 rounds of revisions.</li>
+      <li class="flex items-start gap-2"><span class="mt-0.5 text-brand-primary">•</span> Domain &amp; hosting setup not included in base price unless added as an add-on.</li>
+      <li class="flex items-start gap-2"><span class="mt-0.5 text-brand-primary">•</span> A 50% deposit is required to begin. Remaining balance due upon delivery.</li>
+    </ul>
 
-      <ul class="mt-4 space-y-1.5 rounded-xl border border-border-subtle bg-bg-elevated/60 p-4 text-xs text-text-secondary">
-        <li class="flex items-start gap-2"><span class="mt-0.5 text-brand-primary">•</span> All packages include responsive design, basic contact info, and up to 2 rounds of revisions.</li>
-        <li class="flex items-start gap-2"><span class="mt-0.5 text-brand-primary">•</span> Domain &amp; hosting setup not included in base price unless added as an add-on.</li>
-        <li class="flex items-start gap-2"><span class="mt-0.5 text-brand-primary">•</span> A 50% deposit is required to begin. Remaining balance due upon delivery.</li>
-      </ul>
+    <div class="my-6 border-t border-border-subtle"></div>
 
-      <!-- Separator -->
-      <div class="my-8 border-t border-border-subtle"></div>
+    <!-- Add-Ons -->
+    <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-primary">Add-Ons</h3>
+    <div class="mb-6 overflow-x-auto rounded-xl border border-border-subtle">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-brand-primary/8 text-left text-brand-primary">
+            <th class="px-4 py-3 font-semibold">Add-On</th>
+            <th class="px-4 py-3 font-semibold">Price</th>
+          </tr>
+        </thead>
+        <tbody class="text-text-secondary">
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Contact / Inquiry Form</td><td class="px-4 py-3">$85</td></tr>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Blog Setup</td><td class="px-4 py-3">$125</td></tr>
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Appointment / Booking Integration</td><td class="px-4 py-3">$175</td></tr>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Basic SEO Setup (meta tags, sitemap)</td><td class="px-4 py-3">$100</td></tr>
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Logo / Branding (simple)</td><td class="px-4 py-3">$150</td></tr>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Content Writing (per page)</td><td class="px-4 py-3">$75</td></tr>
+          <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Additional pages (beyond package)</td><td class="px-4 py-3">$100/page</td></tr>
+          <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Rush Delivery (&lt; 3 business days)</td><td class="px-4 py-3">+25% of total</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-      <!-- Add-Ons -->
-      <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-primary">Add-Ons</h3>
-      <div class="overflow-x-auto rounded-xl border border-border-subtle">
-        <table class="w-full text-sm">
-          <thead>
-            <tr class="bg-brand-primary/8 text-left text-brand-primary">
-              <th class="px-4 py-3 font-semibold">Add-On</th>
-              <th class="px-4 py-3 font-semibold">Price</th>
-            </tr>
-          </thead>
-          <tbody class="text-text-secondary">
-            <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Contact / Inquiry Form</td><td class="px-4 py-3">$85</td></tr>
-            <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Blog Setup</td><td class="px-4 py-3">$125</td></tr>
-            <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Appointment / Booking Integration</td><td class="px-4 py-3">$175</td></tr>
-            <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Basic SEO Setup (meta tags, sitemap)</td><td class="px-4 py-3">$100</td></tr>
-            <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Logo / Branding (simple)</td><td class="px-4 py-3">$150</td></tr>
-            <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Content Writing (per page)</td><td class="px-4 py-3">$75</td></tr>
-            <tr class="border-t border-border-subtle hover:bg-bg-elevated"><td class="px-4 py-3">Additional pages (beyond package)</td><td class="px-4 py-3">$100/page</td></tr>
-            <tr class="border-t border-border-subtle bg-bg-elevated/50 hover:bg-bg-elevated"><td class="px-4 py-3">Rush Delivery (&lt; 3 business days)</td><td class="px-4 py-3">+25% of total</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="my-6 border-t border-border-subtle"></div>
 
-      <!-- Separator -->
-      <div class="my-8 border-t border-border-subtle"></div>
+    <!-- Monthly Growth Plans -->
+    <h3 class="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-primary">Monthly Growth Plans</h3>
+    <p class="mb-5 text-sm text-text-secondary">More than just keeping the lights on. Every plan includes maintenance, support, and active work to keep your site performing and your business growing.</p>
 
-      <!-- Monthly Growth Plans -->
-      <h3 class="mb-2 text-sm font-semibold uppercase tracking-widest text-brand-primary">Monthly Growth Plans</h3>
-      <p class="mb-5 text-sm text-text-secondary">More than just keeping the lights on. Every plan includes maintenance, support, and active work to keep your site performing and your business growing.</p>
+    <div class="mb-4 grid gap-4 sm:grid-cols-3">
 
-      <div class="mb-4 grid gap-4 sm:grid-cols-3">
-
-        <!-- Essential -->
-        <div class="flex flex-col rounded-xl border border-border-subtle bg-bg-card p-4">
-          <div class="mb-3">
-            <div class="flex items-baseline justify-between gap-2">
-              <span class="font-semibold text-text-primary">Essential</span>
-              <span class="text-sm font-semibold text-brand-primary">$65<span class="font-normal text-text-secondary">/mo</span></span>
-            </div>
-            <p class="mt-0.5 text-xs font-medium text-text-secondary/70">The foundation.</p>
+      <!-- Essential -->
+      <div class="flex flex-col rounded-xl border border-border-subtle bg-bg-elevated/60 p-4">
+        <div class="mb-3">
+          <div class="flex items-baseline justify-between gap-2">
+            <span class="font-semibold text-text-primary">Essential</span>
+            <span class="text-sm font-semibold text-brand-primary">$65<span class="font-normal text-text-secondary">/mo</span></span>
           </div>
-          <p class="mb-3 text-xs leading-relaxed text-text-secondary">Your site stays fast, secure, and current while you focus on running your business.</p>
-          <ul class="space-y-1.5 text-xs text-text-secondary">
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Uptime and security monitoring</li>
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Monthly site backup</li>
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>One update per month — content, prices, photos, copy, whatever you need</li>
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Search performance check-in</li>
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Priority email support — 24hr response</li>
-          </ul>
+          <p class="mt-0.5 text-xs font-medium text-text-secondary/70">The foundation.</p>
         </div>
+        <p class="mb-3 text-xs leading-relaxed text-text-secondary">Your site stays fast, secure, and current while you focus on running your business.</p>
+        <ul class="space-y-1.5 text-xs text-text-secondary">
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Uptime and security monitoring</li>
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Monthly site backup</li>
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>One update per month — content, prices, photos, copy, whatever you need</li>
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Search performance check-in</li>
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Priority email support — 24hr response</li>
+        </ul>
+      </div>
 
-        <!-- Growth -->
-        <div class="flex flex-col rounded-xl border border-brand-primary/30 bg-brand-primary/5 p-4">
+      <!-- Growth — Best Value -->
+      <div class="relative flex flex-col">
+        <div class="pricing-best-value-badge">BEST VALUE</div>
+        <div class="flex flex-1 flex-col rounded-xl border-2 border-[#16B4D2] bg-brand-primary/5 p-4">
           <div class="mb-3">
             <div class="flex items-baseline justify-between gap-2">
               <span class="font-semibold text-text-primary">Growth</span>
@@ -494,53 +497,52 @@
             <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>48-hour turnaround on all update requests</li>
           </ul>
         </div>
-
-        <!-- Accelerator -->
-        <div class="flex flex-col rounded-xl border border-border-subtle bg-bg-card p-4">
-          <div class="mb-3">
-            <div class="flex items-baseline justify-between gap-2">
-              <span class="font-semibold text-text-primary">Accelerator</span>
-              <span class="text-sm font-semibold text-brand-primary">$250<span class="font-normal text-text-secondary">/mo</span></span>
-            </div>
-            <p class="mt-0.5 text-xs font-medium text-text-secondary/70">The full partnership.</p>
-          </div>
-          <p class="mb-3 text-xs leading-relaxed text-text-secondary">I'm actively working on your business every month — not just maintaining it.</p>
-          <ul class="space-y-1.5 text-xs text-text-secondary">
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Everything in Growth</li>
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Two new pages, features, or content pieces per month</li>
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Local citation building across 20+ directories</li>
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Competitor monitoring — know when someone starts outranking you</li>
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Quarterly 30-minute strategy call</li>
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Annual full site audit included</li>
-            <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Same-day response on urgent requests</li>
-            <li class="flex items-start gap-1.5 mt-2 pt-2 border-t border-border-subtle">
-              <span class="mt-0.5 shrink-0 text-brand-primary font-bold text-xs leading-none">✦</span>
-              <span class="font-semibold text-brand-primary">15% off all future project work — redesigns, new features, software, anything new we build together</span>
-            </li>
-          </ul>
-        </div>
-
       </div>
 
-      <p class="mb-8 rounded-xl border border-border-subtle bg-bg-elevated/60 p-4 text-xs text-text-secondary">
-        Plans are month-to-month — no long-term contracts. Most clients start on Growth. <span class="font-medium text-text-primary">The Accelerator pays for itself the first time you need a project done.</span>
-      </p>
-
-      <!-- CTA -->
-      <div class="text-center">
-        <p class="mb-4 text-base font-semibold text-text-primary">Ready to get started?</p>
-        <a
-          href="/booking"
-          class="btn-shimmer inline-flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-7 py-4 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-          Book a Free Call
-        </a>
+      <!-- Accelerator -->
+      <div class="flex flex-col rounded-xl border border-border-subtle bg-bg-elevated/60 p-4">
+        <div class="mb-3">
+          <div class="flex items-baseline justify-between gap-2">
+            <span class="font-semibold text-text-primary">Accelerator</span>
+            <span class="text-sm font-semibold text-brand-primary">$250<span class="font-normal text-text-secondary">/mo</span></span>
+          </div>
+          <p class="mt-0.5 text-xs font-medium text-text-secondary/70">The full partnership.</p>
+        </div>
+        <p class="mb-3 text-xs leading-relaxed text-text-secondary">I'm actively working on your business every month — not just maintaining it.</p>
+        <ul class="space-y-1.5 text-xs text-text-secondary">
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Everything in Growth</li>
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Two new pages, features, or content pieces per month</li>
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Local citation building across 20+ directories</li>
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Competitor monitoring — know when someone starts outranking you</li>
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Quarterly 30-minute strategy call</li>
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Annual full site audit included</li>
+          <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Same-day response on urgent requests</li>
+          <li class="flex items-start gap-1.5 mt-2 pt-2 border-t border-border-subtle">
+            <span class="mt-0.5 shrink-0 text-brand-primary font-bold text-xs leading-none">✦</span>
+            <span class="font-semibold text-brand-primary">15% off all future project work — redesigns, new features, software, anything new we build together</span>
+          </li>
+        </ul>
       </div>
 
     </div>
+
+    <p class="mb-6 rounded-xl border border-border-subtle bg-bg-elevated/60 p-4 text-xs text-text-secondary">
+      Plans are month-to-month — no long-term contracts. Most clients start on Growth. <span class="font-medium text-text-primary">The Accelerator pays for itself the first time you need a project done.</span>
+    </p>
+
+    <div class="text-center">
+      <p class="mb-4 text-base font-semibold text-text-primary">Ready to get started?</p>
+      <a
+        href="/booking"
+        class="btn-shimmer inline-flex items-center justify-center gap-2 rounded-xl bg-brand-primary px-7 py-4 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+        Book a Free Call
+      </a>
+    </div>
+
   </div>
-</section>
+</div>
 
 <!-- ─── CONTACT FORM ─── -->
 <section id="contact" class="px-5 py-20 md:py-28">
@@ -630,6 +632,46 @@
 </section>
 
 <script>
+  // ── Pricing modal ──
+  const pricingModal = document.getElementById('pricing-modal');
+  const openBtn = document.getElementById('open-pricing-modal');
+  const closeBtn = document.getElementById('close-pricing-modal');
+  const backdrop = document.getElementById('pricing-modal-backdrop');
+
+  function openModal() {
+    pricingModal?.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    openBtn?.setAttribute('aria-expanded', 'true');
+    setTimeout(() => closeBtn?.focus(), 50);
+  }
+  function closeModal() {
+    pricingModal?.classList.remove('is-open');
+    document.body.style.overflow = '';
+    openBtn?.setAttribute('aria-expanded', 'false');
+    openBtn?.focus();
+  }
+
+  openBtn?.setAttribute('aria-expanded', 'false');
+  openBtn?.addEventListener('click', openModal);
+  closeBtn?.addEventListener('click', closeModal);
+  backdrop?.addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && pricingModal?.classList.contains('is-open')) closeModal();
+  });
+
+  // Focus trap
+  pricingModal?.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !pricingModal.classList.contains('is-open')) return;
+    const focusable = Array.from(pricingModal.querySelectorAll<HTMLElement>(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    ));
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
   // ── Contact form ──
   const form = document.getElementById("consulting-form") as HTMLFormElement | null;
   const errorEl = document.getElementById("consulting-error");
@@ -697,3 +739,98 @@
     }
   });
 </script>
+
+<style>
+  /* ── Pricing modal overlay ── */
+  .pricing-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .pricing-modal-overlay.is-open {
+    display: flex;
+    animation: pricing-modal-fade-in 0.2s ease both;
+  }
+  @keyframes pricing-modal-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .pricing-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.50);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .pricing-modal-panel {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 720px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 1rem;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-card);
+    padding: 2rem;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255,255,255,0.04);
+    animation: pricing-panel-slide-up 0.22s ease both;
+  }
+  @keyframes pricing-panel-slide-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Hide scrollbar inside modal panel */
+  .pricing-modal-panel::-webkit-scrollbar { display: none; }
+  .pricing-modal-panel { scrollbar-width: none; -ms-overflow-style: none; }
+
+  .pricing-modal-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border-subtle);
+    color: var(--color-text-secondary);
+    background: transparent;
+    cursor: pointer;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .pricing-modal-close:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-elevated);
+  }
+
+  /* ── Best Value badge ── */
+  .pricing-best-value-badge {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.375rem;
+  }
+  .pricing-best-value-badge::before {
+    content: 'BEST VALUE';
+    display: inline-block;
+    background: #16B4D2;
+    color: #101418;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+
+  @media (max-width: 639px) {
+    .pricing-modal-panel { padding: 1.25rem; }
+  }
+</style>
