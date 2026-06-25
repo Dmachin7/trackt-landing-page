@@ -61,9 +61,6 @@ html.dark .logo-dark { display: block; }
     box-shadow 280ms ease !important;
 }
 
-/* ── Pricing modal — hide native scrollbar, keep scroll functional ── */
-#pricing-modal .overflow-y-auto::-webkit-scrollbar { display: none; }
-#pricing-modal .overflow-y-auto { scrollbar-width: none; -ms-overflow-style: none; }
 
 /* ── Header scroll state ── */
 #site-header.scrolled {
