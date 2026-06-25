@@ -477,16 +477,17 @@
       </div>
 
       <!-- Growth — Best Value -->
-      <div class="relative flex flex-col">
-        <div class="pricing-best-value-badge">BEST VALUE</div>
-        <div class="flex flex-1 flex-col rounded-xl border-2 border-[#16B4D2] bg-brand-primary/5 p-4">
-          <div class="mb-3">
-            <div class="flex items-baseline justify-between gap-2">
-              <span class="font-semibold text-text-primary">Growth</span>
-              <span class="text-sm font-semibold text-brand-primary">$125<span class="font-normal text-text-secondary">/mo</span></span>
-            </div>
-            <p class="mt-0.5 text-xs font-medium text-text-secondary/70">The active layer.</p>
+      <div class="flex flex-col rounded-xl border-2 border-[#16B4D2] bg-brand-primary/5 p-4">
+        <div class="mb-3 flex justify-center">
+          <span class="inline-block rounded-full bg-[#16B4D2] px-3 py-0.5 text-[11px] font-semibold uppercase tracking-[0.06em] text-[#101418]">Best Value</span>
+        </div>
+        <div class="mb-3">
+          <div class="flex items-baseline justify-between gap-2">
+            <span class="font-semibold text-text-primary">Growth</span>
+            <span class="text-sm font-semibold text-brand-primary">$125<span class="font-normal text-text-secondary">/mo</span></span>
           </div>
+          <p class="mt-0.5 text-xs font-medium text-text-secondary/70">The active layer.</p>
+        </div>
           <p class="mb-3 text-xs leading-relaxed text-text-secondary">Your site grows with your business and starts pulling in new customers every month.</p>
           <ul class="space-y-1.5 text-xs text-text-secondary">
             <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Everything in Essential</li>
@@ -496,7 +497,6 @@
             <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Review strategy and response support</li>
             <li class="flex items-start gap-1.5"><svg class="mt-0.5 h-3 w-3 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>48-hour turnaround on all update requests</li>
           </ul>
-        </div>
       </div>
 
       <!-- Accelerator -->
@@ -810,24 +810,6 @@
   .pricing-modal-close:hover {
     color: var(--color-text-primary);
     background: var(--color-bg-elevated);
-  }
-
-  /* ── Best Value badge ── */
-  .pricing-best-value-badge {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.375rem;
-  }
-  .pricing-best-value-badge::before {
-    content: 'BEST VALUE';
-    display: inline-block;
-    background: #16B4D2;
-    color: #101418;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    padding: 3px 10px;
-    border-radius: 999px;
   }
 
   @media (max-width: 639px) {
