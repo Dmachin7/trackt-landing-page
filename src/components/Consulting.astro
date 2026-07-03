@@ -1,5 +1,60 @@
 ---
 // Services section + demo case-study cards + contact form + pricing modal
+
+const demos = [
+  {
+    title: "Newell Family Enterprise",
+    badge: "Live Client",
+    accent: "#16A34A",
+    category: "Soft Washing · Spring Hill, FL",
+    blurb: "A soft washing company needing instant trust, a before & after gallery, and a fast quote request flow.",
+    img: "/images/demos/newell-demo.jpg",
+    imgAlt: "Newell Family Enterprise soft washing website screenshot",
+    imgW: 1400,
+    imgH: 875,
+    href: "https://newell-family-enterprise.vercel.app/",
+    cta: "View live site",
+  },
+  {
+    title: "Arthur's 1of1 Bracelets",
+    badge: "Live Client",
+    accent: "#A855F7",
+    category: "Custom Jewelry · Shopify",
+    blurb: "A custom bracelet configurator with live Shopify checkout for a Tampa handmade jewelry brand.",
+    img: "/images/demos/arthurs1of1-demo.jpg",
+    imgAlt: "Arthur's 1of1 bracelet configurator screenshot",
+    imgW: 1400,
+    imgH: 766,
+    href: "https://arthurs1of1.trackt.tech",
+    cta: "View live site",
+  },
+  {
+    title: "Ridgeline Towing & Recovery",
+    badge: null,
+    accent: "#F97316",
+    category: "Towing & Recovery · Tampa, FL",
+    blurb: "A 24/7 towing company needing instant lead capture and a clear emergency dispatch flow.",
+    img: "/images/demos/ridgeline-demo.jpg",
+    imgAlt: "Ridgeline Towing & Recovery website screenshot",
+    imgW: 1400,
+    imgH: 736,
+    href: "https://demo.trackt.tech/towing",
+    cta: "View live demo",
+  },
+  {
+    title: "Gulf Breeze HVAC",
+    badge: null,
+    accent: "#0EA5E9",
+    category: "HVAC & Cooling · Tampa Bay",
+    blurb: "A Tampa AC company needing emergency service capture, tune-up booking, and 24/7 trust signals.",
+    img: "/images/demos/gulf-breeze-hvac.jpg",
+    imgAlt: "Gulf Breeze HVAC website screenshot",
+    imgW: 1400,
+    imgH: 727,
+    href: "https://demo.trackt.tech/hvac",
+    cta: "View live demo",
+  },
+];
 ---
 
 <!-- ─── SERVICES ─── -->
@@ -153,130 +208,105 @@
       </p>
     </div>
 
-    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out grid gap-5 sm:grid-cols-2">
-
-      <!-- Newell Family Enterprise (Live Client) -->
-      <article class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
-        <a href="https://newell-family-enterprise.vercel.app/" target="_blank" rel="noopener noreferrer" class="block aspect-16/10 overflow-hidden bg-bg-elevated" aria-label="View Newell Family Enterprise live site">
-          <img
-            src="/images/demos/newell-demo.jpg"
-            alt="Newell Family Enterprise soft washing website screenshot"
-            class="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-            loading="lazy"
-            width="1400" height="875"
-          />
-        </a>
-        <div class="flex flex-1 flex-col p-6">
-          <div class="mb-2 flex items-start justify-between gap-3">
-            <h3 class="font-bold text-text-primary">Newell Family Enterprise</h3>
-            <span class="shrink-0 rounded-full px-2.5 py-1 text-[11px] font-semibold" style="background:rgba(34,197,94,0.1);color:#16A34A;">Live Client</span>
-          </div>
-          <p class="mb-1 text-xs font-medium" style="color:#16A34A;">Soft Washing · Spring Hill, FL</p>
-          <p class="mb-5 mt-2 flex-1 text-sm leading-relaxed text-text-secondary">A soft washing company needing instant trust, a before &amp; after gallery, and a fast quote request flow.</p>
-          <a
-            href="https://newell-family-enterprise.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
-            style="color:#16A34A;"
-          >
-            View live site
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+    <!-- Desktop / tablet grid -->
+    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out hidden gap-5 sm:grid sm:grid-cols-2">
+      {demos.map((d) => (
+        <article class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
+          <a href={d.href} target="_blank" rel="noopener noreferrer" class="block aspect-16/10 overflow-hidden bg-bg-elevated" aria-label={`${d.cta}: ${d.title}`}>
+            <img
+              src={d.img}
+              alt={d.imgAlt}
+              class="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+              width={d.imgW}
+              height={d.imgH}
+            />
           </a>
-        </div>
-      </article>
-
-      <!-- Arthur's 1of1 Bracelets (Live Client) -->
-      <article class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
-        <a href="https://arthurs1of1.trackt.tech" target="_blank" rel="noopener noreferrer" class="block aspect-16/10 overflow-hidden bg-bg-elevated" aria-label="View Arthur's 1of1 Bracelets live site">
-          <img
-            src="/images/demos/arthurs1of1-demo.jpg"
-            alt="Arthur's 1of1 bracelet configurator screenshot"
-            class="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-            loading="lazy"
-            width="1400" height="766"
-          />
-        </a>
-        <div class="flex flex-1 flex-col p-6">
-          <div class="mb-2 flex items-start justify-between gap-3">
-            <h3 class="font-bold text-text-primary">Arthur's 1of1 Bracelets</h3>
-            <span class="shrink-0 rounded-full px-2.5 py-1 text-[11px] font-semibold" style="background:rgba(168,85,247,0.1);color:#A855F7;">Live Client</span>
+          <div class="flex flex-1 flex-col p-6">
+            <div class="mb-2 flex items-start justify-between gap-3">
+              <h3 class="font-bold text-text-primary">{d.title}</h3>
+              {d.badge && (
+                <span class="shrink-0 rounded-full px-2.5 py-1 text-[11px] font-semibold" style={`background:${d.accent}1A;color:${d.accent};`}>{d.badge}</span>
+              )}
+            </div>
+            <p class="mb-1 text-xs font-medium" style={`color:${d.accent};`}>{d.category}</p>
+            <p class="mb-5 mt-2 flex-1 text-sm leading-relaxed text-text-secondary">{d.blurb}</p>
+            <a
+              href={d.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
+              style={`color:${d.accent};`}
+            >
+              {d.cta}
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
           </div>
-          <p class="mb-1 text-xs font-medium" style="color:#A855F7;">Custom Jewelry · Shopify</p>
-          <p class="mb-5 mt-2 flex-1 text-sm leading-relaxed text-text-secondary">A custom bracelet configurator with live Shopify checkout for a Tampa handmade jewelry brand.</p>
-          <a
-            href="https://arthurs1of1.trackt.tech"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
-            style="color:#A855F7;"
-          >
-            View live site
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </a>
-        </div>
-      </article>
+        </article>
+      ))}
+    </div>
 
-      <!-- Ridgeline Towing & Recovery -->
-      <article class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
-        <a href="https://demo.trackt.tech/towing" target="_blank" rel="noopener noreferrer" class="block aspect-16/10 overflow-hidden bg-bg-elevated" aria-label="View Ridgeline Towing & Recovery demo">
-          <img
-            src="/images/demos/ridgeline-demo.jpg"
-            alt="Ridgeline Towing & Recovery website screenshot"
-            class="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-            loading="lazy"
-            width="1400" height="736"
-          />
-        </a>
-        <div class="flex flex-1 flex-col p-6">
-          <div class="mb-2 flex items-start justify-between gap-3">
-            <h3 class="font-bold text-text-primary">Ridgeline Towing & Recovery</h3>
-          </div>
-          <p class="mb-1 text-xs font-medium" style="color:#F97316;">Towing & Recovery · Tampa, FL</p>
-          <p class="mb-5 mt-2 flex-1 text-sm leading-relaxed text-text-secondary">A 24/7 towing company needing instant lead capture and a clear emergency dispatch flow.</p>
-          <a
-            href="https://demo.trackt.tech/towing"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
-            style="color:#F97316;"
-          >
-            View live demo
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </a>
+    <!-- Mobile coverflow carousel -->
+    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out sm:hidden">
+      <div class="demo-carousel" id="demo-carousel">
+        <div class="demo-carousel-track" id="demo-carousel-track">
+          {demos.map((d, i) => (
+            <div class="demo-carousel-slide" data-index={i}>
+              <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-lg">
+                <a href={d.href} target="_blank" rel="noopener noreferrer" class="block aspect-16/10 overflow-hidden bg-bg-elevated" aria-label={`${d.cta}: ${d.title}`} tabindex="-1">
+                  <img
+                    src={d.img}
+                    alt={d.imgAlt}
+                    class="h-full w-full object-cover object-top"
+                    loading="lazy"
+                    width={d.imgW}
+                    height={d.imgH}
+                  />
+                </a>
+                <div class="flex flex-1 flex-col p-5">
+                  <div class="mb-2 flex items-start justify-between gap-2">
+                    <h3 class="text-sm font-bold text-text-primary">{d.title}</h3>
+                    {d.badge && (
+                      <span class="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold" style={`background:${d.accent}1A;color:${d.accent};`}>{d.badge}</span>
+                    )}
+                  </div>
+                  <p class="mb-1 text-[11px] font-medium" style={`color:${d.accent};`}>{d.category}</p>
+                  <p class="mb-4 mt-1 flex-1 text-xs leading-relaxed text-text-secondary">{d.blurb}</p>
+                  <a
+                    href={d.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-auto inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity duration-150 hover:opacity-70"
+                    style={`color:${d.accent};`}
+                    tabindex="-1"
+                  >
+                    {d.cta}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                  </a>
+                </div>
+              </article>
+            </div>
+          ))}
         </div>
-      </article>
 
-      <!-- Gulf Breeze HVAC -->
-      <article class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
-        <a href="https://demo.trackt.tech/hvac" target="_blank" rel="noopener noreferrer" class="block aspect-16/10 overflow-hidden bg-bg-elevated" aria-label="View Gulf Breeze HVAC demo">
-          <img
-            src="/images/demos/gulf-breeze-hvac.jpg"
-            alt="Gulf Breeze HVAC website screenshot"
-            class="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-            loading="lazy"
-            width="1400" height="727"
-          />
-        </a>
-        <div class="flex flex-1 flex-col p-6">
-          <div class="mb-2 flex items-start justify-between gap-3">
-            <h3 class="font-bold text-text-primary">Gulf Breeze HVAC</h3>
-          </div>
-          <p class="mb-1 text-xs font-medium" style="color:#0EA5E9;">HVAC & Cooling · Tampa Bay</p>
-          <p class="mb-5 mt-2 flex-1 text-sm leading-relaxed text-text-secondary">A Tampa AC company needing emergency service capture, tune-up booking, and 24/7 trust signals.</p>
-          <a
-            href="https://demo.trackt.tech/hvac"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
-            style="color:#0EA5E9;"
-          >
-            View live demo
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </a>
-        </div>
-      </article>
+        <button id="carousel-prev" class="carousel-arrow carousel-arrow-left" aria-label="Previous demo" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button id="carousel-next" class="carousel-arrow carousel-arrow-right" aria-label="Next demo" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
 
+      <div class="mt-5 flex items-center justify-center gap-2" id="carousel-dots">
+        {demos.map((_, i) => (
+          <button
+            class="carousel-dot"
+            data-index={i}
+            aria-label={`Go to demo ${i + 1}`}
+            type="button"
+          ></button>
+        ))}
+      </div>
     </div>
 
     <!-- See all demos + book a call buttons -->
@@ -733,9 +763,157 @@
       document.querySelectorAll('.service-card-toggle').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
     }
   });
+
+  // ── Mobile demo coverflow carousel ──
+  const carousel = document.getElementById('demo-carousel');
+  const track = document.getElementById('demo-carousel-track');
+  const slides = Array.from(document.querySelectorAll<HTMLElement>('.demo-carousel-slide'));
+  const dots = Array.from(document.querySelectorAll<HTMLElement>('.carousel-dot'));
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  const count = slides.length;
+
+  if (carousel && track && count > 0) {
+    let active = 0;
+
+    function shortestOffset(i: number, from: number) {
+      let diff = i - from;
+      if (diff > count / 2) diff -= count;
+      if (diff < -count / 2) diff += count;
+      return diff;
+    }
+
+    function render() {
+      slides.forEach((slide, i) => {
+        const offset = shortestOffset(i, active);
+        const abs = Math.abs(offset);
+        const dir = Math.sign(offset);
+        let translate = 0;
+        let scale = 1;
+        let opacity = 1;
+        let z = 40;
+        let blur = 0;
+
+        if (abs === 0) {
+          translate = 0; scale = 1; opacity = 1; z = 40; blur = 0;
+        } else if (abs === 1) {
+          translate = dir * 58; scale = 0.84; opacity = 0.55; z = 30; blur = 1;
+        } else {
+          translate = dir * 100; scale = 0.7; opacity = 0.18; z = 20; blur = 2;
+        }
+
+        slide.style.transform = `translateX(-50%) translateX(${translate}%) scale(${scale})`;
+        slide.style.opacity = String(opacity);
+        slide.style.zIndex = String(z);
+        slide.style.filter = blur ? `blur(${blur}px)` : 'none';
+        slide.style.pointerEvents = abs > 1 ? 'none' : 'auto';
+        slide.setAttribute('aria-hidden', abs === 0 ? 'false' : 'true');
+        slide.querySelectorAll('a').forEach((a) => a.setAttribute('tabindex', abs === 0 ? '0' : '-1'));
+      });
+      dots.forEach((dot, i) => dot.classList.toggle('is-active', i === active));
+    }
+
+    function goTo(i: number) {
+      active = ((i % count) + count) % count;
+      render();
+    }
+
+    // Clicking a peeking slide brings it to focus instead of navigating.
+    slides.forEach((slide) => {
+      slide.addEventListener('click', (e) => {
+        const i = Number(slide.dataset.index);
+        if (i !== active) {
+          e.preventDefault();
+          e.stopPropagation();
+          goTo(i);
+        }
+      }, true);
+    });
+
+    prevBtn?.addEventListener('click', () => goTo(active - 1));
+    nextBtn?.addEventListener('click', () => goTo(active + 1));
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => goTo(Number(dot.dataset.index)));
+    });
+
+    // Swipe support
+    let dragStartX = 0;
+    let dragging = false;
+    carousel.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      dragStartX = e.clientX;
+    });
+    carousel.addEventListener('pointerup', (e) => {
+      if (!dragging) return;
+      dragging = false;
+      const delta = e.clientX - dragStartX;
+      if (Math.abs(delta) > 40) {
+        goTo(active + (delta < 0 ? 1 : -1));
+      }
+    });
+    carousel.addEventListener('pointercancel', () => { dragging = false; });
+
+    render();
+  }
 </script>
 
 <style>
+  /* ── Mobile demo coverflow carousel ── */
+  .demo-carousel {
+    position: relative;
+    height: 30rem;
+    touch-action: pan-y;
+  }
+  .demo-carousel-track {
+    position: relative;
+    height: 100%;
+  }
+  .demo-carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 78%;
+    height: 100%;
+    cursor: pointer;
+    transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.45s ease, filter 0.45s ease;
+    will-change: transform, opacity, filter;
+  }
+  .demo-carousel-slide article { height: 100%; }
+  .demo-carousel-slide[aria-hidden="false"] { cursor: default; }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-card);
+    color: var(--color-text-primary);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .carousel-arrow:hover { border-color: var(--color-brand-primary); }
+  .carousel-arrow-left { left: -0.25rem; }
+  .carousel-arrow-right { right: -0.25rem; }
+
+  .carousel-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background: var(--color-border-subtle);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .carousel-dot.is-active {
+    background: var(--color-brand-primary);
+    transform: scale(1.35);
+  }
+
   /* ── Pricing modal overlay ── */
   .pricing-modal-overlay {
     display: none;
