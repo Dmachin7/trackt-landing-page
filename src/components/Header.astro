@@ -117,6 +117,9 @@
   let isOpen = false;
   navToggle?.addEventListener("click", () => {
     isOpen = !isOpen;
+    if (navMenu && isOpen) {
+      navMenu.style.setProperty("--nav-menu-height", navMenu.scrollHeight + "px");
+    }
     navMenu?.classList.toggle("is-open", isOpen);
     iconOpen?.classList.toggle("opacity-0", isOpen);
     iconClose?.classList.toggle("opacity-0", !isOpen);

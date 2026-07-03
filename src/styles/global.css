@@ -147,7 +147,7 @@ html.dark .browser-url {
   transition: max-height 0.25s ease-out, opacity 0.2s ease;
 }
 #nav-menu.is-open {
-  max-height: 240px;
+  max-height: var(--nav-menu-height, 400px);
   opacity: 1;
   pointer-events: auto;
 }
