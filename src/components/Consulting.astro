@@ -827,6 +827,8 @@ const demos = [
     position: relative;
     height: 19rem;
     touch-action: pan-y;
+    --slide-w: 78%;
+    --arrow-size: 2.5rem;
   }
   .demo-carousel-viewport {
     position: relative;
@@ -841,7 +843,7 @@ const demos = [
     position: absolute;
     top: 0;
     left: 50%;
-    width: 78%;
+    width: var(--slide-w);
     height: 100%;
     cursor: pointer;
     transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.45s ease, filter 0.45s ease;
@@ -851,18 +853,18 @@ const demos = [
   .demo-carousel-slide[aria-hidden="false"] { cursor: default; }
 
   @media (min-width: 640px) {
-    .demo-carousel { height: 23rem; }
-    .demo-carousel-slide { width: 60%; }
+    .demo-carousel { height: 23rem; --slide-w: 60%; --arrow-size: 2.75rem; }
   }
   @media (min-width: 1024px) {
-    .demo-carousel { height: 26rem; }
-    .demo-carousel-slide { width: 42%; }
+    .demo-carousel { height: 26rem; --slide-w: 42%; --arrow-size: 3rem; }
   }
   @media (min-width: 1280px) {
-    .demo-carousel { height: 27rem; }
-    .demo-carousel-slide { width: 38%; }
+    .demo-carousel { height: 27rem; --slide-w: 38%; --arrow-size: 3rem; }
   }
 
+  /* Arrows hug the focused card's edges — positioned relative to the card
+     width (--slide-w), not the full carousel container, so they stay close
+     together instead of drifting out to the container's outer edges. */
   .carousel-arrow {
     position: absolute;
     top: 50%;
@@ -871,31 +873,21 @@ const demos = [
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: var(--arrow-size);
+    height: var(--arrow-size);
     border-radius: 9999px;
     border: 1px solid var(--color-border-subtle);
     background: var(--color-bg-card);
     color: var(--color-text-primary);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease, left 0.2s ease, right 0.2s ease;
   }
   .carousel-arrow:hover { border-color: var(--color-brand-primary); }
   @media (hover: hover) {
     .carousel-arrow:hover { transform: translateY(-50%) scale(1.06); }
   }
-  .carousel-arrow-left { left: -0.25rem; }
-  .carousel-arrow-right { right: -0.25rem; }
-  @media (min-width: 640px) {
-    .carousel-arrow { width: 2.75rem; height: 2.75rem; }
-    .carousel-arrow-left { left: -1rem; }
-    .carousel-arrow-right { right: -1rem; }
-  }
-  @media (min-width: 1024px) {
-    .carousel-arrow { width: 3.25rem; height: 3.25rem; }
-    .carousel-arrow-left { left: -1.75rem; }
-    .carousel-arrow-right { right: -1.75rem; }
-  }
+  .carousel-arrow-left { left: calc((100% - var(--slide-w)) / 2 - var(--arrow-size) / 2); }
+  .carousel-arrow-right { right: calc((100% - var(--slide-w)) / 2 - var(--arrow-size) / 2); }
 
   .carousel-dot {
     width: 0.5rem;
