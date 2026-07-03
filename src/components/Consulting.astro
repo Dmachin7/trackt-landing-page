@@ -249,6 +249,7 @@ const demos = [
     <!-- Mobile coverflow carousel -->
     <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out sm:hidden">
       <div class="demo-carousel" id="demo-carousel">
+        <div class="demo-carousel-viewport">
         <div class="demo-carousel-track" id="demo-carousel-track">
           {demos.map((d, i) => (
             <div class="demo-carousel-slide" data-index={i}>
@@ -287,6 +288,7 @@ const demos = [
               </article>
             </div>
           ))}
+        </div>
         </div>
 
         <button id="carousel-prev" class="carousel-arrow carousel-arrow-left" aria-label="Previous demo" type="button">
@@ -863,6 +865,11 @@ const demos = [
     position: relative;
     height: 30rem;
     touch-action: pan-y;
+  }
+  .demo-carousel-viewport {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
   }
   .demo-carousel-track {
     position: relative;

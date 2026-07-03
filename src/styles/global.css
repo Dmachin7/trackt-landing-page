@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  overflow-x: hidden;
+}
+
 @theme {
   /* Trackt Clean — light palette (overridden by html.dark below) */
   --color-bg-dark: #FFFFFF;
