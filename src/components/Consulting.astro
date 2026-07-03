@@ -208,46 +208,8 @@ const demos = [
       </p>
     </div>
 
-    <!-- Desktop / tablet grid -->
-    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out hidden gap-5 sm:grid sm:grid-cols-2">
-      {demos.map((d) => (
-        <article class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
-          <a href={d.href} target="_blank" rel="noopener noreferrer" class="block aspect-16/10 overflow-hidden bg-bg-elevated" aria-label={`${d.cta}: ${d.title}`}>
-            <img
-              src={d.img}
-              alt={d.imgAlt}
-              class="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
-              width={d.imgW}
-              height={d.imgH}
-            />
-          </a>
-          <div class="flex flex-1 flex-col p-6">
-            <div class="mb-2 flex items-start justify-between gap-3">
-              <h3 class="font-bold text-text-primary">{d.title}</h3>
-              {d.badge && (
-                <span class="shrink-0 rounded-full px-2.5 py-1 text-[11px] font-semibold" style={`background:${d.accent}1A;color:${d.accent};`}>{d.badge}</span>
-              )}
-            </div>
-            <p class="mb-1 text-xs font-medium" style={`color:${d.accent};`}>{d.category}</p>
-            <p class="mb-5 mt-2 flex-1 text-sm leading-relaxed text-text-secondary">{d.blurb}</p>
-            <a
-              href={d.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity duration-150 hover:opacity-70"
-              style={`color:${d.accent};`}
-            >
-              {d.cta}
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-            </a>
-          </div>
-        </article>
-      ))}
-    </div>
-
-    <!-- Mobile coverflow carousel -->
-    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out sm:hidden">
+    <!-- Coverflow carousel (all breakpoints — scales up on larger screens) -->
+    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out">
       <div class="demo-carousel" id="demo-carousel">
         <div class="demo-carousel-viewport">
         <div class="demo-carousel-track" id="demo-carousel-track">
@@ -264,20 +226,20 @@ const demos = [
                     height={d.imgH}
                   />
                 </a>
-                <div class="flex flex-1 flex-col p-3.5">
-                  <div class="mb-1 flex items-start justify-between gap-2">
-                    <h3 class="text-sm font-bold text-text-primary">{d.title}</h3>
+                <div class="flex flex-1 flex-col p-3.5 sm:p-5 lg:p-6">
+                  <div class="mb-1 flex items-start justify-between gap-2 sm:mb-2">
+                    <h3 class="text-sm font-bold text-text-primary sm:text-base lg:text-lg">{d.title}</h3>
                     {d.badge && (
-                      <span class="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold" style={`background:${d.accent}1A;color:${d.accent};`}>{d.badge}</span>
+                      <span class="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold sm:px-2.5 sm:text-[11px]" style={`background:${d.accent}1A;color:${d.accent};`}>{d.badge}</span>
                     )}
                   </div>
-                  <p class="mb-1.5 text-[11px] font-medium" style={`color:${d.accent};`}>{d.category}</p>
-                  <p class="mb-3 flex-1 text-xs leading-snug text-text-secondary line-clamp-2">{d.blurb}</p>
+                  <p class="mb-1.5 text-[11px] font-medium sm:text-xs" style={`color:${d.accent};`}>{d.category}</p>
+                  <p class="mb-3 flex-1 text-xs leading-snug text-text-secondary line-clamp-2 sm:text-sm sm:leading-relaxed sm:line-clamp-3">{d.blurb}</p>
                   <a
                     href={d.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="mt-auto inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity duration-150 hover:opacity-70"
+                    class="mt-auto inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity duration-150 hover:opacity-70 sm:text-sm"
                     style={`color:${d.accent};`}
                     tabindex="-1"
                   >
@@ -299,7 +261,7 @@ const demos = [
         </button>
       </div>
 
-      <div class="mt-3 flex items-center justify-center gap-2" id="carousel-dots">
+      <div class="mt-3 flex items-center justify-center gap-2 sm:mt-5" id="carousel-dots">
         {demos.map((_, i) => (
           <button
             class="carousel-dot"
@@ -860,7 +822,7 @@ const demos = [
 </script>
 
 <style>
-  /* ── Mobile demo coverflow carousel ── */
+  /* ── Demo coverflow carousel ── */
   .demo-carousel {
     position: relative;
     height: 19rem;
@@ -888,6 +850,19 @@ const demos = [
   .demo-carousel-slide article { height: 100%; }
   .demo-carousel-slide[aria-hidden="false"] { cursor: default; }
 
+  @media (min-width: 640px) {
+    .demo-carousel { height: 23rem; }
+    .demo-carousel-slide { width: 60%; }
+  }
+  @media (min-width: 1024px) {
+    .demo-carousel { height: 26rem; }
+    .demo-carousel-slide { width: 42%; }
+  }
+  @media (min-width: 1280px) {
+    .demo-carousel { height: 27rem; }
+    .demo-carousel-slide { width: 38%; }
+  }
+
   .carousel-arrow {
     position: absolute;
     top: 50%;
@@ -903,11 +878,24 @@ const demos = [
     background: var(--color-bg-card);
     color: var(--color-text-primary);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    transition: background 0.15s ease, border-color 0.15s ease;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
   }
   .carousel-arrow:hover { border-color: var(--color-brand-primary); }
+  @media (hover: hover) {
+    .carousel-arrow:hover { transform: translateY(-50%) scale(1.06); }
+  }
   .carousel-arrow-left { left: -0.25rem; }
   .carousel-arrow-right { right: -0.25rem; }
+  @media (min-width: 640px) {
+    .carousel-arrow { width: 2.75rem; height: 2.75rem; }
+    .carousel-arrow-left { left: -1rem; }
+    .carousel-arrow-right { right: -1rem; }
+  }
+  @media (min-width: 1024px) {
+    .carousel-arrow { width: 3.25rem; height: 3.25rem; }
+    .carousel-arrow-left { left: -1.75rem; }
+    .carousel-arrow-right { right: -1.75rem; }
+  }
 
   .carousel-dot {
     width: 0.5rem;
