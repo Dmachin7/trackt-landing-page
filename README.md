@@ -56,6 +56,39 @@ Copy `.env.example` to `.env` and fill in the values. `.env` is gitignored.
 > `/api/booking-settings`) which attach `BOOKING_API_SECRET` and forward to HQ.
 > Set the same variables in the Vercel project settings for production.
 
+## 💻 Website offer page (`/website`)
+
+`src/pages/website.astro` is the $997 flat-rate custom website landing page
+(trackt.tech/website). It has its own dark look and nav/footer, independent of
+the site theme toggle, and deploys with the rest of this site — no separate
+`vercel.json` or project needed.
+
+### Stripe ($300 deposit)
+
+All three deposit buttons (nav "Get Started", hero "Lock In Your Spot", pricing
+"Pay $300 Deposit") read one constant at the top of the page:
+
+```js
+const STRIPE_DEPOSIT_LINK = "YOUR_STRIPE_PAYMENT_LINK";
+```
+
+Replace it with a live Stripe Payment Link (`https://buy.stripe.com/...`). A
+Payment Link is a public URL, not a secret, so it lives in code rather than env.
+
+### Images
+
+Save images to `public/images/website/`, then swap each labelled placeholder
+`<div class="placeholder ...">` for an `<img>` (or Astro `<Image>`). Each slot
+has an `IMAGE:` comment above it.
+
+| Slot | File | Size |
+| :--- | :--- | :--- |
+| Hero browser mockup — Bird Eye Promotions homepage | `birdeye-hero.jpg` | 1600 × 1000 (16:10) |
+| Portfolio card — Bird Eye Promotions | `birdeye-card.jpg` | 1200 × 800 (3:2) |
+| Portfolio card — KM Executive (optional; styled placeholder works as-is) | `km-executive-card.jpg` | 1200 × 800 (3:2) |
+
+Export as JPG (or WebP) under ~300 KB each.
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
