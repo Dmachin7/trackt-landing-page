@@ -195,13 +195,17 @@ const year = new Date().getFullYear();
                   <span class="h-3 w-3 rounded-full bg-[#FEBC2E]"></span>
                   <span class="h-3 w-3 rounded-full bg-[#28C840]"></span>
                 </div>
-                <div class="flex-1 truncate rounded-md bg-white/[0.05] px-3 py-1.5 text-center text-xs text-white/45">birdeye-promotions.com</div>
+                <div class="flex-1 truncate rounded-md bg-white/[0.05] px-3 py-1.5 text-center text-xs text-white/45">birdeyepromotions.com</div>
               </div>
-              <!-- IMAGE: Bird Eye Promotions homepage screenshot — 1600×1000 (16:10), save as public/images/website/birdeye-hero.jpg -->
-              <div class="placeholder aspect-[16/10]">
-                <span class="placeholder-title">Bird Eye Promotions — birdeye-promotions.com</span>
-                <span class="placeholder-meta">Homepage screenshot · 1600 × 1000 px (16:10)</span>
-              </div>
+              <!-- IMAGE: BirdEye Promotions homepage screenshot — 1600×1000 (16:10) -->
+              <img
+                src="/images/website/birdeye-hero.jpg"
+                alt="BirdEye Promotions homepage, a drone videography website built by Trackt Tech"
+                width="1600"
+                height="1000"
+                fetchpriority="high"
+                class="block aspect-[16/10] w-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -251,37 +255,45 @@ const year = new Date().getFullYear();
         </div>
 
         <div class="portfolio-track no-scrollbar mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
-          <!-- Bird Eye Promotions -->
-          <article class="portfolio-card">
-            <!-- IMAGE: Bird Eye Promotions full-page or above-the-fold screenshot — 1200×800 (3:2), save as public/images/website/birdeye-card.jpg -->
-            <div class="placeholder aspect-[3/2]">
-              <span class="placeholder-title">Bird Eye Promotions</span>
-              <span class="placeholder-meta">Site screenshot · 1200 × 800 px (3:2)</span>
+          <!-- BirdEye Promotions -->
+          <a href="https://www.birdeyepromotions.com/" target="_blank" rel="noopener" class="portfolio-card group">
+            <!-- IMAGE: BirdEye Promotions homepage screenshot — 1200×800 (3:2) -->
+            <div class="aspect-[3/2] overflow-hidden">
+              <img
+                src="/images/website/birdeye-card.jpg"
+                alt="BirdEye Promotions website screenshot"
+                width="1200"
+                height="800"
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
             </div>
             <div class="p-6">
-              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[#3B82F6]">Promotions & Marketing</p>
-              <h3 class="display mt-2 text-3xl">Bird Eye Promotions</h3>
-              <p class="mt-2 text-sm text-white/55">birdeye-promotions.com</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[#3B82F6]">Aerial Videography · South Tampa</p>
+              <h3 class="display mt-2 text-3xl">BirdEye Promotions</h3>
+              <p class="mt-2 text-sm text-white/55">birdeyepromotions.com ↗</p>
             </div>
-          </article>
+          </a>
 
           <!-- KM Executive Transportation -->
-          <article class="portfolio-card">
-            <!-- IMAGE (optional): KM Executive Transportation screenshot — 1200×800 (3:2), save as public/images/website/km-executive-card.jpg. Styled placeholder until then. -->
-            <div class="relative flex aspect-[3/2] items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_top,#2a2214_0%,#0A0A0A_70%)]">
-              <div class="absolute inset-x-8 top-6 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/50 to-transparent" aria-hidden="true"></div>
-              <div class="text-center">
-                <p class="font-serif text-3xl tracking-[0.08em] text-white">KM <span class="italic text-[#C9A84C]">Executive</span></p>
-                <p class="mt-2 text-[10px] font-semibold uppercase tracking-[0.35em] text-white/40">Luxury Transportation · Tampa Bay</p>
-              </div>
-              <div class="absolute inset-x-8 bottom-6 h-px bg-gradient-to-r from-transparent via-[#C9A84C]/50 to-transparent" aria-hidden="true"></div>
+          <a href="https://www.kmexecutivetransportation.com/" target="_blank" rel="noopener" class="portfolio-card group">
+            <!-- IMAGE: KM Executive Transportation homepage screenshot — 1200×800 (3:2) -->
+            <div class="aspect-[3/2] overflow-hidden">
+              <img
+                src="/images/website/km-executive-card.jpg"
+                alt="KM Executive Transportation website screenshot"
+                width="1200"
+                height="800"
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
             </div>
             <div class="p-6">
               <p class="text-xs font-semibold uppercase tracking-[0.15em] text-[#3B82F6]">Website + Booking System</p>
               <h3 class="display mt-2 text-3xl">KM Executive Transportation</h3>
-              <p class="mt-2 text-sm text-white/55">kmexecutivetransportation.com</p>
+              <p class="mt-2 text-sm text-white/55">kmexecutivetransportation.com ↗</p>
             </div>
-          </article>
+          </a>
 
           <!-- CTA card -->
           <a href="#pricing" class="portfolio-card group flex flex-col justify-between border-dashed border-[#3B82F6]/40 bg-[#3B82F6]/[0.06] p-8 transition-colors hover:bg-[#3B82F6]/[0.12]">
@@ -503,28 +515,6 @@ const year = new Date().getFullYear();
     .portfolio-card {
       flex-basis: calc((100% - 2.5rem) / 2.4);
     }
-  }
-  /* Labelled image slot, shown until the real asset is dropped in. */
-  .placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    padding: 1.5rem;
-    text-align: center;
-    background:
-      repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.025) 0 12px, transparent 12px 24px),
-      #1a1c26;
-    color: rgba(255, 255, 255, 0.55);
-  }
-  .placeholder-title {
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.75);
-  }
-  .placeholder-meta {
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
   }
   .no-scrollbar {
     scrollbar-width: none;

@@ -77,17 +77,17 @@ Payment Link is a public URL, not a secret, so it lives in code rather than env.
 
 ### Images
 
-Save images to `public/images/website/`, then swap each labelled placeholder
-`<div class="placeholder ...">` for an `<img>` (or Astro `<Image>`). Each slot
-has an `IMAGE:` comment above it.
+Screenshots of the live client sites, in `public/images/website/`. Each `<img>`
+has an `IMAGE:` comment above it. To refresh one, re-capture at the same size
+and overwrite the file.
 
 | Slot | File | Size |
 | :--- | :--- | :--- |
-| Hero browser mockup — Bird Eye Promotions homepage | `birdeye-hero.jpg` | 1600 × 1000 (16:10) |
-| Portfolio card — Bird Eye Promotions | `birdeye-card.jpg` | 1200 × 800 (3:2) |
-| Portfolio card — KM Executive (optional; styled placeholder works as-is) | `km-executive-card.jpg` | 1200 × 800 (3:2) |
+| Hero browser mockup — BirdEye Promotions homepage | `birdeye-hero.jpg` | 1600 × 1000 (16:10) |
+| Portfolio card — BirdEye Promotions | `birdeye-card.jpg` | 1200 × 800 (3:2) |
+| Portfolio card — KM Executive Transportation | `km-executive-card.jpg` | 1200 × 800 (3:2) |
 
-Export as JPG (or WebP) under ~300 KB each.
+Keep each JPG (or WebP) under ~300 KB.
 
 ## 👀 Want to learn more?
 
