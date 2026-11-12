@@ -1,6 +1,51 @@
 ---
 // Services section + demo case-study cards + contact form + pricing modal
 
+// Services — shown as always-open cards (no mobile accordion) so every card
+// carries its own price and booking CTA. `cta.href` deep-links the booking
+// page to the right meeting type.
+const services = [
+  {
+    title: "Website Design & Development",
+    featured: true,
+    tagline: "A fast, hand-coded site that turns Tampa Bay visitors into calls, quotes, and bookings.",
+    points: [
+      "Business sites, landing pages & eCommerce",
+      "Mobile-first, fast, and SEO-ready from day one",
+      "Booking, quote forms & Shopify integrations",
+    ],
+    price: "From $350 · flat-rate packages",
+    cta: { label: "Get a Free Website Audit", href: "/booking?type=website_audit" },
+    icon: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+  },
+  {
+    title: "Custom Software & Integrations",
+    featured: false,
+    tagline: "Web apps and tools built around how your team actually works — not the other way around.",
+    points: [
+      "Web apps, customer portals & internal tools",
+      "Connect the platforms that don't talk to each other",
+      "Dashboards for sales, operations & inventory",
+    ],
+    price: "From $500 · scoped per project",
+    cta: { label: "Talk Through Your Project", href: "/booking?type=discovery_call" },
+    icon: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+  },
+  {
+    title: "Tech Audits & Automation",
+    featured: false,
+    tagline: "Find where time and money are leaking out of your business — then fix it.",
+    points: [
+      "Workflow & tech stack audit with a clear action plan",
+      "Sheets, Airtable & Notion systems your team will use",
+      "Automations that save hours every week",
+    ],
+    price: "From $75/hr or flat-rate",
+    cta: { label: "Book a Free Tech Audit Call", href: "/booking?type=discovery_call" },
+    icon: '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/>',
+  },
+];
+
 const demos = [
   {
     title: "KM Executive Transportation",
@@ -71,126 +116,78 @@ const demos = [
         What I Can Build for You
       </h2>
       <p class="mx-auto mt-4 max-w-2xl text-lg text-text-secondary">
-        I've spent time working inside small businesses — not just building for them. I know what it looks like when the spreadsheet breaks, when nothing integrates, when the website exists but nobody finds it. Here's what I can actually do about it.
+        Websites, custom software, and tech audits for Tampa Bay small businesses. I've worked inside small businesses, not just for them, so I know what it looks like when the spreadsheet breaks or the website exists but nobody finds it.
       </p>
     </div>
 
-    <!-- Service cards -->
+    <!-- Service cards — always open on every screen size -->
     <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out grid grid-cols-1 gap-5 md:grid-cols-3">
+      {services.map((svc) => (
+        <article
+          class:list={[
+            "card-lift relative flex flex-col rounded-2xl border bg-bg-card p-6 shadow-sm md:p-7",
+            svc.featured ? "border-brand-primary/50 ring-1 ring-brand-primary/20" : "border-border-subtle",
+          ]}
+        >
+          {svc.featured && (
+            <span class="absolute -top-3 left-6 rounded-full bg-brand-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white shadow-sm">
+              Most requested
+            </span>
+          )}
+          <div class="flex items-center gap-3">
+            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={svc.icon} />
+            </div>
+            <h3 class="text-lg font-semibold leading-snug text-text-primary md:text-xl">{svc.title}</h3>
+          </div>
 
-      <!-- Card 1: Tech Consulting & Systems -->
-      <div class="card-lift group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-sm md:p-8">
-        <button class="service-card-toggle flex w-full items-center gap-4 text-left md:flex-col md:items-start md:gap-0 md:cursor-default md:pointer-events-none" aria-expanded="false" aria-controls="service-body-1">
-          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary md:mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
-          </div>
-          <h3 class="flex-1 text-lg font-semibold text-text-primary md:mb-3 md:flex-none md:text-xl">Tech Consulting & Systems</h3>
-          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/40 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-        <div id="service-body-1" class="accordion-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out md:max-h-none">
-          <ul class="mt-4 flex-1 space-y-2.5 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Workflow audit — find exactly where time is being lost and why
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Google Sheets, Airtable, and Notion systems that actually get used
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Inventory tracking, sales dashboards, and automated reporting
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Process automation that saves hours every week without changing how your team works
-            </li>
-          </ul>
-          <p class="mt-5 text-sm font-semibold text-brand-primary">Starting at $75/hr or flat-rate</p>
-        </div>
-      </div>
+          <p class="mt-4 text-[15px] leading-relaxed text-text-secondary">{svc.tagline}</p>
 
-      <!-- Card 2: Website Design & Development -->
-      <div class="card-lift group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-sm md:p-8">
-        <button class="service-card-toggle flex w-full items-center gap-4 text-left md:flex-col md:items-start md:gap-0 md:cursor-default md:pointer-events-none" aria-expanded="false" aria-controls="service-body-2">
-          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary md:mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <h3 class="flex-1 text-lg font-semibold text-text-primary md:mb-3 md:flex-none md:text-xl">Website Design & Development</h3>
-          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/40 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-        <div id="service-body-2" class="accordion-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out md:max-h-none">
-          <ul class="mt-4 flex-1 space-y-2.5 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Business sites, landing pages, portfolios, and eCommerce
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Mobile-first — looks right and loads fast on every device
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              SEO foundation included — meta tags, sitemap, Google-ready from day one
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Shopify setup and optimization
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Monthly Growth Plans available — maintenance, SEO, and updates handled
-            </li>
+          <ul class="mt-4 space-y-2 text-sm leading-relaxed text-text-primary/85">
+            {svc.points.map((pt) => (
+              <li class="flex items-start gap-2">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                {pt}
+              </li>
+            ))}
           </ul>
-          <p class="mt-5 text-sm font-semibold text-brand-primary">Starting at $350 · Flat-rate packages</p>
-          <div class="mt-4 flex justify-center sm:justify-start">
-            <button
-              id="open-pricing-modal"
-              class="w-full sm:w-auto rounded-xl border border-brand-primary bg-transparent px-6 py-2.5 text-sm font-semibold text-brand-primary transition-all duration-200 hover:bg-brand-primary hover:text-[#101418]"
-            >View Full Pricing →</button>
-          </div>
-        </div>
-      </div>
 
-      <!-- Card 3: Custom Software & Integrations -->
-      <div class="card-lift group flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-sm md:p-8">
-        <button class="service-card-toggle flex w-full items-center gap-4 text-left md:flex-col md:items-start md:gap-0 md:cursor-default md:pointer-events-none" aria-expanded="false" aria-controls="service-body-3">
-          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary md:mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          <div class="mt-auto pt-6">
+            <p class="mb-3 text-sm font-semibold text-brand-primary">{svc.price}</p>
+            <a
+              href={svc.cta.href}
+              class:list={[
+                "flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-sm font-semibold transition-all duration-200",
+                svc.featured
+                  ? "btn-shimmer bg-brand-primary text-white hover:opacity-90 hover:shadow-md"
+                  : "border border-brand-primary/40 text-brand-primary hover:bg-brand-primary hover:text-white",
+              ]}
+            >
+              {svc.cta.label} →
+            </a>
+            {svc.featured && (
+              <button
+                id="open-pricing-modal"
+                type="button"
+                class="mt-2 w-full rounded-xl px-5 py-2.5 text-sm font-medium text-text-secondary underline-offset-2 transition-colors hover:text-brand-primary hover:underline"
+              >
+                View full website pricing
+              </button>
+            )}
           </div>
-          <h3 class="flex-1 text-lg font-semibold text-text-primary md:mb-3 md:flex-none md:text-xl">Custom Software & Integrations</h3>
-          <svg class="chevron h-5 w-5 shrink-0 text-text-secondary/40 transition-transform duration-300 md:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-        <div id="service-body-3" class="accordion-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out md:max-h-none">
-          <ul class="mt-4 flex-1 space-y-2.5 text-sm leading-relaxed text-text-secondary md:mt-0 md:text-base">
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Web apps and internal tools built for how your team actually works
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              API integrations — connect the platforms that don't talk to each other
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Custom dashboards — inventory, sales, operations, whatever you need to see
-            </li>
-            <li class="flex items-start gap-2">
-              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-              Ongoing retainers available for continued development
-            </li>
-          </ul>
-          <p class="mt-5 text-sm font-semibold text-brand-primary">Starting at $500 · Scoped per project</p>
-        </div>
-      </div>
+        </article>
+      ))}
     </div>
 
-    <!-- Pricing hint -->
-    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out mt-8 rounded-xl border border-brand-primary/20 bg-brand-primary/5 px-5 py-4 text-center text-sm text-text-secondary">
-      Not sure what you need?
-      <!-- was: https://calendly.com/daniel-trackt/30min -->
-      <a href="/booking" class="font-medium text-brand-primary underline underline-offset-2 hover:no-underline">Book a free 30-minute discovery call</a>
-      — no pressure, no commitment.
+    <!-- Not-sure CTA -->
+    <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out mt-8 flex flex-col items-center justify-between gap-4 rounded-2xl border border-brand-primary/20 bg-brand-primary/5 px-6 py-5 text-center sm:flex-row sm:text-left">
+      <p class="text-text-primary">
+        <span class="font-semibold">Not sure what you need?</span>
+        <span class="text-text-secondary"> Get a free 30-minute call — no pressure, no commitment.</span>
+      </p>
+      <a href="/booking?type=discovery_call" class="w-full shrink-0 rounded-xl bg-brand-primary px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90 sm:w-auto">
+        Book a Free Call
+      </a>
     </div>
 
   </div>
@@ -533,6 +530,30 @@ const demos = [
   </div>
 </div>
 
+<!-- ─── FREE AUDIT OFFER ─── -->
+<section id="free-audit" class="px-5 pt-20 md:pt-28">
+  <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-brand-primary/25 bg-bg-card px-6 py-10 text-center shadow-sm sm:px-10 md:py-14">
+    <div class="pointer-events-none absolute -top-24 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-brand-primary/15 blur-3xl" aria-hidden="true"></div>
+    <div class="relative">
+      <p class="text-sm font-semibold uppercase tracking-widest text-brand-primary">Free · 30 minutes · No strings</p>
+      <h2 class="mx-auto mt-3 max-w-2xl text-3xl font-bold leading-tight tracking-tight text-text-primary md:text-4xl">
+        Is your website costing you customers?
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-text-secondary">
+        I'll walk through your site with you — speed, Google visibility, the mobile experience, and the quick wins that get more calls. You leave with a plan, whether or not we work together.
+      </p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href="/booking?type=website_audit" class="btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-7 py-4 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md sm:w-auto">
+          Get My Free Website Audit →
+        </a>
+        <a href="#contact" class="inline-flex w-full items-center justify-center rounded-xl border border-border-subtle px-7 py-4 text-base font-semibold text-text-primary transition-colors hover:border-brand-primary/40 sm:w-auto">
+          Or send a message
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── CONTACT FORM ─── -->
 <section id="contact" class="px-5 py-20 md:py-28">
   <div class="mx-auto max-w-6xl">
@@ -705,26 +726,6 @@ const demos = [
     } catch (err) {
       if (errorEl) { errorEl.textContent = err instanceof Error ? err.message : "Failed to send. Please try again."; errorEl.classList.remove("hidden"); }
       setSubmitting(false);
-    }
-  });
-
-  // ── Mobile service card accordion ──
-  const isMobile = () => window.innerWidth < 768;
-  document.querySelectorAll('.service-card-toggle').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      if (!isMobile()) return;
-      const body = btn.nextElementSibling as HTMLElement;
-      const chevron = btn.querySelector('.chevron') as HTMLElement | null;
-      const isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
-      body.style.maxHeight = isOpen ? '0px' : body.scrollHeight + 'px';
-      chevron?.classList.toggle('rotate-180', !isOpen);
-      btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-    });
-  });
-  window.addEventListener('resize', () => {
-    if (!isMobile()) {
-      document.querySelectorAll<HTMLElement>('.service-card-toggle + .accordion-body').forEach(el => { el.style.maxHeight = ''; });
-      document.querySelectorAll('.service-card-toggle').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
     }
   });
 

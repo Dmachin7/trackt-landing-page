@@ -356,6 +356,13 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
     wireMeetingCards();
     wireNav();
     wireForm();
+
+    // Deep link from a CTA (e.g. /booking?type=website_audit) skips straight
+    // to the calendar for that meeting type.
+    const preset = new URLSearchParams(location.search).get("type");
+    if (preset) {
+      widget.querySelector<HTMLButtonElement>(`.meeting-card[data-meeting="${CSS.escape(preset)}"]`)?.click();
+    }
   }
 
   // ── Step 1: meeting type ─────────────────────────────────────────────────────

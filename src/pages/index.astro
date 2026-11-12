@@ -4,50 +4,72 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Consulting from "../components/Consulting.astro";
 import Footer from "../components/Footer.astro";
+import MobileCTA from "../components/MobileCTA.astro";
 
-const pageTitle = "Trackt | Web Development, Custom Software & Workflow Automation — Tampa, FL";
-const pageDescription = "Tampa-based web developer and tech consultant for small businesses. Custom websites, software development, workflow automation, and tech audits. Free discovery call.";
+// SEO: lead with the local search terms people actually type
+// ("Tampa web design"), keep the title under ~60 chars and the description
+// under ~160 so Google doesn't truncate them.
+const pageTitle = "Tampa Web Design & Custom Software | Trackt Tech";
+const pageDescription = "Tampa Bay web designer building fast, hand-coded websites, custom software, and tech audits for small businesses. Flat-rate pricing. Free website audit.";
+
+const SITE = "https://trackt.tech";
+const areaServed = ["Tampa", "St. Petersburg", "Clearwater", "Brandon", "Wesley Chapel", "Riverview", "Lakeland", "Sarasota"]
+  .map((name) => ({ "@type": "City", name }));
 
 const jsonLd = JSON.stringify([
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Daniel",
-    "jobTitle": "Web Developer & Tech Consultant",
-    "url": "https://trackt.tech",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Tampa",
-      "addressRegion": "FL",
-      "addressCountry": "US"
-    },
-    "sameAs": []
+    "@type": "WebSite",
+    "@id": `${SITE}/#website`,
+    url: SITE,
+    name: "Trackt Tech",
+    publisher: { "@id": `${SITE}/#business` },
   },
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Trackt Tech — Web Development & Tech Consulting, Tampa FL",
-    "url": "https://trackt.tech",
-    "areaServed": ["Tampa, FL", "Remote"],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Tampa",
-      "addressRegion": "FL",
-      "addressCountry": "US"
-    },
-    "description": "Custom web development, software development, workflow automation, tech audits, and CRM implementation for small businesses in Tampa, FL and remote clients.",
-    "priceRange": "$–$$$",
-    "hasOfferCatalog": {
+    "@id": `${SITE}/#business`,
+    name: "Trackt Tech",
+    legalName: "Trackt Tech LLC",
+    url: SITE,
+    logo: `${SITE}/logo/trackt-logo.png`,
+    image: `${SITE}/og-image.png`,
+    email: "daniel@trackt.tech",
+    description:
+      "Web design, custom software, and tech audits for small businesses in Tampa Bay, Florida. Fast, hand-coded websites with flat-rate pricing.",
+    address: { "@type": "PostalAddress", addressLocality: "Tampa", addressRegion: "FL", addressCountry: "US" },
+    areaServed: [...areaServed, { "@type": "State", name: "Florida" }],
+    priceRange: "$$",
+    founder: { "@type": "Person", name: "Daniel", jobTitle: "Web Developer & Tech Consultant" },
+    knowsAbout: ["Web design", "Web development", "Local SEO", "Custom software", "Workflow automation", "Shopify"],
+    sameAs: [],
+    hasOfferCatalog: {
       "@type": "OfferCatalog",
-      "name": "Services",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development", "description": "Custom websites starting at $350." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Software Development", "description": "Bespoke web apps and internal tools." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Workflow Automation", "description": "Automate repetitive business processes." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technology Audit", "description": "Comprehensive audit with actionable improvement plan." } }
-      ]
-    }
-  }
+      name: "Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Website Design & Development", description: "Fast, mobile-first, hand-coded business websites, landing pages, and eCommerce." },
+          priceSpecification: { "@type": "PriceSpecification", minPrice: 350, priceCurrency: "USD" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Custom Software & Integrations", description: "Web apps, customer portals, internal tools, and API integrations." },
+          priceSpecification: { "@type": "PriceSpecification", minPrice: 500, priceCurrency: "USD" },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Tech Audits & Automation", description: "Workflow and tech stack audits with an action plan, plus automations that save time." },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: "Free Website Audit", description: "A free 30-minute review of your website's speed, SEO, and conversions." },
+          price: 0,
+          priceCurrency: "USD",
+        },
+      ],
+    },
+  },
 ]);
 ---
 
@@ -58,5 +80,6 @@ const jsonLd = JSON.stringify([
     <Consulting />
   </main>
   <Footer />
+  <MobileCTA />
 </BaseLayout>
 
