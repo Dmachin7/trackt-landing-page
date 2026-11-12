@@ -54,6 +54,16 @@ import Animations from "../components/Animations.astro";
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Display font for the hero headline: Clash Display (Fontshare), with
+         Barlow Condensed 900 (Google Fonts) as the fallback. Font files only
+         download for whichever face actually renders. -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@700,800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&display=swap" />
     <meta name="theme-color" content="#16b4d2" />
 
     <!-- Prevent FOUC: apply dark class before first paint -->
