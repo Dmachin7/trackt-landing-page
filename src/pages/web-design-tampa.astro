@@ -217,35 +217,6 @@ const heroShot = projects.find((p) => p.slug === "km-executive-transportation")!
       </div>
     </section>
 
-    <!-- ─── OWNER PRESENCE ─── -->
-    <section class="px-5 pb-16 md:pb-24">
-      <div class="mx-auto max-w-6xl rounded-3xl border border-border-subtle bg-bg-elevated/60 px-6 py-10 md:px-14 md:py-14" data-reveal>
-        <div class="flex flex-col-reverse items-center gap-10 md:flex-row md:justify-between md:gap-14">
-          <div class="max-w-xl text-center md:text-left">
-            <h2 class="text-3xl font-bold tracking-tight md:text-4xl">You work directly with me — not an agency.</h2>
-            <p class="mt-5 text-lg leading-relaxed text-text-secondary">
-              I'm Daniel, the developer behind Trackt Tech. Every site I build is hand-coded by me, not handed off to a
-              contractor or assembled from a template. When you message Trackt Tech, you're messaging me.
-            </p>
-            <a
-              href="/booking?type=discovery_call"
-              class="btn-shimmer mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-7 py-4 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md sm:w-auto"
-            >
-              Book a free call with Daniel →
-            </a>
-          </div>
-
-          <div class="wdt-avatar shrink-0">
-            <!-- OWNER_PHOTO: replace with headshot image path -->
-            <!-- e.g. <img src="/images/daniel.jpg" alt="Daniel, founder of Trackt Tech" width="400" height="400" class="h-full w-full rounded-full object-cover" /> -->
-            <div class="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-brand-primary/25 to-brand-primary/5 text-5xl font-bold text-brand-primary" role="img" aria-label="Daniel, founder of Trackt Tech">
-              D
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ─── SERVICES ─── -->
     <section class="bg-bg-elevated px-5 py-16 md:py-24">
       <div class="mx-auto max-w-6xl">
@@ -434,22 +405,6 @@ const heroShot = projects.find((p) => p.slug === "km-executive-transportation")!
   @media (min-width: 1024px) {
     .wdt-tilt { transform: rotateY(-12deg) rotateX(4deg); }
     .wdt-stage:hover .wdt-tilt { transform: rotateY(-4deg) rotateX(1.5deg); }
-  }
-
-  /* ── Owner headshot: circle with a soft teal ring + glow ── */
-  .wdt-avatar {
-    width: 11rem;
-    height: 11rem;
-    border-radius: 9999px;
-    padding: 6px;
-    background: var(--color-bg-card);
-    box-shadow:
-      0 0 0 2px rgba(22, 180, 210, 0.55),
-      0 0 0 9px rgba(22, 180, 210, 0.10),
-      0 18px 60px -10px rgba(22, 180, 210, 0.45);
-  }
-  @media (min-width: 768px) {
-    .wdt-avatar { width: 14rem; height: 14rem; }
   }
 
   /* ── Stepper ── */
