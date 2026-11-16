@@ -1,0 +1,171 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import PageCTA from "../../components/PageCTA.astro";
+import { projects, type Project } from "../../data/portfolio";
+import { SITE, toJsonLd } from "../../data/schema";
+
+export const getStaticPaths = (() =>
+  projects.map((project) => ({ params: { slug: project.slug }, props: { project } }))) satisfies GetStaticPaths;
+
+const { project: p } = Astro.props as { project: Project };
+const url = `${SITE}/portfolio/${p.slug}`;
+
+const jsonLd = toJsonLd(
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: `${p.title} website`,
+    headline: p.h1,
+    description: p.pageDescription,
+    url,
+    image: `${SITE}${p.img}`,
+    creator: { "@id": `${SITE}/#business` },
+    sameAs: p.href,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+      { "@type": "ListItem", position: 2, name: "Portfolio", item: `${SITE}/portfolio` },
+      { "@type": "ListItem", position: 3, name: p.title, item: url },
+    ],
+  },
+);
+
+const others = projects.filter((x) => x.slug !== p.slug);
+---
+
+<BaseLayout title={p.pageTitle} description={p.pageDescription} jsonLd={jsonLd}>
+  <Header />
+  <main id="main-content">
+    <section class="relative overflow-hidden bg-bg-dark px-5 pb-12 pt-28 md:pb-16 md:pt-36">
+      <div class="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-brand-primary/6 blur-[100px]" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px); background-size: 28px 28px;" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-5xl">
+        <a href="/portfolio" class="inline-flex items-center gap-1.5 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+          Back to Portfolio
+        </a>
+
+        <div class="mt-6 flex flex-wrap items-center gap-2">
+          <span class="rounded-full px-2.5 py-0.5 text-[11px] font-semibold" style={`background:${p.accent}1A;color:${p.accent};`}>{p.badge}</span>
+          <span class="text-xs font-medium" style={`color:${p.accent};`}>{p.category}</span>
+        </div>
+        <h1 class="mt-4 max-w-4xl text-3xl font-bold leading-tight tracking-tight md:text-5xl">{p.h1}</h1>
+        <p class="mt-5 max-w-2xl text-lg leading-relaxed text-text-secondary">{p.blurb}</p>
+
+        <a
+          href={p.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-7 inline-flex items-center gap-2 rounded-xl border border-border-subtle bg-bg-card px-6 py-3.5 text-sm font-semibold text-text-primary transition-all duration-200 hover:border-brand-primary/40 hover:shadow-sm"
+        >
+          Visit {p.liveLabel}
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </a>
+
+        <!-- Screenshot in the same browser-window frame as the homepage hero -->
+        <div class="browser-window mt-10">
+          <div class="browser-chrome">
+            <div class="flex items-center gap-1.5" aria-hidden="true">
+              <span class="browser-dot" style="background:#FC5F5A;"></span>
+              <span class="browser-dot" style="background:#FDBC2F;"></span>
+              <span class="browser-dot" style="background:#33C748;"></span>
+            </div>
+            <div class="browser-url">{p.liveLabel}</div>
+          </div>
+          <img src={p.img} alt={p.imgAlt} width={p.imgW} height={p.imgH} fetchpriority="high" class="block w-full" />
+        </div>
+      </div>
+    </section>
+
+    <section class="px-5 py-16 md:py-20">
+      <div class="mx-auto grid max-w-5xl gap-10 md:grid-cols-5">
+        <div class="md:col-span-3">
+          <h2 class="text-2xl font-bold tracking-tight md:text-3xl">About the business</h2>
+          <p class="mt-4 text-lg leading-relaxed text-text-secondary">{p.about}</p>
+
+          <h2 class="mt-12 text-2xl font-bold tracking-tight md:text-3xl">What I built</h2>
+          <ul class="mt-5 space-y-3 text-base leading-relaxed text-text-primary/85">
+            {p.built.map((item) => (
+              <li class="flex items-start gap-2.5">
+                <svg class="mt-1 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <aside class="md:col-span-2">
+          <div class="rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-sm">
+            <h2 class="text-sm font-semibold uppercase tracking-widest text-brand-primary">Project</h2>
+            <dl class="mt-4 space-y-4 text-sm">
+              <div>
+                <dt class="text-text-secondary">Client</dt>
+                <dd class="mt-0.5 font-semibold text-text-primary">{p.title}</dd>
+              </div>
+              <div>
+                <dt class="text-text-secondary">Industry</dt>
+                <dd class="mt-0.5 font-semibold text-text-primary">{p.category}</dd>
+              </div>
+              <div>
+                <dt class="text-text-secondary">Scope</dt>
+                <dd class="mt-2 flex flex-wrap gap-1.5">
+                  {p.stack.map((s) => (
+                    <span class="rounded-full border border-border-subtle bg-bg-elevated px-2.5 py-1 text-xs font-medium text-text-primary">{s}</span>
+                  ))}
+                </dd>
+              </div>
+              <div>
+                <dt class="text-text-secondary">Live site</dt>
+                <dd class="mt-0.5">
+                  <a href={p.href} target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-primary underline-offset-2 hover:underline">{p.liveLabel} ↗</a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="mt-5 rounded-2xl border border-brand-primary/20 bg-brand-primary/5 p-6">
+            <p class="font-semibold text-text-primary">Want a site like this?</p>
+            <p class="mt-1 text-sm text-text-secondary">Flat-rate pricing, built for Tampa Bay businesses.</p>
+            <a href="/booking" class="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90">
+              Book a free call →
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="bg-bg-elevated px-5 py-16">
+      <div class="mx-auto max-w-5xl">
+        <div class="mb-8 flex items-end justify-between gap-4">
+          <h2 class="text-2xl font-bold tracking-tight">More client work</h2>
+          <a href="/portfolio" class="text-sm font-semibold text-brand-primary hover:underline underline-offset-2">Back to Portfolio</a>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-3">
+          {others.map((o) => (
+            <a href={`/portfolio/${o.slug}`} class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
+              <div class="aspect-video overflow-hidden bg-bg-elevated">
+                <img src={o.img} alt="" width={o.imgW} height={o.imgH} loading="lazy" class="h-full w-full object-cover object-top" />
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm font-bold text-text-primary group-hover:underline underline-offset-2">{o.title}</h3>
+                <p class="mt-1 text-xs font-medium" style={`color:${o.accent};`}>{o.category}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="pt-16 md:pt-20">
+      <PageCTA heading="Ready to build yours?" label="Let's talk →" />
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

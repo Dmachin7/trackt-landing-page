@@ -109,6 +109,45 @@ html.dark .card-lift:hover {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
+/* ── Browser mockup shell (homepage hero + portfolio pages) ── */
+.browser-window {
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 20px 60px rgba(16, 20, 24, 0.10), 0 4px 16px rgba(16, 20, 24, 0.06);
+  overflow: hidden;
+  background: #FFFFFF;
+}
+
+.browser-chrome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #F4F6F8;
+  border-bottom: 1px solid #E2E8F0;
+}
+.browser-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.browser-url {
+  flex: 1;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 5px;
+  padding: 4px 10px;
+  font-size: 10px;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-family: monospace;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 /* ── Browser mockup — chrome adapts to dark mode, content stays light ── */
 html.dark .browser-window {
   border-color: rgba(255, 255, 255, 0.10);

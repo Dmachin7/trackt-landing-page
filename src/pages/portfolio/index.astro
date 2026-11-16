@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import PageCTA from "../../components/PageCTA.astro";
+import { projects } from "../../data/portfolio";
+import { SITE, toJsonLd } from "../../data/schema";
+
+const pageTitle = "Portfolio | Tampa Web Design by Trackt Tech";
+const pageDescription =
+  "Live websites and custom software Trackt Tech built for Tampa Bay small businesses — luxury transportation, drone videography, soft washing, and eCommerce.";
+
+const jsonLd = toJsonLd({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Trackt Tech Portfolio",
+  url: `${SITE}/portfolio`,
+  about: { "@id": `${SITE}/#business` },
+  hasPart: projects.map((p) => ({ "@type": "CreativeWork", name: p.title, url: `${SITE}/portfolio/${p.slug}` })),
+});
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} jsonLd={jsonLd}>
+  <Header />
+  <main id="main-content">
+    <section class="relative overflow-hidden bg-bg-dark px-5 pb-12 pt-32 md:pt-40">
+      <div class="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-brand-primary/6 blur-[100px]" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px); background-size: 28px 28px;" aria-hidden="true"></div>
+      <div class="relative z-10 mx-auto max-w-3xl text-center">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-text-secondary/60">Work I've Built</p>
+        <h1 class="text-4xl font-bold leading-tight tracking-tight md:text-5xl">Client work — see it live</h1>
+        <p class="mx-auto mt-5 max-w-xl text-lg text-text-secondary">
+          Every project here is live and running for a real small business. Read how each one was built, then click through and try it.
+        </p>
+      </div>
+    </section>
+
+    <section class="px-5 pb-20 md:pb-24">
+      <div class="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2">
+        {projects.map((p) => (
+          <article class="card-lift flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
+            <a href={`/portfolio/${p.slug}`} class="block aspect-video overflow-hidden bg-bg-elevated" tabindex="-1" aria-hidden="true">
+              <img src={p.img} alt="" width={p.imgW} height={p.imgH} loading="lazy" class="h-full w-full object-cover object-top" />
+            </a>
+            <div class="flex flex-1 flex-col p-6">
+              <div class="mb-2 flex items-start justify-between gap-2">
+                <h2 class="text-lg font-bold text-text-primary">
+                  <a href={`/portfolio/${p.slug}`} class="hover:underline underline-offset-2">{p.title}</a>
+                </h2>
+                <span class="shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-semibold" style={`background:${p.accent}1A;color:${p.accent};`}>{p.badge}</span>
+              </div>
+              <p class="mb-2 text-xs font-medium" style={`color:${p.accent};`}>{p.category}</p>
+              <p class="mb-5 flex-1 text-sm leading-relaxed text-text-secondary">{p.blurb}</p>
+              <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold">
+                <a href={`/portfolio/${p.slug}`} class="text-brand-primary hover:underline underline-offset-2">Read case study →</a>
+                <a href={p.href} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-text-secondary transition-colors hover:text-text-primary">
+                  View live site
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <PageCTA heading="Ready to build yours?" label="Let's talk →" />
+  </main>
+  <Footer />
+</BaseLayout>

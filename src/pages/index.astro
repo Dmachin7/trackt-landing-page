@@ -5,6 +5,7 @@ import Hero from "../components/Hero.astro";
 import Consulting from "../components/Consulting.astro";
 import Footer from "../components/Footer.astro";
 import MobileCTA from "../components/MobileCTA.astro";
+import { businessSchema, toJsonLd, websiteSchema } from "../data/schema";
 
 // SEO: lead with the local search terms people actually type
 // ("Tampa web design"), keep the title under ~60 chars and the description
@@ -12,65 +13,7 @@ import MobileCTA from "../components/MobileCTA.astro";
 const pageTitle = "Tampa Web Design & Custom Software | Trackt Tech";
 const pageDescription = "Tampa Bay web designer building fast, hand-coded websites, custom software, and tech audits for small businesses. Flat-rate pricing. Free website audit.";
 
-const SITE = "https://trackt.tech";
-const areaServed = ["Tampa", "St. Petersburg", "Clearwater", "Brandon", "Wesley Chapel", "Riverview", "Lakeland", "Sarasota"]
-  .map((name) => ({ "@type": "City", name }));
-
-const jsonLd = JSON.stringify([
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${SITE}/#website`,
-    url: SITE,
-    name: "Trackt Tech",
-    publisher: { "@id": `${SITE}/#business` },
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": `${SITE}/#business`,
-    name: "Trackt Tech",
-    legalName: "Trackt Tech LLC",
-    url: SITE,
-    logo: `${SITE}/logo/trackt-logo.png`,
-    image: `${SITE}/og-image.png`,
-    email: "daniel@trackt.tech",
-    description:
-      "Web design, custom software, and tech audits for small businesses in Tampa Bay, Florida. Fast, hand-coded websites with flat-rate pricing.",
-    address: { "@type": "PostalAddress", addressLocality: "Tampa", addressRegion: "FL", addressCountry: "US" },
-    areaServed: [...areaServed, { "@type": "State", name: "Florida" }],
-    priceRange: "$$",
-    founder: { "@type": "Person", name: "Daniel", jobTitle: "Web Developer & Tech Consultant" },
-    knowsAbout: ["Web design", "Web development", "Local SEO", "Custom software", "Workflow automation", "Shopify"],
-    sameAs: [],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Services",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Website Design & Development", description: "Fast, mobile-first, hand-coded business websites, landing pages, and eCommerce." },
-          priceSpecification: { "@type": "PriceSpecification", minPrice: 350, priceCurrency: "USD" },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Custom Software & Integrations", description: "Web apps, customer portals, internal tools, and API integrations." },
-          priceSpecification: { "@type": "PriceSpecification", minPrice: 500, priceCurrency: "USD" },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Tech Audits & Automation", description: "Workflow and tech stack audits with an action plan, plus automations that save time." },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: "Free Website Audit", description: "A free 30-minute review of your website's speed, SEO, and conversions." },
-          price: 0,
-          priceCurrency: "USD",
-        },
-      ],
-    },
-  },
-]);
+const jsonLd = toJsonLd(websiteSchema, businessSchema);
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription} jsonLd={jsonLd}>
