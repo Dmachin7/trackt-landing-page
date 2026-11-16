@@ -1,35 +1,51 @@
+---
+// Site header. Each nav link, the CTA, and the theme toggle exist ONCE in the
+// markup: the same #nav-menu is an inline row on desktop and a collapsible
+// dropdown on phones (see the #nav-menu rules in global.css). Earlier versions
+// rendered a separate desktop and mobile copy, which crawlers, reader modes,
+// and screen readers saw as the menu appearing twice.
+const links = [
+  { href: "/#services", label: "Services" },
+  { href: "/web-design-tampa", label: "Web Design Tampa" },
+  { href: "/demos", label: "Demos" },
+];
+---
+
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+  <nav aria-label="Main navigation" class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
     <!-- Logo (dual: light/dark variants) -->
     <a href="/" aria-label="Trackt home">
-      <img
-        src="/logo/trackt-logo.svg"
-        alt="Trackt"
-        class="logo-light h-9 w-auto md:h-11"
-        width="198"
-        height="54"
-      />
-      <img
-        src="/logo/trackt-logo-dark.svg"
-        alt="Trackt"
-        class="logo-dark h-9 w-auto md:h-11"
-        width="198"
-        height="54"
-      />
+      <img src="/logo/trackt-logo.svg" alt="Trackt" class="logo-light h-9 w-auto md:h-11" width="198" height="54" />
+      <img src="/logo/trackt-logo-dark.svg" alt="Trackt" class="logo-dark h-9 w-auto md:h-11" width="198" height="54" />
     </a>
 
-    <!-- Desktop nav links + theme toggle + CTA -->
-    <div class="hidden items-center gap-5 md:flex lg:gap-6">
-      <a href="/#services" class="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary">Services</a>
-      <a href="/web-design-tampa" class="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary">Web Design Tampa</a>
-      <a href="/demos" class="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary">Demos</a>
-      <a href="/#contact" class="text-sm font-medium text-text-secondary transition-colors duration-150 hover:text-text-primary">Get a Quote</a>
+    <div class="flex items-center gap-2 md:gap-5">
+      <!-- Links + CTA: inline row on md+, dropdown panel below the bar on phones -->
+      <div id="nav-menu" class="border-t border-border-subtle md:border-0">
+        <ul class="px-3 pb-4 pt-2 md:flex md:items-center md:gap-5 md:p-0 lg:gap-6">
+          {links.map((l) => (
+            <li>
+              <a
+                href={l.href}
+                class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-bg-elevated hover:text-text-primary md:rounded-none md:p-0 md:text-sm md:hover:bg-transparent"
+              >{l.label}</a>
+            </li>
+          ))}
+          <li>
+            <a
+              href="/booking"
+              class="nav-menu-link mt-2 block rounded-lg bg-brand-primary px-4 py-3.5 text-center text-base font-semibold text-white transition-all duration-150 hover:opacity-90 md:mt-0 md:inline-flex md:items-center md:px-4 md:py-2 md:text-sm md:hover:shadow-sm"
+            >Book a Free Call</a>
+          </li>
+        </ul>
+      </div>
 
-      <!-- Theme toggle -->
+      <!-- Theme toggle (single instance for all screen sizes) -->
       <button
         id="theme-toggle"
+        type="button"
         aria-label="Switch to dark mode"
-        class="flex h-9 w-9 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors duration-150 hover:border-brand-primary/40 hover:text-brand-primary"
+        class="flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors duration-150 hover:border-brand-primary/40 hover:text-brand-primary md:h-9 md:w-9"
       >
         <!-- Moon — shown in light mode -->
         <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -42,61 +58,24 @@
         </svg>
       </button>
 
-      <!-- was: https://calendly.com/daniel-trackt/30min -->
-      <a
-        href="/booking"
-        class="inline-flex items-center gap-1.5 rounded-lg bg-brand-primary px-4 py-2 text-sm font-semibold text-white transition-all duration-150 hover:opacity-90 hover:shadow-sm"
-      >
-        Book a Call
-      </a>
-    </div>
-
-    <!-- Mobile right: theme toggle + hamburger -->
-    <div class="flex items-center gap-2 md:hidden">
-      <button
-        id="theme-toggle-mobile"
-        aria-label="Switch to dark mode"
-        class="flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:text-text-primary"
-      >
-        <svg id="icon-moon-mobile" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-        </svg>
-        <svg id="icon-sun-mobile" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hidden">
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-        </svg>
-      </button>
-
+      <!-- Hamburger (phones only) -->
       <button
         id="nav-toggle"
+        type="button"
         aria-label="Toggle navigation"
         aria-expanded="false"
-        class="relative flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:text-text-primary"
+        aria-controls="nav-menu"
+        class="relative flex h-10 w-10 items-center justify-center rounded-lg border border-border-subtle text-text-secondary transition-colors hover:text-text-primary md:hidden"
       >
-        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-opacity duration-150">
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-opacity duration-150">
           <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
         </svg>
-        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="absolute opacity-0 transition-opacity duration-150">
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="absolute opacity-0 transition-opacity duration-150">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </button>
     </div>
   </nav>
-
-  <!-- Mobile menu (background handled in global.css) -->
-  <div id="nav-menu" class="border-t border-border-subtle md:hidden">
-    <div class="px-3 py-2">
-      <a href="/#services" class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-bg-elevated hover:text-text-primary">Services</a>
-      <a href="/web-design-tampa" class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-bg-elevated hover:text-text-primary">Web Design Tampa</a>
-      <a href="/demos" class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-bg-elevated hover:text-text-primary">Demos</a>
-      <a href="/#contact" class="nav-menu-link block rounded-lg px-4 py-3.5 text-base font-medium text-text-secondary transition-colors duration-150 hover:bg-bg-elevated hover:text-text-primary">Get a Quote</a>
-      <!-- was: https://calendly.com/daniel-trackt/30min -->
-      <a
-        href="/booking"
-        class="nav-menu-link mt-2 block rounded-lg bg-brand-primary px-4 py-3.5 text-center text-base font-semibold text-white transition-opacity duration-150 hover:opacity-90"
-      >Book a Call</a>
-    </div>
-  </div>
 </header>
 
 <script>
@@ -115,55 +94,41 @@
   const iconClose = document.getElementById("icon-close");
 
   let isOpen = false;
-  navToggle?.addEventListener("click", () => {
-    isOpen = !isOpen;
-    if (navMenu && isOpen) {
+  function setOpen(open: boolean) {
+    isOpen = open;
+    if (navMenu && open) {
       navMenu.style.setProperty("--nav-menu-height", navMenu.scrollHeight + "px");
     }
-    navMenu?.classList.toggle("is-open", isOpen);
-    iconOpen?.classList.toggle("opacity-0", isOpen);
-    iconClose?.classList.toggle("opacity-0", !isOpen);
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-  });
+    navMenu?.classList.toggle("is-open", open);
+    iconOpen?.classList.toggle("opacity-0", open);
+    iconClose?.classList.toggle("opacity-0", !open);
+    navToggle?.setAttribute("aria-expanded", String(open));
+  }
+  navToggle?.addEventListener("click", () => setOpen(!isOpen));
   document.querySelectorAll(".nav-menu-link").forEach((link) => {
-    link.addEventListener("click", () => {
-      isOpen = false;
-      navMenu?.classList.remove("is-open");
-      iconOpen?.classList.remove("opacity-0");
-      iconClose?.classList.add("opacity-0");
-      navToggle?.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", () => setOpen(false));
   });
 
   // ── Theme toggle ──────────────────────────────────────────────
-  const html       = document.documentElement;
-  const moonD      = document.getElementById("icon-moon");
-  const sunD       = document.getElementById("icon-sun");
-  const moonM      = document.getElementById("icon-moon-mobile");
-  const sunM       = document.getElementById("icon-sun-mobile");
-  const toggleD    = document.getElementById("theme-toggle");
-  const toggleM    = document.getElementById("theme-toggle-mobile");
+  const html   = document.documentElement;
+  const moon   = document.getElementById("icon-moon");
+  const sun    = document.getElementById("icon-sun");
+  const toggle = document.getElementById("theme-toggle");
 
   function applyIcons(dark: boolean) {
-    moonD?.classList.toggle("hidden", dark);
-    sunD?.classList.toggle("hidden", !dark);
-    moonM?.classList.toggle("hidden", dark);
-    sunM?.classList.toggle("hidden", !dark);
-    toggleD?.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
-    toggleM?.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    moon?.classList.toggle("hidden", dark);
+    sun?.classList.toggle("hidden", !dark);
+    toggle?.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
   }
 
   // Sync icons with current state (set by the inline script in <head>)
   applyIcons(html.classList.contains("dark"));
 
-  function toggle() {
+  toggle?.addEventListener("click", () => {
     html.classList.add("theme-transition");
     const nowDark = html.classList.toggle("dark");
-    localStorage.setItem("trackt-theme", nowDark ? "dark" : "light");
+    try { localStorage.setItem("trackt-theme", nowDark ? "dark" : "light"); } catch {}
     applyIcons(nowDark);
     window.setTimeout(() => html.classList.remove("theme-transition"), 320);
-  }
-
-  toggleD?.addEventListener("click", toggle);
-  toggleM?.addEventListener("click", toggle);
+  });
 </script>
