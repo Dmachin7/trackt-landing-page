@@ -11,7 +11,7 @@ export const getStaticPaths = (() =>
   projects.map((project) => ({ params: { slug: project.slug }, props: { project } }))) satisfies GetStaticPaths;
 
 const { project: p } = Astro.props as { project: Project };
-const url = `${SITE}/portfolio/${p.slug}`;
+const url = `${SITE}/demos/${p.slug}`;
 
 const jsonLd = toJsonLd(
   {
@@ -30,7 +30,7 @@ const jsonLd = toJsonLd(
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: SITE },
-      { "@type": "ListItem", position: 2, name: "Portfolio", item: `${SITE}/portfolio` },
+      { "@type": "ListItem", position: 2, name: "Client Work", item: `${SITE}/demos` },
       { "@type": "ListItem", position: 3, name: p.title, item: url },
     ],
   },
@@ -47,9 +47,9 @@ const others = projects.filter((x) => x.slug !== p.slug);
       <div class="pointer-events-none absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px); background-size: 28px 28px;" aria-hidden="true"></div>
 
       <div class="relative z-10 mx-auto max-w-5xl">
-        <a href="/portfolio" class="inline-flex items-center gap-1.5 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary">
+        <a href="/demos" class="inline-flex items-center gap-1.5 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-          Back to Portfolio
+          Back to all work
         </a>
 
         <div class="mt-6 flex flex-wrap items-center gap-2">
@@ -131,7 +131,7 @@ const others = projects.filter((x) => x.slug !== p.slug);
           </div>
 
           <div class="mt-5 rounded-2xl border border-brand-primary/20 bg-brand-primary/5 p-6">
-            <p class="font-semibold text-text-primary">Want a site like this?</p>
+            <p class="font-semibold text-text-primary">Need something similar?</p>
             <p class="mt-1 text-sm text-text-secondary">Flat-rate pricing, built for Tampa Bay businesses.</p>
             <a href="/booking" class="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-brand-primary px-5 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90">
               Book a free call →
@@ -145,11 +145,11 @@ const others = projects.filter((x) => x.slug !== p.slug);
       <div class="mx-auto max-w-5xl">
         <div class="mb-8 flex items-end justify-between gap-4">
           <h2 class="text-2xl font-bold tracking-tight">More client work</h2>
-          <a href="/portfolio" class="text-sm font-semibold text-brand-primary hover:underline underline-offset-2">Back to Portfolio</a>
+          <a href="/demos" class="text-sm font-semibold text-brand-primary hover:underline underline-offset-2">Back to all work</a>
         </div>
         <div class="grid gap-5 sm:grid-cols-3">
           {others.map((o) => (
-            <a href={`/portfolio/${o.slug}`} class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
+            <a href={`/demos/${o.slug}`} class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
               <div class="aspect-video overflow-hidden bg-bg-elevated">
                 <img src={o.img} alt="" width={o.imgW} height={o.imgH} loading="lazy" class="h-full w-full object-cover object-top" />
               </div>
@@ -164,7 +164,7 @@ const others = projects.filter((x) => x.slug !== p.slug);
     </section>
 
     <div class="pt-16 md:pt-20">
-      <PageCTA heading="Ready to build yours?" label="Let's talk →" />
+      <PageCTA heading="Want something like this?" label="Book a free call →" />
     </div>
   </main>
   <Footer />

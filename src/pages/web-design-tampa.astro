@@ -81,7 +81,7 @@ const steps = [
             Get a Free Website Audit
           </a>
           <a
-            href="/portfolio"
+            href="/demos"
             class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-bg-card px-7 py-4 text-base font-semibold text-text-primary transition-all duration-200 hover:border-brand-primary/40 hover:shadow-sm sm:w-auto"
           >
             See Client Work →
@@ -204,7 +204,7 @@ const steps = [
         </div>
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {projects.map((p) => (
-            <a href={`/portfolio/${p.slug}`} class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
+            <a href={`/demos/${p.slug}`} class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
               <div class="aspect-video overflow-hidden bg-bg-elevated">
                 <img src={p.img} alt={p.imgAlt} width={p.imgW} height={p.imgH} loading="lazy" class="h-full w-full object-cover object-top" />
               </div>

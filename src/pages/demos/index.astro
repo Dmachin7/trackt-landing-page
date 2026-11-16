@@ -6,17 +6,17 @@ import PageCTA from "../../components/PageCTA.astro";
 import { projects } from "../../data/portfolio";
 import { SITE, toJsonLd } from "../../data/schema";
 
-const pageTitle = "Portfolio | Tampa Web Design by Trackt Tech";
+const pageTitle = "Client Work & Live Demos | Trackt Tech";
 const pageDescription =
-  "Live websites and custom software Trackt Tech built for Tampa Bay small businesses — luxury transportation, drone videography, soft washing, and eCommerce.";
+  "See live websites built by Trackt Tech for Tampa Bay small businesses — booking systems, e-commerce, galleries, and more.";
 
 const jsonLd = toJsonLd({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Trackt Tech Portfolio",
-  url: `${SITE}/portfolio`,
+  name: "Client Work & Live Demos",
+  url: `${SITE}/demos`,
   about: { "@id": `${SITE}/#business` },
-  hasPart: projects.map((p) => ({ "@type": "CreativeWork", name: p.title, url: `${SITE}/portfolio/${p.slug}` })),
+  hasPart: projects.map((p) => ({ "@type": "CreativeWork", name: p.title, url: `${SITE}/demos/${p.slug}` })),
 });
 ---
 
@@ -28,10 +28,16 @@ const jsonLd = toJsonLd({
       <div class="pointer-events-none absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px); background-size: 28px 28px;" aria-hidden="true"></div>
       <div class="relative z-10 mx-auto max-w-3xl text-center">
         <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-text-secondary/60">Work I've Built</p>
-        <h1 class="text-4xl font-bold leading-tight tracking-tight md:text-5xl">Client work — see it live</h1>
+        <h1 class="text-4xl font-bold leading-tight tracking-tight md:text-5xl">This Is What <span class="text-brand-primary">I Build</span></h1>
         <p class="mx-auto mt-5 max-w-xl text-lg text-text-secondary">
-          Every project here is live and running for a real small business. Read how each one was built, then click through and try it.
+          Live websites I've built for real Tampa Bay small businesses — from booking systems to custom product configurators.
         </p>
+        <a
+          href="/booking"
+          class="btn-shimmer mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-7 py-4 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md sm:w-auto"
+        >
+          Book a free call
+        </a>
       </div>
     </section>
 
@@ -39,20 +45,20 @@ const jsonLd = toJsonLd({
       <div class="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2">
         {projects.map((p) => (
           <article class="card-lift flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
-            <a href={`/portfolio/${p.slug}`} class="block aspect-video overflow-hidden bg-bg-elevated" tabindex="-1" aria-hidden="true">
+            <a href={`/demos/${p.slug}`} class="block aspect-video overflow-hidden bg-bg-elevated" tabindex="-1" aria-hidden="true">
               <img src={p.img} alt="" width={p.imgW} height={p.imgH} loading="lazy" class="h-full w-full object-cover object-top" />
             </a>
             <div class="flex flex-1 flex-col p-6">
               <div class="mb-2 flex items-start justify-between gap-2">
                 <h2 class="text-lg font-bold text-text-primary">
-                  <a href={`/portfolio/${p.slug}`} class="hover:underline underline-offset-2">{p.title}</a>
+                  <a href={`/demos/${p.slug}`} class="hover:underline underline-offset-2">{p.title}</a>
                 </h2>
                 <span class="shrink-0 rounded-full px-2.5 py-0.5 text-[11px] font-semibold" style={`background:${p.accent}1A;color:${p.accent};`}>{p.badge}</span>
               </div>
               <p class="mb-2 text-xs font-medium" style={`color:${p.accent};`}>{p.category}</p>
               <p class="mb-5 flex-1 text-sm leading-relaxed text-text-secondary">{p.blurb}</p>
               <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold">
-                <a href={`/portfolio/${p.slug}`} class="text-brand-primary hover:underline underline-offset-2">Read case study →</a>
+                <a href={`/demos/${p.slug}`} class="text-brand-primary hover:underline underline-offset-2">Read case study →</a>
                 <a href={p.href} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-text-secondary transition-colors hover:text-text-primary">
                   View live site
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
@@ -64,7 +70,11 @@ const jsonLd = toJsonLd({
       </div>
     </section>
 
-    <PageCTA heading="Ready to build yours?" label="Let's talk →" />
+    <PageCTA
+      heading="Want one of these for your business?"
+      body="Every site here is live for a real business, and I can build one for you. Book a free 30-minute call to talk through what you need."
+      label="Book a free call"
+    />
   </main>
   <Footer />
 </BaseLayout>

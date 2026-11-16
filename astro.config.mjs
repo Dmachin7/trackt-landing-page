@@ -11,6 +11,9 @@ export default defineConfig({
   // and people check /sitemap.xml first, so point that at the real index.
   redirects: {
     '/sitemap.xml': '/sitemap-index.xml',
+    // Case studies briefly lived at /portfolio before moving to /demos.
+    '/portfolio': '/demos',
+    '/portfolio/[slug]': '/demos/[slug]',
   },
   integrations: [
     sitemap({
