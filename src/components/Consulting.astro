@@ -1,5 +1,6 @@
 ---
 // Services section + demo case-study cards + contact form + pricing modal
+import { projects } from "../data/portfolio";
 
 // Services — shown as always-open cards (no mobile accordion) so every card
 // carries its own price and booking CTA. `cta.href` deep-links the booking
@@ -46,60 +47,7 @@ const services = [
   },
 ];
 
-const demos = [
-  {
-    title: "KM Executive Transportation",
-    badge: "Live Client",
-    accent: "#A8862F",
-    category: "Luxury Transportation · Tampa Bay",
-    blurb: "A chauffeur service with online booking, live mileage pricing, deposits, saved cards, and an admin dashboard.",
-    img: "/images/demos/km-executive-demo.jpg",
-    imgAlt: "KM Executive Transportation website screenshot",
-    imgW: 1400,
-    imgH: 875,
-    href: "https://www.kmexecutivetransportation.com/",
-    cta: "View live site",
-  },
-  {
-    title: "BirdEye Promotions",
-    badge: "Live Client",
-    accent: "#DC2626",
-    category: "Aerial Videography · South Tampa, FL",
-    blurb: "An FAA-certified drone videography company needing a cinematic portfolio and an easy quote request.",
-    img: "/images/demos/birdeye-demo.jpg",
-    imgAlt: "BirdEye Promotions drone videography website screenshot",
-    imgW: 1400,
-    imgH: 875,
-    href: "https://www.birdeyepromotions.com/",
-    cta: "View live site",
-  },
-  {
-    title: "Newell Family Enterprise",
-    badge: "Live Client",
-    accent: "#16A34A",
-    category: "Soft Washing · Spring Hill, FL",
-    blurb: "A soft washing company needing instant trust, a before & after gallery, and a fast quote request flow.",
-    img: "/images/demos/newell-demo.jpg",
-    imgAlt: "Newell Family Enterprise soft washing website screenshot",
-    imgW: 1400,
-    imgH: 875,
-    href: "https://newell-family-enterprise.vercel.app/",
-    cta: "View live site",
-  },
-  {
-    title: "Arthur's 1of1 Bracelets",
-    badge: "Live Client",
-    accent: "#A855F7",
-    category: "Custom Jewelry · Shopify",
-    blurb: "A custom bracelet configurator with live Shopify checkout for a Tampa handmade jewelry brand.",
-    img: "/images/demos/arthurs1of1-demo.jpg",
-    imgAlt: "Arthur's 1of1 bracelet configurator screenshot",
-    imgW: 1400,
-    imgH: 766,
-    href: "https://arthurs1of1.trackt.tech",
-    cta: "View live site",
-  },
-];
+const demos = projects;
 ---
 
 <!-- ─── SERVICES ─── -->
@@ -232,17 +180,27 @@ const demos = [
                   </div>
                   <p class="mb-1.5 text-[11px] font-medium sm:text-xs" style={`color:${d.accent};`}>{d.category}</p>
                   <p class="mb-3 flex-1 text-xs leading-snug text-text-secondary line-clamp-2 sm:text-sm sm:leading-relaxed sm:line-clamp-3">{d.blurb}</p>
+                  <div class="mt-auto flex flex-wrap items-center gap-x-4 gap-y-1">
                   <a
                     href={d.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="mt-auto inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity duration-150 hover:opacity-70 sm:text-sm"
+                    class="inline-flex items-center gap-1.5 text-xs font-semibold transition-opacity duration-150 hover:opacity-70 sm:text-sm"
                     style={`color:${d.accent};`}
                     tabindex="-1"
                   >
                     {d.cta}
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
                   </a>
+                  <a
+                    href={`/demos/${d.slug}`}
+                    class="text-xs font-semibold text-text-secondary underline-offset-2 transition-colors duration-150 hover:text-text-primary hover:underline sm:text-sm"
+                    aria-label={`Read the ${d.title} case study`}
+                    tabindex="-1"
+                  >
+                    Case study
+                  </a>
+                  </div>
                 </div>
               </article>
             </div>
@@ -273,13 +231,10 @@ const demos = [
     <!-- See all demos + book a call buttons -->
     <div class="scroll-reveal translate-y-8 opacity-0 transition-all duration-700 ease-out mt-6 flex flex-col items-center justify-center gap-3 text-center sm:mt-10 sm:flex-row">
       <a
-        href="https://demo.trackt.tech"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/demos"
         class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-bg-card px-7 py-4 text-base font-semibold text-text-primary transition-all duration-200 hover:border-brand-primary/40 hover:shadow-sm sm:w-auto"
       >
-        See All Client Work
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        See All Client Work →
       </a>
       <a
         href="/booking"
