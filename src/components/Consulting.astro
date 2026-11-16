@@ -618,6 +618,8 @@ const demos = projects;
 
   openBtn?.setAttribute('aria-expanded', 'false');
   openBtn?.addEventListener('click', openModal);
+  // Deep link: /#plans (e.g. "See Plans" on /web-design-tampa) opens the pricing guide.
+  if (location.hash === '#plans') openModal();
   closeBtn?.addEventListener('click', closeModal);
   backdrop?.addEventListener('click', closeModal);
   document.addEventListener('keydown', (e) => {

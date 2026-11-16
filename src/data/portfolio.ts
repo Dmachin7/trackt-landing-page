@@ -16,6 +16,7 @@ export interface Project {
   href: string; // live client site
   liveLabel: string; // domain as shown to visitors
   cta: string;
+  outcome: string; // one-line result, shown on /web-design-tampa cards
   // Case-study page
   pageTitle: string;
   pageDescription: string;
@@ -40,6 +41,7 @@ export const projects: Project[] = [
     href: "https://www.kmexecutivetransportation.com/",
     liveLabel: "kmexecutivetransportation.com",
     cta: "View live site",
+    outcome: "Booking + payments live — customers reserve rides without calling",
     pageTitle: "KM Executive Transportation Website | Trackt Tech",
     pageDescription: "A Tampa Bay chauffeur website with an online booking system, payment integration, and an admin dashboard — built by Trackt Tech.",
     h1: "KM Executive Transportation — Tampa Bay Chauffeur Website",
@@ -68,6 +70,7 @@ export const projects: Project[] = [
     href: "https://www.birdeyepromotions.com/",
     liveLabel: "birdeyepromotions.com",
     cta: "View live site",
+    outcome: "Video hero, gallery, and quote form — launched in 7 days",
     pageTitle: "BirdEye Promotions Website | Trackt Tech",
     pageDescription: "A South Tampa drone videography website with a cinematic video hero, portfolio gallery, and quote request form — built by Trackt Tech.",
     h1: "BirdEye Promotions — South Tampa Drone Videography Website",
@@ -96,6 +99,7 @@ export const projects: Project[] = [
     href: "https://newell-family-enterprise.vercel.app/",
     liveLabel: "newell-family-enterprise.vercel.app",
     cta: "View live site",
+    outcome: "Before/after gallery with built-in quote request form",
     pageTitle: "Newell Family Enterprise Website | Trackt Tech",
     pageDescription: "A soft washing website for Newell Family Enterprise with a before & after gallery and an instant quote form — built by Trackt Tech.",
     h1: "Newell Family Enterprise — Tampa Soft Washing Website",
@@ -124,6 +128,7 @@ export const projects: Project[] = [
     href: "https://arthurs1of1.trackt.tech",
     liveLabel: "arthurs1of1.trackt.tech",
     cta: "View live site",
+    outcome: "Custom bracelet configurator with Shopify checkout",
     pageTitle: "Arthur's 1of1 Bracelets Website | Trackt Tech",
     pageDescription: "A custom bracelet configurator with Shopify checkout integration for Arthur's 1of1, a Tampa handmade jewelry brand — built by Trackt Tech.",
     h1: "Arthur's 1of1 Bracelets — Custom E-Commerce Website",

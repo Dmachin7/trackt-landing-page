@@ -80,23 +80,6 @@ html.dark #site-header.scrolled {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* ── Mobile nav menu ── */
-/* Solid (opaque) so the hero dot-grid/orbs never show through the open menu. */
-#nav-menu {
-  background: #ffffff;
-}
-html.dark #nav-menu {
-  background: #0b0f14;
-}
-/* When the mobile menu is open, give the top header bar a solid bg too —
-   otherwise the transparent (unscrolled) header lets the grid show behind it. */
-#site-header:has(#nav-menu.is-open) {
-  background: #ffffff;
-}
-html.dark #site-header:has(#nav-menu.is-open) {
-  background: #0b0f14;
-}
-
 /* ── Dark mode shadows (visible against dark bg) ── */
 html.dark .shadow-sm {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04);
@@ -179,18 +162,35 @@ html.dark .browser-url {
   .marquee-track { animation-duration: 22s; }
 }
 
-/* ── Mobile nav ── */
-#nav-menu {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: max-height 0.25s ease-out, opacity 0.2s ease;
-}
-#nav-menu.is-open {
-  max-height: var(--nav-menu-height, 400px);
-  opacity: 1;
-  pointer-events: auto;
+/* ── Mobile nav ──
+   #nav-menu is one element: a dropdown panel under the header bar on phones,
+   an inline row on md+ (layout handled by Tailwind md: classes in Header). */
+@media (max-width: 767px) {
+  #nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    /* Solid so the hero dot-grid/orbs never show through the open menu. */
+    background: #ffffff;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: max-height 0.25s ease-out, opacity 0.2s ease, visibility 0s linear 0.25s;
+  }
+  html.dark #nav-menu { background: #0b0f14; }
+  #nav-menu.is-open {
+    max-height: var(--nav-menu-height, 400px);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: max-height 0.25s ease-out, opacity 0.2s ease, visibility 0s;
+  }
+  /* Give the transparent (unscrolled) bar a solid bg while the menu is open. */
+  #site-header:has(#nav-menu.is-open) { background: #ffffff; }
+  html.dark #site-header:has(#nav-menu.is-open) { background: #0b0f14; }
 }
 
 /* ── Entrance animations ── */

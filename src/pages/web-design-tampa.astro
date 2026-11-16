@@ -18,7 +18,21 @@ const jsonLd = toJsonLd(businessSchema, {
   url: `${SITE}/web-design-tampa`,
   provider: { "@id": `${SITE}/#business` },
   areaServed: ["Tampa, FL", "St. Petersburg, FL", "Brandon, FL", "Clearwater, FL", "Tampa Bay, FL"],
-  offers: { "@type": "Offer", priceCurrency: "USD", price: 350, description: "Starter website package, from $350 one-time" },
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Website Subscription",
+      description: "Website build, hosting, SSL, and monthly updates with no upfront cost. Buy out anytime from $500.",
+      priceSpecification: { "@type": "UnitPriceSpecification", price: 99, priceCurrency: "USD", unitText: "MONTH" },
+    },
+    { "@type": "Offer", name: "New Website", priceCurrency: "USD", price: 350, description: "One-time, flat-rate website build, from $350" },
+    {
+      "@type": "Offer",
+      name: "Monthly Plans",
+      description: "Monitoring, backups, updates, and local search work. Month-to-month.",
+      priceSpecification: { "@type": "UnitPriceSpecification", price: 65, priceCurrency: "USD", unitText: "MONTH" },
+    },
+  ],
 });
 
 const check = '<path d="M20 6 9 17l-5-5"/>';
@@ -44,55 +58,147 @@ const services = [
   },
 ];
 
-const steps = [
-  { n: "01", title: "Free call", body: "30 minutes to talk through your business, what's not working, and what the site needs to do." },
-  { n: "02", title: "Flat-rate quote", body: "A fixed price and timeline in writing. No hourly surprises." },
-  { n: "03", title: "Build & review", body: "I design and hand-code the site, then we refine it together — two rounds of revisions included." },
-  { n: "04", title: "Launch", body: "Most sites go live in 5–7 days. Larger builds follow the timeline in your quote." },
+const plans = [
+  {
+    featured: true,
+    label: "Website Subscription",
+    price: "From $99",
+    per: "/mo",
+    subtitle: "No upfront cost — I build it, host it, and maintain it.",
+    body: "Get a professional website with no large upfront payment. Includes the build, hosting, SSL, and monthly updates. Own it anytime.",
+    points: ["No deposit — start for $99/mo", "Hosting, SSL & updates included", "Buy out anytime from $500"],
+    note: "",
+    cta: { label: "Get Started →", href: "/booking?type=discovery_call" },
+  },
+  {
+    featured: false,
+    label: "New Website",
+    price: "From $350",
+    per: "",
+    subtitle: "One-time, flat rate. You own everything.",
+    body: "Starter sites from $350, full small-business sites from $700, online stores from $2,200. Responsive design and two rounds of revisions.",
+    points: [],
+    note: "Ongoing maintenance available from $65/mo — keep your site fast, updated, and climbing in local search.",
+    cta: { label: "Book a Free Call →", href: "/booking?type=discovery_call" },
+  },
+  {
+    featured: false,
+    label: "Monthly Plans",
+    price: "From $65",
+    per: "/mo",
+    subtitle: "Month-to-month, cancel anytime.",
+    body: "Monitoring, backups, and monthly updates — with Growth and Accelerator plans adding new pages and local search work every month.",
+    points: [],
+    note: "",
+    // /#plans opens the full pricing guide modal on the homepage.
+    cta: { label: "See Plans →", href: "/#plans" },
+  },
 ];
+
+// Simple line icons: phone, document, laptop, rocket.
+const steps = [
+  {
+    title: "Free Call",
+    body: "30 minutes on your business, what's not working, and what the site needs to do.",
+    icon: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  },
+  {
+    title: "Flat-Rate Quote",
+    body: "A fixed price and timeline in writing. No hourly surprises.",
+    icon: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>',
+  },
+  {
+    title: "Build & Review",
+    body: "I hand-code the site, then we refine it together — two rounds of revisions included.",
+    icon: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/>',
+  },
+  {
+    title: "Launch",
+    body: "Most sites go live in 5–7 days. Larger builds follow your quote's timeline.",
+    icon: '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
+  },
+];
+
+const heroShot = projects.find((p) => p.slug === "km-executive-transportation")!;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription} jsonLd={jsonLd}>
+  <!-- Enable entrance animations only when they can run (JS on, IO supported,
+       motion allowed). Without this class every section simply renders visible. -->
+  <script is:inline>
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("wdt-motion");
+    }
+  </script>
   <Header />
   <main id="main-content">
 
-    <!-- Hero -->
-    <section class="relative overflow-hidden bg-bg-dark px-5 pb-16 pt-32 md:pb-20 md:pt-40">
-      <div class="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-brand-primary/6 blur-[100px]" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px); background-size: 28px 28px;" aria-hidden="true"></div>
+    <!-- ─── HERO: copy left, tilted browser mockup right ─── -->
+    <section class="relative overflow-hidden bg-bg-dark px-5 pb-16 pt-28 md:pb-24 md:pt-36">
+      <div class="wdt-hero-dots" aria-hidden="true"></div>
+      <div class="wdt-hero-glow" aria-hidden="true"></div>
 
-      <div class="relative z-10 mx-auto max-w-3xl text-center">
-        <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-brand-primary/25 bg-brand-primary/8 px-4 py-1.5 text-sm font-medium text-brand-primary">
-          <span class="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
-          Tampa Bay, FL &middot; Available Now
+      <div class="relative z-10 mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
+        <div class="text-center lg:text-left" data-reveal>
+          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-brand-primary/25 bg-brand-primary/8 px-4 py-1.5 text-sm font-medium text-brand-primary">
+            <span class="h-1.5 w-1.5 rounded-full bg-brand-primary"></span>
+            Tampa Bay, FL &middot; Available Now
+          </div>
+          <h1 class="text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-[3.4rem]">
+            Tampa Web Designer for <span class="text-brand-primary">Small Businesses</span>
+          </h1>
+          <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-text-secondary md:text-xl lg:mx-0">
+            Hand-coded, mobile-ready websites that get Tampa Bay businesses found on Google and turn visitors into calls.
+            Flat-rate pricing, no templates, and most sites live in 5–7 days.
+          </p>
+          <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
+            <a
+              href="/booking?type=website_audit"
+              class="btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-7 py-4 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md sm:w-auto"
+            >
+              Get a Free Website Audit
+            </a>
+            <a
+              href="/demos"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-bg-card px-7 py-4 text-base font-semibold text-text-primary transition-all duration-200 hover:border-brand-primary/40 hover:shadow-sm sm:w-auto"
+            >
+              See Client Work →
+            </a>
+          </div>
         </div>
-        <h1 class="text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-          Tampa Web Designer for <span class="text-brand-primary">Small Businesses</span>
-        </h1>
-        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary md:text-xl">
-          Hand-coded, mobile-ready websites that get Tampa Bay businesses found on Google and turn visitors into calls.
-          Flat-rate pricing, no templates, and most sites live in 5–7 days.
-        </p>
-        <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a
-            href="/booking?type=website_audit"
-            class="btn-shimmer inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-primary px-7 py-4 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md sm:w-auto"
-          >
-            Get a Free Website Audit
-          </a>
-          <a
-            href="/demos"
-            class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border-subtle bg-bg-card px-7 py-4 text-base font-semibold text-text-primary transition-all duration-200 hover:border-brand-primary/40 hover:shadow-sm sm:w-auto"
-          >
-            See Client Work →
-          </a>
+
+        <div class="mx-auto w-full max-w-xl lg:max-w-none" data-reveal style="--d:120ms">
+          <div class="wdt-stage">
+            <div class="browser-window wdt-tilt">
+              <div class="browser-chrome">
+                <div class="flex items-center gap-1.5" aria-hidden="true">
+                  <span class="browser-dot" style="background:#FC5F5A;"></span>
+                  <span class="browser-dot" style="background:#FDBC2F;"></span>
+                  <span class="browser-dot" style="background:#33C748;"></span>
+                </div>
+                <div class="browser-url">{heroShot.liveLabel}</div>
+              </div>
+              <!-- CLIENT_SCREENSHOT: swap for a newer/sharper capture if you have one (16:10 works best) -->
+              <img
+                src={heroShot.img}
+                alt={`${heroShot.title} website, built by Trackt Tech`}
+                width={heroShot.imgW}
+                height={heroShot.imgH}
+                fetchpriority="high"
+                class="block aspect-[16/10] w-full object-cover object-top"
+              />
+            </div>
+          </div>
+          <p class="mt-4 text-center text-xs text-text-secondary lg:text-left">
+            A live client site — <a href={`/demos/${heroShot.slug}`} class="underline-offset-2 hover:text-text-primary hover:underline">see how it was built</a>.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Local -->
+    <!-- ─── LOCAL POSITIONING ─── -->
     <section class="px-5 py-16 md:py-20">
-      <div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:items-center">
+      <div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:items-center" data-reveal>
         <div>
           <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-text-secondary/60">Local to Tampa Bay</p>
           <h2 class="text-3xl font-bold tracking-tight md:text-4xl">A web designer who knows the area</h2>
@@ -111,18 +217,18 @@ const steps = [
       </div>
     </section>
 
-    <!-- Services -->
+    <!-- ─── SERVICES ─── -->
     <section class="bg-bg-elevated px-5 py-16 md:py-24">
       <div class="mx-auto max-w-6xl">
-        <div class="mb-12 text-center">
+        <div class="mb-12 text-center" data-reveal>
           <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Services for Tampa Bay businesses</h2>
           <p class="mx-auto mt-4 max-w-2xl text-lg text-text-secondary">
             Start with a website. Add software or a maintenance plan when you need it.
           </p>
         </div>
-        <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-3" data-stagger>
           {services.map((svc) => (
-            <article class="card-lift flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-sm md:p-7">
+            <article class="wdt-tilt-card flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-sm md:p-7" data-reveal>
               <div class="flex items-center gap-3">
                 <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={svc.icon} />
@@ -144,74 +250,108 @@ const steps = [
       </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="px-5 py-16 md:py-24">
-      <div class="mx-auto max-w-4xl">
-        <div class="mb-10 text-center">
+    <!-- ─── PRICING: subscription | one-time | monthly ─── -->
+    <section id="pricing" class="px-5 py-16 md:py-24">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-12 text-center" data-reveal>
           <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Flat-rate pricing</h2>
-          <p class="mx-auto mt-4 max-w-xl text-lg text-text-secondary">A fixed quote before any work starts. No hourly billing.</p>
+          <p class="mx-auto mt-4 max-w-xl text-lg text-text-secondary">Pay monthly or once. Either way, a fixed quote before any work starts.</p>
         </div>
-        <div class="grid gap-5 sm:grid-cols-2">
-          <div class="flex flex-col rounded-2xl border border-brand-primary/50 bg-bg-card p-7 shadow-sm ring-1 ring-brand-primary/20">
-            <p class="text-sm font-semibold uppercase tracking-widest text-brand-primary">New website</p>
-            <p class="mt-3 text-4xl font-bold tracking-tight">From $350</p>
-            <p class="mt-1 text-sm text-text-secondary">One-time, flat rate</p>
-            <p class="mt-4 text-[15px] leading-relaxed text-text-secondary">
-              Starter sites from $350, full small-business sites from $700, and online stores from $2,200.
-              Responsive design and two rounds of revisions included.
-            </p>
-          </div>
-          <div class="flex flex-col rounded-2xl border border-border-subtle bg-bg-card p-7 shadow-sm">
-            <p class="text-sm font-semibold uppercase tracking-widest text-brand-primary">Monthly plans</p>
-            <p class="mt-3 text-4xl font-bold tracking-tight">From $65<span class="text-xl font-semibold text-text-secondary">/mo</span></p>
-            <p class="mt-1 text-sm text-text-secondary">Month-to-month, cancel anytime</p>
-            <p class="mt-4 text-[15px] leading-relaxed text-text-secondary">
-              Monitoring, backups, and monthly updates — with Growth and Accelerator plans adding new pages and
-              local search work every month.
-            </p>
-          </div>
+        <div class="grid grid-cols-1 items-stretch gap-5 pt-3 md:grid-cols-3" data-stagger>
+          {plans.map((plan) => (
+            <article
+              class:list={[
+                "wdt-tilt-card relative flex flex-col rounded-2xl border p-7 shadow-sm",
+                plan.featured
+                  ? "border-brand-primary bg-brand-primary/[0.06] ring-1 ring-brand-primary/30"
+                  : "border-border-subtle bg-bg-card",
+              ]}
+              data-reveal
+            >
+              {plan.featured && (
+                <span class="absolute -top-3 left-7 rounded-full bg-brand-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white shadow-sm">
+                  Most Popular
+                </span>
+              )}
+              <p class="text-sm font-semibold uppercase tracking-widest text-brand-primary">{plan.label}</p>
+              <p class="mt-3 text-4xl font-bold tracking-tight">
+                {plan.price}{plan.per && <span class="text-xl font-semibold text-text-secondary">{plan.per}</span>}
+              </p>
+              <p class="mt-2 text-sm font-medium text-text-primary/80">{plan.subtitle}</p>
+              <p class="mt-4 text-[15px] leading-relaxed text-text-secondary">{plan.body}</p>
+              {plan.points.length > 0 && (
+                <ul class="mt-5 space-y-2.5 text-sm text-text-primary/85">
+                  {plan.points.map((pt) => (
+                    <li class="flex items-start gap-2">
+                      <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={check} />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {plan.note && <p class="mt-4 text-xs leading-relaxed text-text-secondary/80">{plan.note}</p>}
+              <div class="mt-auto pt-7">
+                <a
+                  href={plan.cta.href}
+                  class:list={[
+                    "flex w-full items-center justify-center rounded-xl px-5 py-3.5 text-sm font-semibold transition-all duration-200",
+                    plan.featured
+                      ? "btn-shimmer bg-brand-primary text-white hover:opacity-90 hover:shadow-md"
+                      : "border border-brand-primary/40 text-brand-primary hover:bg-brand-primary hover:text-white",
+                  ]}
+                >
+                  {plan.cta.label}
+                </a>
+              </div>
+            </article>
+          ))}
         </div>
-        <p class="mt-6 text-center text-sm text-text-secondary">
-          Full package and add-on pricing is on the <a href="/#services" class="font-medium text-brand-primary underline-offset-2 hover:underline">homepage</a>.
-        </p>
       </div>
     </section>
 
-    <!-- Process -->
+    <!-- ─── PROCESS: stepper ─── -->
     <section class="bg-bg-elevated px-5 py-16 md:py-24">
       <div class="mx-auto max-w-6xl">
-        <div class="mb-12 text-center">
+        <div class="mb-12 text-center md:mb-16" data-reveal>
           <h2 class="text-3xl font-bold tracking-tight md:text-4xl">How it works</h2>
         </div>
-        <ol class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s) => (
-            <li class="rounded-2xl border border-border-subtle bg-bg-card p-6 shadow-sm">
-              <span class="text-sm font-bold text-brand-primary">{s.n}</span>
-              <h3 class="mt-2 text-lg font-semibold">{s.title}</h3>
-              <p class="mt-2 text-[15px] leading-relaxed text-text-secondary">{s.body}</p>
+        <ol class="wdt-stepper mx-auto max-w-md md:grid md:max-w-none md:grid-cols-4" data-stagger>
+          {steps.map((s, i) => (
+            <li class="wdt-step" data-reveal>
+              <div class="wdt-step-marker">
+                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-brand-primary text-xs font-bold text-white shadow-sm">{i + 1}</span>
+                <span class="wdt-step-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={s.icon} />
+                </span>
+              </div>
+              <div class="pt-1 md:pt-0">
+                <h3 class="text-lg font-semibold md:mt-4">{s.title}</h3>
+                <p class="mt-1.5 text-[15px] leading-relaxed text-text-secondary">{s.body}</p>
+              </div>
             </li>
           ))}
         </ol>
       </div>
     </section>
 
-    <!-- Work -->
+    <!-- ─── CASE STUDIES ─── -->
     <section class="px-5 py-16 md:py-24">
       <div class="mx-auto max-w-6xl">
-        <div class="mb-10 text-center">
+        <div class="mb-10 text-center" data-reveal>
           <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-text-secondary/60">Recent work</p>
           <h2 class="text-3xl font-bold tracking-tight md:text-4xl">Sites built for Florida small businesses</h2>
         </div>
-        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
           {projects.map((p) => (
-            <a href={`/demos/${p.slug}`} class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm">
+            <a href={`/demos/${p.slug}`} class="wdt-case group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-bg-card shadow-sm" data-reveal>
               <div class="aspect-video overflow-hidden bg-bg-elevated">
-                <img src={p.img} alt={p.imgAlt} width={p.imgW} height={p.imgH} loading="lazy" class="h-full w-full object-cover object-top" />
+                <img src={p.img} alt={p.imgAlt} width={p.imgW} height={p.imgH} loading="lazy" class="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]" />
               </div>
-              <div class="p-5">
+              <div class="flex flex-1 flex-col p-5">
                 <h3 class="font-bold text-text-primary">{p.title}</h3>
-                <p class="mt-1 text-xs font-medium" style={`color:${p.accent};`}>{p.category}</p>
-                <p class="mt-3 text-sm font-semibold text-brand-primary group-hover:underline">Read case study →</p>
+                <p class="mt-1.5 text-sm leading-snug text-text-primary/80">{p.outcome}</p>
+                <p class="mt-2 text-xs font-medium" style={`color:${p.accent};`}>{p.category}</p>
+                <p class="mt-auto pt-4 text-sm font-semibold text-brand-primary">Read case study →</p>
               </div>
             </a>
           ))}
@@ -219,10 +359,197 @@ const steps = [
       </div>
     </section>
 
-    <PageCTA
-      heading="Ready for a site that brings in Tampa customers?"
-      label="Book a Free Call →"
-    />
+    <div data-reveal>
+      <PageCTA
+        heading="Ready for a site that brings in Tampa customers?"
+        label="Book a Free Call →"
+      />
+    </div>
   </main>
   <Footer />
 </BaseLayout>
+
+<style is:global>
+  /* ── Hero background: faint dot grid (~5%) + teal glow behind the headline (~15%) ── */
+  .wdt-hero-dots {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: radial-gradient(circle, var(--hero-dot-color) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .wdt-hero-glow {
+    position: absolute;
+    pointer-events: none;
+    top: 45%;
+    left: 25%;
+    width: min(900px, 130vw);
+    height: 640px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(ellipse at center, #16B4D2 0%, #3B82F6 35%, transparent 65%);
+    opacity: 0.15;
+    filter: blur(30px);
+  }
+
+  /* ── Hero mockup: 3D tilt on desktop, flat when stacked on phones/tablets ── */
+  .wdt-stage { perspective: 1600px; }
+  .wdt-tilt {
+    transform-origin: 60% 50%;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow:
+      -24px 32px 70px -18px rgba(16, 20, 24, 0.30),
+      0 0 0 1px rgba(22, 180, 210, 0.08),
+      0 30px 90px -30px var(--color-brand-glow);
+  }
+  @media (min-width: 1024px) {
+    .wdt-tilt { transform: rotateY(-12deg) rotateX(4deg); }
+    .wdt-stage:hover .wdt-tilt { transform: rotateY(-4deg) rotateX(1.5deg); }
+  }
+
+  /* ── Stepper ── */
+  .wdt-step {
+    position: relative;
+    display: flex;
+    gap: 1.25rem;
+    padding-bottom: 2.5rem;
+  }
+  .wdt-step:last-child { padding-bottom: 0; }
+  .wdt-step-marker {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .wdt-step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-card);
+    color: var(--color-brand-primary);
+    box-shadow: 0 4px 14px rgba(16, 20, 24, 0.05);
+  }
+  /* Connector: vertical dashed line on phones (under the icon to the next step) */
+  .wdt-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: calc(1.75rem - 1px);   /* centre of the 3.5rem icon */
+    top: 6.25rem;                /* number (1.75) + gap (0.5) + icon (3.5) + 0.5 */
+    bottom: 0.5rem;
+    border-left: 2px dashed rgba(22, 180, 210, 0.35);
+  }
+  @media (min-width: 768px) {
+    .wdt-step {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0;
+      padding: 0 1rem;
+    }
+    /* Horizontal dashed line from this icon to the next, through icon centres */
+    .wdt-step:not(:last-child)::after {
+      left: calc(50% + 2.25rem);
+      right: calc(-50% + 2.25rem);
+      top: 4rem;                 /* number (1.75) + gap (0.5) + half icon (1.75) */
+      bottom: auto;
+      border-left: 0;
+      border-top: 2px dashed rgba(22, 180, 210, 0.35);
+    }
+  }
+
+  /* ── Case study cards: lift + teal glow ── */
+  .wdt-case {
+    transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  }
+  .wdt-case:hover,
+  .wdt-case:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgba(22, 180, 210, 0.45);
+    box-shadow: 0 12px 32px -8px rgba(22, 180, 210, 0.28), 0 0 0 1px rgba(22, 180, 210, 0.15);
+  }
+
+  /* ── Mouse-tracking tilt (services + pricing). JS sets --rx/--ry. ── */
+  .wdt-tilt-card {
+    transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 300ms ease, box-shadow 200ms ease;
+    will-change: transform;
+  }
+  .wdt-tilt-card.is-tilting {
+    transition: transform 80ms linear, box-shadow 200ms ease;
+    box-shadow: 0 16px 40px -12px rgba(22, 180, 210, 0.25);
+  }
+
+  /* ── Scroll entrance: fade + rise 20px. Uses the `translate` property so it
+        never fights the tilt/hover `transform`s above. Only active when the
+        inline script added .wdt-motion (JS on, motion allowed). ── */
+  html.wdt-motion [data-reveal] {
+    opacity: 0;
+    translate: 0 20px;
+    transition-property: opacity, translate, transform, box-shadow, border-color;
+    transition-duration: 600ms, 600ms, 300ms, 200ms, 200ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.16, 1, 0.3, 1), ease, ease, ease;
+    transition-delay: var(--d, 0ms), var(--d, 0ms), 0ms, 0ms, 0ms;
+  }
+  html.wdt-motion [data-reveal].is-in {
+    opacity: 1;
+    translate: 0 0;
+  }
+  html.wdt-motion .wdt-tilt-card.is-tilting[data-reveal] {
+    transition-duration: 600ms, 600ms, 80ms, 200ms, 200ms;
+  }
+</style>
+
+<script>
+  // ── Scroll entrance (IntersectionObserver, no library) ───────────────────
+  const root = document.documentElement;
+  if (root.classList.contains("wdt-motion")) {
+    // Stagger cards inside a grid by 80ms each.
+    document.querySelectorAll<HTMLElement>("[data-stagger]").forEach((grid) => {
+      grid.querySelectorAll<HTMLElement>(":scope > [data-reveal]").forEach((el, i) => {
+        el.style.setProperty("--d", `${i * 80}ms`);
+      });
+    });
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-in");
+          io.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+    );
+    document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
+  }
+
+  // ── Mouse-tracking 3D tilt (desktop pointers only) ─────────────────────
+  const canTilt =
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (canTilt) {
+    const MAX = 6; // degrees
+    document.querySelectorAll<HTMLElement>(".wdt-tilt-card").forEach((card) => {
+      card.addEventListener("pointermove", (e) => {
+        if (e.pointerType !== "mouse") return;
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;  // -0.5 … 0.5
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        card.classList.add("is-tilting");
+        card.style.setProperty("--ry", `${(x * 2 * MAX).toFixed(2)}deg`);
+        card.style.setProperty("--rx", `${(-y * 2 * MAX).toFixed(2)}deg`);
+      });
+      card.addEventListener("pointerleave", () => {
+        card.classList.remove("is-tilting");
+        card.style.setProperty("--rx", "0deg");
+        card.style.setProperty("--ry", "0deg");
+      });
+    });
+  }
+</script>

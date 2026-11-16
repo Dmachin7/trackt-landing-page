@@ -3,9 +3,8 @@
 
 export const SITE = "https://trackt.tech";
 
-// Public contact address. Matches the email shown on /privacy and elsewhere on
-// the site — keep the schema and the visible contact info in agreement.
-export const CONTACT_EMAIL = "daniel@trackt.tech";
+// Public sales/contact address used in structured data.
+export const CONTACT_EMAIL = "sales@trackt.tech";
 
 const cities = ["Tampa", "St. Petersburg", "Brandon", "Clearwater", "Wesley Chapel", "Riverview", "Lakeland", "Sarasota"];
 
