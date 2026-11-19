@@ -19,7 +19,8 @@ export default defineConfig({
     sitemap({
       // /trackt and /survey are the paused SaaS pages: still reachable by
       // direct link, but hidden from nav and search for now.
-      filter: (page) => !page.includes('/api/') && !/\/(trackt|survey)\/?$/.test(page),
+      // /booking/thank-you is the post-booking conversion page — not for search.
+      filter: (page) => !page.includes('/api/') && !/\/(trackt|survey|booking\/thank-you)\/?$/.test(page),
     }),
   ],
   adapter: vercel(),

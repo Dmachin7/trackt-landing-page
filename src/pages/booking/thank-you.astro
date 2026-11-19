@@ -1,0 +1,99 @@
+---
+// Shown only after a successful booking (booking.astro redirects here on 201).
+// Exists as its own URL so analytics can count a conversion on this page view
+// instead of on every visit to /booking. Kept out of search and the sitemap.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+---
+
+<BaseLayout
+  title="You're booked — Trackt"
+  description="Your call with Trackt Tech is booked. A calendar invite and meeting link are on their way."
+  noIndex
+>
+  <Header />
+  <main id="main-content">
+    <section class="relative overflow-hidden bg-bg-dark px-5 pb-24 pt-32 md:pt-40">
+      <div class="pointer-events-none absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-brand-primary/6 blur-[100px]" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px); background-size: 28px 28px;" aria-hidden="true"></div>
+
+      <div class="relative z-10 mx-auto max-w-2xl">
+        <div class="rounded-2xl border border-border-subtle bg-bg-card p-6 py-10 text-center shadow-sm md:p-8 md:py-12">
+          <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="80" height="80" aria-hidden="true">
+              <circle class="checkmark-circle" cx="26" cy="26" r="24" fill="none" />
+              <path class="checkmark-check" fill="none" d="M14 27l8 8 16-16" />
+            </svg>
+          </div>
+          <h1 class="text-2xl font-bold tracking-tight text-text-primary">You're booked.</h1>
+          <div id="done-details" class="mx-auto mt-4 max-w-sm space-y-1 text-sm text-text-secondary"></div>
+          <p id="done-email" class="mx-auto mt-5 max-w-sm text-sm text-text-secondary">
+            A calendar invite and meeting link are on their way to your inbox.
+          </p>
+          <p class="mx-auto mt-3 max-w-sm text-xs text-text-secondary/80">
+            Can't make it? Reply to the confirmation email to let me know and we'll find another time.
+          </p>
+          <a href="/" class="mt-8 inline-block text-sm font-semibold text-brand-primary hover:underline">
+            Back to trackt.tech
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* CSS-only animated checkmark — same as booking.astro */
+  .checkmark-circle {
+    stroke: var(--color-brand-primary);
+    stroke-width: 2.5;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    animation: checkmark-stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  }
+  .checkmark-check {
+    stroke: var(--color-brand-primary);
+    stroke-width: 3.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: checkmark-stroke 0.35s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;
+  }
+  @keyframes checkmark-stroke {
+    to { stroke-dashoffset: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .checkmark-circle, .checkmark-check { animation: none; stroke-dashoffset: 0; }
+  }
+</style>
+
+<script>
+  // Booking details are handed over in sessionStorage, not the URL, so the
+  // client's email never ends up in analytics page URLs.
+  type Confirmation = { meeting: string; date: string; time: string; email: string };
+
+  let info: Confirmation | null = null;
+  try {
+    const raw = sessionStorage.getItem("trackt_booking_confirmation");
+    if (raw) info = JSON.parse(raw);
+  } catch {
+    info = null;
+  }
+
+  if (info) {
+    const details = document.getElementById("done-details")!;
+    for (const [text, strong] of [[info.meeting, true], [info.date, false], [info.time, false]] as const) {
+      const p = document.createElement("p");
+      p.textContent = text;
+      if (strong) p.className = "font-semibold text-text-primary";
+      details.appendChild(p);
+    }
+    if (info.email) {
+      document.getElementById("done-email")!.textContent =
+        `A calendar invite and meeting link are on their way to ${info.email}.`;
+    }
+  }
+</script>

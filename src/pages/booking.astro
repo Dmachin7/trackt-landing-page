@@ -166,53 +166,12 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
             </form>
           </div>
 
-          <!-- ── CONFIRMATION ── -->
-          <div data-step="done" class="hidden py-4 text-center">
-            <div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center">
-              <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="80" height="80" aria-hidden="true">
-                <circle class="checkmark-circle" cx="26" cy="26" r="24" fill="none" />
-                <path class="checkmark-check" fill="none" d="M14 27l8 8 16-16" />
-              </svg>
-            </div>
-            <h2 class="text-2xl font-bold tracking-tight text-text-primary">You're booked.</h2>
-            <div id="done-details" class="mx-auto mt-4 max-w-sm space-y-1 text-sm text-text-secondary"></div>
-            <p id="done-email" class="mx-auto mt-5 max-w-sm text-sm text-text-secondary"></p>
-            <p class="mx-auto mt-3 max-w-sm text-xs text-text-secondary/80">
-              Can't make it? Reply to the confirmation email to let me know and we'll find another time.
-            </p>
-          </div>
         </div>
       </div>
     </section>
   </main>
   <Footer />
 </BaseLayout>
-
-<style>
-  /* CSS-only animated checkmark — draws in on render */
-  .checkmark-circle {
-    stroke: var(--color-brand-primary);
-    stroke-width: 2.5;
-    stroke-dasharray: 166;
-    stroke-dashoffset: 166;
-    animation: checkmark-stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-  }
-  .checkmark-check {
-    stroke: var(--color-brand-primary);
-    stroke-width: 3.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 48;
-    stroke-dashoffset: 48;
-    animation: checkmark-stroke 0.35s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;
-  }
-  @keyframes checkmark-stroke {
-    to { stroke-dashoffset: 0; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .checkmark-circle, .checkmark-check { animation: none; stroke-dashoffset: 0; }
-  }
-</style>
 
 <script>
   // ── Types ──────────────────────────────────────────────────────────────────
@@ -299,24 +258,18 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
   }
 
   // ── UI helpers ───────────────────────────────────────────────────────────────
-  function showStep(step: "1" | "2" | "3" | "done") {
+  function showStep(step: "1" | "2" | "3") {
     widget.querySelectorAll("[data-step]").forEach((el) => {
       (el as HTMLElement).classList.toggle("hidden", (el as HTMLElement).dataset.step !== step);
     });
-    const progress = document.getElementById("progress")!;
-    if (step === "done") {
-      progress.classList.add("hidden");
-    } else {
-      progress.classList.remove("hidden");
-      const n = Number(step);
-      document.getElementById("progress-label")!.textContent = `Step ${n} of 3`;
-      document.getElementById("progress-title")!.textContent = PROGRESS_TITLES[n - 1];
-      widget.querySelectorAll("[data-bar]").forEach((bar) => {
-        const idx = Number((bar as HTMLElement).dataset.bar);
-        bar.classList.toggle("bg-brand-primary", idx <= n);
-        bar.classList.toggle("bg-border-subtle", idx > n);
-      });
-    }
+    const n = Number(step);
+    document.getElementById("progress-label")!.textContent = `Step ${n} of 3`;
+    document.getElementById("progress-title")!.textContent = PROGRESS_TITLES[n - 1];
+    widget.querySelectorAll("[data-bar]").forEach((bar) => {
+      const idx = Number((bar as HTMLElement).dataset.bar);
+      bar.classList.toggle("bg-brand-primary", idx <= n);
+      bar.classList.toggle("bg-border-subtle", idx > n);
+    });
     clearError();
   }
 
@@ -660,18 +613,24 @@ const ownerEmail = import.meta.env.PUBLIC_OWNER_EMAIL ?? "daniel@trackt.tech";
   }
 
   // ── Confirmation ─────────────────────────────────────────────────────────────
+  // Successful bookings go to /booking/thank-you so analytics can count a
+  // conversion there, not on every /booking visit. Details travel in
+  // sessionStorage (never the URL, which would leak the email into analytics).
   function showConfirmation(email: string) {
     const dateLabel = fmtDateLong(selectedDate!);
     const timeLabel = fmt12h(selectedTime!) + " ET";
 
-    document.getElementById("done-details")!.innerHTML = [
-      `<p class="font-semibold text-text-primary">${MEETING_LABELS[meetingType!]} · ${MEETING_DURATION[meetingType!]} min</p>`,
-      `<p>${dateLabel}</p>`,
-      `<p>${timeLabel}</p>`,
-    ].join("");
-    document.getElementById("done-email")!.textContent =
-      `A calendar invite and meeting link are on their way to ${email}.`;
-    showStep("done");
+    try {
+      sessionStorage.setItem("trackt_booking_confirmation", JSON.stringify({
+        meeting: `${MEETING_LABELS[meetingType!]} · ${MEETING_DURATION[meetingType!]} min`,
+        date: dateLabel,
+        time: timeLabel,
+        email,
+      }));
+    } catch {
+      // Storage blocked — the thank-you page falls back to generic copy.
+    }
+    window.location.assign("/booking/thank-you");
   }
 
   init();
